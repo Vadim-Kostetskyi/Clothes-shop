@@ -1,7 +1,7 @@
-
 import { useTranslation } from 'react-i18next';
 import { AVAILABLE_LANGUAGES } from 'utils/constants';
-export const SelectLanguage = (): JSX.Element => {
+
+const SelectLanguage = (): JSX.Element => {
   const { t, i18n } = useTranslation();
   const changeLang = (language: string) => i18n.changeLanguage(language);
   return (
@@ -15,3 +15,5 @@ export const SelectLanguage = (): JSX.Element => {
     </>
   )
 }
+
+export default SelectLanguage;
