@@ -1,12 +1,11 @@
 import { Routes, Route } from 'react-router-dom';
-
-import { Main } from 'components/Main/Main';
 import { ClothingGrade } from 'components/ClothingGrade/ClothingGrade';
+import HomePage from './HomePage';
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Main />} />
+      <Route path="/" element={<HomePage />} />
       <Route path="grade" element={<ClothingGrade />}/>
     </Routes>
 
