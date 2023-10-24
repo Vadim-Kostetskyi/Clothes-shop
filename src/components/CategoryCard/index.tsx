@@ -9,11 +9,15 @@ export interface CategoryCardProps {
 
 const CategoryCard: FC<CategoryCardProps> = ({ id, image, category }) => {
   return (
-    <>
-      <img className= {styles.image}
-        src={image}
-        alt={category} />
-    </>
+      <div className={styles.categoryImageWrapper}>
+        <img className={styles.image}
+          src={image}
+          alt={category} />
+        <div className={styles.categoryTextWrapper}>
+          <p className={styles.categorylink}>Go to fashion</p>
+          <p className={styles.categoryTitle}>{category}</p>
+        </div>
+      </div>
   )
 }
 

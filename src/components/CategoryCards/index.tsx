@@ -27,7 +27,7 @@ const categories: CategoryCardProps[] = [
 
 const CategoryCards = () => {
   return (
-    <div className={styles.wrapperCards}>
+    <div className={styles.cardsWrapper}>
       {categories.map(({id, image, category}) => <CategoryCard id={id} key={id} image={image} category={category}/>)}
     </div>
   )

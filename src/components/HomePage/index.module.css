@@ -2,3 +2,7 @@
   display: flex;
   justify-content: center;
 }
+
+.wrapperHomePage {
+  margin-bottom: 153px;
+}
