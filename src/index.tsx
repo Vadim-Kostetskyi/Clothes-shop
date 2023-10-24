@@ -9,6 +9,8 @@ import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import { myPersistStore, store } from 'redux/store';
 
+import './i18n';
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
