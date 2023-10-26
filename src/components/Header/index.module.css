@@ -1,0 +1,11 @@
+.headerWrapper {
+  display: flex;
+  justify-content: center;
+  padding: 18px 0px;
+  min-height: 121px;
+  align-items: center;
+}
+
+.logo {
+  width: 133px;
+}
