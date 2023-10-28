@@ -3,8 +3,7 @@ import KidsCategoryImage from '../../assets/images/kids-category-image.png';
 import MenCategoryImage from '../../assets/images/men-category-image.png';
 import CategoryCard from 'components/CategoryCard';
 import { CategoryCardProps } from 'components/CategoryCard';
-import styles from './index.module.css';
-
+import styles from './index.module.scss';
 
 const categories: CategoryCardProps[] = [
   {
