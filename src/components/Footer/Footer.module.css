@@ -23,17 +23,20 @@
     margin-bottom: 16px;
   }
 }
+
 .columnDesktop {
   @media screen and (max-width: 479px) {
     display: none;
   }
 }
+
 .columnMobile {
   @media screen and (min-width: 480px) {
     display: none;
   }
   margin-top: 20px;
 }
+
 .titleBox {
   @media screen and (max-width: 479px) {
     display: flex;
@@ -41,9 +44,10 @@
     margin-bottom: 15px;
   }
 }
+
 .title {
   font-size: 16px;
-  line-height: 14.72px;
+  line-height: 15px;
   font-weight: 500;
 
   @media screen and (max-width: 479px) {
@@ -52,11 +56,13 @@
     letter-spacing: 0.01em;
   }
 }
+
 .listButton {
   height: 24px;
   border: none;
   background: none;
 }
+
 .listImg {
   width: 24px;
   height: 24px;
@@ -67,6 +73,7 @@
     display: none;
   }
 }
+
 .list {
   @media screen and (max-width: 479px) {
     height: 0;
@@ -76,22 +83,22 @@
     transition: all 0.2s ease;
   }
 }
+
 .listOpen {
   animation-name: changeHeight;
   animation-duration: 200ms;
   animation-timing-function: ease-in-out;
 }
+
 .listOpenHelp {
-  /* height: 240px;
-  visibility: visible;
-  transition: all 0.2s ease; */
   animation-name: changeHeightHelp;
   animation-duration: 200ms;
   animation-timing-function: ease-in-out;
 }
+
 .item {
   font-size: 14px;
-  line-height: 14.72px;
+  line-height: 15px;
 }
 .item:not(:last-child) {
   margin-bottom: 24px;
@@ -106,28 +113,31 @@
     margin-bottom: 0;
   }
 }
+
 .imgSocial {
   width: 32px;
   height: 32px;
   margin-right: 16px;
 }
+
 .language {
   font-weight: 500;
   font-size: 14px;
-  line-height: 12.88px;
+  line-height: 13px;
 }
+
 .info {
   @media screen and (max-width: 479px) {
     display: flex;
     flex-direction: column;
   }
 }
+
 .infoBox {
   display: flex;
-}
-.infoBox {
   margin-bottom: 32px;
 }
+
 .img {
   position: relative;
   top: -2px;
@@ -135,17 +145,20 @@
   height: 16px;
   margin-right: 8px;
 }
+
 .number {
   margin-right: 8px;
   font-weight: 500;
   font-size: 14px;
-  line-height: 12.88px;
+  line-height: 13px;
 }
+
 .active {
   font-size: 14px;
-  line-height: 12.88px;
+  line-height: 13px;
   color: #00ca8d;
 }
+
 .workDays {
   font-size: 12px;
   line-height: 11px;

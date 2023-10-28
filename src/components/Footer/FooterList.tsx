@@ -1,6 +1,6 @@
 import style from './Footer.module.css'
 
-export const FooterList = ({device, listVisible, openList}:{device: string, listVisible?: boolean[], openList?: Function}): JSX.Element => {
+const FooterList = ({device, listVisible, openList}:{device: string, listVisible?: boolean[], openList?: Function}): JSX.Element => {
     
   return (
     <>
@@ -30,7 +30,7 @@ export const FooterList = ({device, listVisible, openList}:{device: string, list
       <div className={device}>
         <div className={style.titleBox}>
           <h1 className={style.title}>Terms</h1>
-           {(listVisible && !listVisible[1]) ? (<button className={style.listButton} onClick={() => openList ? openList(1) : ''}>
+            {(listVisible && !listVisible[1]) ? (<button className={style.listButton} onClick={() => openList ? openList(1) : ''}>
           <svg className={style.listImg} viewBox="0 0 35 35">
             <path d="M22.919 11.065h-10.011v-10.011c0-0.509-0.413-0.922-0.922-0.922s-0.922 0.413-0.922 0.922v10.011h-10.011c-0.509 0-0.922 0.413-0.922 0.922s0.413 0.922 0.922 0.922h10.011v10.011c0 0.509 0.413 0.922 0.922 0.922s0.922-0.413 0.922-0.922v-10.011h10.011c0.509 0 0.922-0.413 0.922-0.922s-0.413-0.922-0.922-0.922z"></path>
             </svg>
@@ -73,4 +73,4 @@ export const FooterList = ({device, listVisible, openList}:{device: string, list
   );
 };
 
-// style={{ height: (listVisible && listVisible[2]) ? 'auto' : 0, transition: 'height 3s ease' }}
+export default FooterList

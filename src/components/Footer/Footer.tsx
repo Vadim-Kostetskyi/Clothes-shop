@@ -1,15 +1,15 @@
 import { useState } from 'react'
+import FooterList from './FooterList'
 import style from './Footer.module.css'
-import { FooterList } from './FooterList'
 
-export const Footer = (): JSX.Element => { 
+const Footer = (): JSX.Element => { 
     const [listVisible, setListVisible] = useState([false, false, false]);
     
-    const openList = (number: number) => {
+  const openList = (number: number) => {
         setListVisible((prev) => prev.map((value, index) => (index === number ? !value : value)))
     }
     
-    return (
+    return ( 
         <footer className={style.footer}>
             <div className={style.shadowBorder}></div>
             <div className={style.box}>
@@ -75,4 +75,6 @@ export const Footer = (): JSX.Element => {
         </footer>
     )
 }
+
+export default Footer
 
