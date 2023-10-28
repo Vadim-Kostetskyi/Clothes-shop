@@ -4,7 +4,6 @@
 
 .shadowBorder {
   width: 100%;
-  /* margin-bottom: 32px; */
   border: 1px solid #ccc;
 
   @media screen and (min-width: 480px) {
@@ -33,19 +32,19 @@
   @media screen and (min-width: 480px) {
     display: none;
   }
+  margin-top: 20px;
 }
 .titleBox {
   @media screen and (max-width: 479px) {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 15px;
   }
 }
 .title {
   font-size: 16px;
   line-height: 14.72px;
   font-weight: 500;
-
-  margin-bottom: 30px;
 
   @media screen and (max-width: 479px) {
     font-size: 20px;
@@ -69,30 +68,26 @@
   }
 }
 .list {
-  color: #ffffff;
-
   @media screen and (max-width: 479px) {
     height: 0;
     padding-bottom: 16px;
     visibility: hidden;
+    color: #ffffff;
     transition: all 0.2s ease;
   }
 }
 .listOpen {
-  padding-bottom: 30px;
   animation-name: changeHeight;
   animation-duration: 200ms;
-  animation-timing-function: linear;
+  animation-timing-function: ease-in-out;
 }
 .listOpenHelp {
   /* height: 240px;
   visibility: visible;
   transition: all 0.2s ease; */
-
-  padding-bottom: 30px;
   animation-name: changeHeightHelp;
   animation-duration: 200ms;
-  animation-timing-function: linear;
+  animation-timing-function: ease-in-out;
 }
 .item {
   font-size: 14px;
@@ -157,7 +152,7 @@
   color: #959595;
 
   @media screen and (max-width: 479px) {
-    margin-bottom: 32px;
+    margin-bottom: 15px;
   }
 }
 

@@ -7,7 +7,6 @@ export const Footer = (): JSX.Element => {
     
     const openList = (number: number) => {
         setListVisible((prev) => prev.map((value, index) => (index === number ? !value : value)))
-        console.log(111);
     }
     
     return (

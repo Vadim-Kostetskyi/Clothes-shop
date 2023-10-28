@@ -1,9 +1,7 @@
 import style from './Footer.module.css'
 
 export const FooterList = ({device, listVisible, openList}:{device: string, listVisible?: boolean[], openList?: Function}): JSX.Element => {
-  
-  listVisible && console.log(listVisible);
-  
+    
   return (
     <>
       <div className={device}>
