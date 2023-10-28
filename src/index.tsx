@@ -3,12 +3,10 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-
-import './index.css';
-import App from './Routes/App';
+import './styles/index.scss';
+import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import { myPersistStore, store } from 'redux/store';
-
 import './i18n';
 
 const root = ReactDOM.createRoot(
@@ -20,10 +18,10 @@ root.render(
       <Provider store={store}>
         <PersistGate loading={null} persistor={myPersistStore}>
           <App />
-          </PersistGate>
+        </PersistGate>
       </Provider>
     </React.StrictMode>
-   </BrowserRouter>
+  </BrowserRouter>
 );
 
 reportWebVitals();

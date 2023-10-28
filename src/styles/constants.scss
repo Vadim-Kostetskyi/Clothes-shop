@@ -1,0 +1,31 @@
+$brilliance : #FDFDFD;
+$mobile: 480px;
+$tablet: 960px;
+$laptop: 1280px;
+$desktop: 1440px;
+
+@mixin media ($breakpoint) {
+  @if $breakpoint ==mobile {
+    @media only screen and (max-width: $mobile) {
+      @content;
+    }
+
+    @if $breakpoint ==tablet {
+      @media only screen and (max-width: $tablet) {
+        @content;
+      }
+    }
+
+    @if $breakpoint ==laptop {
+      @media only screen and (max-width: $laptop) {
+        @content;
+      }
+    }
+
+    @if $breakpoint ==desktop {
+      @media only screen and (max-width: $desktop) {
+        @content;
+      }
+    }
+  }
+}
