@@ -4,11 +4,22 @@
   box-sizing: border-box;
 }
 
+a {
+  outline: none;
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  background: none;
+}
+
 ul,
 ol,
 li {
   list-style: none;
 }
+
 body {
   margin: 0;
   font-family: League Spartan;

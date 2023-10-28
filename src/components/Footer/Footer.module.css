@@ -50,6 +50,8 @@
   line-height: 15px;
   font-weight: 500;
 
+  margin-bottom: 30px;
+
   @media screen and (max-width: 479px) {
     font-size: 20px;
     line-height: 18px;
@@ -75,6 +77,8 @@
 }
 
 .list {
+  display: flex;
+  flex-direction: column;
   @media screen and (max-width: 479px) {
     height: 0;
     padding-bottom: 16px;
@@ -96,11 +100,11 @@
   animation-timing-function: ease-in-out;
 }
 
-.item {
+.link {
   font-size: 14px;
   line-height: 15px;
 }
-.item:not(:last-child) {
+.link:not(:last-child) {
   margin-bottom: 24px;
 }
 
