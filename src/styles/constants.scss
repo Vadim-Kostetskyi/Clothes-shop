@@ -9,23 +9,23 @@ $desktop: 1440px;
     @media only screen and (max-width: $mobile) {
       @content;
     }
+  }
 
-    @if $breakpoint ==tablet {
-      @media only screen and (max-width: $tablet) {
-        @content;
-      }
+  @if $breakpoint ==tablet {
+    @media only screen and (max-width: $tablet) {
+      @content;
     }
+  }
 
-    @if $breakpoint ==laptop {
-      @media only screen and (max-width: $laptop) {
-        @content;
-      }
+  @if $breakpoint ==laptop {
+    @media only screen and (max-width: $laptop) {
+      @content;
     }
+  }
 
-    @if $breakpoint ==desktop {
-      @media only screen and (max-width: $desktop) {
-        @content;
-      }
+  @if $breakpoint ==desktop {
+    @media only screen and (max-width: $desktop) {
+      @content;
     }
   }
 }

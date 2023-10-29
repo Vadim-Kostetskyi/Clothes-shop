@@ -5,6 +5,11 @@
   height: 750px;
   margin-right: 8px;
   transition: all 0.3s ease-out;
+
+  @include media(tablet) {
+    margin-right: auto;
+    height: 267px;
+  }
 }
 
 .categoryImageWrapper {
@@ -16,9 +21,14 @@
     & .image {
       transform: scale(1.1);
     }
+
     & .categorylink {
       display: block;
     }
+  }
+
+  @include media(tablet) {
+    transform: none;
   }
 }
 
@@ -31,6 +41,10 @@
   color: $brilliance;
   padding: 40px 0px 56px;
   width: 100%;
+
+  @include media(tablet) {
+    padding-bottom: 26px;
+  }
 }
 
 .categorylink {
