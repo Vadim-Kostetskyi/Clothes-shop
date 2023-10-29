@@ -1,3 +1,4 @@
+import React from 'react';
 import WomenCategoryImage from '../../assets/images/women-category-image.png';
 import KidsCategoryImage from '../../assets/images/kids-category-image.png';
 import MenCategoryImage from '../../assets/images/men-category-image.png';
@@ -22,14 +23,16 @@ const categories: CategoryCardProps[] = [
     image: KidsCategoryImage,
     category: 'Kids',
   },
-]
+];
 
 const CategoryCards = () => {
   return (
     <div className={styles.cardsWrapper}>
-      {categories.map(({id, image, category}) => <CategoryCard id={id} key={id} image={image} category={category}/>)}
+      {categories.map(({id, image, category}) => 
+        <CategoryCard id={id} key={id} image={image} category={category}/>
+      )}
     </div>
-  )
-}
+  );
+};
 
 export default CategoryCards;

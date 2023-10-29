@@ -1,4 +1,5 @@
-import { FC } from "react";
+import React from 'react';
+import { FC } from 'react';
 import styles from './index.module.scss';
 
 export interface CategoryCardProps {
@@ -7,7 +8,7 @@ export interface CategoryCardProps {
   category: string,
 }
 
-const CategoryCard: FC<CategoryCardProps> = ({ id, image, category }) => {
+const CategoryCard: FC<CategoryCardProps> = ({ image, category }) => {
   return (
     <div className={styles.categoryImageWrapper}>
       <img className={styles.image}
@@ -18,7 +19,7 @@ const CategoryCard: FC<CategoryCardProps> = ({ id, image, category }) => {
         <p className={styles.categoryTitle}>{category}</p>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default CategoryCard;
