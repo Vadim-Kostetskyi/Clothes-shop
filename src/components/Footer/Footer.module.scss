@@ -5,8 +5,7 @@
 .shadowBorder {
   width: 100%;
   border: 1px solid #ccc;
-
-  @media screen and (min-width: 480px) {
+  @media screen and (min-width: 481px) {
     box-shadow: 0px 4px 4px 0px #00000026;
   }
 }
@@ -15,30 +14,29 @@
   display: flex;
   justify-content: space-between;
   padding-top: 32px;
-
   margin-bottom: 75px;
-
-  @media screen and (max-width: 479px) {
+  @mixin media($mobile) {
     flex-direction: column;
     margin-bottom: 16px;
   }
 }
 
 .columnDesktop {
-  @media screen and (max-width: 479px) {
+  @mixin media($mobile) {
     display: none;
   }
 }
 
 .columnMobile {
-  @media screen and (min-width: 480px) {
+  @media screen and (min-width: 481px) {
     display: none;
   }
   margin-top: 20px;
 }
 
 .titleBox {
-  @media screen and (max-width: 479px) {
+  margin-bottom: 30px;
+  @mixin media($mobile) {
     display: flex;
     justify-content: space-between;
     margin-bottom: 15px;
@@ -49,10 +47,8 @@
   font-size: 16px;
   line-height: 15px;
   font-weight: 500;
-
   margin-bottom: 5px;
-
-  @media screen and (max-width: 479px) {
+  @mixin media($mobile) {
     font-size: 20px;
     line-height: 18px;
     letter-spacing: 0.01em;
@@ -70,8 +66,7 @@
   height: 24px;
   position: relative;
   top: -2px;
-
-  @media screen and (min-width: 480px) {
+  @media screen and (min-width: 481px) {
     display: none;
   }
 }
@@ -79,7 +74,7 @@
 .list {
   display: flex;
   flex-direction: column;
-  @media screen and (max-width: 479px) {
+  @mixin media($mobile) {
     height: 0;
     padding-bottom: 16px;
     visibility: hidden;
@@ -107,7 +102,9 @@
 .link {
   font-size: 14px;
   line-height: 15px;
+  color: #212121;
 }
+
 .link:not(:last-child) {
   margin-bottom: 24px;
 }
@@ -115,14 +112,14 @@
 .social {
   margin-bottom: 32px;
 
-  @media screen and (max-width: 479px) {
+  @mixin media($mobile) {
     text-align: center;
     order: 2;
     margin-bottom: 0;
   }
 }
 
-.imgSocial {
+.socialBtn {
   width: 32px;
   height: 32px;
   margin-right: 16px;
@@ -135,7 +132,7 @@
 }
 
 .info {
-  @media screen and (max-width: 479px) {
+  @mixin media($mobile) {
     display: flex;
     flex-direction: column;
   }
@@ -148,9 +145,9 @@
 
 .img {
   position: relative;
-  top: -2px;
-  width: 16px;
-  height: 16px;
+  top: -6px;
+  width: 24px;
+  height: 24px;
   margin-right: 8px;
 }
 
@@ -171,18 +168,16 @@
   font-size: 12px;
   line-height: 11px;
   color: #959595;
-
-  @media screen and (max-width: 479px) {
+  @mixin media($mobile) {
     margin-bottom: 15px;
   }
 }
 
 .copyright {
   text-align: center;
-  color: #636363;
-
   font-size: 14px;
   line-height: 13px;
+  color: #636363;
 }
 
 @keyframes changeHeight {
@@ -216,7 +211,6 @@
   90% {
     height: 144px;
   }
-
   100% {
     height: 160px;
   }
@@ -253,7 +247,6 @@
   90% {
     height: 216px;
   }
-
   100% {
     height: 240px;
   }

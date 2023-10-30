@@ -8,6 +8,10 @@
   padding: 18px 0px;
   min-height: 121px;
   align-items: center;
+
+  @include media(tablet) {
+    margin-top: 47px;
+  }
 }
 
 .logo {
