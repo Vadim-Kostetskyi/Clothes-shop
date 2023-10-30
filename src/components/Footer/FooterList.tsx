@@ -1,5 +1,5 @@
 import { MenuContext } from './MenuList';
-import style from './Footer.module.css'
+import style from './Footer.module.scss'
 
 const FooterList = ({device, listVisible, openList}:{device: string, listVisible?: boolean[], openList?: Function}): JSX.Element => {
   const { m1, m2, m3 } = MenuContext();

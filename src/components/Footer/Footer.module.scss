@@ -50,7 +50,7 @@
   line-height: 15px;
   font-weight: 500;
 
-  margin-bottom: 30px;
+  margin-bottom: 5px;
 
   @media screen and (max-width: 479px) {
     font-size: 20px;
@@ -89,12 +89,16 @@
 }
 
 .listOpen {
+  display: flex;
+  flex-direction: column;
   animation-name: changeHeight;
   animation-duration: 200ms;
   animation-timing-function: ease-in-out;
 }
 
 .listOpenHelp {
+  display: flex;
+  flex-direction: column;
   animation-name: changeHeightHelp;
   animation-duration: 200ms;
   animation-timing-function: ease-in-out;

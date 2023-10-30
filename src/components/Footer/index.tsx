@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Instagram, Facebook, Twitter, Pinterest } from 'assets/SVG/Footer/SocialSvg'
 import { Earth, Phone } from 'assets/SVG/Footer/InfoSvg'
 import FooterList from './FooterList'
-import style from './Footer.module.css'
+import style from './Footer.module.scss'
 
 const Footer = (): JSX.Element => { 
     const [listVisible, setListVisible] = useState([false, false, false]);
