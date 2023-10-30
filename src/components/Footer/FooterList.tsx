@@ -1,10 +1,8 @@
-import { MenuContext } from './MenuList';
+import { Context } from './MenuList';
 import style from './Footer.module.scss'
 
 const FooterList = ({device, listVisible, openList}:{device: string, listVisible?: boolean[], openList?: Function}): JSX.Element => {
-  const { m1, m2, m3 } = MenuContext();
-  m1.map(el => console.log(el.id)
-  )
+  const { help, terms, we_are_NOVA } = Context;
   
   return (
     <>
@@ -23,7 +21,7 @@ const FooterList = ({device, listVisible, openList}:{device: string, listVisible
           </button>) : null}
         </div>
         <nav className={(listVisible && listVisible[0]) ? style.listOpenHelp : style.list}>
-          {m1.map(el => {
+          {help.map(el => {
             return (
             <a href="#" className={style.link} key={el.id}>{el.label}</a>
           )})}
@@ -44,7 +42,7 @@ const FooterList = ({device, listVisible, openList}:{device: string, listVisible
           </button>) : null}
         </div>
         <nav className={(listVisible && listVisible[1]) ? style.listOpen : style.list}>
-          {m2.map(el => {
+          {terms.map(el => {
             return (
             <a href="#" className={style.link} key={el.id}>{el.label}</a>
           )})}
@@ -65,7 +63,7 @@ const FooterList = ({device, listVisible, openList}:{device: string, listVisible
           </button>) : null}
         </div>
         <nav className={(listVisible && listVisible[2]) ? style.listOpen : style.list} >
-          {m3.map(el => {
+          {we_are_NOVA.map(el => {
             return (
             <a href="#" className={style.link} key={el.id}>{el.label}</a>
           )})}

@@ -1,7 +1,11 @@
 import { useState } from 'react'
-import { Instagram, Facebook, Twitter, Pinterest } from 'assets/SVG/Footer/SocialSvg'
-import { Earth, Phone } from 'assets/SVG/Footer/InfoSvg'
 import FooterList from './FooterList'
+import InstagramImg from 'assets/SVG/Footer/Instagram'
+import FacebookImg from 'assets/SVG/Footer/Facebook'
+import TwitterImg from 'assets/SVG/Footer/Twitter'
+import PinterestImg from 'assets/SVG/Footer/Pinterest'
+import EarthImg from 'assets/SVG/Footer/Earth'
+import PhoneImg from 'assets/SVG/Footer/Phone'
 import style from './Footer.module.scss'
 
 const Footer = (): JSX.Element => { 
@@ -18,17 +22,17 @@ const Footer = (): JSX.Element => {
                 <FooterList device={style.columnDesktop} />
                 <div className={style.info}>
                     <div className={style.social}> 
-                        <Facebook className={style.imgSocial} />
-                        <Instagram className={style.imgSocial} />
-                        <Twitter className={style.imgSocial} />
-                        <Pinterest className={style.imgSocial} />
+                        <FacebookImg className={style.imgSocial} />
+                        <InstagramImg className={style.imgSocial} />
+                        <TwitterImg className={style.imgSocial} />
+                        <PinterestImg className={style.imgSocial} />
                     </div>
                     <div className={style.infoBox}>
-                        <Earth className={style.img} />
+                        <EarthImg className={style.img} />
                         <p className={style.language}>Ukraine | English</p>
                     </div>
                     <div className={style.infoBox} style={{marginBottom: 8}}>
-                        <Phone className={style.img} />
+                        <PhoneImg className={style.img} />
                         <p className={style.number}>Call 900 456 003</p>
                         <p className={style.active}>Online</p>
                     </div>
