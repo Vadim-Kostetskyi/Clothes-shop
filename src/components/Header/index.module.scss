@@ -1,6 +1,10 @@
+.nav {
+  margin-right: 312px;
+}
+
 .headerWrapper {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   padding: 18px 0px;
   min-height: 121px;
   align-items: center;
@@ -8,4 +12,19 @@
 
 .logo {
   width: 133px;
+}
+
+.btn {
+  width: 40px;
+  height: 40px;
+}
+
+.input {
+  width: 200px;
+  height: 40px;
+}
+
+.menuIcon {
+  width: 24px;
+  height: 24px;
 }
