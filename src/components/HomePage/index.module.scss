@@ -7,4 +7,8 @@
 
 .wrapperHomePage {
   margin-bottom: 153px;
+
+  @include media(tablet) {
+    margin-bottom: 40px;
+  }
 }
