@@ -6,7 +6,7 @@ import TwitterImg from 'assets/SVG/Footer/Twitter'
 import PinterestImg from 'assets/SVG/Footer/Pinterest'
 import EarthImg from 'assets/SVG/Footer/Earth'
 import PhoneImg from 'assets/SVG/Footer/Phone'
-import style from './Footer.module.scss'
+import styles from './Footer.module.scss'
 
 const Footer = (): JSX.Element => { 
     const [listVisible, setListVisible] = useState([false, false, false]);
@@ -16,31 +16,41 @@ const Footer = (): JSX.Element => {
     }
     
     return ( 
-        <footer className={style.footer}>
-            <div className={style.shadowBorder}></div>
-            <div className={style.box}>
-                <FooterList device={style.columnDesktop} />
-                <div className={style.info}>
-                    <div className={style.social}> 
-                        <FacebookImg className={style.imgSocial} />
-                        <InstagramImg className={style.imgSocial} />
-                        <TwitterImg className={style.imgSocial} />
-                        <PinterestImg className={style.imgSocial} />
-                    </div>
-                    <div className={style.infoBox}>
-                        <EarthImg className={style.img} />
-                        <p className={style.language}>Ukraine | English</p>
-                    </div>
-                    <div className={style.infoBox} style={{marginBottom: 8}}>
-                        <PhoneImg className={style.img} />
-                        <p className={style.number}>Call 900 456 003</p>
-                        <p className={style.active}>Online</p>
-                    </div>
-                    <p className={style.workDays}>From Mondays to Fridays from 09:00 to 19:00</p>
-                <FooterList device={style.columnMobile} listVisible={listVisible} openList={openList} />
+        <footer className={styles.footer}>
+            <div className={styles.shadowBorder}></div>
+            <div className={styles.box}>
+                <FooterList className={styles.columnDesktop} />
+                <div className={styles.info}>
+            <div className={styles.social}> 
+              <button className={styles.socialBtn}>
+                <FacebookImg />
+              </button>
+              <button className={styles.socialBtn}>
+
+                <InstagramImg />
+                </button>
+              <button className={styles.socialBtn}>
+                
+              <TwitterImg />
+              </button>
+              <button className={styles.socialBtn}>
+                        <PinterestImg />
+            </button>
+            </div>
+                    <button className={styles.infoBox}>
+                        <EarthImg className={styles.img} />
+                        <p className={styles.language}>Ukraine | English</p>
+                    </button>
+                    <button className={styles.infoBox} style={{marginBottom: 8}}>
+                        <PhoneImg className={styles.img} />
+                        <p className={styles.number}>Call 900 456 003</p>
+                        <p className={styles.active}>Online</p>
+                    </button>
+                    <p className={styles.workDays}>From Mondays to Fridays from 09:00 to 19:00</p>
+                <FooterList className={styles.columnMobile} listVisible={listVisible} openList={openList} />
                 </div>
             </div>
-            <p className={style.copyright}>© 2023 by NOVA. All Rights Reserved.</p>
+            <p className={styles.copyright}>© 2023 by NOVA. All Rights Reserved.</p>
         </footer>
     )
 }

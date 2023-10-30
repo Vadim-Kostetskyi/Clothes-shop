@@ -1,4 +1,4 @@
-const Earth =  ({className}:{className: string}): JSX.Element => {
+const Earth =  ({className}:{className?: string}): JSX.Element => {
   return (
     <svg
       className={className}

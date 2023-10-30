@@ -1,4 +1,4 @@
-export const Phone =  ({className}:{className: string}): JSX.Element => {
+export const Phone =  ({className}:{className?: string}): JSX.Element => {
   return (
     <svg
       className={className}
