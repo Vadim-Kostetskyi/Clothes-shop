@@ -19,10 +19,9 @@ const FooterList = ({className, listVisible, openList}:{className: string, listV
           </button>) : null}
         </div>
         <nav className={(listVisible && listVisible[0]) ? styles.listOpenHelp : styles.list}>
-          {help.map(el => {
-            return (
+          {help.map(el => (
             <a href="#" className={styles.link} key={el.id}>{el.label}</a>
-          )})}
+          ))}
         </nav>
       </div>
       <div className={className}>
@@ -36,10 +35,9 @@ const FooterList = ({className, listVisible, openList}:{className: string, listV
           </button>) : null}
         </div>
         <nav className={(listVisible && listVisible[1]) ? styles.listOpen : styles.list}>
-          {terms.map(el => {
-            return (
+          {terms.map(el => (
             <a href="#" className={styles.link} key={el.id}>{el.label}</a>
-          )})}
+          ))}
         </nav>
       </div>
       <div className={className}>
@@ -53,10 +51,9 @@ const FooterList = ({className, listVisible, openList}:{className: string, listV
           </button>) : null}
         </div>
         <nav className={(listVisible && listVisible[2]) ? styles.listOpen : styles.list} >
-          {we_are_NOVA.map(el => {
-            return (
+          {we_are_NOVA.map(el => (
             <a href="#" className={styles.link} key={el.id}>{el.label}</a>
-          )})}
+          ))}
         </nav> 
       </div>
     </>

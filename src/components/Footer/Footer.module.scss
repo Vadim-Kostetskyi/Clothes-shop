@@ -36,6 +36,7 @@
 }
 
 .titleBox {
+  margin-bottom: 30px;
   @media screen and (max-width: 479px) {
     display: flex;
     justify-content: space-between;
@@ -144,9 +145,9 @@
 
 .img {
   position: relative;
-  top: -2px;
-  width: 16px;
-  height: 16px;
+  top: -6px;
+  width: 24px;
+  height: 24px;
   margin-right: 8px;
 }
 

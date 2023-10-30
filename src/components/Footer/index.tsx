@@ -9,7 +9,7 @@ import PhoneImg from 'assets/SVG/Footer/Phone'
 import styles from './Footer.module.scss'
 
 const Footer = (): JSX.Element => { 
-    const [listVisible, setListVisible] = useState([false, false, false]);
+  const [listVisible, setListVisible] = useState([false, false, false]);
     
   const openList = (number: number) => {
         setListVisible((prev) => prev.map((value, index) => (index === number ? !value : value)))

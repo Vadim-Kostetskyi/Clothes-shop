@@ -1,5 +1,4 @@
-const Instagram =  ({className}:{className?: string}): JSX.Element => {
-  return (
+const Instagram =  ({className}:{className?: string}): JSX.Element => (
       <svg
         className={className}
         viewBox="0 0 32 32"
@@ -9,6 +8,5 @@ const Instagram =  ({className}:{className?: string}): JSX.Element => {
         <path d="M15.982 0.176c-8.73 0-15.806 7.077-15.806 15.806s7.077 15.806 15.806 15.806c8.73 0 15.806-7.077 15.806-15.806s-7.077-15.806-15.806-15.806zM24.763 19.578c0 2.864-2.321 5.185-5.185 5.185h-7.192c-2.864 0-5.185-2.321-5.185-5.185v-7.192c0-1.074 0.326-2.071 0.886-2.899 0.932-1.379 2.51-2.286 4.3-2.286h7.193c1.79 0 3.368 0.907 4.3 2.286 0.559 0.828 0.885 1.825 0.885 2.899v7.192z"></path>
       </svg>
   )
-}
 
 export default Instagram
