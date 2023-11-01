@@ -1,3 +1,5 @@
+@import "styles/constants";
+
 .footer {
   margin-top: 15px;
 }
@@ -6,7 +8,7 @@
   width: 100%;
   border: 1px solid #ccc;
 
-  @media screen and (min-width: 480px) {
+  @media screen and (min-width: 961px) {
     box-shadow: 0px 4px 4px 0px #00000026;
   }
 }
@@ -18,27 +20,27 @@
 
   margin-bottom: 75px;
 
-  @media screen and (max-width: 479px) {
+  @include media(tablet) {
     flex-direction: column;
     margin-bottom: 16px;
   }
 }
 
 .columnDesktop {
-  @media screen and (max-width: 479px) {
+  @include media(tablet) {
     display: none;
   }
 }
 
 .columnMobile {
-  @media screen and (min-width: 480px) {
+  @media screen and (min-width: 961px) {
     display: none;
   }
   margin-top: 20px;
 }
 
 .titleBox {
-  @media screen and (max-width: 479px) {
+  @include media(tablet) {
     display: flex;
     justify-content: space-between;
     margin-bottom: 15px;
@@ -52,7 +54,7 @@
 
   margin-bottom: 5px;
 
-  @media screen and (max-width: 479px) {
+  @include media(tablet) {
     font-size: 20px;
     line-height: 18px;
     letter-spacing: 0.01em;
@@ -71,7 +73,7 @@
   position: relative;
   top: -2px;
 
-  @media screen and (min-width: 480px) {
+  @media screen and (min-width: 961px) {
     display: none;
   }
 }
@@ -79,12 +81,12 @@
 .list {
   display: flex;
   flex-direction: column;
-  @media screen and (max-width: 479px) {
+  @include media(tablet) {
     height: 0;
     padding-bottom: 16px;
     visibility: hidden;
     color: #ffffff;
-    transition: all 0.2s ease;
+    transition: all 0.1s ease;
   }
 }
 
@@ -100,7 +102,7 @@
   display: flex;
   flex-direction: column;
   animation-name: changeHeightHelp;
-  animation-duration: 200ms;
+  animation-duration: 500ms;
   animation-timing-function: ease-in-out;
 }
 
@@ -115,7 +117,7 @@
 .social {
   margin-bottom: 32px;
 
-  @media screen and (max-width: 479px) {
+  @include media(tablet) {
     text-align: center;
     order: 2;
     margin-bottom: 0;
@@ -135,7 +137,7 @@
 }
 
 .info {
-  @media screen and (max-width: 479px) {
+  @include media(tablet) {
     display: flex;
     flex-direction: column;
   }
@@ -172,7 +174,7 @@
   line-height: 11px;
   color: #959595;
 
-  @media screen and (max-width: 479px) {
+  @include media(tablet) {
     margin-bottom: 15px;
   }
 }

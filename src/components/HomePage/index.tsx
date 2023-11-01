@@ -2,6 +2,8 @@ import CategoryCards from "components/CategoryCards";
 import Header from "components/Header";
 import styles from './index.module.scss';
 
+import Footer from "components/Footer"; //del
+
 const HomePage = () => {
   return (
     <div className={styles.wrapperHomePage}>
@@ -9,6 +11,7 @@ const HomePage = () => {
       <div className={styles.wrapperCategoryCards}>
         <CategoryCards />
       </div>
+      <Footer/> {/* del */}
     </div>
   )
 }
