@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import FooterList from './FooterList'
 import InstagramImg from 'assets/SVG/Footer/Instagram'
 import FacebookImg from 'assets/SVG/Footer/Facebook'
@@ -11,9 +11,12 @@ import styles from './Footer.module.scss'
 const Footer = (): JSX.Element => { 
   const [listVisible, setListVisible] = useState([false, false, false]);
     
-  const openList = (number: number) => {
-    setListVisible((prev) => prev.map((value, index) => (index === number ? !value : value)))
-    }
+  const openList = (number: number): void => {
+  setListVisible((prev) =>
+    prev.map((value, index) => (index === number ? !value : value))
+  );
+};
+
     
     return ( 
       <footer className={styles.footer}>

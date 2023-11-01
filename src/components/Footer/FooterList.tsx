@@ -1,9 +1,11 @@
+import React from "react";
+
 import { Context } from './MenuList';
 import PlusImg from 'assets/SVG/Footer/Plus';
 import MinusImg from 'assets/SVG/Footer/Minus';
 import styles from './Footer.module.scss'
 
-const FooterList = ({className, listVisible, openList}:{className: string, listVisible?: boolean[], openList?: Function}): JSX.Element => {
+const FooterList = ({className, listVisible, openList}:{className: string, listVisible?: boolean[], openList?: (number: number) => void}): JSX.Element => {
   const { help, terms, we_are_NOVA } = Context;
   
   return (

@@ -1,4 +1,6 @@
-const Facebook =  ({className}:{className?: string}): JSX.Element => (
+import React from "react";
+
+const Facebook = ({ className }: { className?: string }): JSX.Element => (
       <svg
         className={className}
         viewBox="2.5 2 27 27"

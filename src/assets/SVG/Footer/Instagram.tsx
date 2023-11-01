@@ -1,4 +1,6 @@
-const Instagram =  ({className}:{className?: string}): JSX.Element => (
+import React from "react";
+
+const Instagram = ({ className }: { className?: string }): JSX.Element => (
       <svg
         className={className}
         viewBox="0 0 32 32"

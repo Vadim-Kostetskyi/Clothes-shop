@@ -1,4 +1,6 @@
-const Earth =  ({className}:{className?: string}): JSX.Element => (
+import React from "react";
+
+const Earth = ({ className }: { className?: string }): JSX.Element => (
     <svg
       className={className}
       viewBox="0 0 29.8 29.8"

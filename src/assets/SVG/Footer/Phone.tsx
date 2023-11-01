@@ -1,4 +1,6 @@
-export const Phone =  ({className}:{className?: string}): JSX.Element => (
+import React from "react";
+
+export const Phone = ({ className }: { className?: string }): JSX.Element => (
     <svg
       className={className}
       viewBox="0 0 32 32"

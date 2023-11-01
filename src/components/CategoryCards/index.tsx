@@ -1,3 +1,4 @@
+import React from 'react';
 import WomenCategoryImage from '../../assets/images/women-category-image.png';
 import KidsCategoryImage from '../../assets/images/kids-category-image.png';
 import MenCategoryImage from '../../assets/images/men-category-image.png';
