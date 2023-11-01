@@ -1,7 +1,3 @@
-.nav {
-  margin-right: 312px;
-}
-
 .headerWrapper {
   display: flex;
   justify-content: space-between;
@@ -9,26 +5,123 @@
   min-height: 121px;
   align-items: center;
 
-  @include media(tablet) {
+  @mixin media($tablet) {
     margin-top: 47px;
   }
+}
+
+.navigation {
+  position: relative;
+  margin-right: 8.3rem;
+}
+
+.menuNameBox {
+  display: flex;
+}
+
+.menuName {
+  font-weight: 500;
+  border-bottom: 2px solid #fdfdfd;
+}
+
+.menuName:not(:last-child) {
+  margin-right: 40px;
+}
+
+.menuName:hover,
+.menuName:focus {
+  cursor: pointer;
+  border-bottom: 2px solid;
+}
+
+.menuNameText {
+  font-size: 20px;
+}
+.menuNameText:focus + .menList,
+.menuNameText:hover + .menList {
+  display: flex;
+}
+
+.menList {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 70px;
+  left: 0;
+  z-index: 10;
+  width: 100vw;
+  padding-bottom: 95px;
+  background-color: #fdfdfd;
+}
+
+.link {
+  font-family: League Spartan;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 29px;
+  letter-spacing: 0.01em;
+  text-align: left;
+  color: #212121;
+}
+.link:not(:last-child) {
+  margin-bottom: 15px;
 }
 
 .logo {
   width: 133px;
 }
 
+.userBox {
+  display: flex;
+}
+
 .btn {
+  position: relative;
+  // top: 7px;
   width: 40px;
   height: 40px;
+}
+.btn:not(:last-child) {
+  margin-right: 15px;
+}
+
+.inputBox {
+  display: flex;
+  position: relative;
 }
 
 .input {
   width: 200px;
   height: 40px;
+  padding-left: 60px;
+  margin-right: 50px;
+  border: 1px solid;
+  border-radius: 4px;
+  border-color: #959595;
+}
+
+.input::placeholder {
+  color: #212121;
+}
+
+.searchBtn {
+  position: absolute;
+  top: 0;
+  left: 8px;
+  width: 40px;
+  height: 40px;
+}
+
+.searchIcon {
+  width: 24px;
+  height: 24px;
 }
 
 .menuIcon {
   width: 24px;
   height: 24px;
+}
+
+.invisible {
+  display: none;
 }

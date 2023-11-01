@@ -10,7 +10,7 @@ export type MenuContent = {
   we_are_NOVA: MenuItem[]
 }
 
-export const Context = <MenuContent>({
+export const Context: MenuContent =({
   help:  [
   { id: 0, href: '/payment', label: 'Payment' },
   { id: 1, href: '/delivery', label: 'Delivery' },
