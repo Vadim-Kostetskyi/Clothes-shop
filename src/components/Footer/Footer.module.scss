@@ -17,7 +17,6 @@
   display: flex;
   justify-content: space-between;
   padding-top: 32px;
-
   margin-bottom: 75px;
 
   @include media(tablet) {
@@ -51,7 +50,6 @@
   font-size: 16px;
   line-height: 15px;
   font-weight: 500;
-
   margin-bottom: 5px;
 
   @include media(tablet) {
@@ -109,7 +107,9 @@
 .link {
   font-size: 14px;
   line-height: 15px;
+  color: #212121;
 }
+
 .link:not(:last-child) {
   margin-bottom: 24px;
 }
@@ -124,7 +124,7 @@
   }
 }
 
-.imgSocial {
+.socialBtn {
   width: 32px;
   height: 32px;
   margin-right: 16px;
@@ -150,9 +150,9 @@
 
 .img {
   position: relative;
-  top: -2px;
-  width: 16px;
-  height: 16px;
+  top: -6px;
+  width: 24px;
+  height: 24px;
   margin-right: 8px;
 }
 
@@ -181,10 +181,9 @@
 
 .copyright {
   text-align: center;
-  color: #636363;
-
   font-size: 14px;
   line-height: 13px;
+  color: #636363;
 }
 
 @keyframes changeHeight {
@@ -218,7 +217,6 @@
   90% {
     height: 144px;
   }
-
   100% {
     height: 160px;
   }
@@ -255,7 +253,6 @@
   90% {
     height: 216px;
   }
-
   100% {
     height: 240px;
   }
