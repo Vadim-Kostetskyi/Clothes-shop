@@ -12,9 +12,9 @@ const HomePage = () => {
         <Header />
         <div className={styles.wrapperCategoryCards}><CategoryCards />
         </div>
-      </div>
       <Footer/> {/* del */}
-    </div>
+      </div>
+    </>
   )
 }
 

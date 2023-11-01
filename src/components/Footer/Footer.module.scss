@@ -50,19 +50,18 @@
   font-size: 16px;
   line-height: 15px;
   font-weight: 500;
-  margin-bottom: 5px;
+  margin-bottom: 30px;
 
   @include media(tablet) {
     font-size: 20px;
     line-height: 18px;
     letter-spacing: 0.01em;
+    margin-bottom: 5px;
   }
 }
 
 .listButton {
   height: 24px;
-  border: none;
-  background: none;
 }
 
 .listImg {
