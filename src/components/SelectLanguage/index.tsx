@@ -13,7 +13,7 @@ const SelectLanguage = (): JSX.Element => {
         )}
       </select>
     </>
-  )
-}
+  );
+};
 
 export default SelectLanguage;

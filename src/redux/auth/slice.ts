@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 export interface IUser {
   id: number;
@@ -26,11 +26,11 @@ const initialState: ICategoryState = {
   userInfo: {
     user: {
       id: 0,
-      name: "",
-      role: "",
-      email: "",
-      password: "",
-      avatar: "",
+      name: '',
+      role: '',
+      email: '',
+      password: '',
+      avatar: '',
     },
     accessToken: null,
     refreshToken: null,
@@ -45,9 +45,9 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    addCase(state, action: PayloadAction<IAuthData>) {
-    //   state.userInfo = action.payload
-    }
+    // addCase(state, action: PayloadAction<IAuthData>) {
+    //   //   state.userInfo = action.payload
+    // }
   },
 });
 
