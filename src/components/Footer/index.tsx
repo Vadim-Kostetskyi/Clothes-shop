@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 import FooterList from './FooterList';
 import CompanyInfo from './CompanyInfo';
 import styles from './Footer.module.scss';
 
 const Footer = (): JSX.Element => {
-  const [listVisible, setListVisible] = useState([false, false, false]);
-    
-  const openList = (number: number) => {
-    setListVisible((prev) =>
-      prev.map((value, index) => (index === number ? !value : value)));
-  };
-    
+
+  const { t } = useTranslation();
+
   return (
     <footer className={styles.footer}>
       <div className={styles.shadowBorder}></div>
@@ -18,12 +15,10 @@ const Footer = (): JSX.Element => {
         <FooterList className={styles.columnDesktop} />
         <div className={styles.info}>
           <CompanyInfo/>
-          <FooterList
-            className={styles.columnMobile}
-            listVisible={listVisible} openList={openList} />
+          <FooterList className={styles.columnMobile}/>
         </div>
       </div>
-      <p className={styles.copyright}>© 2023 by NOVA. All Rights Reserved.</p>
+      <p className={styles.copyright}>{t('copyright')}</p>
     </footer>
   );
 };

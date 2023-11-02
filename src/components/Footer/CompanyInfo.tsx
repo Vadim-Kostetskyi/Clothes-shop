@@ -1,5 +1,5 @@
 import React from 'react';
-// import FooterList from './FooterList';
+import { useTranslation } from 'react-i18next';
 import InstagramImg from 'assets/SVG/Footer/Instagram';
 import FacebookImg from 'assets/SVG/Footer/Facebook';
 import TwitterImg from 'assets/SVG/Footer/Twitter';
@@ -10,6 +10,8 @@ import styles from './Footer.module.scss';
 
 const CompanyInfo = (): JSX.Element => {
   const socialIcons = [InstagramImg, FacebookImg, TwitterImg, PinterestImg];
+
+  const { t } = useTranslation();
 
   return (
     <>
@@ -22,16 +24,14 @@ const CompanyInfo = (): JSX.Element => {
       </div>
       <button className={styles.infoBox}>
         <EarthImg className={styles.img} />
-        <p className={styles.language}>Ukraine | English</p>
+        <p className={styles.language}>{t('language')}</p>
       </button>
       <button className={styles.infoBox} style={{ marginBottom: 8 }}>
         <PhoneImg className={styles.img} />
-        <p className={styles.number}>Call 900 456 003</p>
-        <span className={styles.active}>Online</span>
+        <p className={styles.number}>{t('call')}</p>
+        <span className={styles.active}>{t('online')}</span>
       </button>
-      <p className={styles.workDays}>
-        From Mondays to Fridays from 09:00 to 19:00
-      </p>
+      <p className={styles.workDays}>{t('work days')}</p>
     </>
   );
 };
