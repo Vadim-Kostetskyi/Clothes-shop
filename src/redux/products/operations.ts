@@ -17,12 +17,12 @@ export const categories = createAsyncThunk<IProductData>(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get<IProductData>('categories');
-      
+
       return response.data;
-    } catch (error: any) {
-      return rejectWithValue(error.message);
+    } catch (error) {
+      return rejectWithValue((error as Error).message);
     }
-  }
+  },
 );
 
 export const productsByName = createAsyncThunk<IProductData, string>(
@@ -31,39 +31,42 @@ export const productsByName = createAsyncThunk<IProductData, string>(
     try {
       const response = await axios.get<IProductData>(`products/?title=${name}`);
       console.log(response.data);
-      
+
       return response.data;
-    } catch (error: any) {
-      return rejectWithValue(error.message);
+    } catch (error) {
+      return rejectWithValue((error as Error).message);
     }
-  }
+  },
 );
 
 export const productsByPrice = createAsyncThunk<IProductData, Price>(
   'productsByPrice',
   async (price, { rejectWithValue }) => {
     try {
-      const response = await axios.get<IProductData>(`products/?price_min=${price.min}&price_max=${price.max}`);
+      const response = await axios.get<IProductData>(
+        `products/?price_min=${price.min}&price_max=${price.max}`,
+      );
       console.log(response.data);
-      
+
       return response.data;
-    } catch (error: any) {
-      return rejectWithValue(error.message);
+    } catch (error) {
+      return rejectWithValue((error as Error).message);
     }
-  }
+  },
 );
 
 export const productsByCategory = createAsyncThunk<IProductData, number>(
   'productsByCategory',
   async (Id, { rejectWithValue }) => {
     try {
-      const response = await axios.get<IProductData>(`products/?categoryId=${Id}`);
+      const response = await axios.get<IProductData>(
+        `products/?categoryId=${Id}`,
+      );
       console.log(response.data);
-      
-      return response.data;
-    } catch (error: any) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
 
+      return response.data;
+    } catch (error) {
+      return rejectWithValue((error as Error).message);
+    }
+  },
+);
