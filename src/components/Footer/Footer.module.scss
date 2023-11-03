@@ -1,3 +1,5 @@
+@import 'styles/constants';
+
 .footer {
   margin-top: 15px;
 }
@@ -5,7 +7,8 @@
 .shadowBorder {
   width: 100%;
   border: 1px solid #ccc;
-  @media screen and (min-width: 481px) {
+
+  @include media(laptopMin) {
     box-shadow: 0px 4px 4px 0px #00000026;
   }
 }
@@ -15,94 +18,63 @@
   justify-content: space-between;
   padding-top: 32px;
   margin-bottom: 75px;
-  @mixin media($mobile) {
+
+  @include media(tablet) {
     flex-direction: column;
     margin-bottom: 16px;
   }
 }
 
 .columnDesktop {
-  @mixin media($mobile) {
+  @include media(tablet) {
     display: none;
   }
 }
 
 .columnMobile {
-  @media screen and (min-width: 481px) {
+  margin-top: 20px;
+
+  @include media(laptopMin) {
     display: none;
   }
-  margin-top: 20px;
 }
 
-.titleBox {
-  margin-bottom: 30px;
-  @mixin media($mobile) {
+.accordion {
+  @include media(tablet) {
     display: flex;
     justify-content: space-between;
+    width: 100%;
     margin-bottom: 15px;
-  }
-}
-
-.title {
-  font-size: 16px;
-  line-height: 15px;
-  font-weight: 500;
-  margin-bottom: 5px;
-  @mixin media($mobile) {
-    font-size: 20px;
-    line-height: 18px;
-    letter-spacing: 0.01em;
   }
 }
 
 .listButton {
   height: 24px;
-  border: none;
-  background: none;
-}
-
-.listImg {
-  width: 24px;
-  height: 24px;
-  position: relative;
-  top: -2px;
-  @media screen and (min-width: 481px) {
-    display: none;
-  }
 }
 
 .list {
   display: flex;
   flex-direction: column;
-  @mixin media($mobile) {
-    height: 0;
-    padding-bottom: 16px;
+  @include media(tablet) {
+    max-height: 0;
     visibility: hidden;
-    color: #ffffff;
-    transition: all 0.2s ease;
+    overflow: hidden;
+    transition: all 200ms ease-in;
   }
 }
 
 .listOpen {
   display: flex;
   flex-direction: column;
-  animation-name: changeHeight;
-  animation-duration: 200ms;
-  animation-timing-function: ease-in-out;
-}
-
-.listOpenHelp {
-  display: flex;
-  flex-direction: column;
-  animation-name: changeHeightHelp;
-  animation-duration: 200ms;
-  animation-timing-function: ease-in-out;
+  overflow: hidden;
+  padding-bottom: 0;
+  max-height: 220px;
+  transition: all 200ms ease;
 }
 
 .link {
   font-size: 14px;
-  line-height: 15px;
-  color: #212121;
+  color: $mainFontColor;
 }
 
 .link:not(:last-child) {
@@ -112,7 +84,7 @@
 .social {
   margin-bottom: 32px;
 
-  @mixin media($mobile) {
+  @include media(tablet) {
     text-align: center;
     order: 2;
     margin-bottom: 0;
@@ -128,11 +100,10 @@
 .language {
   font-weight: 500;
   font-size: 14px;
-  line-height: 13px;
 }
 
 .info {
-  @mixin media($mobile) {
+  @include media(tablet) {
     display: flex;
     flex-direction: column;
   }
@@ -155,20 +126,18 @@
   margin-right: 8px;
   font-weight: 500;
   font-size: 14px;
-  line-height: 13px;
 }
 
 .active {
   font-size: 14px;
-  line-height: 13px;
   color: #00ca8d;
 }
 
 .workDays {
   font-size: 12px;
-  line-height: 11px;
   color: #959595;
-  @mixin media($mobile) {
+
+  @include media(tablet) {
     margin-bottom: 15px;
   }
 }
@@ -176,78 +145,5 @@
 .copyright {
   text-align: center;
   font-size: 14px;
-  line-height: 13px;
   color: #636363;
-}
-
-@keyframes changeHeight {
-  0% {
-    height: 0;
-  }
-  10% {
-    height: 16px;
-  }
-  20% {
-    height: 32px;
-  }
-  30% {
-    height: 48px;
-  }
-  40% {
-    height: 64px;
-  }
-  50% {
-    height: 80px;
-  }
-  60% {
-    height: 96px;
-  }
-  70% {
-    height: 112px;
-  }
-  80% {
-    height: 128px;
-  }
-  90% {
-    height: 144px;
-  }
-  100% {
-    height: 160px;
-  }
-}
-
-@keyframes changeHeightHelp {
-  0% {
-    height: 0;
-  }
-  10% {
-    height: 24px;
-  }
-  20% {
-    height: 48px;
-  }
-  30% {
-    height: 72px;
-  }
-  40% {
-    height: 96px;
-  }
-  50% {
-    height: 120px;
-  }
-  60% {
-    height: 144px;
-  }
-  70% {
-    height: 168px;
-  }
-  80% {
-    height: 192px;
-  }
-  90% {
-    height: 216px;
-  }
-  100% {
-    height: 240px;
-  }
 }
