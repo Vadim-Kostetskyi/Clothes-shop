@@ -1,8 +1,8 @@
-@import 'styles/constants';
+@import "styles/constants";
 
 .image {
   height: 855px;
-  max-width: 1280px;
+  max-width: $max-width;
 }
 
 .wrapperArrows {
@@ -26,7 +26,7 @@
   width: 8px;
   height: 8px;
   border-radius: 1px;
-  border: 2px solid rgba(253, 253, 253, 0.50);
+  border: 2px solid rgba(253, 253, 253, 0.5);
   margin: 0px 12px 18px 0px;
 }
 
@@ -35,7 +35,7 @@
   width: 16px;
   height: 16px;
   border-radius: 2px;
-  background: $primaryWhite;
+  background: $brilliance;
   margin: 0px 12px 14px 0px;
 }
 
@@ -52,10 +52,10 @@
 }
 
 .text {
-  color: $primaryWhite;
+  color: $brilliance;
   text-align: center;
   text-shadow: 1px 2px 0px rgba(0, 0, 0, 0.25);
-  font-family: $font-family, sans-serif;
+  font-family: $font-family;
   font-size: 72px;
   line-height: 84px;
   text-transform: uppercase;
@@ -75,21 +75,21 @@
 
 .button {
   border-radius: 4px;
-  background: $primaryWhite;
+  background: $brilliance;
   display: flex;
   width: 200px;
   height: 50px;
   justify-content: center;
   align-items: center;
-  color: var(--primary-black-212121, #212121);
+  color: #212121;
   font-family: $font-family;
   font-size: 20px;
   letter-spacing: 0.2px;
-  transition: all .3s ease-out;;
+  transition: all 0.3s ease-out;
   cursor: pointer;
 
   &:hover {
     background-color: #212121;
-    color: $primaryWhite;
+    color: $brilliance;
   }
 }

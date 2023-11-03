@@ -1,30 +1,27 @@
-import React from 'react';
-import { Swiper, SwiperProps } from 'swiper/react';
-import { Navigation, EffectFade } from 'swiper/modules';
-import { FC, ReactNode } from 'react';
-import 'swiper/scss';
-import 'swiper/scss/navigation';
-import 'swiper/scss/pagination';
-import 'swiper/scss/autoplay';
-import 'swiper/scss/effect-fade';
+import React, { FC, ReactNode } from "react";
+import { Swiper, SwiperProps } from "swiper/react";
+import { Navigation, EffectFade } from "swiper/modules";
+import "swiper/scss";
+import "swiper/scss/navigation";
+import "swiper/scss/pagination";
+import "swiper/scss/autoplay";
+import "swiper/scss/effect-fade";
 
 export type CoreSwiperProps = {
-  children: ReactNode,
-  modules?: SwiperProps['modules'];
-  navigation?: SwiperProps['navigation'];
-  pagination?: SwiperProps['pagination'];
-  autoplay?: SwiperProps['autoplay'];
-}
+  children: ReactNode;
+  modules?: SwiperProps["modules"];
+  navigation?: SwiperProps["navigation"];
+  pagination?: SwiperProps["pagination"];
+  autoplay?: SwiperProps["autoplay"];
+};
 
-const CoreSwiper: FC<CoreSwiperProps> = (
-  {
-    children,
-    navigation,
-    modules,
-    pagination,
-    autoplay,
-  }
-) => {
+const CoreSwiper: FC<CoreSwiperProps> = ({
+  children,
+  navigation,
+  modules,
+  pagination,
+  autoplay,
+}) => {
   return (
     <Swiper
       modules={[Navigation, EffectFade, ...modules]}
@@ -32,7 +29,7 @@ const CoreSwiper: FC<CoreSwiperProps> = (
       pagination={pagination}
       navigation={navigation}
       autoplay={autoplay}
-      effect='fade'
+      effect="fade"
       fadeEffect={{ crossFade: true }}
       rewind
       loop
