@@ -5,21 +5,19 @@ import translationUa from './locales/ua/translation.json';
 
 const resources = {
   en: {
-    translation: translationEn
+    translation: translationEn,
   },
   ua: {
-    translation: translationUa
-  }
+    translation: translationUa,
+  },
 };
 
-i18n
-  .use(initReactI18next) 
-  .init({
-    resources,
-    lng: 'en',
-    interpolation: {
-      escapeValue: false 
-    }
-  });
+i18n.use(initReactI18next).init({
+  resources,
+  lng: 'en',
+  interpolation: {
+    escapeValue: false,
+  },
+});
 
 export default i18n;
