@@ -40,7 +40,6 @@ const initialState: ICategoryState = {
   },
 };
 
-
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -54,10 +53,3 @@ const authSlice = createSlice({
 // export const {addCase} = authSlice.actions
 
 export default authSlice.reducer;
-
-
-
-
-
-
-

@@ -8,7 +8,8 @@ const HomePage = () => {
     <>
       <div className={styles.wrapperHomePage}>
         <Header />
-        <div className={styles.wrapperCategoryCards}><CategoryCards />
+        <div className={styles.wrapperCategoryCards}>
+          <CategoryCards />
         </div>
       </div>
     </>

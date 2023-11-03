@@ -6,13 +6,12 @@ export interface IProductData {
   price: number;
 }
 
-
 export type categoryState = {
-   categories: IProductData[]
-}
+  categories: IProductData[];
+};
 
 const initialState: categoryState = {
-  categories: []
+  categories: [],
 };
 
 const categorySlice = createSlice({
@@ -21,11 +20,10 @@ const categorySlice = createSlice({
   reducers: {
     addCase(state, action: PayloadAction<[]>) {
       state.categories = action.payload;
-    }
-  }
+    },
+  },
 });
 
-export const {addCase} = categorySlice.actions;
+export const { addCase } = categorySlice.actions;
 
 export default categorySlice.reducer;
-

@@ -1,3 +1,4 @@
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { AVAILABLE_LANGUAGES } from 'utils/constants';
 
@@ -7,10 +8,16 @@ const SelectLanguage = (): JSX.Element => {
   return (
     <>
       <p>{t('welcome')}</p>
-      <select name="languages" id="lang-select" onChange={(event) => changeLang(event.target.value)}>
-        {AVAILABLE_LANGUAGES.map((language) =>
-          <option value={language}>{language}</option>
-        )}
+      <select
+        name="languages"
+        id="lang-select"
+        onChange={event => changeLang(event.target.value)}
+      >
+        {AVAILABLE_LANGUAGES.map(language => (
+          <option key={language} value={language}>
+            {language}
+          </option>
+        ))}
       </select>
     </>
   );

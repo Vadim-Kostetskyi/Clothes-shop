@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import { SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
-import CoreSwiper from "components/CoreSwiper";
-import ArrowSwiper from "assets/SVG/Swiper/ArrowSwiper";
-import Image1 from "../../assets/images/swiper-man-image-1.png";
-import Image2 from "../../assets/images/swiper-man-image-2.png";
-import Image3 from "../../assets/images/swiper-man-image-3.png";
-import Image4 from "../../assets/images/swiper-man-image-4.png";
-import styles from "./index.module.scss";
-import "swiper/scss/pagination";
+import React, { useState } from 'react';
+import { SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination } from 'swiper/modules';
+import CoreSwiper from 'components/CoreSwiper';
+import ArrowSwiper from 'assets/SVG/Swiper/ArrowSwiper';
+import Image1 from '../../assets/images/swiper-man-image-1.png';
+import Image2 from '../../assets/images/swiper-man-image-2.png';
+import Image3 from '../../assets/images/swiper-man-image-3.png';
+import Image4 from '../../assets/images/swiper-man-image-4.png';
+import styles from './index.module.scss';
+import 'swiper/scss/pagination';
 
 export interface SlidesProps {
   id: number;
@@ -19,22 +19,22 @@ export interface SlidesProps {
 const slides: SlidesProps[] = [
   {
     id: 0,
-    text: "Golden Hour Glam",
+    text: 'Golden Hour Glam',
     image: Image1,
   },
   {
     id: 1,
-    text: "Autumn Eleganse",
+    text: 'Autumn Eleganse',
     image: Image2,
   },
   {
     id: 2,
-    text: "No Limits",
+    text: 'No Limits',
     image: Image3,
   },
   {
     id: 3,
-    text: "Symphony of clothes",
+    text: 'Symphony of clothes',
     image: Image4,
   },
 ];
@@ -68,10 +68,10 @@ const CollectionImageSwiper = () => {
           </SwiperSlide>
         ))}
         <div className={styles.wrapperArrows}>
-          <button ref={(node) => setPrevEl(node)} className={styles.itemArrows}>
+          <button ref={node => setPrevEl(node)} className={styles.itemArrows}>
             <ArrowSwiper className={styles.arrows} />
           </button>
-          <button ref={(node) => setNextEl(node)} className={styles.itemArrows}>
+          <button ref={node => setNextEl(node)} className={styles.itemArrows}>
             <ArrowSwiper className={`${styles.arrows} ${styles.arrowNext}`} />
           </button>
         </div>
