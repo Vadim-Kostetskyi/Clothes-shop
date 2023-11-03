@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-
 interface IUserData {
   data: object[];
 }
@@ -12,10 +11,10 @@ export const register = createAsyncThunk<IUserData>(
     try {
       const response = await axios.get<IUserData>('/users');
       console.log(response);
-        
+
       return response.data;
-    } catch (error: any) {
-      return rejectWithValue(error.message);
+    } catch (error) {
+      return rejectWithValue((error as Error).message);
     }
-  }
+  },
 );

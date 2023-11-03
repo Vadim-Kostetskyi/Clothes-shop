@@ -6,7 +6,9 @@ $mobile: 480px;
 $tablet: 960px;
 $laptop: 1280px;
 $desktop: 1440px;
+$max-content-width: 1280px;
 
+@mixin media($breakpoint) {
 @mixin media($breakpoint) {
   @if $breakpoint ==mobile {
     @media only screen and (max-width: $mobile) {

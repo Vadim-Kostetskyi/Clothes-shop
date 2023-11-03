@@ -13,7 +13,6 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-const t = '';
 const authPersistConfig = {
   key: 'auth',
   storage,
@@ -34,9 +33,8 @@ export const store = configureStore({
     }),
 });
 
-
 export const myPersistStore = persistStore(store);
 
-export type AppDispatch = typeof store.dispatch
+export type AppDispatch = typeof store.dispatch;
 
 export type RootState = ReturnType<typeof store.getState>;
