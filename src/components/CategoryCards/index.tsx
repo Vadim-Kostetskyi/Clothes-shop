@@ -16,7 +16,6 @@ const categories: CategoryCardProps[] = [
     imageSmall: WomenCategoryImageSmall,
     category: 'Women',
   },
-
   {
     id: 1,
     image: MenCategoryImage,
