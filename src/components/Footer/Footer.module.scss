@@ -8,7 +8,7 @@
   width: 100%;
   border: 1px solid #ccc;
 
-  @media screen and (min-width: 961px) {
+  @include media(laptopMin) {
     box-shadow: 0px 4px 4px 0px #00000026;
   }
 }
@@ -32,10 +32,11 @@
 }
 
 .columnMobile {
-  @media screen and (min-width: 961px) {
+  margin-top: 20px;
+
+  @include media(laptopMin) {
     display: none;
   }
-  margin-top: 20px;
 }
 
 .accordion {
@@ -73,7 +74,6 @@
 
 .link {
   font-size: 14px;
-  line-height: 15px;
   color: $mainFontColor;
 }
 
@@ -100,7 +100,6 @@
 .language {
   font-weight: 500;
   font-size: 14px;
-  line-height: 13px;
 }
 
 .info {
@@ -127,18 +126,15 @@
   margin-right: 8px;
   font-weight: 500;
   font-size: 14px;
-  line-height: 13px;
 }
 
 .active {
   font-size: 14px;
-  line-height: 13px;
   color: #00ca8d;
 }
 
 .workDays {
   font-size: 12px;
-  line-height: 11px;
   color: #959595;
 
   @include media(tablet) {
@@ -149,6 +145,5 @@
 .copyright {
   text-align: center;
   font-size: 14px;
-  line-height: 13px;
   color: #636363;
 }

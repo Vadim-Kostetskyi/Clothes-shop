@@ -1,37 +1,31 @@
 import React, { useState } from 'react';
-import i18next from 'i18next';
+import { useTranslation } from 'react-i18next';
 import Accordion from '../Accordion/Accordion';
+import { menuName, listContent } from './ListItems';
 import styles from './Footer.module.scss';
-
-import { MenuItem, MenuContent, MenuList } from './ListTypes';
 
 const FooterList = ({ className}:{className: string }): JSX.Element => {
   const [listVisible, setListVisible] = useState([false, false, false]);
 
-  const content: MenuContent = i18next.t('footer content', {
-    returnObjects: true
-  });
+  const { t } = useTranslation();
 
-  const headers: MenuList[] = i18next.t('menuName', {
-    returnObjects: true
-  });
-
-  const openList = (number: number) => {
+  const openList = (count: number) => {
     setListVisible((prev) =>
-      prev.map((value, index) => (index === number ? !value : value)));
+      prev.map((value, index) => (index === count ? !value : value)));
   };
   
   return (
     <>
-      {headers.map(({ id, listNumber, contentName, label }) =>
+      {menuName.map(({ id, listNumber, contentName, label }) =>
         <div key={id} className={className}>
-          <Accordion title={label} listVisible={listVisible}
-            openList={openList} number={listNumber} />
+          <Accordion title={t('listItem', {label})} listVisible={listVisible}
+            openList={openList} listNumber={listNumber} />
           
           <nav className={(listVisible && listVisible[listNumber]) ?
             styles.listOpen : styles.list}>
-            {content[contentName].map(({id, href, label}: MenuItem ) => (
-              <a href={href} className={styles.link} key={id}>{label}</a>
+            {listContent[contentName].map(({id, href, label} ) => (
+              <a href={href} className={styles.link}
+                key={id}>{t('listItem', {label})}</a>
             ))}
           </nav>
         </div>

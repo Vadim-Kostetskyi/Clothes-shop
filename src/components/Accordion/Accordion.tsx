@@ -1,27 +1,29 @@
-import React from 'react';
+import React, { FC } from 'react';
 import PlusImg from 'assets/SVG/Footer/Plus';
 import MinusImg from 'assets/SVG/Footer/Minus';
 import styles from './Accordion.module.scss';
 
-const Accordion = ({ title, listVisible, openList, number }:
-  {
-    title: string, listVisible?: boolean[],
-    openList?: (number: number) => void, number: number
-  }): JSX.Element => {
-  return (
+interface AccordionProps {
+  title: string;
+  listVisible?: boolean[];
+  openList?: (listNumber: number) => void;
+  listNumber: number;
+}
+
+
+const Accordion: FC<AccordionProps> =
+  ({ title, listVisible, openList, listNumber }) => (
     <button
       className={styles.box}
-      onClick={() => openList ? openList(number) : ''}>
+      onClick={() => openList ? openList(listNumber) : ''}>
       <h3 className={styles.title}>{title}</h3>
-      {(listVisible && !listVisible[number]) ? 
-        <PlusImg className={styles.img} />
-        : null}
+      {(listVisible && !listVisible[listNumber]) ? <PlusImg className=
+        {styles.img} /> : null}
       
-      {(listVisible && listVisible[number]) ? 
-        <MinusImg className={styles.img} />
-        :null}
+      {(listVisible && listVisible[listNumber]) ? <MinusImg className=
+        {styles.img} /> :null}
     </button>
   );
-};
+
 
 export default Accordion;

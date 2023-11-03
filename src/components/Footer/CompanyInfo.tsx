@@ -10,9 +10,9 @@ import styles from './Footer.module.scss';
 
 const CompanyInfo = (): JSX.Element => {
   const socialIcons = [InstagramImg, FacebookImg, TwitterImg, PinterestImg];
-
   const { t } = useTranslation();
-
+  const phone: string = '900 456 003';
+  
   return (
     <>
       <div className={styles.social}>
@@ -22,16 +22,16 @@ const CompanyInfo = (): JSX.Element => {
           </button>
         ))}
       </div>
-      <button className={styles.infoBox}>
+      <div className={styles.infoBox}>
         <EarthImg className={styles.img} />
         <p className={styles.language}>{t('language')}</p>
-      </button>
-      <button className={styles.infoBox} style={{ marginBottom: 8 }}>
+      </div>
+      <div className={styles.infoBox} style={{ marginBottom: 8 }}>
         <PhoneImg className={styles.img} />
-        <p className={styles.number}>{t('call')}</p>
+        <p className={styles.number}>{t('call', {phone})}</p>
         <span className={styles.active}>{t('online')}</span>
-      </button>
-      <p className={styles.workDays}>{t('work days')}</p>
+      </div>
+      <p className={styles.workDays}>{t('workDays')}</p>
     </>
   );
 };

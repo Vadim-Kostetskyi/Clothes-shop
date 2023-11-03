@@ -31,4 +31,16 @@ $desktop: 1440px;
       @content;
     }
   }
+
+  @if $breakpoint ==tabletMin {
+    @media only screen and (min-width: 481px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint ==laptopMin {
+    @media only screen and (min-width: 961px) {
+      @content;
+    }
+  }
 }
