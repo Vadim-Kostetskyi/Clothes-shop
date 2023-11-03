@@ -1,6 +1,9 @@
 {
   "listItem": "{{label}}",
-  "language": "Ukraine | English",
+  "language": {
+    "ukrainian": "Ukraine",
+    "english": "English"
+  },
   "call": "Call {{phone}}",
   "workDays": "From Mondays to Fridays from 09:00 to 19:00",
   "online": "Online",
