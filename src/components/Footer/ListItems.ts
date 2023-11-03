@@ -2,23 +2,23 @@ export type MenuItem = {
   id: number;
   href: string;
   label: string;
-}
+};
 
 export type MenuContent = {
   [key: string]: MenuItem[];
-}
+};
 
 export type MenuList = {
   id: number;
-  listNumber: number
+  listNumber: number;
   contentName: string;
   label: string;
-}
+};
 
 export const menuName: MenuList[] = [
   { id: 0, listNumber: 0, contentName: 'help', label: 'Help' },
   { id: 1, listNumber: 1, contentName: 'terms', label: 'Terms' },
-  { id: 2, listNumber: 2, contentName: 'we_are_NOVA', label: 'We are NOVA' }
+  { id: 2, listNumber: 2, contentName: 'we_are_NOVA', label: 'We are NOVA' },
 ];
 
 export const listContent: MenuContent = {

@@ -5,7 +5,6 @@ import CompanyInfo from './CompanyInfo';
 import styles from './Footer.module.scss';
 
 const Footer = (): JSX.Element => {
-
   const { t } = useTranslation();
 
   const year = new Date().getFullYear();
@@ -16,14 +15,13 @@ const Footer = (): JSX.Element => {
       <div className={styles.box}>
         <FooterList className={styles.columnDesktop} />
         <div className={styles.info}>
-          <CompanyInfo/>
-          <FooterList className={styles.columnMobile}/>
+          <CompanyInfo />
+          <FooterList className={styles.columnMobile} />
         </div>
       </div>
-      <p className={styles.copyright}>{t('copyright', {year})}</p>
+      <p className={styles.copyright}>{t('copyright', { year })}</p>
     </footer>
   );
 };
 
-export default Footer;
 export default Footer;

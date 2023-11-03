@@ -12,7 +12,7 @@ const CompanyInfo = (): JSX.Element => {
   const socialIcons = [InstagramImg, FacebookImg, TwitterImg, PinterestImg];
   const { t } = useTranslation();
   const phone: string = '900 456 003';
-  
+
   return (
     <>
       <div className={styles.social}>
@@ -22,13 +22,13 @@ const CompanyInfo = (): JSX.Element => {
           </button>
         ))}
       </div>
-      <div className={styles.infoBox}>
+      <button className={styles.infoBox}>
         <EarthImg className={styles.img} />
         <p className={styles.language}>{t('language')}</p>
-      </div>
+      </button>
       <div className={styles.infoBox} style={{ marginBottom: 8 }}>
         <PhoneImg className={styles.img} />
-        <p className={styles.number}>{t('call', {phone})}</p>
+        <p className={styles.number}>{t('call', { phone })}</p>
         <span className={styles.active}>{t('online')}</span>
       </div>
       <p className={styles.workDays}>{t('workDays')}</p>

@@ -10,20 +10,23 @@ interface AccordionProps {
   listNumber: number;
 }
 
-
-const Accordion: FC<AccordionProps> =
-  ({ title, listVisible, openList, listNumber }) => (
-    <button
-      className={styles.box}
-      onClick={() => openList ? openList(listNumber) : ''}>
-      <h3 className={styles.title}>{title}</h3>
-      {(listVisible && !listVisible[listNumber]) ? <PlusImg className=
-        {styles.img} /> : null}
-      
-      {(listVisible && listVisible[listNumber]) ? <MinusImg className=
-        {styles.img} /> :null}
-    </button>
-  );
-
+const Accordion: FC<AccordionProps> = ({
+  title,
+  listVisible,
+  openList,
+  listNumber,
+}) => (
+  <button
+    className={styles.box}
+    onClick={() => (openList ? openList(listNumber) : '')}
+  >
+    <h3 className={styles.title}>{title}</h3>
+    {listVisible?.length && !listVisible[listNumber] ? (
+      <PlusImg className={styles.img} />
+    ) : (
+      <MinusImg className={styles.img} />
+    )}
+  </button>
+);
 
 export default Accordion;
