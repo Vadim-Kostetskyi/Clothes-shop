@@ -25,7 +25,7 @@ const CompanyInfo = (): JSX.Element => {
       <button className={styles.infoBox}>
         <EarthImg className={styles.img} />
         <p className={styles.language}>
-          {t('language.ukrainian')} | {t('language.english')}
+          {t('country')} | {t('language')}
         </p>
       </button>
       <div className={styles.infoBox} style={{ marginBottom: 8 }}>
