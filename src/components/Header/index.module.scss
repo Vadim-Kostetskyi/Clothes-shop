@@ -1,7 +1,9 @@
+@import 'styles/constants';
 .headerWrapper {
+  position: relative;
   display: flex;
   justify-content: space-between;
-  padding: 18px 0px;
+  padding: 18px 80px;
   min-height: 121px;
   align-items: center;
 
@@ -10,18 +12,21 @@
   }
 }
 
+.invisible {
+  display: none;
+}
+
 .navigation {
-  position: relative;
   margin-right: 8.3rem;
 }
 
-.menuNameBox {
+.menuBox {
   display: flex;
 }
 
 .menuName {
   font-weight: 500;
-  border-bottom: 2px solid #fdfdfd;
+  border-bottom: 2px solid $pageColor;
 }
 
 .menuName:not(:last-child) {
@@ -34,39 +39,138 @@
   border-bottom: 2px solid;
 }
 
-.menuNameText {
+.menuNameLink {
   font-size: 20px;
+  color: $mainFontColor;
 }
-.menuNameText:focus + .menList,
-.menuNameText:hover + .menList {
-  display: flex;
+.menuNameLink:focus,
+.menuNameLink:hover {
+  color: #959595;
+}
+.menuNameLink:focus + .menList,
+.menuNameLink:hover + .menList {
+  display: block;
 }
 
 .menList {
   display: none;
-  flex-direction: column;
   position: absolute;
-  top: 70px;
+  top: 65px;
   left: 0;
   z-index: 10;
   width: 100vw;
-  padding-bottom: 95px;
-  background-color: #fdfdfd;
+}
+.menList:hover,
+.menList:focus {
+  display: block;
 }
 
-.link {
-  font-family: League Spartan;
+.menListBox {
+  display: flex;
+  margin-top: 20px;
+  padding-left: 80px;
+  padding-top: 55px;
+  padding-bottom: 95px;
+  background-color: $pageColor;
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+}
+.category:not(:last-child) {
+  margin-right: 80px;
+}
+
+.link,
+.linkSeeAll,
+.linkSub {
   font-size: 32px;
   font-weight: 400;
-  line-height: 29px;
   letter-spacing: 0.01em;
-  text-align: left;
-  color: #212121;
+  color: $mainFontColor;
 }
 .link:not(:last-child) {
   margin-bottom: 15px;
 }
 
+.linkSeeAll,
+.linkSub {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 18px;
+  margin-bottom: 30px;
+}
+
+.linkSub {
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.link:hover,
+.link:focus,
+.linkSeeAll:focus,
+.linkSeeAll:hover,
+.linkSub:hover,
+.linkSub:focus {
+  color: #ff0000;
+}
+
 .logo {
   width: 133px;
+}
+
+.userBox {
+  display: flex;
+  height: 40px;
+}
+
+.inputBox {
+  position: relative;
+  margin-right: 50px;
+}
+
+.input {
+  width: 200px;
+  height: 100%;
+  padding-left: 60px;
+  border-width: 1px;
+  border-radius: 4px;
+  border-color: #959595;
+}
+
+.input::placeholder {
+  font-family: League Spartan;
+  color: $mainFontColor;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: 0.01em;
+  text-align: left;
+}
+
+.searchBtn {
+  position: absolute;
+  top: 0;
+  left: 8px;
+  width: 40px;
+  height: 100%;
+}
+
+.searchIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.userBtn {
+  width: 40px;
+  height: 40px;
+}
+.userBtn:not(:last-child) {
+  margin-right: 15px;
+}
+
+.userIcon {
+  width: 24px;
+  height: 24px;
 }

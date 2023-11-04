@@ -10,7 +10,7 @@ export const menuName: MenuItem[] = [
   { id: 2, href: '/kids', label: 'Kids' },
 ];
 
-export const menuList: MenuContent = {
+export const category: MenuContent = {
   Women: [],
   Men: [
     { id: 0, href: '/new_now', label: 'New now' },
@@ -18,7 +18,21 @@ export const menuList: MenuContent = {
     { id: 2, href: '/suits', label: 'Suits' },
     { id: 3, href: '/shoes_and_accessories', label: 'Shoes and accessories' },
     { id: 4, href: '/promotion', label: 'Promotion' },
-    { id: 5, href: '/collection', label: 'Collection' },
+    { id: 5, href: '/collections', label: 'Collections' },
+  ],
+  Kids: [],
+};
+
+export const subcategory: MenuContent = {
+  Women: [],
+  Men: [
+    { id: 0, href: '/see_all', label: 'See all' },
+    { id: 1, href: '/coats', label: 'Coats' },
+    { id: 2, href: '/cardigans_and_sweaters', label: 'Cardigans and sweaters' },
+    { id: 3, href: '/jackets_and_overshirts', label: 'Jackets and overshirts' },
+    { id: 4, href: '/tourers', label: 'Tourers' },
+    { id: 5, href: '/shirts', label: 'Shirts' },
+    { id: 6, href: '/jeans', label: 'Jeans' },
   ],
   Kids: [],
 };

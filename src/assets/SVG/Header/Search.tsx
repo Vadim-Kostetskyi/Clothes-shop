@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Search = ({ className }: { className?: string }): JSX.Element => (
-  <svg className={className} viewBox="0 0 43 43">
+  <svg className={className} viewBox="-3 -6 50 50">
     <path
       d="m21,38c9.39,0 17,-7.61 17,-17c0,-9.39 -7.61,-17 -17,-17c-9.39,0 -17,7.61 -17,17c0,9.39 7.61,17 17,17z"
       fill="none"
