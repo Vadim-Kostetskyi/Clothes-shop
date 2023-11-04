@@ -1,3 +1,6 @@
 {
-  "welcome": "Welcome to React and react-i18next"
+  "welcome": "Welcome to React and react-i18next",
+  "subscriptionForm": {
+    "placeholder": "Enter your email address"
+  }
 }
