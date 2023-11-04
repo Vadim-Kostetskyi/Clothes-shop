@@ -1,5 +1,10 @@
 $brilliance: #fdfdfd;
+$pageColor: #ffffff;
+$mainFontColor: #212121;
+$greyColor: #959595;
+
 $font-family-main: League Spartan;
+
 $mobile: 480px;
 $tablet: 960px;
 $laptop: 1280px;
@@ -27,6 +32,18 @@ $max-content-width: 1280px;
 
   @if $breakpoint ==desktop {
     @media only screen and (max-width: $desktop) {
+      @content;
+    }
+  }
+
+  @if $breakpoint ==tabletMin {
+    @media only screen and (min-width: 481px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint ==laptopMin {
+    @media only screen and (min-width: 961px) {
       @content;
     }
   }
