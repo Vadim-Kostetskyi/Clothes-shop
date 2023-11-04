@@ -1,1 +1,1 @@
-export const AVAILABLE_LANGUAGES: Array<string> = ['en', 'ua']
+export const AVAILABLE_LANGUAGES: Array<string> = ['en', 'ua'];

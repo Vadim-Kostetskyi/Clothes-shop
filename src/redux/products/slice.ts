@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { categories } from './operations';
 
 export interface IProductData {
   id: number;
@@ -7,13 +6,12 @@ export interface IProductData {
   price: number;
 }
 
-
 export type categoryState = {
-   categories: IProductData[]
-}
+  categories: IProductData[];
+};
 
 const initialState: categoryState = {
-  categories: []
+  categories: [],
 };
 
 const categorySlice = createSlice({
@@ -21,12 +19,11 @@ const categorySlice = createSlice({
   initialState,
   reducers: {
     addCase(state, action: PayloadAction<[]>) {
-      state.categories = action.payload
-    }
-  }
+      state.categories = action.payload;
+    },
+  },
 });
 
-export const {addCase} = categorySlice.actions
+export const { addCase } = categorySlice.actions;
 
 export default categorySlice.reducer;
-

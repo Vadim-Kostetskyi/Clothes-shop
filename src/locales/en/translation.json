@@ -1,3 +1,9 @@
 {
-  "welcome": "Welcome to React and react-i18next"
+  "listItem": "{{label}}",
+  "country": "Ukraine",
+  "language": "English",
+  "call": "Call {{phone}}",
+  "workDays": "From Mondays to Fridays from 09:00 to 19:00",
+  "online": "Online",
+  "copyright": "© {{year}} by NOVA. All Rights Reserved."
 }

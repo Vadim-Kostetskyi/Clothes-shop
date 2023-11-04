@@ -1,6 +1,6 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import categorySlice from './products/slice'
-import authSlice from './auth/slice'
+import categorySlice from './products/slice';
+import authSlice from './auth/slice';
 import {
   FLUSH,
   PAUSE,
@@ -25,7 +25,7 @@ const rootReducer = combineReducers({
 
 export const store = configureStore({
   reducer: rootReducer,
-   middleware: getDefaultMiddleware =>
+  middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
@@ -33,9 +33,8 @@ export const store = configureStore({
     }),
 });
 
-
 export const myPersistStore = persistStore(store);
 
-export type AppDispatch = typeof store.dispatch
+export type AppDispatch = typeof store.dispatch;
 
 export type RootState = ReturnType<typeof store.getState>;

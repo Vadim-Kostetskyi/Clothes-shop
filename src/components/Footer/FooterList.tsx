@@ -1,65 +1,48 @@
-import React from "react";
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import Accordion from '../Accordion/Accordion';
+import { menuName, listContent } from './ListItems';
+import styles from './Footer.module.scss';
 
-import { Context } from './MenuList';
-import PlusImg from 'assets/SVG/Footer/Plus';
-import MinusImg from 'assets/SVG/Footer/Minus';
-import styles from './Footer.module.scss'
+const FooterList = ({ className }: { className: string }): JSX.Element => {
+  const [listVisible, setListVisible] = useState([false, false, false]);
 
-const FooterList = ({className, listVisible, openList}:{className: string, listVisible?: boolean[], openList?: (number: number) => void}): JSX.Element => {
-  const { help, terms, we_are_NOVA } = Context;
-  
+  const { t } = useTranslation();
+
+  const openList = (count: number) => {
+    setListVisible(prev =>
+      prev.map((value, index) => (index === count ? !value : value)),
+    );
+  };
+
   return (
     <>
-      <div className={className}>
-        <div className={styles.titleBox}>
-          <h3 className={styles.title}>Help</h3>
-          {(listVisible && !listVisible[0]) ? (<button className={styles.listButton} onClick={() => openList ? openList(0) : ''}>
-            <PlusImg className={styles.listImg} />
-          </button>): null}
-          {(listVisible && listVisible[0]) ? (<button className={styles.listButton} onClick={() => openList ? openList(0) : ''}>
-            <MinusImg className={styles.listImg} />
-          </button>) : null}
+      {menuName.map(({ id, listNumber, contentName, label }) => (
+        <div key={id} className={className}>
+          <Accordion
+            title={t('listItem', { label })}
+            listVisible={listVisible}
+            openList={openList}
+            listNumber={listNumber}
+          />
+
+          <nav
+            className={
+              listVisible && listVisible[listNumber]
+                ? styles.listOpen
+                : styles.list
+            }
+          >
+            {listContent[contentName].map(({ id, href, label }) => (
+              <a href={href} className={styles.link} key={id}>
+                {t('listItem', { label })}
+              </a>
+            ))}
+          </nav>
         </div>
-        <nav className={(listVisible && listVisible[0]) ? styles.listOpenHelp : styles.list}>
-          {help.map(({id, href, label}) => (
-            <a href={href} className={styles.link} key={id}>{label}</a>
-          ))}
-        </nav>
-      </div>
-      <div className={className}>
-        <div className={styles.titleBox}>
-          <h3 className={styles.title}>Terms</h3>
-          {(listVisible && !listVisible[1]) ? (<button className={styles.listButton} onClick={() => openList ? openList(1) : ''}>
-            <PlusImg className={styles.listImg} />
-          </button>): null}
-          {(listVisible && listVisible[1]) ? (<button className={styles.listButton} onClick={() => openList ? openList(1) : ''}>
-            <MinusImg className={styles.listImg} />
-          </button>) : null}
-        </div>
-        <nav className={(listVisible && listVisible[1]) ? styles.listOpen : styles.list}>
-          {terms.map(({id, href, label}) => (
-            <a href={href} className={styles.link} key={id}>{label}</a>
-          ))}
-        </nav>
-      </div>
-      <div className={className}>
-        <div className={styles.titleBox}>
-          <h3 className={styles.title}>We are NOVA</h3>
-          {(listVisible && !listVisible[2]) ? (<button className={styles.listButton} onClick={() => openList ? openList(2) : ''}>
-            <PlusImg className={styles.listImg} />
-          </button>): null}
-          {(listVisible && listVisible[2]) ? (<button className={styles.listButton} onClick={() => openList ? openList(2) : ''}>
-            <MinusImg className={styles.listImg} />
-          </button>) : null}
-        </div>
-        <nav className={(listVisible && listVisible[2]) ? styles.listOpen : styles.list} >
-          {we_are_NOVA.map(({id, href, label}) => (
-            <a href={href} className={styles.link} key={id}>{label}</a>
-          ))}
-        </nav> 
-      </div>
+      ))}
     </>
   );
 };
 
-export default FooterList
+export default FooterList;

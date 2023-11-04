@@ -1,11 +1,27 @@
-import React from "react"
+import React from 'react';
 
 const Shopping_bag = ({ className }: { className?: string }): JSX.Element => (
- <svg className={className} viewBox="0 0 44 44">
-  <rect fill="none" height="30" id="svg_1" rx="3" stroke="#333" strokeWidth="2" width="28" x="10" y="12"/>
-  <path d="m30,18l0,-8c0,-3.31 -2.69,-6 -6,-6l0,0c-3.31,0 -6,2.69 -6,6l0,8" fill="none" id="svg_2" stroke="#333" strokeLinecap="square" strokeWidth="2"/>
-</svg>
+  <svg className={className} viewBox="0 0 44 44">
+    <rect
+      fill="none"
+      height="30"
+      id="svg_1"
+      rx="3"
+      stroke="#333"
+      strokeWidth="2"
+      width="28"
+      x="10"
+      y="12"
+    />
+    <path
+      d="m30,18l0,-8c0,-3.31 -2.69,-6 -6,-6l0,0c-3.31,0 -6,2.69 -6,6l0,8"
+      fill="none"
+      id="svg_2"
+      stroke="#333"
+      strokeLinecap="square"
+      strokeWidth="2"
+    />
+  </svg>
+);
 
-  )
-
-export default Shopping_bag
+export default Shopping_bag;
