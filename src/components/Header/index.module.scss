@@ -43,10 +43,7 @@
   font-size: 20px;
   color: $mainFontColor;
 }
-.menuNameLink:focus,
-.menuNameLink:hover {
-  color: #959595;
-}
+
 .menuNameLink:focus + .menList,
 .menuNameLink:hover + .menList {
   display: block;
@@ -74,24 +71,39 @@
   background-color: $pageColor;
 }
 
-.category {
+.category,
+.subCategory {
   display: flex;
   flex-direction: column;
 }
-.category:not(:last-child) {
-  margin-right: 80px;
+
+.subCategory {
+  display: none;
+  padding: 0 80px;
+}
+.subCategory:hover,
+.subCategory:focus {
+  display: flex;
 }
 
 .link,
 .linkSeeAll,
-.linkSub {
+.linkSub,
+.clothing,
+.promotion {
   font-size: 32px;
   font-weight: 400;
   letter-spacing: 0.01em;
   color: $mainFontColor;
 }
-.link:not(:last-child) {
+.link:not(:last-child),
+.clothing,
+.promotion {
   margin-bottom: 15px;
+}
+
+.promotion {
+  color: #ff0000;
 }
 
 .linkSeeAll,
@@ -112,8 +124,12 @@
 .linkSeeAll:focus,
 .linkSeeAll:hover,
 .linkSub:hover,
-.linkSub:focus {
-  color: #ff0000;
+.linkSub:focus,
+.clothing:hover,
+.clothing:focus,
+.promotion:hover,
+.promotion:focus {
+  color: #959595;
 }
 
 .logo {
