@@ -7,7 +7,7 @@ const HomePage = () => {
   return (
     <>
       <div className={styles.wrapperHomePage}>
-        <Header homePage={false} />
+        <Header homePage={true} />
         <div className={styles.wrapperCategoryCards}>
           <CategoryCards />
         </div>
