@@ -1,7 +1,7 @@
 import React from 'react';
 import Shopping_bag from 'assets/SVG/sopping-bag';
-import User from 'assets/SVG/User';
-import Search from 'assets/SVG/Search';
+import User from 'assets/SVG/user';
+import Search from 'assets/SVG/search';
 import styles from './index.module.scss';
 
 const TopBar = (): JSX.Element => (

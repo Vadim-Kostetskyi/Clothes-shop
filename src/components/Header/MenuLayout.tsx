@@ -26,10 +26,10 @@ const MenuLayout = (): JSX.Element => {
                       label === 'Clothing'
                         ? styles.clothing
                         : label === 'Promotion'
-                          // eslint-disable-next-line
-                        ?  styles.promotion
-                          // eslint-disable-next-line
-                        : styles.link
+                        ? // eslint-disable-next-line
+                          styles.promotion
+                        : // eslint-disable-next-line
+                          styles.link
                     }
                     onMouseEnter={() => {
                       if (label === 'Clothing') {
