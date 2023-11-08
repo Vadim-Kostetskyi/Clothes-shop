@@ -13,15 +13,15 @@ const Header = (): JSX.Element => {
     <div>
       <div
         className={styles.headerWrapper}
-        style={!isHomePage ? { justifyContent: 'center' } : {}}
+        style={isHomePage ? { justifyContent: 'center' } : {}}
       >
-        <nav className={isHomePage ? styles.navigation : styles.invisible}>
+        <nav className={!isHomePage ? styles.navigation : styles.invisible}>
           <MenuLayout />
         </nav>
-        <Link to='/'>
+        <Link to="/">
           <img src={logo} className={styles.logo} alt="Logo" />
         </Link>
-        <div className={isHomePage ? styles.userBox : styles.invisible}>
+        <div className={!isHomePage ? styles.userBox : styles.invisible}>
           <TopBar />
         </div>
       </div>
