@@ -1,5 +1,5 @@
 import React from 'react';
-import Shopping_bag from 'assets/SVG/sopping-bag';
+import ShoppingBag from 'assets/SVG/sopping-bag';
 import User from 'assets/SVG/user';
 import Search from 'assets/SVG/search';
 import styles from './index.module.scss';
@@ -16,7 +16,7 @@ const TopBar = (): JSX.Element => (
       <User className={styles.userIcon} />
     </button>
     <button className={styles.userBtn}>
-      <Shopping_bag className={styles.userIcon} />
+      <ShoppingBag className={styles.userIcon} />
     </button>
   </>
 );

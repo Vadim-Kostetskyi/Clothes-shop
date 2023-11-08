@@ -13,10 +13,10 @@ export const menuName: MenuItem[] = [
 export const category: MenuContent = {
   Women: [],
   Men: [
-    { id: 0, href: '/new_now', label: 'New now' },
+    { id: 0, href: '/newNow', label: 'New now' },
     { id: 1, href: '/clothing', label: 'Clothing' },
     { id: 2, href: '/suits', label: 'Suits' },
-    { id: 3, href: '/shoes_and_accessories', label: 'Shoes and accessories' },
+    { id: 3, href: '/shoesAndAccessories', label: 'Shoes and accessories' },
     { id: 4, href: '/promotion', label: 'Promotion' },
     { id: 5, href: '/collections', label: 'Collections' },
   ],
@@ -26,10 +26,10 @@ export const category: MenuContent = {
 export const subcategory: MenuContent = {
   Women: [],
   Men: [
-    { id: 0, href: '/see_all', label: 'See all' },
+    { id: 0, href: '/seeAll', label: 'See all' },
     { id: 1, href: '/coats', label: 'Coats' },
-    { id: 2, href: '/cardigans_and_sweaters', label: 'Cardigans and sweaters' },
-    { id: 3, href: '/jackets_and_overshirts', label: 'Jackets and overshirts' },
+    { id: 2, href: '/cardigansAndSweaters', label: 'Cardigans and sweaters' },
+    { id: 3, href: '/jacketsAndOvershirts', label: 'Jackets and overshirts' },
     { id: 4, href: '/tourers', label: 'Tourers' },
     { id: 5, href: '/shirts', label: 'Shirts' },
     { id: 6, href: '/jeans', label: 'Jeans' },

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Shopping_bag = ({ className }: { className?: string }): JSX.Element => (
+const ShoppingBag = ({ className }: { className?: string }): JSX.Element => (
   <svg className={className} viewBox="0 0 44 44">
     <rect
       fill="none"
@@ -24,4 +24,4 @@ const Shopping_bag = ({ className }: { className?: string }): JSX.Element => (
   </svg>
 );
 
-export default Shopping_bag;
+export default ShoppingBag;
