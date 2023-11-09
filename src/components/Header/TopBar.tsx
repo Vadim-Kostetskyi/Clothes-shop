@@ -8,20 +8,25 @@ import styles from './index.module.scss';
 const TopBar = (): JSX.Element => {
   const { t } = useTranslation();
 
-  return (<>
-    <div className={styles.inputBox}>
-      <input type="text" className={styles.input} placeholder={t('searchPlaceholder')} />
-      <button className={styles.searchBtn}>
-        <Search className={styles.searchIcon} />
+  return (
+    <>
+      <div className={styles.inputBox}>
+        <input
+          type="text"
+          className={styles.input}
+          placeholder={t('searchPlaceholder')}
+        />
+        <button className={styles.searchBtn}>
+          <Search className={styles.searchIcon} />
+        </button>
+      </div>
+      <button className={styles.userBtn}>
+        <User className={styles.userIcon} />
       </button>
-    </div>
-    <button className={styles.userBtn}>
-      <User className={styles.userIcon} />
-    </button>
-    <button className={styles.userBtn}>
-      <ShoppingBag className={styles.userIcon} />
-    </button>
-  </>
+      <button className={styles.userBtn}>
+        <ShoppingBag className={styles.userIcon} />
+      </button>
+    </>
   );
 };
 

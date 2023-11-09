@@ -12,7 +12,9 @@ const Header = (): JSX.Element => {
   return (
     <div>
       <div
-        className={!isHomePage ? styles.headerWrapperHomePage : styles.headerWrapper}
+        className={
+          !isHomePage ? styles.headerWrapperHomePage : styles.headerWrapper
+        }
       >
         <nav className={isHomePage ? styles.navigation : styles.invisible}>
           <MenuLayout />

@@ -24,7 +24,8 @@ const MenuLayout = (): JSX.Element => {
     }
   };
 
-  const toggleSubcategory = (shouldShow: boolean) => () => setShowSubCategory(shouldShow);
+  const toggleSubcategory = (shouldShow: boolean) => () =>
+    setShowSubCategory(shouldShow);
 
   return (
     <div className={styles.menuBox}>
@@ -51,15 +52,22 @@ const MenuLayout = (): JSX.Element => {
                 ))}
               </div>
               <div
-                className={showSubCategory ? styles.subCategory : styles.subCategoryHide}
+                className={
+                  showSubCategory ? styles.subCategory : styles.subCategoryHide
+                }
                 onMouseEnter={toggleSubcategory(true)}
                 onMouseLeave={toggleSubcategory(false)}
                 onFocus={toggleSubcategory(true)}
                 onBlur={toggleSubcategory(false)}
               >
                 {subcategory[label].map(({ id, href, label }) => (
-                  <a href={href} key={id} className={id ? styles.linkSub : styles.linkSeeAll}>
-                    {t('listItem', { label })} </a>
+                  <a
+                    href={href}
+                    key={id}
+                    className={id ? styles.linkSub : styles.linkSeeAll}
+                  >
+                    {t('listItem', { label })}{' '}
+                  </a>
                 ))}
               </div>
             </div>

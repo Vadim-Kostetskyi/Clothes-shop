@@ -13,8 +13,8 @@
   }
 }
 
-.headerWrapperHomePage{
-  justify-content: center
+.headerWrapperHomePage {
+  justify-content: center;
 }
 
 .invisible {
@@ -43,7 +43,7 @@
   border-bottom: 2px solid $pageColor;
 
   &:focus,
-  &:hover{
+  &:hover {
     padding-bottom: 5px;
     border-bottom-color: $mainFontColor;
   }
@@ -92,7 +92,7 @@
     display: flex;
   }
 }
-.subCategoryHide{
+.subCategoryHide {
   display: none;
 }
 
