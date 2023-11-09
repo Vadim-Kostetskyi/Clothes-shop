@@ -1,5 +1,3 @@
-import React from 'react';
-
 const ArrowSwiper = ({ className }: { className?: string }): JSX.Element => (
   <svg
     className={className}
@@ -12,9 +10,9 @@ const ArrowSwiper = ({ className }: { className?: string }): JSX.Element => (
     <path
       d="M31 36L19 24L31 12"
       stroke="#FDFDFD"
-      strokeWidth="4"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      stroke-width="4"
+      stroke-linecap="round"
+      stroke-linejoin="round"
     />
   </svg>
 );
