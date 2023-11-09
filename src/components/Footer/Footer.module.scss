@@ -109,9 +109,14 @@
   }
 }
 
-.infoBox {
+.infoBox, 
+.infoBtn {
   display: flex;
   margin-bottom: 32px;
+}
+
+.infoBox{
+  margin-bottom: 8px;
 }
 
 .img {

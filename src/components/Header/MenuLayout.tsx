@@ -8,6 +8,24 @@ const MenuLayout = (): JSX.Element => {
 
   const { t } = useTranslation();
 
+  const classDefinition = (label: string) => () => {
+    if (label === 'Clothing') {
+      setShowSubCategory(true);
+    }
+  };
+
+  const setClassName = (label: string) => {
+    if (label === 'Clothing') {
+      return styles.clothing;
+    } else if (label === 'Promotion') {
+      return styles.promotion;
+    } else {
+      return styles.link;
+    }
+  };
+
+  const toggleSubcategory = (shouldShow: boolean) => () => setShowSubCategory(shouldShow);
+
   return (
     <div className={styles.menuBox}>
       {menuName.map(({ id, href, label }) => (
@@ -22,63 +40,27 @@ const MenuLayout = (): JSX.Element => {
                   <a
                     href={href}
                     key={id}
-                    className={
-                      label === 'Clothing'
-                        ? styles.clothing
-                        : label === 'Promotion'
-                        ? // eslint-disable-next-line
-                          styles.promotion
-                        : // eslint-disable-next-line
-                          styles.link
-                    }
-                    onMouseEnter={() => {
-                      if (label === 'Clothing') {
-                        setShowSubCategory(true);
-                      }
-                    }}
-                    onMouseLeave={() => {
-                      setShowSubCategory(false);
-                    }}
-                    onFocus={() => {
-                      if (label === 'Clothing') {
-                        setShowSubCategory(true);
-                      }
-                    }}
-                    onBlur={() => {
-                      setShowSubCategory(false);
-                    }}
+                    className={setClassName(label)}
+                    onMouseEnter={classDefinition(label)}
+                    onMouseLeave={toggleSubcategory(false)}
+                    onFocus={classDefinition(label)}
+                    onBlur={toggleSubcategory(false)}
                   >
                     {t('listItem', { label })}
                   </a>
                 ))}
               </div>
               <div
-                className={styles.subCategory}
-                style={{ display: showSubCategory ? 'flex' : 'none' }}
-                onMouseEnter={() => {
-                  setShowSubCategory(true);
-                }}
-                onMouseLeave={() => {
-                  setShowSubCategory(false);
-                }}
-                onFocus={() => {
-                  setShowSubCategory(true);
-                }}
-                onBlur={() => {
-                  setShowSubCategory(false);
-                }}
+                className={showSubCategory ? styles.subCategory : styles.subCategoryHide}
+                onMouseEnter={toggleSubcategory(true)}
+                onMouseLeave={toggleSubcategory(false)}
+                onFocus={toggleSubcategory(true)}
+                onBlur={toggleSubcategory(false)}
               >
-                {subcategory[label].map(({ id, href, label }) => {
-                  return id === 0 ? (
-                    <a href={href} key={id} className={styles.linkSeeAll}>
-                      {t('listItem', { label })}
-                    </a>
-                  ) : (
-                    <a href={href} key={id} className={styles.linkSub}>
-                      {t('listItem', { label })}
-                    </a>
-                  );
-                })}
+                {subcategory[label].map(({ id, href, label }) => (
+                  <a href={href} key={id} className={id ? styles.linkSub : styles.linkSeeAll}>
+                    {t('listItem', { label })} </a>
+                ))}
               </div>
             </div>
           </div>

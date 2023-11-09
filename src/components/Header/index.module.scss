@@ -1,5 +1,6 @@
 @import 'styles/constants';
-.headerWrapper {
+.headerWrapper,
+.headerWrapperHomePage {
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -10,6 +11,10 @@
   @mixin media($tablet) {
     margin-top: 47px;
   }
+}
+
+.headerWrapperHomePage{
+  justify-content: center
 }
 
 .invisible {
@@ -26,22 +31,22 @@
 
 .menuName {
   font-weight: 500;
-  border-bottom: 2px solid $pageColor;
 
   &:not(:last-child) {
     margin-right: 40px;
-  }
-
-  &:hover,
-  &:focus {
-    cursor: pointer;
-    border-bottom-color: $mainFontColor;
   }
 }
 
 .menuNameLink {
   font-size: 20px;
   color: $mainFontColor;
+  border-bottom: 2px solid $pageColor;
+
+  &:focus,
+  &:hover{
+    padding-bottom: 5px;
+    border-bottom-color: $mainFontColor;
+  }
 
   &:focus + .menList,
   &:hover + .menList {
@@ -79,13 +84,16 @@
 }
 
 .subCategory {
-  display: none;
+  display: flex;
   padding: 0 80px;
 
   &:hover,
   &:focus {
     display: flex;
   }
+}
+.subCategoryHide{
+  display: none;
 }
 
 .link,
@@ -106,7 +114,7 @@
 }
 
 .promotion {
-  color: #ff0000;
+  color: $redColor;
 }
 
 .linkSeeAll,
@@ -132,7 +140,7 @@
 .clothing:focus,
 .promotion:hover,
 .promotion:focus {
-  color: #959595;
+  color: $greyColor;
 }
 
 .logo {
@@ -153,9 +161,8 @@
   width: 200px;
   height: 100%;
   padding-left: 60px;
-  border-width: 1px;
+  border: 1px solid $greyColor;
   border-radius: 4px;
-  border-color: #959595;
 
   &::placeholder {
     font-family: $font-family-main;

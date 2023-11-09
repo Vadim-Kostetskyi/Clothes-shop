@@ -1,11 +1,11 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import InstagramImg from 'assets/SVG/Footer/Instagram';
-import FacebookImg from 'assets/SVG/Footer/Facebook';
-import TwitterImg from 'assets/SVG/Footer/Twitter';
-import PinterestImg from 'assets/SVG/Footer/Pinterest';
-import EarthImg from 'assets/SVG/Footer/Earth';
-import PhoneImg from 'assets/SVG/Footer/Phone';
+import InstagramImg from 'assets/SVG/Instagram';
+import FacebookImg from 'assets/SVG/Facebook';
+import TwitterImg from 'assets/SVG/Twitter';
+import PinterestImg from 'assets/SVG/Pinterest';
+import EarthImg from 'assets/SVG/earth';
+import PhoneImg from 'assets/SVG/phone';
 import styles from './Footer.module.scss';
 
 const CompanyInfo = (): JSX.Element => {
@@ -22,13 +22,13 @@ const CompanyInfo = (): JSX.Element => {
           </button>
         ))}
       </div>
-      <button className={styles.infoBox}>
+      <button className={styles.infoBtn}>
         <EarthImg className={styles.img} />
         <p className={styles.language}>
           {t('country')} | {t('language')}
         </p>
       </button>
-      <div className={styles.infoBox} style={{ marginBottom: 8 }}>
+      <div className={styles.infoBox}>
         <PhoneImg className={styles.img} />
         <p className={styles.number}>{t('call', { phone })}</p>
         <span className={styles.active}>{t('online')}</span>
