@@ -1,0 +1,48 @@
+@import 'styles/constants';
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 807px;
+}
+
+.discount {
+  color: $mainFontColor;
+  font-family: $font-family-main;
+  font-size: 202px;
+  font-weight: 300;
+  margin-right: 7px;
+}
+
+.percent {
+  color: $mainFontColor;
+  font-family: $font-family-main;
+  font-size: 92px;
+  font-weight: 600;
+}
+
+.wrapperDiscount {
+  display: flex;
+}
+
+.wrapperDescription {
+  width: 362px;
+  height: 56px;
+}
+
+.spanText {
+  color: $mainFontColor;
+  font-family: $font-family-main;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 35px;
+}
+
+.mainText {
+  color: $mainFontColor;
+  font-family: $font-family-main;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 35px;
+}

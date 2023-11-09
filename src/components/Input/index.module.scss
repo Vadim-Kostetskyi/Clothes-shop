@@ -1,0 +1,20 @@
+@import 'styles/constants';
+
+.icon {
+  position: absolute;
+  left: 16px;
+}
+
+.text {
+  color: #212121;
+  font-family: $font-family-main;
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
