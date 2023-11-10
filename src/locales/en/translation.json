@@ -1,5 +1,8 @@
 {
   "searchPlaceholder": "Search",
+  "newNow": "New now",
+  "colors": "Colours",
+  "sizes": "Sizes",
   "listItem": "{{label}}",
   "country": "Ukraine",
   "language": "English",
