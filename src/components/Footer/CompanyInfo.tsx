@@ -1,11 +1,11 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import InstagramImg from 'assets/SVG/Instagram';
-import FacebookImg from 'assets/SVG/Facebook';
-import TwitterImg from 'assets/SVG/Twitter';
-import PinterestImg from 'assets/SVG/Pinterest';
-import EarthImg from 'assets/SVG/Earth';
-import PhoneImg from 'assets/SVG/Phone';
+import InstagramImg from 'assets/svgs/Instagram';
+import FacebookImg from 'assets/svgs/Facebook';
+import TwitterImg from 'assets/svgs/Twitter';
+import PinterestImg from 'assets/svgs/Pinterest';
+import EarthImg from 'assets/svgs/earth';
+import PhoneImg from 'assets/svgs/phone';
 import styles from './Footer.module.scss';
 
 const CompanyInfo = (): JSX.Element => {
