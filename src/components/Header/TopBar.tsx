@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import ShoppingBag from 'assets/SVG/shopping-bag';
-import User from 'assets/SVG/user';
+import User from 'assets/SVG/User';
 import Search from 'assets/SVG/search';
 import styles from './index.module.scss';
 
