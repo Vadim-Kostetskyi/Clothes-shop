@@ -7,11 +7,11 @@ import styles from './index.module.scss';
 
 const MainPage = () => (
   <>
-    <Header/>
+    <Header />
     <div className={styles.wrapper}>
       <CollectionImageSwiper />
       <FormSubscription />
-      <Footer/>
+      <Footer />
     </div>
   </>
 );
