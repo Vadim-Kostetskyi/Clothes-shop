@@ -16,13 +16,13 @@ const Header = (): JSX.Element => {
           isHomePage ? styles.headerWrapperHomePage : styles.headerWrapper
         }
       >
-        <nav className={!isHomePage ? styles.navigation : styles.invisible}>
+        <nav className={isHomePage ? styles.invisible : styles.navigation}>
           <MenuLayout />
         </nav>
         <Link to="/">
           <img src={logo} className={styles.logo} alt="Logo" />
         </Link>
-        <div className={!isHomePage ? styles.userBox : styles.invisible}>
+        <div className={isHomePage ? styles.invisible : styles.userBox}>
           <TopBar />
         </div>
       </div>
