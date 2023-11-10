@@ -2,8 +2,8 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import DescriptionSubscribe from 'components/DescriptionSubscribe';
 import Input from 'components/Input';
-import ArrowButton from 'assets/svg/ArrowButton';
-import Email from 'assets/svg/Email';
+import ArrowButton from 'assets/svgs/ArrowButton';
+import Email from 'assets/svgs/Email';
 import styles from './index.module.scss';
 
 const FormSubscription = () => {
