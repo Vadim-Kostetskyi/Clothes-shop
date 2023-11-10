@@ -22,7 +22,7 @@ const Header = (): JSX.Element => {
         <Link to="/">
           <img src={logo} className={styles.logo} alt="Logo" />
         </Link>
-        <div className={isHomePage ?styles.invisible : styles.userBox}>
+        <div className={isHomePage ? styles.invisible : styles.userBox}>
           <TopBar />
         </div>
       </div>
