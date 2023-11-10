@@ -5,23 +5,12 @@ export type MenuItem = {
 };
 
 export type MenuContent = {
-  [key: string]: MenuItem[];
+  help: MenuItem[];
+  terms: MenuItem[];
+  weAreNOVA: MenuItem[];
 };
 
-export type MenuList = {
-  id: number;
-  listNumber: number;
-  contentName: string;
-  label: string;
-};
-
-export const menuName: MenuList[] = [
-  { id: 0, listNumber: 0, contentName: 'help', label: 'Help' },
-  { id: 1, listNumber: 1, contentName: 'terms', label: 'Terms' },
-  { id: 2, listNumber: 2, contentName: 'weAreNOVA', label: 'We are NOVA' },
-];
-
-export const listContent: MenuContent = {
+export const Context: MenuContent = {
   help: [
     { id: 0, href: '/payment', label: 'Payment' },
     { id: 1, href: '/delivery', label: 'Delivery' },

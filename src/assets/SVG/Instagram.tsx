@@ -1,3 +1,5 @@
+import React from 'react';
+
 const Instagram = ({ className }: { className?: string }): JSX.Element => (
   <svg className={className} viewBox="0 0 32 32">
     <path d="M21.588 11.295c0-0.505-0.409-0.914-0.914-0.914s-0.914 0.409-0.914 0.914c0 0.505 0.409 0.914 0.914 0.914s0.914-0.409 0.914-0.914z"></path>

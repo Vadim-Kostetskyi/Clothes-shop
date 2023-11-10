@@ -1,4 +1,6 @@
 import React, { FC } from 'react';
+import PlusImg from 'assets/SVG/plus';
+import MinusImg from 'assets/SVG/minus';
 import PlusImg from 'assets/svg/Plus';
 import MinusImg from 'assets/svg/Minus';
 import styles from './Accordion.module.scss';

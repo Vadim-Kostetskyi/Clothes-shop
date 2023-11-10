@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import CoreSwiper from 'components/CoreSwiper';
+import ArrowSwiper from 'assets/SVG/arrowSwiper';
 import ArrowSwiper from 'assets/svg/ArrowSwiper';
 import Image1 from '../../assets/images/swiper-man-image-1.png';
 import Image2 from '../../assets/images/swiper-man-image-2.png';
