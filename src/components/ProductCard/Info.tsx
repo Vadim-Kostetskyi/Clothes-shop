@@ -4,35 +4,36 @@ import Parameters from './Parameters';
 import styles from './index.module.scss';
 
 export interface InfoProps {
-  productName: string,
-  price: string,
-  sizes: string[]
+  productName: string;
+  price: string;
+  sizes: string[];
 }
 
-const Info: FC<InfoProps> =({price, productName, sizes}) => {
+const Info: FC<InfoProps> = ({ price, productName, sizes }) => {
   const [selectedColor, setSelectedColor] = useState<string>('black');
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [error, setError] = useState<boolean>(false);
 
   const changeParameters = (parameter: string, value: string) => {
+    /* eslint-disable */
     switch (parameter) {
-    case 'color':
-      setSelectedColor(value);
-      break;
-    case 'size':
-      setSelectedSize(value);
-      setError(false);
-      break;
-    default:
-      break;
+      case 'color':
+        setSelectedColor(value);
+        break;
+      case 'size':
+        setSelectedSize(value);
+        setError(false);
+        break;
+      default:
+        break;
     }
   };
+  /* eslint-enable */
 
   const addToBasket = () => {
     if (!selectedSize) {
       setError(true);
       return;
-      
     }
     console.log('color:', selectedColor);
     console.log('size:', selectedSize);
@@ -47,7 +48,11 @@ const Info: FC<InfoProps> =({price, productName, sizes}) => {
         </button>
       </div>
       <p className={styles.price}>{price}</p>
-      <Parameters changeParameters={changeParameters} error={error} sizes={sizes} />
+      <Parameters
+        changeParameters={changeParameters}
+        error={error}
+        sizes={sizes}
+      />
     </div>
   );
 };

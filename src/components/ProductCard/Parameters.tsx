@@ -5,11 +5,15 @@ import styles from './index.module.scss';
 
 export interface ParametersProps {
   changeParameters: (parameter: string, value: string) => void;
-  sizes: string[],
+  sizes: string[];
   error: boolean;
 }
 
-const Parameters: FC<ParametersProps> = ({ changeParameters, sizes, error }) => {
+const Parameters: FC<ParametersProps> = ({
+  changeParameters,
+  sizes,
+  error,
+}) => {
   const [activeSize, setActiveSize] = useState<string | null>(null);
   const [activeColor, setActiveColor] = useState<string>('black');
   const [open, setOpen] = useState<boolean[]>([false, false]);

@@ -3,6 +3,7 @@
 .mainBox {
   width: 420px;
 }
+
 .img {
   height: 650px;
   margin-bottom: 15px;
@@ -68,8 +69,7 @@
     height: 20px;
     padding-top: 1px;
     font-family: League Spartan;
-font-size: 14px;
-
+    font-size: 14px;
 
     &:not(:last-child) {
       margin-right: 15px;
@@ -81,7 +81,7 @@ font-size: 14px;
   }
 }
 
-.toggleParameter{
+.toggleParameter {
   display: flex;
   align-items: center;
   height: 18px;
@@ -125,12 +125,39 @@ font-size: 14px;
   display: none;
 }
 
-.error{
+.error {
   position: absolute;
-  right: 0;
+  right: 20px;
   bottom: 3px;
   font-size: 14px;
   font-weight: 300;
   letter-spacing: 0em;
   color: $alertRed;
+}
+
+.wrapperArrows {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  top: calc(50% - 24px);
+  z-index: 10;
+}
+
+.itemArrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+}
+
+.arrow {
+  fill: $blackColor;
+  width: 16px;
+  opacity: 50%;
+}
+
+.arrowNext {
+  transform: rotate(0.5turn);
 }

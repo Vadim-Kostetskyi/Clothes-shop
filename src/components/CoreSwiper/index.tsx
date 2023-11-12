@@ -24,7 +24,7 @@ const CoreSwiper: FC<CoreSwiperProps> = ({
 }) => {
   return (
     <Swiper
-      modules={[Navigation, EffectFade, ...modules]}
+      modules={[Navigation, EffectFade, ...(modules || [])]}
       slidesPerView={1}
       pagination={pagination}
       navigation={navigation}

@@ -7,7 +7,7 @@ interface ToggleParameter {
   open: boolean[];
   parameters: string[];
   index: number;
-  sizes?: string[]
+  sizes?: string[];
   active: string | null;
   toggle: (element: number) => void;
   handleClick: (param: string, value: string) => void;
