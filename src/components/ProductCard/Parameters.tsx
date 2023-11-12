@@ -1,31 +1,34 @@
-import React, {FC, useState} from 'react';
+import React, { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Cross from 'assets/SVG/cross';
+import ToggleParameter from './ToggleParameter';
 import styles from './index.module.scss';
 
 export interface ParametersProps {
   changeParameters: (parameter: string, value: string) => void;
+  sizes: string[],
+  error: boolean;
 }
 
-const Parameters: FC<ParametersProps> = ({changeParameters})=> {
+const Parameters: FC<ParametersProps> = ({ changeParameters, sizes, error }) => {
   const [activeSize, setActiveSize] = useState<string | null>(null);
+  const [activeColor, setActiveColor] = useState<string>('black');
   const [open, setOpen] = useState<boolean[]>([false, false]);
 
   const { t } = useTranslation();
 
   const colors: string[] = ['black', 'white'];
-  const sizes: string[] = ['XS', 'S', 'M', 'L', 'XL'];
+  const defaultSizes: string[] = ['XS', 'S', 'M', 'L', 'XL'];
 
-  const handleSizeClick = (size: string) => () => {
-    if (activeSize === size) {
-      setActiveSize(null);
-    } else {
-      setActiveSize(size);
-      changeParameters('size', size);
+  const handleClick = (param: string, value: string) => {
+    if (param === 'color') {
+      setActiveColor(value);
+    } else if (param === 'size') {
+      setActiveSize(value);
     }
+    changeParameters(param, value);
   };
 
-  const Toggle = (element: number) => () => {
+  const Toggle = (element: number) => {
     setOpen(prev => {
       const updatedState = [...prev];
       updatedState[element] = !updatedState[element];
@@ -33,37 +36,30 @@ const Parameters: FC<ParametersProps> = ({changeParameters})=> {
     });
   };
 
+  const props = {
+    open: open,
+    toggle: Toggle,
+    handleClick: handleClick,
+  };
+
   return (
     <div className={styles.parameters}>
-      <div>
-        <button onClick={Toggle(0)}
-          className={`${styles.parameters__sizeBox} ${open[0] ? styles.hide : ''}`}>
-          <p className={styles.parameters__text}>+2 {t('colors')}</p>
-        </button>
-        <div className={`${styles.parameters__sizeBox} ${open[0] ? '' : styles.hide}`}>
-          {colors.map(color => color)}
-          <button className={styles.cross__btn} onClick={Toggle(0)}>
-            <Cross className={styles.cross__img} />
-          </button>
-        </div>
-      </div>
-      <button onClick={Toggle(1)} className={`${styles.parameters__sizeBox} ${open[1] ? styles.hide : ''}`}>
-        <p className={styles.parameters__text}>+5 {t('sizes')}</p>
-      </button>
-      <div className={`${styles.parameters__sizeBox} ${open[1] ? '' : styles.hide}`}>
-        <div className={styles.parameters__size}>
-          {sizes.map((size, index) => (
-            <button key={index}
-              className={`${styles.parameters__Btn} ${activeSize === size ? styles.active : ''}`}
-              onClick={handleSizeClick(size)}>
-              {size}
-            </button>
-          ))}
-        </div>
-        <button className={styles.cross__btn} onClick={Toggle(1)}>
-          <Cross className={styles.cross__img} />
-        </button>
-      </div>
+      {error && <p className={styles.error}>{t('SelectASize')}</p>}
+      <ToggleParameter
+        parameters={colors}
+        text={`+2 ${t('colors')}`}
+        index={0}
+        active={activeColor}
+        {...props}
+      />
+      <ToggleParameter
+        parameters={defaultSizes}
+        text={`+5 ${t('sizes')}`}
+        index={1}
+        active={activeSize}
+        sizes={sizes}
+        {...props}
+      />
     </div>
   );
 };

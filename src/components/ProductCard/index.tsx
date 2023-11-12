@@ -1,13 +1,26 @@
-import React from 'react';
-import img from 'assets/images/Rectangle 41.png';
+import React, { FC } from 'react';
 import Info from './Info';
 import styles from './index.module.scss';
 
-const ProductCard = (): JSX.Element => {
+export interface ProductCardProps {
+  productName: string,
+  price: string,
+  sizes: string[]
+  image: string
+}
+
+const ProductCard: FC<ProductCardProps> = ({price, productName, sizes, image}) => {
+
+  const props = {
+    productName,
+    price,
+    sizes,
+  };
+
   return (
     <div className={styles.mainBox}>
-      <img src={img} alt="" className={styles.img} />
-      <Info />
+      <img src={image} alt="" className={styles.img} />
+      <Info {...props} />
     </div>
   );
 };
