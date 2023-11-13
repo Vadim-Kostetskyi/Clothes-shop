@@ -4,8 +4,8 @@ import InstagramImg from 'assets/svgs/Instagram';
 import FacebookImg from 'assets/svgs/Facebook';
 import TwitterImg from 'assets/svgs/Twitter';
 import PinterestImg from 'assets/svgs/Pinterest';
-import EarthImg from 'assets/svgs/earth';
-import PhoneImg from 'assets/svgs/phone';
+import EarthImg from 'assets/svgs/Earth';
+import PhoneImg from 'assets/svgs/Phone';
 import styles from './Footer.module.scss';
 
 const CompanyInfo = (): JSX.Element => {

@@ -1,5 +1,5 @@
 import React, { useState, FC } from 'react';
-import ShoppingBag from 'assets/svgs/shopping-bag';
+import ShoppingBag from 'assets/svgs/Shopping-bag';
 // import Parameters from './Parameters';
 import ProductInfoParameters from 'components/ProductInfoParameters';
 import styles from './index.module.scss';
