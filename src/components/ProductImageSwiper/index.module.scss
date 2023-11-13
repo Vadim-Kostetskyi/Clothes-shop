@@ -1,0 +1,37 @@
+@import 'styles/constants';
+
+.img {
+  height: 650px;
+  margin-bottom: 15px;
+}
+
+.wrapperArrows {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  top: calc(50% - 24px);
+  z-index: 10;
+}
+
+.itemArrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+}
+
+.arrow {
+  fill: $blackColor;
+  width: 16px;
+  opacity: 50%;
+}
+
+.arrowPrev {
+  transform: rotate(0.5turn);
+}
+
+.hide {
+  display: none;
+}

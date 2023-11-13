@@ -1,12 +1,20 @@
 @import 'styles/constants';
+
+.header {
+}
+
 .headerWrapper,
 .headerWrapperHomePage {
   position: relative;
+  position: fixed;
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  z-index: 100;
   padding: 18px 80px;
   min-height: 121px;
   align-items: center;
+  background-color: $pageBackground;
 
   @mixin media($tablet) {
     margin-top: 47px;
@@ -39,13 +47,13 @@
 
 .menuNameLink {
   font-size: 20px;
-  color: $mainFontColor;
-  border-bottom: 2px solid $pageColor;
+  color: $textPrimary;
+  border-bottom: 2px solid $pageBackground;
 
   &:focus,
   &:hover {
     padding-bottom: 5px;
-    border-bottom-color: $mainFontColor;
+    border-bottom-color: $textPrimary;
   }
 
   &:focus + .menList,
@@ -74,7 +82,7 @@
   padding-left: 80px;
   padding-top: 55px;
   padding-bottom: 95px;
-  background-color: $pageColor;
+  background-color: $pageBackground;
 }
 
 .category,
@@ -104,7 +112,7 @@
   font-size: 32px;
   font-weight: 400;
   letter-spacing: 0.01em;
-  color: $mainFontColor;
+  color: $textPrimary;
 }
 
 .link:not(:last-child),
@@ -114,7 +122,7 @@
 }
 
 .promotion {
-  color: $redColor;
+  color: $alertRed;
 }
 
 .linkSeeAll,
@@ -140,7 +148,7 @@
 .clothing:focus,
 .promotion:hover,
 .promotion:focus {
-  color: $greyColor;
+  color: $grayLight;
 }
 
 .logo {
@@ -161,12 +169,12 @@
   width: 200px;
   height: 100%;
   padding-left: 60px;
-  border: 1px solid $greyColor;
+  border: 1px solid $grayLight;
   border-radius: 4px;
 
   &::placeholder {
     font-family: $font-family-main;
-    color: $mainFontColor;
+    color: $textPrimary;
     font-size: 16px;
     font-weight: 400;
     line-height: 15px;

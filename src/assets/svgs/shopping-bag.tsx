@@ -8,7 +8,7 @@ const ShoppingBag = ({ className }: { className?: string }): JSX.Element => (
       id="svg_1"
       rx="3"
       stroke="#333"
-      strokeWidth="2"
+      strokeWidth="3"
       width="28"
       x="10"
       y="12"
@@ -19,7 +19,7 @@ const ShoppingBag = ({ className }: { className?: string }): JSX.Element => (
       id="svg_2"
       stroke="#333"
       strokeLinecap="square"
-      strokeWidth="2"
+      strokeWidth="3"
     />
   </svg>
 );

@@ -1,0 +1,18 @@
+.newNow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+  margin-bottom: 80px;
+}
+
+.cardBox {
+  display: flex;
+  gap: 10px;
+}
+
+.title {
+  font-weight: 600;
+  line-height: 84px;
+  align-self: flex-start;
+}
