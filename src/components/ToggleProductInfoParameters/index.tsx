@@ -30,7 +30,9 @@ const ToggleProductInfoParameters: FC<ToggleProductInfoParameters> = ({
       <div>
         <button
           onClick={() => toggle(index)}
-          className={`${styles.parameterBtn} ${open[index] ? styles.hide : ''}`}
+          className={`${styles.parametersBtn} ${
+            open[index] ? styles.hide : ''
+          }`}
         >
           {text}
         </button>
@@ -44,9 +46,7 @@ const ToggleProductInfoParameters: FC<ToggleProductInfoParameters> = ({
               return (
                 <button
                   key={index}
-                  className={`${styles.parametersBtn} ${
-                    styles.parameterColorBtn
-                  }
+                  className={`${styles.parameterBtn} ${styles.parameterColorBtn}
                   ${active === parameter ? styles.active : ''}`}
                   onClick={() => handleClick(param, parameter)}
                 >
@@ -63,7 +63,7 @@ const ToggleProductInfoParameters: FC<ToggleProductInfoParameters> = ({
             return (
               <button
                 key={index}
-                className={`${styles.parametersBtn} ${
+                className={`${styles.parameterBtn} ${
                   active === parameter ? styles.active : ''
                 }`}
                 onClick={() => handleClick(param, parameter)}

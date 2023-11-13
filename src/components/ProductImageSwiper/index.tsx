@@ -16,7 +16,6 @@ const ProductImageSwiper: FC<ProductImageSwiperProps> = ({
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
   const [hide, setHide] = useState<boolean>(true);
-  console.log(hide);
 
   const handleFocus = () => {
     setHide(false);
@@ -30,7 +29,7 @@ const ProductImageSwiper: FC<ProductImageSwiperProps> = ({
     <div
       onMouseEnter={handleFocus}
       onMouseLeave={handleBlur}
-      className={styles.ProductImageSwiper}
+      className={styles.productImageSwiper}
     >
       <CoreSwiper navigation={{ prevEl, nextEl }}>
         {images.map((image, index) => (

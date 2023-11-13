@@ -1,9 +1,7 @@
 import React, { FC } from 'react';
-// import ImageSwiper from './ImageSwiper';
 import ProductImageSwiper from 'components/ProductImageSwiper';
-// import Info from './Info';
 import ProductInfo from 'components/ProductInfo';
-import styles1 from './index.module.scss';
+import styles from './index.module.scss';
 
 export interface ProductCardProps {
   productName: string;
@@ -30,7 +28,7 @@ const ProductCard: FC<ProductCardProps> = ({
   };
 
   return (
-    <div className={styles1.mainBox}>
+    <div className={styles.productCard}>
       <ProductImageSwiper {...imageProps} />
       <ProductInfo {...infoProps} />
     </div>

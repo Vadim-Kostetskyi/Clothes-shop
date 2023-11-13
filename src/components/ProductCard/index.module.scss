@@ -1,24 +1,3 @@
-@import 'styles/constants';
-
-.mainBox {
+.productCard {
   width: 420px;
-}
-
-.parameters {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-
-  &__parameter {
-    display: flex;
-    font-family: $font-family-main;
-    font-size: 14px;
-    color: $grayDark;
-    margin-right: 40px;
-    width: auto;
-  }
-
-  &:not(:last-child) {
-    margin-right: 15px;
-  }
 }
