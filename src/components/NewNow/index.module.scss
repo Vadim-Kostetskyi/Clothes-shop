@@ -1,5 +1,11 @@
 .newNow {
   display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.newNowBox {
+  display: flex;
   flex-direction: column;
   align-items: center;
   width: max-content;

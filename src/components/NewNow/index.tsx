@@ -38,17 +38,19 @@ const NewNow = (): JSX.Element => {
 
   return (
     <div className={styles.newNow}>
-      <h1 className={styles.title}>{t('newNow')}</h1>
-      <div className={styles.cardBox}>
-        {cards.map(({ productName, price, sizes, images }, index) => (
-          <ProductCard
-            key={index}
-            productName={productName}
-            price={price}
-            sizes={sizes}
-            images={images}
-          />
-        ))}
+      <div className={styles.newNowBox}>
+        <h1 className={styles.title}>{t('newNow')}</h1>
+        <div className={styles.cardBox}>
+          {cards.map(({ productName, price, sizes, images }, index) => (
+            <ProductCard
+              key={index}
+              productName={productName}
+              price={price}
+              sizes={sizes}
+              images={images}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
