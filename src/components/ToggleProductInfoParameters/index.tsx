@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import Cross from 'assets/svgs/Cross';
-import styles from './index.module.scss';
+import styles from './insex.module.scss';
 
-interface ToggleParameter {
+interface ToggleProductInfoParameters {
   text: string;
   open: boolean[];
   parameters: string[];
@@ -13,7 +13,7 @@ interface ToggleParameter {
   handleClick: (param: string, value: string) => void;
 }
 
-const ToggleParameter: FC<ToggleParameter> = ({
+const ToggleProductInfoParameters: FC<ToggleProductInfoParameters> = ({
   open,
   parameters,
   toggle,
@@ -30,25 +30,21 @@ const ToggleParameter: FC<ToggleParameter> = ({
       <div>
         <button
           onClick={() => toggle(index)}
-          className={`${styles.parameters__parameter} ${
-            open[index] ? styles.hide : ''
-          }`}
+          className={`${styles.parameterBtn} ${open[index] ? styles.hide : ''}`}
         >
           {text}
         </button>
       </div>
       <div
-        className={`${styles.parameters__parameterBox} ${
-          open[index] ? '' : styles.hide
-        }`}
+        className={`${styles.parameterBox} ${open[index] ? '' : styles.hide}`}
       >
-        <div className={styles.parameters__parameter}>
+        <div className={styles.parametersBtn}>
           {parameters.map((parameter, index) => {
             if (param === 'color') {
               return (
                 <button
                   key={index}
-                  className={`${styles.parameters__btn} ${
+                  className={`${styles.parametersBtn} ${
                     styles.parameterColorBtn
                   }
                   ${active === parameter ? styles.active : ''}`}
@@ -67,7 +63,7 @@ const ToggleParameter: FC<ToggleParameter> = ({
             return (
               <button
                 key={index}
-                className={`${styles.parameters__btn} ${
+                className={`${styles.parametersBtn} ${
                   active === parameter ? styles.active : ''
                 }`}
                 onClick={() => handleClick(param, parameter)}
@@ -78,12 +74,12 @@ const ToggleParameter: FC<ToggleParameter> = ({
             );
           })}
         </div>
-        <button className={styles.cross__btn} onClick={() => toggle(index)}>
-          <Cross className={styles.cross__img} />
+        <button className={styles.crossBtn} onClick={() => toggle(index)}>
+          <Cross className={styles.crossImg} />
         </button>
       </div>
     </div>
   );
 };
 
-export default ToggleParameter;
+export default ToggleProductInfoParameters;
