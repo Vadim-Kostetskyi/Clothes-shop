@@ -2,15 +2,19 @@ import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import MenuLayout from './MenuLayout';
 import TopBar from './TopBar';
+import Input from 'components/Input';
 import logo from '../../assets/images/logo.png';
+import Search from 'assets/svgs/Search';
 import styles from './index.module.scss';
+import { useTranslation } from 'react-i18next';
 
 const Header = (): JSX.Element => {
+  const { t } = useTranslation();
   const location = useLocation();
   const isHomePage = location.pathname === '/';
 
   return (
-    <div>
+    <div className={styles.header}>
       <div
         className={
           isHomePage ? styles.headerWrapperHomePage : styles.headerWrapper
@@ -25,6 +29,13 @@ const Header = (): JSX.Element => {
         <div className={isHomePage ? styles.invisible : styles.userBox}>
           <TopBar />
         </div>
+      </div>
+      <div className={styles.wrapperInput}>
+        <Input
+          Icon={<Search className={styles.inputIcon} />}
+          className={styles.inputMobile}
+          placeholder={t('searchPlaceholder')}
+        />
       </div>
     </div>
   );

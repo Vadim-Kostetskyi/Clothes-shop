@@ -25,7 +25,6 @@ const FooterList = ({ className }: { className: string }): JSX.Element => {
             openList={openList}
             listNumber={listNumber}
           />
-
           <nav
             className={
               listVisible && listVisible[listNumber]
