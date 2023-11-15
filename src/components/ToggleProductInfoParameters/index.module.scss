@@ -1,0 +1,76 @@
+@import 'styles/constants';
+
+.toggleParameter {
+  display: flex;
+  align-items: center;
+  height: 18px;
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+.parametersBtn {
+  display: flex;
+  width: auto;
+  font-family: $font-family-main;
+  font-size: 14px;
+  margin-right: 40px;
+  color: $grayDark;
+}
+
+.parameterBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding-top: 1px;
+  font-family: $font-family-main;
+  font-size: 14px;
+  letter-spacing: 0rem;
+
+  &:not(:last-child) {
+    margin-right: 15px;
+  }
+}
+
+.parameterBox {
+  display: flex;
+}
+
+.parameterColorBtn {
+  padding-top: 0;
+}
+
+.active {
+  border-radius: 4px;
+  border: 0.5px solid $blackColor;
+}
+
+.blackColor,
+.whiteColor {
+  padding: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+}
+
+.blackColor {
+  background-color: $blackColor;
+}
+
+.whiteColor {
+  background-color: #f5f5dc;
+}
+
+.crossBtn {
+  width: 16px;
+}
+.crossImg {
+  width: 8px;
+}
+
+.hide {
+  display: none;
+}

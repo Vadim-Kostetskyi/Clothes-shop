@@ -12,7 +12,7 @@ const PageSwiper = () => {
   };
 
   const handleScroll = () => {
-    if (window.scrollY >= 1000) {
+    if (window.scrollY >= 860) {
       setIsVisible(true);
     } else {
       setIsVisible(false);

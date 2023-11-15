@@ -17,7 +17,7 @@
   &::placeholder {
     font-family: $font-family-main;
     font-size: 16px;
-    color: $greyColor;
+    color: $grayLight;
   }
 }
 
@@ -28,9 +28,9 @@
   justify-content: center;
   align-items: center;
   border-radius: 0px 4px 4px 0px;
-  border-top: 1px solid $greyColor;
-  border-right: 1px solid $greyColor;
-  border-bottom: 1px solid $greyColor;
+  border-top: 1px solid $grayLight;
+  border-right: 1px solid $grayLight;
+  border-bottom: 1px solid $grayLight;
   cursor: pointer;
 }
 
@@ -68,7 +68,7 @@
     height: 10px;
     transform: scale(0);
     transition: 120ms transform ease-in-out;
-    box-shadow: inset 1em 1em $greyColor;
+    box-shadow: inset 1em 1em $grayLight;
     transform-origin: bottom left;
     clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
   }
