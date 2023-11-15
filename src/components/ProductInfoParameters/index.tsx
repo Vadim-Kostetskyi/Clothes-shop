@@ -1,26 +1,13 @@
 import React, { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-// import ToggleParameter from './ToggleParameter';
 import ToggleProductInfoParameters from 'components/ToggleProductInfoParameters';
+import { Color, Size } from 'types';
 import styles from './index.module.scss';
 
 interface ProductInfoParameters {
   changeParameters: (parameter: string, value: string) => void;
-  sizes: string[];
+  sizes: Size[];
   error: boolean;
-}
-
-export enum Size {
-  XS = 'XS',
-  S = 'S',
-  M = 'M',
-  L = 'L',
-  XL = 'XL',
-}
-
-export enum Colors {
-  Black = 'black',
-  White = 'white',
 }
 
 const ProductInfoParameters: FC<ProductInfoParameters> = ({
@@ -28,20 +15,20 @@ const ProductInfoParameters: FC<ProductInfoParameters> = ({
   sizes,
   error,
 }) => {
-  const [activeSize, setActiveSize] = useState<string | null>(null);
-  const [activeColor, setActiveColor] = useState<string>('black');
+  const [activeSize, setActiveSize] = useState<Size | null>(null);
+  const [activeColor, setActiveColor] = useState<Color>(Color.Black);
   const [open, setOpen] = useState<boolean[]>([false, false]);
 
   const { t } = useTranslation();
 
-  const colors: string[] = [Colors.Black, Colors.White];
+  const colors: Color[] = [Color.Black, Color.White];
   const defaultSizes: Size[] = [Size.XS, Size.S, Size.M, Size.L, Size.XL];
 
-  const handleClick = (param: string, value: string) => {
+  const handleClick = (param: string, value: Color | string) => {
     if (param === 'color') {
-      setActiveColor(value);
+      setActiveColor(value as Color);
     } else if (param === 'size') {
-      setActiveSize(value);
+      setActiveSize(value as Size);
     }
     changeParameters(param, value);
   };

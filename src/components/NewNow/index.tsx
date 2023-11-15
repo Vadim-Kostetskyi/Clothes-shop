@@ -9,7 +9,7 @@ import img5 from 'assets/images/product/man-gallery-5.png';
 import img6 from 'assets/images/product/man-gallery-6.png';
 import img7 from 'assets/images/product/man-gallery-7.png';
 import ProductCard from 'components/ProductCard';
-import { Size } from 'components/ProductInfoParameters';
+import { Size } from 'types';
 import styles from './index.module.scss';
 
 const NewNow = (): JSX.Element => {

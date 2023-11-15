@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import Cross from 'assets/svgs/Cross';
+import { Size } from 'types';
 import styles from './insex.module.scss';
 
 interface ToggleProductInfoParameters {
@@ -7,7 +8,7 @@ interface ToggleProductInfoParameters {
   open: boolean[];
   parameters: string[];
   index: number;
-  sizes?: string[];
+  sizes?: Size[];
   active: string | null;
   productInfo: string;
   toggle: (element: number) => void;
@@ -62,7 +63,7 @@ const ToggleProductInfoParameters: FC<ToggleProductInfoParameters> = ({
                 active === parameter ? styles.active : ''
               }`}
               onClick={() => handleClick(productInfo, parameter)}
-              disabled={sizes && !sizes.includes(parameter)}
+              disabled={sizes && !sizes.includes(parameter as Size)}
             >
               {parameter}
             </button>

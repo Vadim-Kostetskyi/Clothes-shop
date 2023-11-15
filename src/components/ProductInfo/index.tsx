@@ -1,28 +1,28 @@
 import React, { useState, FC } from 'react';
 import ShoppingBag from 'assets/svgs/ShoppingBag';
-// import Parameters from './Parameters';
 import ProductInfoParameters from 'components/ProductInfoParameters';
+import { Size, Color } from 'types';
 import styles from './index.module.scss';
 
 interface ProductInfo {
   productName: string;
   price: string;
-  sizes: string[];
+  sizes: Size[];
 }
 
 const ProductInfo: FC<ProductInfo> = ({ price, productName, sizes }) => {
-  const [selectedColor, setSelectedColor] = useState<string>('black');
-  const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const [selectedColor, setSelectedColor] = useState<Color>(Color.Black);
+  const [selectedSize, setSelectedSize] = useState<Size | null>(null);
   const [isError, setIsError] = useState(false);
 
   const changeParameters = (parameter: string, value: string) => {
     /* eslint-disable */
     switch (parameter) {
       case 'color':
-        setSelectedColor(value);
+        setSelectedColor(value as Color);
         break;
       case 'size':
-        setSelectedSize(value);
+        setSelectedSize(value as Size);
         setIsError(false);
         break;
       default:

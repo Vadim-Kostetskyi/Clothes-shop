@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 import { SwiperSlide } from 'swiper/react';
 import CoreSwiper from 'components/CoreSwiper';
-import ArrowSwiperCard from 'assets/svgs/ArrowSviperCard';
+import ArrowSwiperCard from 'assets/svgs/ArrowSwiperCard';
 import styles from './index.module.scss';
 
 export interface ProductImageSwiperProps {
