@@ -74,7 +74,7 @@
 
 .link {
   font-size: 14px;
-  color: $mainFontColor;
+  color: $textPrimary;
 }
 
 .link:not(:last-child) {
@@ -140,7 +140,7 @@
 
 .workDays {
   font-size: 12px;
-  color: $greyColor;
+  color: $grayLight;
 
   @include media(tablet) {
     margin-bottom: 15px;
