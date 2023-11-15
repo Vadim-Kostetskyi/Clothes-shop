@@ -10,6 +10,19 @@ interface ProductInfoParameters {
   error: boolean;
 }
 
+export enum Size {
+  XS = 'XS',
+  S = 'S',
+  M = 'M',
+  L = 'L',
+  XL = 'XL',
+}
+
+export enum Colors {
+  Black = 'black',
+  White = 'white',
+}
+
 const ProductInfoParameters: FC<ProductInfoParameters> = ({
   changeParameters,
   sizes,
@@ -21,8 +34,8 @@ const ProductInfoParameters: FC<ProductInfoParameters> = ({
 
   const { t } = useTranslation();
 
-  const colors: string[] = ['black', 'white'];
-  const defaultSizes: string[] = ['XS', 'S', 'M', 'L', 'XL'];
+  const colors: string[] = [Colors.Black, Colors.White];
+  const defaultSizes: Size[] = [Size.XS, Size.S, Size.M, Size.L, Size.XL];
 
   const handleClick = (param: string, value: string) => {
     if (param === 'color') {
@@ -33,7 +46,7 @@ const ProductInfoParameters: FC<ProductInfoParameters> = ({
     changeParameters(param, value);
   };
 
-  const Toggle = (element: number) => {
+  const toggle = (element: number) => {
     setOpen(prev => {
       const updatedState = [...prev];
       updatedState[element] = !updatedState[element];
@@ -42,16 +55,17 @@ const ProductInfoParameters: FC<ProductInfoParameters> = ({
   };
 
   const props = {
-    open: open,
-    toggle: Toggle,
-    handleClick: handleClick,
+    open,
+    toggle,
+    handleClick,
   };
 
   return (
     <div className={styles.parameters}>
-      {error && <p className={styles.error}>{t('SelectASize')}</p>}
+      {error && <p className={styles.error}>{t('selectSize')}</p>}
       <ToggleProductInfoParameters
         parameters={colors}
+        productInfo="color"
         text={`+2 ${t('colors')}`}
         index={0}
         active={activeColor}
@@ -59,6 +73,7 @@ const ProductInfoParameters: FC<ProductInfoParameters> = ({
       />
       <ToggleProductInfoParameters
         parameters={defaultSizes}
+        productInfo="size"
         text={`+5 ${t('sizes')}`}
         index={1}
         active={activeSize}

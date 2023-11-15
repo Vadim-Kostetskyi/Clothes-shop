@@ -9,6 +9,7 @@ interface ToggleProductInfoParameters {
   index: number;
   sizes?: string[];
   active: string | null;
+  productInfo: string;
   toggle: (element: number) => void;
   handleClick: (param: string, value: string) => void;
 }
@@ -22,64 +23,57 @@ const ToggleProductInfoParameters: FC<ToggleProductInfoParameters> = ({
   active,
   index,
   sizes,
-}) => {
-  const param = index ? 'size' : 'color';
-
-  return (
-    <div className={styles.toggleParameter}>
-      <div>
-        <button
-          onClick={() => toggle(index)}
-          className={`${styles.parametersBtn} ${
-            open[index] ? styles.hide : ''
-          }`}
-        >
-          {text}
-        </button>
-      </div>
-      <div
-        className={`${styles.parameterBox} ${open[index] ? '' : styles.hide}`}
+  productInfo,
+}) => (
+  <div className={styles.toggleParameter}>
+    <div>
+      <button
+        onClick={() => toggle(index)}
+        className={`${styles.parametersBtn} ${open[index] ? styles.hide : ''}`}
       >
-        <div className={styles.parametersBtn}>
-          {parameters.map((parameter, index) => {
-            if (param === 'color') {
-              return (
-                <button
-                  key={index}
-                  className={`${styles.parameterBtn} ${styles.parameterColorBtn}
-                  ${active === parameter ? styles.active : ''}`}
-                  onClick={() => handleClick(param, parameter)}
-                >
-                  <div
-                    className={`${
-                      parameter === 'black'
-                        ? styles.blackColor
-                        : styles.whiteColor
-                    }`}
-                  ></div>
-                </button>
-              );
-            }
+        {text}
+      </button>
+    </div>
+    <div className={`${styles.parameterBox} ${open[index] ? '' : styles.hide}`}>
+      <div className={styles.parametersBtn}>
+        {parameters.map((parameter, index) => {
+          if (productInfo === 'color') {
             return (
               <button
                 key={index}
-                className={`${styles.parameterBtn} ${
-                  active === parameter ? styles.active : ''
-                }`}
-                onClick={() => handleClick(param, parameter)}
-                disabled={sizes && !sizes.includes(parameter)}
+                className={`${styles.parameterBtn} ${styles.parameterColorBtn}
+                  ${active === parameter ? styles.active : ''}`}
+                onClick={() => handleClick(productInfo, parameter)}
               >
-                {parameter}
+                <div
+                  className={`${
+                    parameter === 'black'
+                      ? styles.blackColor
+                      : styles.whiteColor
+                  }`}
+                ></div>
               </button>
             );
-          })}
-        </div>
-        <button className={styles.crossBtn} onClick={() => toggle(index)}>
-          <Cross className={styles.crossImg} />
-        </button>
+          }
+          return (
+            <button
+              key={index}
+              className={`${styles.parameterBtn} ${
+                active === parameter ? styles.active : ''
+              }`}
+              onClick={() => handleClick(productInfo, parameter)}
+              disabled={sizes && !sizes.includes(parameter)}
+            >
+              {parameter}
+            </button>
+          );
+        })}
       </div>
+      <button className={styles.crossBtn} onClick={() => toggle(index)}>
+        <Cross className={styles.crossImg} />
+      </button>
     </div>
-  );
-};
+  </div>
+);
 
 export default ToggleProductInfoParameters;

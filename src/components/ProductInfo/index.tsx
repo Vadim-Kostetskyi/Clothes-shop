@@ -1,5 +1,5 @@
 import React, { useState, FC } from 'react';
-import ShoppingBag from 'assets/svgs/Shopping-bag';
+import ShoppingBag from 'assets/svgs/ShoppingBag';
 // import Parameters from './Parameters';
 import ProductInfoParameters from 'components/ProductInfoParameters';
 import styles from './index.module.scss';
@@ -13,7 +13,7 @@ interface ProductInfo {
 const ProductInfo: FC<ProductInfo> = ({ price, productName, sizes }) => {
   const [selectedColor, setSelectedColor] = useState<string>('black');
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
-  const [error, setError] = useState<boolean>(false);
+  const [isError, setIsError] = useState(false);
 
   const changeParameters = (parameter: string, value: string) => {
     /* eslint-disable */
@@ -23,7 +23,7 @@ const ProductInfo: FC<ProductInfo> = ({ price, productName, sizes }) => {
         break;
       case 'size':
         setSelectedSize(value);
-        setError(false);
+        setIsError(false);
         break;
       default:
         break;
@@ -33,7 +33,7 @@ const ProductInfo: FC<ProductInfo> = ({ price, productName, sizes }) => {
 
   const addToBasket = () => {
     if (!selectedSize) {
-      setError(true);
+      setIsError(true);
       return;
     }
     console.log('color:', selectedColor);
@@ -51,7 +51,7 @@ const ProductInfo: FC<ProductInfo> = ({ price, productName, sizes }) => {
       <p className={styles.price}>{price}</p>
       <ProductInfoParameters
         changeParameters={changeParameters}
-        error={error}
+        error={isError}
         sizes={sizes}
       />
     </div>

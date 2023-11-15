@@ -15,24 +15,11 @@ const ProductCard: FC<ProductCardProps> = ({
   productName,
   sizes,
   images,
-}) => {
-  const imageProps = {
-    images,
-    productName,
-  };
-
-  const infoProps = {
-    productName,
-    price,
-    sizes,
-  };
-
-  return (
-    <div className={styles.productCard}>
-      <ProductImageSwiper {...imageProps} />
-      <ProductInfo {...infoProps} />
-    </div>
-  );
-};
+}) => (
+  <div className={styles.productCard}>
+    <ProductImageSwiper images={images} productName={productName} />
+    <ProductInfo productName={productName} price={price} sizes={sizes} />
+  </div>
+);
 
 export default ProductCard;

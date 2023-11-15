@@ -15,14 +15,14 @@ const ProductImageSwiper: FC<ProductImageSwiperProps> = ({
 }) => {
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
-  const [hide, setHide] = useState<boolean>(true);
+  const [isHidden, setIsHidden] = useState(true);
 
   const handleFocus = () => {
-    setHide(false);
+    setIsHidden(false);
   };
 
   const handleBlur = () => {
-    setHide(true);
+    setIsHidden(true);
   };
 
   return (
@@ -37,7 +37,7 @@ const ProductImageSwiper: FC<ProductImageSwiperProps> = ({
             <img src={image} alt={productName} className={styles.img} />
           </SwiperSlide>
         ))}
-        <div className={hide ? styles.hide : styles.wrapperArrows}>
+        <div className={isHidden ? styles.hide : styles.wrapperArrows}>
           <button ref={node => setPrevEl(node)} className={styles.itemArrow}>
             <ArrowSwiperCard
               className={`${styles.arrow} ${styles.arrowPrev}`}
