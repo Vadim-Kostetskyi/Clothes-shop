@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import MenuLayout from './MenuLayout';
-import TopBar from './TopBar';
+import MenuLayout from 'components/MenuLayout';
+import TopBar from 'components/TopBar';
 import Input from 'components/Input';
 import logo from '../../assets/images/logo.png';
 import Search from 'assets/svgs/Search';

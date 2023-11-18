@@ -39,7 +39,7 @@ const MenuLayout = (): JSX.Element => {
             <a href={href} className={styles.menuItemLink}>
               {t('listItem', { label })}
             </a>
-            <div className={styles.menList}>
+            <div className={styles.menuListContainer}>
               <div className={styles.menListBox}>
                 <div className={styles.menuCategory}>
                   {category[label].map(({ id, href, label }) => (
@@ -71,7 +71,9 @@ const MenuLayout = (): JSX.Element => {
                     <a
                       href={href}
                       key={id}
-                      className={id ? styles.linkSub : styles.linkSeeAll}
+                      className={
+                        id ? styles.linkSubCategory : styles.linkSeeAll
+                      }
                     >
                       {t('listItem', { label })}{' '}
                     </a>

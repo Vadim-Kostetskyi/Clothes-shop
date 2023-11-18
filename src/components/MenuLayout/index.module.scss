@@ -1,0 +1,132 @@
+@import 'styles/constants';
+
+.menuBox {
+  display: flex;
+
+  @include media(tablet) {
+    display: none;
+  }
+}
+
+.menuItem {
+  font-weight: 500;
+
+  &:not(:last-child) {
+    margin-right: 40px;
+  }
+}
+
+.menuItemLink {
+  font-size: 20px;
+  color: $mainFontColor;
+  border-bottom: 2px solid $pageColor;
+
+  &:focus,
+  &:hover {
+    padding-bottom: 5px;
+    border-bottom-color: $mainFontColor;
+  }
+
+  &:focus + .menuListContainer,
+  &:hover + .menuListContainer {
+    display: block;
+  }
+}
+
+.menuListContainer {
+  display: none;
+  position: absolute;
+  top: 65px;
+  left: 0;
+  z-index: 10;
+  width: 100vw;
+
+  &:hover,
+  &:focus {
+    display: block;
+  }
+}
+
+.menListBox {
+  display: flex;
+  margin-top: 20px;
+  padding-left: 80px;
+  padding-top: 55px;
+  padding-bottom: 95px;
+  background-color: $pageColor;
+}
+
+.menuCategory,
+.subCategory {
+  display: flex;
+  flex-direction: column;
+}
+
+.subCategory {
+  display: flex;
+  padding: 0 80px;
+
+  &:hover,
+  &:focus {
+    display: flex;
+  }
+}
+.subCategoryHide {
+  display: none;
+}
+
+.link,
+.linkSeeAll,
+.linkSubCategory,
+.clothing,
+.promotion {
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: $mainFontColor;
+}
+
+.link:not(:last-child),
+.clothing,
+.promotion {
+  margin-bottom: 15px;
+}
+
+.promotion {
+  color: $redColor;
+}
+
+.linkSeeAll,
+.linkSubCategory {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 18px;
+  margin-bottom: 30px;
+}
+
+.linkSubCategory {
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.link:hover,
+.link:focus,
+.linkSeeAll:focus,
+.linkSeeAll:hover,
+.linkSubCategory:hover,
+.linkSubCategory:focus,
+.clothing:hover,
+.clothing:focus,
+.promotion:hover,
+.promotion:focus {
+  color: $greyColor;
+}
+
+.menuIconMobile {
+  width: 32px;
+  height: 40px;
+
+  @include media(laptopMin) {
+    display: none;
+  }
+}
