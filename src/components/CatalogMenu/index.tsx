@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { menuName, category, subcategory } from './MenuList';
-import Menu from 'assets/svgs/Menu';
+// import Menu from 'assets/svgs/Menu';
 import styles from './index.module.scss';
 
-const MenuLayout = (): JSX.Element => {
+interface MenuLayoutProps {
+  isMobile?: boolean;
+}
+
+const CatalogMenu: FC<MenuLayoutProps> = ({ isMobile }) => {
   const [showSubCategory, setShowSubCategory] = useState(false);
 
   const { t } = useTranslation();
@@ -29,11 +33,8 @@ const MenuLayout = (): JSX.Element => {
     setShowSubCategory(shouldShow);
 
   return (
-    <div className={styles.wrapperMenu}>
-      <button className={styles.openMenuButton}>
-        <Menu className={styles.menuIconMobile} />
-      </button>
-      <div className={styles.menuBox}>
+    <>
+      <div className={isMobile ? styles.menuBoxMobile : styles.menuBox}>
         {menuName.map(({ id, href, label }) => (
           <div className={styles.menuItem} key={id}>
             <a href={href} className={styles.menuItemLink}>
@@ -84,8 +85,8 @@ const MenuLayout = (): JSX.Element => {
           </div>
         ))}
       </div>
-    </div>
+    </>
   );
 };
 
-export default MenuLayout;
+export default CatalogMenu;

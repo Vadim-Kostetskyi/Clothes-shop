@@ -8,6 +8,10 @@
   }
 }
 
+.menuBoxMobile {
+  display: flex;
+}
+
 .menuItem {
   font-weight: 500;
 
@@ -21,15 +25,17 @@
   color: $mainFontColor;
   border-bottom: 2px solid $pageColor;
 
-  &:focus,
-  &:hover {
-    padding-bottom: 5px;
-    border-bottom-color: $mainFontColor;
-  }
+  @include media(laptopMin) {
+    &:focus,
+    &:hover {
+      padding-bottom: 5px;
+      border-bottom-color: $mainFontColor;
+    }
 
-  &:focus + .menuListContainer,
-  &:hover + .menuListContainer {
-    display: block;
+    &:focus + .menuListContainer,
+    &:hover + .menuListContainer {
+      display: block;
+    }
   }
 }
 
@@ -120,13 +126,4 @@
 .promotion:hover,
 .promotion:focus {
   color: $greyColor;
-}
-
-.menuIconMobile {
-  width: 32px;
-  height: 40px;
-
-  @include media(laptopMin) {
-    display: none;
-  }
 }
