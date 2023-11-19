@@ -4,6 +4,7 @@ import Header from 'components/Header';
 import FormSubscription from 'components/FormSubscription';
 import NewNow from 'components/NewNow';
 import Footer from 'components/Footer';
+import ScrollToTop from 'components/ScrollToTop';
 import styles from './index.module.scss';
 
 const MainPage = () => (
@@ -14,6 +15,7 @@ const MainPage = () => (
       <NewNow />
       <FormSubscription />
       <Footer />
+      <ScrollToTop />
     </div>
   </>
 );
