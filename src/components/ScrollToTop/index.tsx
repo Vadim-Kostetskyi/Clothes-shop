@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import SwiperUp from 'assets/svgs/SwiperUp';
 import styles from './index.module.scss';
 
-const PageSwiper = () => {
+const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
   const scrollToTop = () => {
     window.scrollTo({
@@ -36,4 +36,4 @@ const PageSwiper = () => {
   );
 };
 
-export default PageSwiper;
+export default ScrollToTop;
