@@ -2,14 +2,6 @@
 
 .menuBox {
   display: flex;
-
-  @include media(tablet) {
-    display: none;
-  }
-}
-
-.menuBoxMobile {
-  display: flex;
 }
 
 .menuItem {
@@ -20,7 +12,8 @@
   }
 }
 
-.menuItemLink {
+.menuItemButton,
+.menuItemButtonFocus {
   font-size: 20px;
   color: $mainFontColor;
   border-bottom: 2px solid $pageColor;
@@ -31,24 +24,23 @@
       padding-bottom: 5px;
       border-bottom-color: $mainFontColor;
     }
-
-    &:focus + .menuListContainer,
-    &:hover + .menuListContainer {
-      display: block;
-    }
   }
 }
 
-.menuListContainer {
+.menuItemButtonFocus {
+  border-bottom-color: $mainFontColor;
+}
+
+.menuListContainer,
+.menuListContainerHide {
   display: none;
   position: absolute;
-  top: 65px;
+  top: 140px;
   left: 0;
   z-index: 10;
   width: 100vw;
+}
 
-  &:hover,
-  &:focus {
-    display: block;
-  }
+.menuListContainer {
+  display: block;
 }

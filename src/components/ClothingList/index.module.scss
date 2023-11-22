@@ -1,0 +1,46 @@
+@import 'styles/constants';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  &:hover,
+  &:focus {
+    display: flex;
+  }
+  @include media(tablet) {
+    margin-bottom: 25px;
+  }
+}
+
+.hide {
+  display: none;
+}
+
+.link,
+.linkSeeAll {
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: $mainFontColor;
+}
+
+.link,
+.linkSeeAll {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 18px;
+  margin-bottom: 30px;
+}
+
+.link {
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.link:hover,
+.link:focus,
+.linkSeeAll:focus,
+.linkSeeAll:hover {
+  color: $greyColor;
+}

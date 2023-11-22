@@ -4,7 +4,7 @@
   padding: 18px 80px;
 
   @include media(tablet) {
-    padding: 47px 32px 0 32px;
+    padding: 0 32px 0 32px;
     margin-bottom: 16px;
   }
 }
@@ -17,9 +17,8 @@
   align-items: center;
   min-height: 84px;
 
-  @mixin media($tablet) {
-    margin-top: 47px;
-    min-height: 121px;
+  @include media(tablet) {
+    min-height: 90px;
   }
 }
 
@@ -47,11 +46,14 @@
 }
 
 .navigation {
-  margin-right: 8.3rem;
+  margin-right: 2.5rem;
 }
 
 .logo {
   width: 133px;
+  @include media(tablet) {
+    width: 111px;
+  }
 }
 
 .userBox {

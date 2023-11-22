@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-// import MenuLayout from 'components/CatalogMenu';
 import CatalogMenu from 'components/CatalogMenu';
+import CatalogMenuMobile from 'components/CatalogMenuMobile';
 import TopBar from 'components/TopBar';
 import Input from 'components/Input';
 import logo from '../../assets/images/logo.png';
@@ -25,7 +25,7 @@ const MediaQueryCatalogMenu = (): JSX.Element => {
           isHomePage ? styles.headerWrapperHomePage : styles.headerWrapper
         }
       >
-        <nav className={styles.navigation}>
+        <nav className={isHomePage ? styles.invisible : styles.navigation}>
           <button className={styles.openMenuButton} onClick={toggleOpenMenu()}>
             <Menu className={styles.menuIconMobile} />
           </button>
@@ -42,7 +42,7 @@ const MediaQueryCatalogMenu = (): JSX.Element => {
       </div>
       <div className={styles.wrapperMenuMobile}>
         <div className={isMenuOpen ? styles.invisible : ''}>
-          <CatalogMenu isMobile={true} />
+          <CatalogMenuMobile />
         </div>
         <div className={isMenuOpen ? styles.wrapperInput : styles.invisible}>
           <Input
