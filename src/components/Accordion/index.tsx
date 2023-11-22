@@ -5,10 +5,10 @@ import styles from './index.module.scss';
 
 interface AccordionProps {
   title: string;
-  titleStyles: string;
+  titleStyles?: string;
   defaultOpen?: boolean;
   list?: React.ReactNode;
-  listStyle: string;
+  listStyle?: string;
 }
 
 const Accordion: FC<AccordionProps> = ({

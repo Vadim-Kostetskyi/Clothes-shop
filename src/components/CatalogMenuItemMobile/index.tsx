@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MenuItem } from 'components/Footer/MenuList';
 import Clothing from 'components/ClothingList';
-import Accordion from 'components/ac';
+import Accordion from 'components/Accordion';
 import styles from './index.module.scss';
 
 interface CatalogMenuItemProps {
