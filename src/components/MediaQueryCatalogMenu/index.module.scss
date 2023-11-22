@@ -46,7 +46,7 @@
 }
 
 .navigation {
-  margin-right: 2.5rem;
+  margin-right: 1.9rem;
 }
 
 .logo {
@@ -90,9 +90,20 @@
   }
 }
 
+.openMenuButton {
+  width: 30px;
+}
+
 .menuIconMobile {
   width: 32px;
-  height: 40px;
+
+  @include media(laptopMin) {
+    display: none;
+  }
+}
+
+.crossIcon {
+  width: 14px;
 
   @include media(laptopMin) {
     display: none;

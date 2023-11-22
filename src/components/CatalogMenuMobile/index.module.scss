@@ -15,20 +15,20 @@
 .menuItemButton,
 .menuItemButtonFocus {
   font-size: 20px;
-  color: $mainFontColor;
-  border-bottom: 2px solid $pageColor;
+  color: $textPrimary;
+  border-bottom: 2px solid $pageBackground;
 
   @include media(laptopMin) {
     &:focus,
     &:hover {
       padding-bottom: 5px;
-      border-bottom-color: $mainFontColor;
+      border-bottom-color: $textPrimary;
     }
   }
 }
 
 .menuItemButtonFocus {
-  border-bottom-color: $mainFontColor;
+  border-bottom-color: $textPrimary;
 }
 
 .menuListContainer,

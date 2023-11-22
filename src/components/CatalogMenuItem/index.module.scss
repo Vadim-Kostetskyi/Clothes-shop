@@ -6,7 +6,7 @@
   padding-left: 80px;
   padding-top: 55px;
   padding-bottom: 95px;
-  background-color: $pageColor;
+  background-color: $pageBackground;
 }
 
 .category {
@@ -19,8 +19,8 @@
 .promotion {
   font-size: 32px;
   font-weight: 400;
-  letter-spacing: 0.01em;
-  color: $mainFontColor;
+  letter-spacing: 0.01rem;
+  color: $textPrimary;
 }
 
 .link:not(:last-child),
@@ -30,7 +30,7 @@
 }
 
 .promotion {
-  color: $redColor;
+  color: $alertRed;
 }
 
 .link:hover,
@@ -39,7 +39,7 @@
 .clothing:focus,
 .promotion:hover,
 .promotion:focus {
-  color: $greyColor;
+  color: $grayLight;
 }
 
 .ClothingListWrapper {

@@ -1,4 +1,4 @@
-import React, { useState, FC } from 'react';
+import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MenuItem } from 'components/Footer/MenuList';
 import Clothing from 'components/ClothingList';
@@ -16,14 +16,7 @@ const CatalogMenuItem: FC<CatalogMenuItemProps> = ({
   itemLabel,
   menuOptions,
 }) => {
-  const [showSubCategory, setShowSubCategory] = useState(false);
-  console.log(showSubCategory);
-
   const { t } = useTranslation();
-
-  const toggleCategory = (shouldShow: boolean) => () => {
-    setShowSubCategory(shouldShow);
-  };
 
   const accordionMenu = (label: string) =>
     label === 'Clothing' || label === 'Suits' || label === 'Collections';
@@ -40,10 +33,7 @@ const CatalogMenuItem: FC<CatalogMenuItemProps> = ({
                 listStyle={styles.listStyle}
                 list={
                   label === 'Clothing' && (
-                    <Clothing
-                      items={menuItems[itemLabel]}
-                      toggleCategory={toggleCategory}
-                    />
+                    <Clothing items={menuItems[itemLabel]} />
                   )
                 }
               />

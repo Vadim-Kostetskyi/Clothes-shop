@@ -13,12 +13,12 @@
   width: 200px;
   height: 100%;
   padding-left: 60px;
-  border: 1px solid $greyColor;
+  border: 1px solid $grayDark;
   border-radius: 4px;
 
   &::placeholder {
     font-family: $font-family-main;
-    color: $mainFontColor;
+    color: $textPrimary;
     font-size: 16px;
     font-weight: 400;
     line-height: 15px;

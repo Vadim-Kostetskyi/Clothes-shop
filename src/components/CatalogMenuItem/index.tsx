@@ -39,9 +39,6 @@ const CatalogMenuItemMobile: FC<CatalogMenuItemMobileProps> = ({
     setShowSubCategory(shouldShow);
   };
 
-  console.log(menuItems[itemLabel]);
-  console.log(itemLabel);
-
   return (
     <div className={styles.wrapper}>
       <div className={styles.category}>

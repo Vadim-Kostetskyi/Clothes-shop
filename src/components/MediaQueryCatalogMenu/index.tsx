@@ -8,10 +8,11 @@ import Input from 'components/Input';
 import logo from '../../assets/images/logo.png';
 import Search from 'assets/svgs/Search';
 import Menu from 'assets/svgs/Menu';
+import Cross from 'assets/svgs/Cross';
 import styles from './index.module.scss';
 
 const MediaQueryCatalogMenu = (): JSX.Element => {
-  const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t } = useTranslation();
   const location = useLocation();
   const isHomePage = location.pathname === '/';
@@ -27,7 +28,11 @@ const MediaQueryCatalogMenu = (): JSX.Element => {
       >
         <nav className={isHomePage ? styles.invisible : styles.navigation}>
           <button className={styles.openMenuButton} onClick={toggleOpenMenu()}>
-            <Menu className={styles.menuIconMobile} />
+            {isMenuOpen ? (
+              <Menu className={styles.menuIconMobile} />
+            ) : (
+              <Cross className={styles.crossIcon} />
+            )}
           </button>
           <div className={styles.wrapperMenu}>
             <CatalogMenu />

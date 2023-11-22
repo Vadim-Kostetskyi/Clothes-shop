@@ -19,7 +19,6 @@ const Accordion: FC<AccordionProps> = ({
   listStyle,
 }) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
-  console.log(list);
 
   const toggleAccordion = () => {
     setIsOpen(!isOpen);

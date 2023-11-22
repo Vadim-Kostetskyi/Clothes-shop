@@ -4,7 +4,7 @@
   display: flex;
   padding: 15px 32px;
   margin-top: 15px;
-  background-color: $pageColor;
+  background-color: $pageBackground;
 }
 
 .category {
@@ -19,17 +19,17 @@
   font-size: 24px;
   font-weight: 400;
   letter-spacing: 0.01rem;
-  color: $mainFontColor;
+  color: $textPrimary;
 }
 
 .link:not(:last-child),
 .clothing,
 .promotion {
-  margin-bottom: 15px;
+  margin-bottom: 32px;
 }
 
 .promotion {
-  color: $redColor;
+  color: $alertRed;
 }
 
 .link:hover,
@@ -38,7 +38,7 @@
 .clothing:focus,
 .promotion:hover,
 .promotion:focus {
-  color: $greyColor;
+  color: $grayLight;
 }
 
 .title {
@@ -46,7 +46,7 @@
   font-size: 24px;
   font-weight: 400;
   letter-spacing: 0.01rem;
-  color: $mainFontColor;
+  color: $textPrimary;
 }
 
 .listStyle {

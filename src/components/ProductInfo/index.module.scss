@@ -1,0 +1,33 @@
+@import 'styles/constants';
+
+.info {
+  padding-right: 5px;
+}
+
+.nameBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.productName {
+  font-size: 16px;
+  letter-spacing: 0rem;
+}
+
+.basked {
+  width: 24px;
+  height: 24px;
+}
+
+.baskedImg {
+  width: 20px;
+}
+
+.price {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0rem;
+  margin-bottom: 10px;
+}

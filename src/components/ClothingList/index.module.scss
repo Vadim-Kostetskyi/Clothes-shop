@@ -22,7 +22,7 @@
   font-size: 32px;
   font-weight: 400;
   letter-spacing: 0.01em;
-  color: $mainFontColor;
+  color: $textPrimary;
 }
 
 .link,
@@ -42,5 +42,5 @@
 .link:focus,
 .linkSeeAll:focus,
 .linkSeeAll:hover {
-  color: $greyColor;
+  color: $grayLight;
 }
