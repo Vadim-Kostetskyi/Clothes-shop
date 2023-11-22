@@ -20,15 +20,20 @@ const CatalogMenuItemMobile: FC<CatalogMenuItemMobileProps> = ({
   const { t } = useTranslation();
 
   const handleCategoryHover = (label: string) => () => {
-    if (label === 'Clothing') {
+    const clothing = label === 'Clothing';
+
+    if (clothing) {
       setShowSubCategory(true);
     }
   };
 
   const setClassName = (label: string) => {
-    if (label === 'Clothing') {
+    const clothing = label === 'Clothing';
+    const promotion = label === 'Promotion';
+
+    if (clothing) {
       return styles.clothing;
-    } else if (label === 'Promotion') {
+    } else if (promotion) {
       return styles.promotion;
     } else {
       return styles.link;
@@ -57,7 +62,7 @@ const CatalogMenuItemMobile: FC<CatalogMenuItemMobileProps> = ({
         ))}
       </div>
       <div
-        className={showSubCategory ? styles.ClothingListWrapper : styles.hide}
+        className={showSubCategory ? styles.clothingListWrapper : styles.hide}
         onMouseEnter={toggleCategory(true)}
         onMouseLeave={toggleCategory(false)}
         onFocus={toggleCategory(true)}

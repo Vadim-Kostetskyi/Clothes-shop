@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, ReactNode } from 'react';
 import PlusImg from 'assets/svgs/Plus';
 import MinusImg from 'assets/svgs/Minus';
 import styles from './index.module.scss';
@@ -7,7 +7,7 @@ interface AccordionProps {
   title: string;
   titleStyles?: string;
   defaultOpen?: boolean;
-  list?: React.ReactNode;
+  list?: ReactNode;
   listStyle?: string;
 }
 

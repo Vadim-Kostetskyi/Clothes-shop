@@ -46,16 +46,16 @@ const MediaQueryCatalogMenu = (): JSX.Element => {
         </div>
       </div>
       <div className={styles.wrapperMenuMobile}>
-        <div className={isMenuOpen ? styles.invisible : ''}>
-          <CatalogMenuMobile />
-        </div>
-        <div className={isMenuOpen ? styles.wrapperInput : styles.invisible}>
-          <Input
-            Icon={<Search className={styles.inputIcon} />}
-            className={styles.inputMobile}
-            placeholder={t('searchPlaceholder')}
-          />
-        </div>
+        {isMenuOpen ? null : <CatalogMenuMobile />}
+        {isMenuOpen ? null : (
+          <div className={styles.wrapperInput}>
+            <Input
+              Icon={<Search className={styles.inputIcon} />}
+              className={styles.inputMobile}
+              placeholder={t('searchPlaceholder')}
+            />
+          </div>
+        )}
       </div>
     </div>
   );
