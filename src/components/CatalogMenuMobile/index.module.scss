@@ -5,8 +5,6 @@
 }
 
 .menuItem {
-  font-weight: 500;
-
   &:not(:last-child) {
     margin-right: 40px;
   }
@@ -15,6 +13,7 @@
 .menuItemButton,
 .menuItemButtonFocus {
   font-size: 20px;
+  font-weight: 500;
   color: $textPrimary;
   border-bottom: 2px solid $pageBackground;
 

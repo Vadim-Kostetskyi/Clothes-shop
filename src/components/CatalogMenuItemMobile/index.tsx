@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MenuItem } from 'components/Footer/MenuList';
 import Clothing from 'components/ClothingList';
+import { HeaderMenu } from 'types';
 import Accordion from 'components/Accordion';
 import styles from './index.module.scss';
 
@@ -18,14 +19,24 @@ const CatalogMenuItem: FC<CatalogMenuItemProps> = ({
 }) => {
   const { t } = useTranslation();
 
-  const accordionMenu = (label: string) =>
-    label === 'Clothing' || label === 'Suits' || label === 'Collections';
+  const isAccordionMenu = (label: string) =>
+    ['Clothing', 'Suits', 'Collections'].includes(label);
+
+  const setClassName = (label: string) => {
+    const promotion = label === HeaderMenu.Promotion;
+
+    if (promotion) {
+      return styles.promotion;
+    } else {
+      return styles.link;
+    }
+  };
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.category}>
         {menuOptions[itemLabel].map(({ id, href, label }) =>
-          accordionMenu(label) ? (
+          isAccordionMenu(label) ? (
             <div key={id}>
               <Accordion
                 title={t('listItem', { label })}
@@ -39,7 +50,7 @@ const CatalogMenuItem: FC<CatalogMenuItemProps> = ({
               />
             </div>
           ) : (
-            <a href={href} key={id} className={styles.link}>
+            <a href={href} key={id} className={setClassName(label)}>
               {t('listItem', { label })}
             </a>
           ),

@@ -14,10 +14,10 @@ const ClothingList: FC<SubCategoryMenuProps> = ({ items, toggleCategory }) => {
   return (
     <div
       className={styles.wrapper}
-      onMouseEnter={toggleCategory && toggleCategory(true)}
-      onMouseLeave={toggleCategory && toggleCategory(false)}
-      onFocus={toggleCategory && toggleCategory(true)}
-      onBlur={toggleCategory && toggleCategory(false)}
+      onMouseEnter={toggleCategory ? toggleCategory(true) : undefined}
+      onMouseLeave={toggleCategory ? toggleCategory(false) : undefined}
+      onFocus={toggleCategory ? toggleCategory(true) : undefined}
+      onBlur={toggleCategory ? toggleCategory(false) : undefined}
     >
       {items.map(({ id, href, label }) => (
         <a

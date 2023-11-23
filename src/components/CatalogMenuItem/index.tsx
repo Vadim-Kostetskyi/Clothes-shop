@@ -1,6 +1,7 @@
 import React, { useState, FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MenuItem } from 'components/Footer/MenuList';
+import { HeaderMenu } from 'types';
 import ClothingList from 'components/ClothingList';
 import styles from './index.module.scss';
 
@@ -20,7 +21,7 @@ const CatalogMenuItemMobile: FC<CatalogMenuItemMobileProps> = ({
   const { t } = useTranslation();
 
   const handleCategoryHover = (label: string) => () => {
-    const clothing = label === 'Clothing';
+    const clothing = label === HeaderMenu.Clothing;
 
     if (clothing) {
       setShowSubCategory(true);
@@ -28,8 +29,8 @@ const CatalogMenuItemMobile: FC<CatalogMenuItemMobileProps> = ({
   };
 
   const setClassName = (label: string) => {
-    const clothing = label === 'Clothing';
-    const promotion = label === 'Promotion';
+    const clothing = label === HeaderMenu.Clothing;
+    const promotion = label === HeaderMenu.Promotion;
 
     if (clothing) {
       return styles.clothing;

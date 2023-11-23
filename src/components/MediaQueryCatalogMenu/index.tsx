@@ -29,9 +29,9 @@ const MediaQueryCatalogMenu = (): JSX.Element => {
         <nav className={isHomePage ? styles.invisible : styles.navigation}>
           <button className={styles.openMenuButton} onClick={toggleOpenMenu()}>
             {isMenuOpen ? (
-              <Menu className={styles.menuIconMobile} />
-            ) : (
               <Cross className={styles.crossIcon} />
+            ) : (
+              <Menu className={styles.menuIconMobile} />
             )}
           </button>
           <div className={styles.wrapperMenu}>
@@ -46,7 +46,7 @@ const MediaQueryCatalogMenu = (): JSX.Element => {
         </div>
       </div>
       <div className={styles.wrapperMenuMobile}>
-        {isMenuOpen ? null : <CatalogMenuMobile />}
+        {isMenuOpen ? <CatalogMenuMobile /> : null}
         {isMenuOpen ? null : (
           <div className={styles.wrapperInput}>
             <Input

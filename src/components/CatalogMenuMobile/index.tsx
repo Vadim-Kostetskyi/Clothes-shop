@@ -21,37 +21,35 @@ const CatalogMenuMobile: FC<MenuLayoutProps> = () => {
   };
 
   return (
-    <>
-      <div className={styles.menuBox}>
-        {menuName.map(({ id, label }) => (
-          <div className={styles.menuItem} key={id}>
-            <button
-              className={
-                menuOpen === label
-                  ? styles.menuItemButtonFocus
-                  : styles.menuItemButton
-              }
-              onClick={toggleCategory(label)}
-            >
-              {t('listItem', { label })}
-            </button>
-            <div
-              className={
-                menuOpen === label
-                  ? styles.menuListContainer
-                  : styles.menuListContainerHide
-              }
-            >
-              <CatalogMenuItemMobile
-                menuItems={subcategory}
-                itemLabel={label}
-                menuOptions={category}
-              />
-            </div>
+    <div className={styles.menuBox}>
+      {menuName.map(({ id, label }) => (
+        <div className={styles.menuItem} key={id}>
+          <button
+            className={
+              menuOpen === label
+                ? styles.menuItemButtonFocus
+                : styles.menuItemButton
+            }
+            onClick={toggleCategory(label)}
+          >
+            {t('listItem', { label })}
+          </button>
+          <div
+            className={
+              menuOpen === label
+                ? styles.menuListContainer
+                : styles.menuListContainerHide
+            }
+          >
+            <CatalogMenuItemMobile
+              menuItems={subcategory}
+              itemLabel={label}
+              menuOptions={category}
+            />
           </div>
-        ))}
-      </div>
-    </>
+        </div>
+      ))}
+    </div>
   );
 };
 
