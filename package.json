@@ -1,5 +1,5 @@
 {
-  "name": "Online-store",
+  "name": "online-store",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -44,9 +44,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "check-types": "tsc --noEmit",
     "lint": "eslint src/",
     "lint-fix": "eslint --fix src/",
     "format": "npx prettier . --write",
+    "pre-commit": "lint-staged",
     "prepare": "husky install"
   },
   "browserslist": {
@@ -68,7 +70,7 @@
     "eslint": "^8.52.0",
     "eslint-config-prettier": "^9.0.0",
     "husky": "^8.0.0",
-    "lint-staged": "^15.0.2",
+    "lint-staged": "^15.1.0",
     "prettier": "3.0.3"
   }
 }
