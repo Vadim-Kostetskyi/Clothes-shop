@@ -1,26 +1,43 @@
-@import "styles/constants";
+@import 'styles/constants';
 
 .image {
-  margin: 0px 80px;
   height: 855px;
   max-width: $max-content-width;
 
-  @include media(tablet) {
-    margin: 0px 32px;
+  @include laptopOnly {
+    padding: 0px 32px;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
   }
 }
 
+.imagesWrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.itemsWrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
 .wrapperArrows {
-  margin: 0px 80px;
-  width: 89%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   position: absolute;
   top: calc(50% - 24px);
   z-index: 1;
+
+  @include laptopOnly {
+    width: 94%;
+  }
 }
 
-.arrows {
+.arrow {
   cursor: pointer;
   opacity: 0.5;
   margin: 0px 11px;
@@ -57,14 +74,6 @@
   transform: rotate(0.5turn);
 }
 
-.test {
-  @include media(tablet) {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-}
-
 .text {
   color: $brilliance;
   text-align: center;
@@ -78,15 +87,14 @@
   top: calc(50% - 42px);
 
   @include media(tablet) {
+    max-width: 284px;
     font-size: 40px;
-    width: 284px;
     font-weight: 400;
-    height: 74px;
-     top: calc(50% - 30px);
+    line-height: 48px;
   }
 }
 
-.wrapperButon {
+.wrapperButton {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -95,7 +103,7 @@
   top: calc(50% + 62px);
 
   @include media(tablet) {
-   top: calc(50% + 48px);
+    top: calc(50% + 92px);
   }
 }
 
