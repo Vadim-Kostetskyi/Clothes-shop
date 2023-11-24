@@ -64,7 +64,9 @@ const CollectionImageSwiper = () => {
         {slides.map(({ text, image, id }) => (
           <SwiperSlide key={id}>
             <img src={image} alt={text} className={styles.image} />
-            <p className={styles.text}>{text}</p>
+            <div className={styles.test}>
+              <p className={styles.text}>{text}</p>
+            </div>
           </SwiperSlide>
         ))}
         <div className={styles.wrapperArrows}>
