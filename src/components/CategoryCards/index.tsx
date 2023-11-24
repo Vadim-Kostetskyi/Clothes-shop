@@ -30,20 +30,18 @@ const categories: CategoryCardProps[] = [
   },
 ];
 
-const CategoryCards = () => {
-  return (
-    <div className={styles.cardsWrapper}>
-      {categories.map(({ id, image, imageSmall, category }) => (
-        <CategoryCard
-          id={id}
-          key={id}
-          image={image}
-          imageSmall={imageSmall}
-          category={category}
-        />
-      ))}
-    </div>
-  );
-};
+const CategoryCards = () => (
+  <div className={styles.cardsWrapper}>
+    {categories.map(({ id, image, imageSmall, category }) => (
+      <CategoryCard
+        id={id}
+        key={id}
+        image={image}
+        imageSmall={imageSmall}
+        category={category}
+      />
+    ))}
+  </div>
+);
 
 export default CategoryCards;

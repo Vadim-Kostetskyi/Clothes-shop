@@ -63,6 +63,12 @@
       "last 1 safari version"
     ]
   },
+  "lint-staged": {
+    "**/*.{ts,tsx, scss}": [
+      "npm run lint-fix",
+      "npm run format"
+    ]
+  },
   "devDependencies": {
     "@types/react-router-dom": "^5.3.3",
     "@typescript-eslint/eslint-plugin": "^6.9.0",
