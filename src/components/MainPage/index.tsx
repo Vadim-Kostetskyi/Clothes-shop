@@ -9,11 +9,11 @@ import ScrollToTop from 'components/ScrollToTop';
 const MainPage = () => (
   <>
     <Header />
-      <CollectionImageSwiper />
-      <NewNow />
-      <FormSubscription />
-      <Footer />
-      <ScrollToTop />
+    <CollectionImageSwiper />
+    <NewNow />
+    <FormSubscription />
+    <Footer />
+    <ScrollToTop />
   </>
 );
 
