@@ -1,0 +1,78 @@
+@import 'styles/constants';
+
+.cardWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: center;
+}
+
+.itemsWrapper {
+  position: relative;
+}
+
+.image {
+  max-height: 856px;
+}
+
+.title {
+  margin: 0px 80px 16px;
+  max-width: 156px;
+  line-height: 53px;
+  display: flex;
+  align-items: center;
+  color: $blackColor;
+  font-family: $font-family-main;
+  font-size: 32px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    color: $grayLight;
+  }
+}
+
+.text {
+  width: 100%;
+  position: absolute;
+  top: calc(50% - 42px);
+  z-index: 1;
+  color: $brilliance;
+  text-align: center;
+  text-shadow: 1px 2px 0px rgba(0, 0, 0, 0.25);
+  font-family: $font-family-main;
+  font-size: 72px;
+  font-weight: 400;
+  line-height: 84px;
+  text-transform: uppercase;
+}
+
+.wrapperButton {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  z-index: 1;
+  top: calc(50% + 125px);
+}
+
+.button {
+  border-radius: 4px;
+  background: $brilliance;
+  display: flex;
+  width: 200px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  color: #212121;
+  font-family: $font-family-main;
+  font-size: 20px;
+  letter-spacing: 0.2px;
+  transition: all 0.3s ease-out;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #212121;
+    color: $brilliance;
+  }
+}
