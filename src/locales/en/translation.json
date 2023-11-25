@@ -16,5 +16,7 @@
     "policy": "I accept the privacy policy",
     "discountHeader": "Subscribe to our newsletter",
     "discountPercent": "and get a -{{discountPercent}}% discount"
-  }
+  },
+  "viewCollection": "View Collection",
+  "collections": "Collections"
 }

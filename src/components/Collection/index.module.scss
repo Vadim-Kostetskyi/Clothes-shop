@@ -12,21 +12,19 @@
 }
 
 .image {
-  width: 636px;
-  height: 856px;
+  max-height: 856px;
 }
 
 .title {
   margin: 0px 80px 16px;
-  width: 156px;
-  height: 53px;
+  max-width: 156px;
+  line-height: 53px;
   display: flex;
   align-items: center;
   color: $blackColor;
   font-family: $font-family-main;
   font-size: 32px;
   font-weight: 600;
-  line-height: 84px;
   cursor: pointer;
 
   &:hover {
@@ -49,7 +47,7 @@
   text-transform: uppercase;
 }
 
-.wrapperButon {
+.wrapperButton {
   width: 100%;
   display: flex;
   justify-content: center;

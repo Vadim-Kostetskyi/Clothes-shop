@@ -2,6 +2,7 @@ import React from 'react';
 import ManCollection1 from '../../assets/images/collection-man-image-1.png';
 import ManCollection2 from '../../assets/images/colection-man-image-2.png';
 import styles from './index.module.scss';
+import { useTranslation } from 'react-i18next';
 
 const collections: CollectionCardProps[] = [
   {
@@ -23,16 +24,17 @@ export interface CollectionCardProps {
 }
 
 const Collection = () => {
+  const { t } = useTranslation();
   return (
     <>
-      <p className={styles.title}>Collections</p>
+      <p className={styles.title}>{t('collections')}</p>
       <div className={styles.cardWrapper}>
         {collections.map(({ id, image, text }) => (
           <div key={id} className={styles.itemsWrapper}>
             <img src={image} alt={text} className={styles.image} />
             <p className={styles.text}>{text}</p>
-            <div className={styles.wrapperButon}>
-              <button className={styles.button}>View collection</button>
+            <div className={styles.wrapperButton}>
+              <button className={styles.button}>{t('viewCollection')}</button>
             </div>
           </div>
         ))}
