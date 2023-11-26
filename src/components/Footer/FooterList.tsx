@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Accordion from '../Accordion/Accordion';
+import Accordion from '../AccordionFooter/Accordion';
 import { menuName, listContent } from './ListItems';
 import styles from './Footer.module.scss';
 
@@ -25,7 +25,6 @@ const FooterList = ({ className }: { className: string }): JSX.Element => {
             openList={openList}
             listNumber={listNumber}
           />
-
           <nav
             className={
               listVisible && listVisible[listNumber]

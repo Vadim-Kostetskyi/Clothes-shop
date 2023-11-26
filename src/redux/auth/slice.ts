@@ -43,13 +43,7 @@ const initialState: ICategoryState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {
-    // addCase(state, action: PayloadAction<IAuthData>) {
-    //   //   state.userInfo = action.payload
-    // }
-  },
+  reducers: {},
 });
-
-// export const {addCase} = authSlice.actions
 
 export default authSlice.reducer;

@@ -15,30 +15,34 @@ const categories: CategoryCardProps[] = [
     image: WomenCategoryImage,
     imageSmall: WomenImageSmall,
     category: 'Women',
+    href: '#',
   },
   {
     id: 1,
     image: MenCategoryImage,
     imageSmall: MenImageSmall,
     category: 'Men',
+    href: '/main-page/men',
   },
   {
     id: 2,
     image: KidsCategoryImage,
     imageSmall: KidsImageSmall,
     category: 'Kids',
+    href: '#',
   },
 ];
 
 const CategoryCards = () => (
   <div className={styles.cardsWrapper}>
-    {categories.map(({ id, image, imageSmall, category }) => (
+    {categories.map(({ id, image, imageSmall, category, href }) => (
       <CategoryCard
         id={id}
         key={id}
         image={image}
         imageSmall={imageSmall}
         category={category}
+        href={href}
       />
     ))}
   </div>

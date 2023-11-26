@@ -10,21 +10,21 @@ const TopBar = (): JSX.Element => {
 
   return (
     <>
-      <div className={styles.inputBox}>
+      <div className={styles.searchBox}>
         <input
           type="text"
-          className={styles.input}
+          className={styles.searchInput}
           placeholder={t('searchPlaceholder')}
         />
-        <button className={styles.searchBtn}>
+        <button className={styles.searchButton}>
           <Search className={styles.searchIcon} />
         </button>
       </div>
-      <button className={styles.userBtn}>
+      <button className={styles.userButton}>
         <User className={styles.userIcon} />
       </button>
-      <button className={styles.userBtn}>
-        <ShoppingBag className={styles.userIcon} />
+      <button className={styles.shoppingBagButton}>
+        <ShoppingBag className={styles.shoppingBagIcon} />
       </button>
     </>
   );

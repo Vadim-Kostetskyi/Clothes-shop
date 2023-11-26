@@ -7,15 +7,17 @@ export interface CategoryCardProps {
   image: string;
   imageSmall: string;
   category: string;
+  href: string;
 }
 
 const CategoryCard: FC<CategoryCardProps> = ({
   image,
   category,
   imageSmall,
+  href,
 }) => {
   return (
-    <div className={styles.categoryImageWrapper}>
+    <a href={href} className={styles.categoryImageWrapper}>
       <picture>
         <source media="(max-width: 960px)" srcSet={imageSmall} />
         <img src={image} alt={category} className={styles.image} />
@@ -24,7 +26,7 @@ const CategoryCard: FC<CategoryCardProps> = ({
         <p className={styles.categorylink}>Go to fashion</p>
         <p className={styles.categoryTitle}>{category}</p>
       </div>
-    </div>
+    </a>
   );
 };
 
