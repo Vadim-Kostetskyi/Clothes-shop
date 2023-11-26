@@ -1,14 +1,25 @@
-@import 'styles/constants';
+@import "styles/constants";
 
 .cardWrapper {
   display: flex;
   flex-direction: row;
   gap: 8px;
   justify-content: center;
+
+  @include media(tablet) {
+    flex-direction: column;
+  }
 }
 
 .itemsWrapper {
   position: relative;
+
+  @include media(tablet) {
+    max-width: 100%;
+    padding: 0px 32px;
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .image {
@@ -45,6 +56,12 @@
   font-weight: 400;
   line-height: 84px;
   text-transform: uppercase;
+
+  @include media(tablet) {
+    max-width: 290px;
+    font-size: 40px;
+    line-height: 50px;
+  }
 }
 
 .wrapperButton {
@@ -54,6 +71,10 @@
   position: absolute;
   z-index: 1;
   top: calc(50% + 125px);
+
+  @include media(tablet) {
+    top: calc(50% + 100px);
+  }
 }
 
 .button {
