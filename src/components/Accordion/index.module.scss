@@ -21,7 +21,7 @@
   height: 24px;
   position: relative;
 
-  @include media(laptopMin) {
+  @include media(laptopUp) {
     display: none;
   }
 }

@@ -46,7 +46,7 @@
 }
 
 .wrapperInput {
-  @include media(laptopMin) {
+  @include media(laptopUp) {
     display: none;
   }
 }
