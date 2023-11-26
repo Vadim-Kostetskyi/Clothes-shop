@@ -11,6 +11,7 @@ $font-family-main: League Spartan;
 
 $mobile: 480px;
 $tablet: 960px;
+$laptopMin: 961px;
 $laptop: 1280px;
 $desktop: 1440px;
 $max-content-width: 1280px;
@@ -40,15 +41,21 @@ $max-content-width: 1280px;
     }
   }
 
-  @if $breakpoint ==tabletMin {
+  @if $breakpoint ==tabletUp {
     @media only screen and (min-width: 481px) {
       @content;
     }
   }
 
-  @if $breakpoint ==laptopMin {
-    @media only screen and (min-width: 961px) {
+  @if $breakpoint ==laptopUp {
+    @media only screen and (min-width: $laptopMin) {
       @content;
     }
+  }
+}
+
+@mixin laptopOnly {
+  @media only screen and (min-width: #{$laptopMin}) and (max-width: #{$laptop}) {
+    @content;
   }
 }
