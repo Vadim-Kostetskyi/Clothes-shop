@@ -26,37 +26,46 @@ const MediaQueryCatalogMenu = (): JSX.Element => {
           isHomePage ? styles.headerWrapperHomePage : styles.headerWrapper
         }
       >
-        <nav className={isHomePage ? styles.invisible : styles.navigation}>
-          <button className={styles.openMenuButton} onClick={toggleOpenMenu()}>
-            {isMenuOpen ? (
-              <Cross className={styles.crossIcon} />
-            ) : (
-              <Menu className={styles.menuIconMobile} />
-            )}
-          </button>
-          <div className={styles.wrapperMenu}>
-            <CatalogMenu />
-          </div>
-        </nav>
+        {isHomePage ? null : (
+          <nav className={styles.navigation}>
+            <button
+              className={styles.openMenuButton}
+              onClick={toggleOpenMenu()}
+            >
+              {isMenuOpen ? (
+                <Cross className={styles.crossIcon} />
+              ) : (
+                <Menu className={styles.menuIconMobile} />
+              )}
+            </button>
+            <div className={styles.wrapperMenu}>
+              <CatalogMenu />
+            </div>
+          </nav>
+        )}
         <Link to="/">
           <img src={logo} className={styles.logo} alt="Logo" />
         </Link>
-        <div className={isHomePage ? styles.invisible : styles.userBox}>
-          <TopBar />
-        </div>
-      </div>
-      <div className={styles.wrapperMenuMobile}>
-        {isMenuOpen ? <CatalogMenuMobile /> : null}
-        {isMenuOpen ? null : (
-          <div className={styles.wrapperInput}>
-            <Input
-              Icon={<Search className={styles.inputIcon} />}
-              className={styles.inputMobile}
-              placeholder={t('searchPlaceholder')}
-            />
+        {isHomePage ? null : (
+          <div className={styles.userBox}>
+            <TopBar />
           </div>
         )}
       </div>
+      {isHomePage ? null : (
+        <div className={styles.wrapperMenuMobile}>
+          {isMenuOpen ? <CatalogMenuMobile /> : null}
+          {isMenuOpen ? null : (
+            <div className={styles.wrapperInput}>
+              <Input
+                Icon={<Search className={styles.inputIcon} />}
+                className={styles.inputMobile}
+                placeholder={t('searchPlaceholder')}
+              />
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

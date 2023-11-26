@@ -27,7 +27,7 @@ const Accordion: FC<AccordionProps> = ({
   return (
     <div className={styles.accordion}>
       <button className={styles.box} onClick={toggleAccordion}>
-        <h3 className={titleStyles}>{title}</h3>
+        <p className={titleStyles}>{title}</p>
         {isOpen ? (
           <MinusImg className={styles.img} />
         ) : (

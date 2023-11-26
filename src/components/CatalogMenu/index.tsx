@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { menuName, subcategory, category } from './MenuList';
 import CatalogMenuItem from 'components/CatalogMenuItem';
 import styles from './index.module.scss';
 
-const CatalogMenu: FC = () => {
+const CatalogMenu = (): JSX.Element => {
   const { t } = useTranslation();
 
   return (
