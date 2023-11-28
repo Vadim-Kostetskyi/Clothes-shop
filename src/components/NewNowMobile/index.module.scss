@@ -1,13 +1,5 @@
 @import 'styles/constants';
 
-.img {
-  height: 650px;
-  margin-bottom: 15px;
-  @include media(tablet) {
-    height: auto;
-  }
-}
-
 .wrapperArrows {
   position: absolute;
   display: flex;
@@ -35,6 +27,6 @@
   transform: rotate(0.5turn);
 }
 
-.hide {
-  display: none;
+.invisible {
+  visibility: hidden;
 }

@@ -6,12 +6,14 @@ import styles from './index.module.scss';
 
 export interface ProductImageSwiperProps {
   productName: string;
-  images: string[];
+  images?: string[];
+  // wrapperClassName: string;
 }
 
 const ProductImageSwiper: FC<ProductImageSwiperProps> = ({
   images,
   productName,
+  // wrapperClassName,
 }) => {
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
@@ -32,11 +34,12 @@ const ProductImageSwiper: FC<ProductImageSwiperProps> = ({
       className={styles.productImageSwiper}
     >
       <CoreSwiper navigation={{ prevEl, nextEl }}>
-        {images.map((image, index) => (
-          <SwiperSlide key={index}>
-            <img src={image} alt={productName} className={styles.img} />
-          </SwiperSlide>
-        ))}
+        {images &&
+          images.map((image, index) => (
+            <SwiperSlide key={index}>
+              <img src={image} alt={productName} className={styles.img} />
+            </SwiperSlide>
+          ))}
         <div className={isHidden ? styles.hide : styles.wrapperArrows}>
           <button ref={node => setPrevEl(node)} className={styles.itemArrow}>
             <ArrowSwiperCard
