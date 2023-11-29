@@ -2,9 +2,13 @@
 
 .header {
   padding: 18px 80px;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  background-color: $pageBackground;
 
   @include media(tablet) {
-    padding: 0 32px 0 32px;
+    padding: 0 32px 15px 32px;
     margin-bottom: 16px;
   }
 }

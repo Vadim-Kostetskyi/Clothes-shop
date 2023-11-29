@@ -2,7 +2,6 @@ import React, { FC, useState } from 'react';
 import { Navigation, Virtual } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import ArrowSwiperCard from 'assets/svgs/ArrowSwiperCard';
-// TODO: load pics from backend
 import ProductCard from 'components/ProductCard';
 import { CardProps } from 'components/NewNow';
 import styles from './index.module.scss';
@@ -15,28 +14,6 @@ const NewNowMobile: FC<NewNowMobile> = ({ cards }) => {
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-
-  // // TODO: load info from backend
-  // const cards = [
-  //   {
-  //     productName: 'Shearling denim jacket',
-  //     price: '119.99 €',
-  //     sizes: [Size.XS, Size.S, Size.XL],
-  //     image: img1,
-  //   },
-  //   {
-  //     productName: 'Ribbed wool-blend sweater',
-  //     price: '89 €',
-  //     sizes: [Size.XS, Size.M, Size.L],
-  //     image: img2,
-  //   },
-  //   {
-  //     productName: '100% cotton bomber jacket',
-  //     price: '54.59 €',
-  //     sizes: [Size.S, Size.M, Size.XL],
-  //     image: img3,
-  //   },
-  // ];
 
   return (
     <>

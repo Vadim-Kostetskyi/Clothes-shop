@@ -53,7 +53,7 @@ const CollectionImageSwiper = () => {
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
 
   return (
-    <>
+    <div className={styles.swiper}>
       <CoreSwiper
         modules={[Pagination, Autoplay]}
         navigation={{
@@ -101,7 +101,7 @@ const CollectionImageSwiper = () => {
           <button className={styles.button}>View collection</button>
         </div>
       </CoreSwiper>
-    </>
+    </div>
   );
 };
 
