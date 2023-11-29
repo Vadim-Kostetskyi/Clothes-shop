@@ -40,7 +40,7 @@ export const productsApi = createApi({
         const images = await Promise.all(
           productsId.map(async id => {
             const images = await fetchWithBQ(`products/images/${id}`);
-            return { id: images?.data };
+            return { id, images: images?.data };
           }),
         );
 

@@ -1,3 +1,5 @@
+import { Size } from 'types';
+
 export interface GetProductsPayload {
   page: number;
   size: number;
@@ -6,9 +8,21 @@ export interface GetProductsPayload {
 // TODO: add type from swagger
 interface ProductProps {
   id: string;
+  title: string;
+  price: string;
+  size: Size[];
 }
-// TODO: add type from swagger
-interface ImageProps {}
+
+export interface ImageItemProps {
+  id: string;
+  name: string;
+  url: string;
+}
+
+export interface ImageProps {
+  id: string;
+  images: ImageItemProps[];
+}
 
 export interface GetProductsResponse {
   data: ProductProps[];
