@@ -5,7 +5,6 @@ export interface GetProductsPayload {
   size: number;
 }
 
-// TODO: add type from swagger
 interface ProductProps {
   id: string;
   title: string;
