@@ -10,6 +10,15 @@ interface ProductProps {
   title: string;
   price: string;
   size: Size[];
+  category: string;
+  subcategory: string;
+  colour: string;
+  description: string;
+  composition: string;
+  brand: string;
+  collection: string;
+  manufacturer: string;
+  files: string[];
 }
 
 export interface ImageItemProps {
