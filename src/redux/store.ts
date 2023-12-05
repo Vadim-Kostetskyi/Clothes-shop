@@ -1,40 +1,14 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import categorySlice from './products/slice';
-import authSlice from './auth/slice';
-import {
-  FLUSH,
-  PAUSE,
-  PERSIST,
-  persistStore,
-  persistReducer,
-  PURGE,
-  REGISTER,
-  REHYDRATE,
-} from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-
-const authPersistConfig = {
-  key: 'auth',
-  storage,
-  whitelist: ['token'],
-};
-const rootReducer = combineReducers({
-  auth: persistReducer(authPersistConfig, authSlice),
-  category: categorySlice,
-});
+import { configureStore } from '@reduxjs/toolkit';
+import { setupListeners } from '@reduxjs/toolkit/query';
+import { filesApi } from './filesApi';
+import { productsApi } from './productsApi';
 
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    [productsApi.reducerPath]: productsApi.reducer,
+    [filesApi.reducerPath]: filesApi.reducer,
+  },
   middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-    }),
+    getDefaultMiddleware().concat(productsApi.middleware, filesApi.middleware),
 });
-
-export const myPersistStore = persistStore(store);
-
-export type AppDispatch = typeof store.dispatch;
-
-export type RootState = ReturnType<typeof store.getState>;
+setupListeners(store.dispatch);
