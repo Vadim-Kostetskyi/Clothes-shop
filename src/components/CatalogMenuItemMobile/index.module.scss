@@ -1,0 +1,61 @@
+@import 'styles/constants';
+
+.wrapper {
+  display: flex;
+  padding: 15px 32px;
+  margin-top: 15px;
+  background-color: $pageBackground;
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.link,
+.clothing,
+.promotion {
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0.01rem;
+  color: $textPrimary;
+}
+
+.link:not(:last-child),
+.clothing,
+.promotion {
+  margin-bottom: 32px;
+}
+
+.promotion {
+  color: $alertRed;
+}
+
+.link:hover,
+.link:focus,
+.clothing:hover,
+.clothing:focus,
+.promotion:hover,
+.promotion:focus {
+  color: $grayLight;
+}
+
+.title {
+  font-family: $font-family-main;
+  font-size: 24px;
+  letter-spacing: 0.01rem;
+  color: $textPrimary;
+}
+
+.listStyle {
+  padding-left: 15px;
+  overflow: hidden;
+  padding-bottom: 0;
+  max-height: 220px;
+  transition: all 200ms ease;
+}
+
+.hide {
+  display: none;
+}

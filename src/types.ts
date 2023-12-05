@@ -10,3 +10,12 @@ export enum Color {
   Black = 'black',
   White = 'white',
 }
+
+export enum HeaderMenu {
+  NewNow = 'New now',
+  Clothing = 'Clothing',
+  Suits = 'Suits',
+  ShoesAndAccessories = 'Shoes and accessories',
+  Promotion = 'Promotion',
+  Collections = 'Collections',
+}

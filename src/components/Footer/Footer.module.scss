@@ -1,14 +1,14 @@
 @import 'styles/constants';
 
 .footer {
-  margin-top: 15px;
+  margin: 15px 80px 0 80px;
 }
 
 .shadowBorder {
   width: 100%;
   border: 1px solid #ccc;
 
-  @include media(laptopMin) {
+  @include media(laptopUp) {
     box-shadow: 0px 4px 4px 0px #00000026;
   }
 }
@@ -34,7 +34,7 @@
 .columnMobile {
   margin-top: 20px;
 
-  @include media(laptopMin) {
+  @include media(laptopUp) {
     display: none;
   }
 }

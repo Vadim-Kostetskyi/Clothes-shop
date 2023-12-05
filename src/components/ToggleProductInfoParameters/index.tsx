@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import Cross from 'assets/svgs/cross';
+import Cross from 'assets/svgs/Cross';
 import { Size } from 'types';
 import styles from './index.module.scss';
 
