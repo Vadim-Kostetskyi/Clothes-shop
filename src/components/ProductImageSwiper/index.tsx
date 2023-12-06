@@ -34,7 +34,7 @@ const ProductImageSwiper: FC<ProductImageSwiperProps> = ({
       className={styles.productImageSwiper}
     >
       <CoreSwiper navigation={{ prevEl, nextEl }}>
-        {images &&
+        {images?.length &&
           images.map((image, index) => (
             <SwiperSlide key={index}>
               <img src={image} alt={productName} className={styles.img} />

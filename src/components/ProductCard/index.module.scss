@@ -3,11 +3,11 @@
 .productCard {
   width: 420px;
   @include media(tablet) {
-    width: 220px;
+    max-width: 220px;
   }
 }
 
 .image {
-  width: 220px;
+  max-width: 220px;
   margin-bottom: 10px;
 }
