@@ -4,9 +4,12 @@ import ShoppingBag from 'assets/svgs/ShoppingBag';
 import User from 'assets/svgs/User';
 import Search from 'assets/svgs/Search';
 import styles from './index.module.scss';
+import { useSelector } from 'react-redux';
+import { selectQuantity } from 'redux/slices/bucket/bucket';
 
 const TopBar = (): JSX.Element => {
   const { t } = useTranslation();
+  const quantity = useSelector(selectQuantity);
 
   return (
     <>
@@ -25,6 +28,7 @@ const TopBar = (): JSX.Element => {
       </button>
       <button className={styles.shoppingBagButton}>
         <ShoppingBag className={styles.shoppingBagIcon} />
+        {quantity > 0 && <div className={styles.quantity}>{quantity}</div>}
       </button>
     </>
   );

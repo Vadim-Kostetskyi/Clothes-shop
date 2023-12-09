@@ -3,7 +3,7 @@ import ProductCard from 'components/ProductCard';
 import { useGetProductsWithImagesQuery } from 'redux/productsApi';
 import styles from './index.module.scss';
 
-const Productscards = () => {
+const ProductsCards = () => {
   const { data } = useGetProductsWithImagesQuery({ page: 0, size: 9 });
 
   return (
@@ -13,6 +13,7 @@ const Productscards = () => {
         return (
           <ProductCard
             key={id}
+            productId={id}
             productName={title}
             price={price}
             sizes={size}
@@ -24,4 +25,4 @@ const Productscards = () => {
   );
 };
 
-export default Productscards;
+export default ProductsCards;

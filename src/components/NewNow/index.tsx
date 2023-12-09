@@ -18,18 +18,21 @@ const NewNow = (): JSX.Element => {
   // TODO: load info from backend
   const cards = [
     {
+      productId: 'id-1',
       productName: 'Shearling denim jacket',
       price: '119.99 €',
       sizes: [Size.XS, Size.S, Size.XL],
       images: [img1, img2, img3, img4, img5, img6, img7],
     },
     {
+      productId: 'id-2',
       productName: 'Ribbed wool-blend sweater',
       price: '89 €',
       sizes: [Size.XS, Size.M, Size.L],
       images: [img3, img4, img5],
     },
     {
+      productId: 'id-3',
       productName: '100% cotton bomber jacket',
       price: '54.59 €',
       sizes: [Size.S, Size.M, Size.XL],
@@ -42,8 +45,9 @@ const NewNow = (): JSX.Element => {
       <div className={styles.newNowBox}>
         <h1 className={styles.title}>{t('newNow')}</h1>
         <div className={styles.cardBox}>
-          {cards.map(({ productName, price, sizes }, index) => (
+          {cards.map(({ productId, productName, price, sizes }, index) => (
             <ProductCard
+              productId={productId}
               key={index}
               productName={productName}
               price={price}

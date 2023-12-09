@@ -6,6 +6,7 @@ import styles from './index.module.scss';
 import { ImageItemProps } from 'redux/types';
 
 export interface ProductCardProps {
+  productId: string;
   productName: string;
   price: string;
   sizes: Size[];
@@ -13,6 +14,7 @@ export interface ProductCardProps {
 }
 
 const ProductCard: FC<ProductCardProps> = ({
+  productId,
   price,
   productName,
   sizes,
@@ -20,7 +22,12 @@ const ProductCard: FC<ProductCardProps> = ({
 }) => (
   <div className={styles.productCard}>
     <ProductImageSwiper images={images} />
-    <ProductInfo productName={productName} price={price} sizes={sizes} />
+    <ProductInfo
+      productId={productId}
+      productName={productName}
+      price={Number.parseFloat(price)}
+      sizes={sizes}
+    />
   </div>
 );
 
