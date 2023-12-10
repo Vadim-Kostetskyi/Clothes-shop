@@ -7,13 +7,11 @@ import styles from './index.module.scss';
 export interface ProductImageSwiperProps {
   productName: string;
   images?: string[];
-  // wrapperClassName: string;
 }
 
 const ProductImageSwiper: FC<ProductImageSwiperProps> = ({
   images,
   productName,
-  // wrapperClassName,
 }) => {
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);

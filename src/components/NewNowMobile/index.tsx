@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, { FC, useCallback, useMemo, useState } from 'react';
 import clsx from 'clsx';
 import { Navigation, Virtual } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -25,13 +25,15 @@ const NewNowMobile: FC<NewNowMobile> = ({ cards }) => {
     [setActiveIndex],
   );
 
-  const arrowClassName = (arrowPrev?: boolean) => {
-    if (arrowPrev) {
-      return activeIndex ? styles.itemArrow : styles.invisible;
-    }
-    return activeIndex ? styles.invisible : styles.itemArrow;
-  };
-
+  const arrowClassName = useMemo(
+    () => (arrowPrev?: boolean) => {
+      if (arrowPrev) {
+        return activeIndex ? styles.itemArrow : styles.invisible;
+      }
+      return activeIndex ? styles.invisible : styles.itemArrow;
+    },
+    [activeIndex],
+  );
   return (
     <>
       <Swiper
