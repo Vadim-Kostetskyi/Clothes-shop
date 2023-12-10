@@ -6,7 +6,7 @@ import NewNow from 'components/NewNow';
 import Footer from 'components/Footer';
 import ScrollToTop from 'components/ScrollToTop';
 import Collection from 'components/Collection';
-import Productscards from 'components/ProductsCards';
+import ProductsCards from 'components/ProductsCards';
 
 const MainPage = () => (
   <>
@@ -15,7 +15,7 @@ const MainPage = () => (
     <NewNow />
     <Collection />
     <FormSubscription />
-    <Productscards />
+    <ProductsCards />
     <Footer />
     <ScrollToTop />
   </>

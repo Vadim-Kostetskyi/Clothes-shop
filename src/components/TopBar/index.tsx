@@ -1,15 +1,41 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import ShoppingBag from 'assets/svgs/ShoppingBag';
 import User from 'assets/svgs/User';
 import Search from 'assets/svgs/Search';
 import styles from './index.module.scss';
-import { useSelector } from 'react-redux';
-import { selectQuantity } from 'redux/slices/bucket/bucket';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectQuantity,
+  actions as bucketActions,
+} from 'redux/slices/bucket/bucket';
+
+enum BucketTimerConfig {
+  SECOND = 1000,
+  MINUTE = 60 * BucketTimerConfig.SECOND,
+  TWENTY_MINUTES = 20 * BucketTimerConfig.MINUTE,
+}
 
 const TopBar = (): JSX.Element => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
   const quantity = useSelector(selectQuantity);
+
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout | undefined;
+
+    if (quantity > 0) {
+      clearTimeout(timeoutId);
+
+      timeoutId = setTimeout(() => {
+        dispatch(bucketActions.clearBucket());
+      }, BucketTimerConfig.TWENTY_MINUTES);
+    }
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [quantity, dispatch]);
 
   return (
     <>
