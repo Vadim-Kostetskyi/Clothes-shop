@@ -10,13 +10,21 @@ import img6 from 'assets/images/product/man-gallery-6.png';
 import img7 from 'assets/images/product/man-gallery-7.png';
 import ProductCard from 'components/ProductCard';
 import { Size } from 'types';
+import NewNowMobile from 'components/NewNowMobile';
 import styles from './index.module.scss';
+
+export interface CardProps {
+  productName: string;
+  price: string;
+  sizes: Size[];
+  images: string[];
+}
 
 const NewNow = (): JSX.Element => {
   const { t } = useTranslation();
 
   // TODO: load info from backend
-  const cards = [
+  const cards: CardProps[] = [
     {
       productName: 'Shearling denim jacket',
       price: '119.99 €',
@@ -53,6 +61,9 @@ const NewNow = (): JSX.Element => {
               // images={images}
             />
           ))}
+        </div>
+        <div className={styles.cardBoxMobile}>
+          <NewNowMobile cards={cards} />
         </div>
       </div>
     </div>

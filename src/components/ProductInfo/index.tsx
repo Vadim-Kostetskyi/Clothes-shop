@@ -44,16 +44,20 @@ const ProductInfo: FC<ProductInfo> = ({ price, productName, sizes }) => {
     <div className={styles.info}>
       <div className={styles.nameBox}>
         <p className={styles.productName}>{productName}</p>
-        <button className={styles.basked} onClick={addToBasket}>
-          <ShoppingBag className={styles.baskedImg} />
-        </button>
+        <div className={styles.baskedWrapper}>
+          <button className={styles.basked} onClick={addToBasket}>
+            <ShoppingBag className={styles.baskedImg} />
+          </button>
+        </div>
       </div>
       <p className={styles.price}>{price}</p>
-      <ProductInfoParameters
-        changeParameters={changeParameters}
-        error={isError}
-        sizes={sizes}
-      />
+      <div className={styles.productInfoParametersWrapper}>
+        <ProductInfoParameters
+          changeParameters={changeParameters}
+          error={isError}
+          sizes={sizes}
+        />
+      </div>
     </div>
   );
 };

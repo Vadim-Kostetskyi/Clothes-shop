@@ -1,7 +1,12 @@
+@import 'styles/constants';
+
 .newNow {
   display: flex;
   justify-content: center;
   width: 100%;
+  @include media(tablet) {
+    width: 500px;
+  }
 }
 
 .newNowBox {
@@ -10,11 +15,27 @@
   align-items: center;
   width: max-content;
   margin-bottom: 80px;
+  @include media(tablet) {
+    width: auto;
+    margin-bottom: 80px;
+  }
 }
 
 .cardBox {
   display: flex;
   gap: 10px;
+  @include media(tablet) {
+    display: none;
+  }
+}
+
+.cardBoxMobile {
+  display: flex;
+  gap: 10px;
+  width: 450px;
+  @include media(laptopUp) {
+    display: none;
+  }
 }
 
 .title {

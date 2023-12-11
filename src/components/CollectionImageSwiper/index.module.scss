@@ -1,5 +1,12 @@
 @import 'styles/constants';
 
+.swiper {
+  padding-top: 120px;
+  @include media(tablet) {
+    padding-top: 155px;
+  }
+}
+
 .image {
   height: 855px;
   max-width: $max-content-width;
