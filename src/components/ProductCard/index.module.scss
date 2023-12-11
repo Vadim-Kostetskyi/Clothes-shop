@@ -1,3 +1,13 @@
+@import 'styles/constants';
+
 .productCard {
   width: 420px;
+  @include media(tablet) {
+    max-width: 220px;
+  }
+}
+
+.image {
+  max-width: 220px;
+  margin-bottom: 10px;
 }

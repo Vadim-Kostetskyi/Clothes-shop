@@ -10,7 +10,9 @@ export interface ProductCardProps {
   productName: string;
   price: string;
   sizes: Size[];
-  images: ImageItemProps[];
+  images?: ImageItemProps[];
+  isMobile?: boolean;
+  image?: string;
 }
 
 const ProductCard: FC<ProductCardProps> = ({
@@ -18,10 +20,16 @@ const ProductCard: FC<ProductCardProps> = ({
   price,
   productName,
   sizes,
-  images,
+  images = [],
+  isMobile,
+  image,
 }) => (
   <div className={styles.productCard}>
-    <ProductImageSwiper images={images} />
+    {isMobile ? (
+      <img src={image} alt={productName} className={styles.image} />
+    ) : (
+      <ProductImageSwiper images={images} />
+    )}
     <ProductInfo
       productId={productId}
       productName={productName}
