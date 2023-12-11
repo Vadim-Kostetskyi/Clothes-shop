@@ -3,8 +3,8 @@ import ShoppingBag from 'assets/svgs/ShoppingBag';
 import ProductInfoParameters from 'components/ProductInfoParameters';
 import { Size, Color } from 'types';
 import styles from './index.module.scss';
-import { useDispatch } from 'react-redux';
 import { actions as bucketActions } from '../../redux/slices/bucket/bucket';
+import { useAppDispatch } from 'libs/hooks/hooks';
 
 interface ProductInfo {
   productId: string;
@@ -22,7 +22,7 @@ const ProductInfo: FC<ProductInfo> = ({
   const [selectedColor, setSelectedColor] = useState<Color>(Color.Black);
   const [selectedSize, setSelectedSize] = useState<Size | null>(null);
   const [isError, setIsError] = useState(false);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const changeParameters = (parameter: string, value: string): void => {
     switch (parameter) {

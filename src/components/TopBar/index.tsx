@@ -4,11 +4,11 @@ import ShoppingBag from 'assets/svgs/ShoppingBag';
 import User from 'assets/svgs/User';
 import Search from 'assets/svgs/Search';
 import styles from './index.module.scss';
-import { useDispatch, useSelector } from 'react-redux';
 import {
   selectQuantity,
   actions as bucketActions,
 } from 'redux/slices/bucket/bucket';
+import { useAppDispatch, useAppSelector } from 'libs/hooks/hooks';
 
 enum BucketTimerConfig {
   SECOND = 1000,
@@ -18,8 +18,8 @@ enum BucketTimerConfig {
 
 const TopBar = (): JSX.Element => {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
-  const quantity = useSelector(selectQuantity);
+  const dispatch = useAppDispatch();
+  const quantity = useAppSelector(selectQuantity);
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout | undefined;

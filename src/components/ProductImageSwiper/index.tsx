@@ -2,10 +2,10 @@ import React, { FC, useMemo, useState } from 'react';
 import { SwiperSlide } from 'swiper/react';
 import CoreSwiper from 'components/CoreSwiper';
 import ArrowSwiperCard from 'assets/svgs/ArrowSwiperCard';
-import styles from './index.module.scss';
 import { ImageItemProps } from 'redux/types';
 import { getValidClassNames } from 'libs/helpers/helpers';
 
+import styles from './index.module.scss';
 export interface ProductImageSwiperProps {
   images: ImageItemProps[];
 }
