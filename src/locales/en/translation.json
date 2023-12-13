@@ -18,5 +18,6 @@
     "discountPercent": "and get a -{{discountPercent}}% discount"
   },
   "viewCollection": "View Collection",
-  "collections": "Collections"
+  "collections": "Collections",
+  "topCategories": "Top Categories"
 }

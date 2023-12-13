@@ -1,0 +1,62 @@
+@import "styles/constants";
+
+.image {
+  width: 314px;
+  height: 503px;
+}
+
+.categoryWrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.itemWrapper {
+  position: relative;
+}
+
+.text {
+  position: absolute;
+  right: 39%;
+  bottom: calc(0% - 56px);
+  color: $textPrimary;
+  font-family: $font-family-main;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 84px;
+}
+
+.title {
+  margin: 0px 80px 16px;
+  line-height: 53px;
+  display: flex;
+  align-items: center;
+  color: $blackColor;
+  font-family: $font-family-main;
+  font-size: 32px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    color: $grayLight;
+  }
+}
+
+.cardsWrapper {
+  margin: 80px 0px;
+}
+
+.imageWrapper {
+  height: 503px;
+  overflow: hidden;
+  img {
+    transition: transform 0.5s ease;
+  }
+  &:hover {
+    img {
+      transform: scale(1.2);
+    }
+  }
+}
