@@ -36,19 +36,15 @@ const removeItem: CaseReducer<State, PayloadAction<string>> = (
   }
 };
 
-const clearBucket: CaseReducer<State> = state => {
-  state.items = [];
-  state.quantity = 0;
-  state.totalPrice = 0;
-};
+const clearCart: CaseReducer<State> = () => initialState;
 
 const { reducer, actions, name } = createSlice({
-  name: 'bucket',
+  name: 'shoppingCart',
   initialState,
   reducers: {
     addItem,
     removeItem,
-    clearBucket,
+    clearCart,
   },
 });
 

@@ -13,9 +13,9 @@ import {
   REGISTER,
 } from 'redux-persist';
 import {
-  reducer as bucketReducer,
-  name as bucketName,
-} from './slices/bucket/bucket';
+  reducer as shoppingCartReducer,
+  name as shoppingCartName,
+} from './slices/shopping-cart/shopping-cart';
 import storage from 'redux-persist/lib/storage';
 
 const persistConfig = {
@@ -27,7 +27,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   [productsApi.reducerPath]: productsApi.reducer,
   [filesApi.reducerPath]: filesApi.reducer,
-  [bucketName]: bucketReducer,
+  [shoppingCartName]: shoppingCartReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

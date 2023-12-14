@@ -1,4 +1,4 @@
-import React, { FC, useMemo, useState } from 'react';
+import React, { FC, useCallback, useState } from 'react';
 import { SwiperSlide } from 'swiper/react';
 import CoreSwiper from 'components/CoreSwiper';
 import ArrowSwiperCard from 'assets/svgs/ArrowSwiperCard';
@@ -15,10 +15,10 @@ const ProductImageSwiper: FC<ProductImageSwiperProps> = ({ images }) => {
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
   const [isHidden, setIsHidden] = useState(true);
 
-  const handleFocus = () => setIsHidden(false);
-  const handleBlur = () => setIsHidden(true);
+  const handleFocus = useCallback(() => setIsHidden(false), []);
+  const handleBlur = useCallback(() => setIsHidden(true), []);
 
-  const renderImageSlides = useMemo(() => {
+  const imagesSlides = useCallback(() => {
     return images.map(({ id, name, url }) => (
       <SwiperSlide key={id}>
         <img src={url} alt={name} className={styles.img} />
@@ -33,7 +33,7 @@ const ProductImageSwiper: FC<ProductImageSwiperProps> = ({ images }) => {
       className={styles.productImageSwiper}
     >
       <CoreSwiper navigation={{ prevEl, nextEl }}>
-        {renderImageSlides}
+        {imagesSlides()}
         <div className={isHidden ? styles.hide : styles.wrapperArrows}>
           <button ref={node => setPrevEl(node)} className={styles.itemArrow}>
             <ArrowSwiperCard

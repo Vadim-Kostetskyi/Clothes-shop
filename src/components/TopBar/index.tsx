@@ -6,14 +6,16 @@ import Search from 'assets/svgs/Search';
 import styles from './index.module.scss';
 import {
   selectQuantity,
-  actions as bucketActions,
-} from 'redux/slices/bucket/bucket';
+  actions as shoppingCartActions,
+} from 'redux/slices/shopping-cart/shopping-cart';
 import { useAppDispatch, useAppSelector } from 'libs/hooks/hooks';
 
-enum BucketTimerConfig {
+enum TimeConstants {
   SECOND = 1000,
-  MINUTE = 60 * BucketTimerConfig.SECOND,
-  TWENTY_MINUTES = 20 * BucketTimerConfig.MINUTE,
+  MINUTE = 60 * SECOND,
+  HOUR = 60 * MINUTE,
+  DAY = 24 * HOUR,
+  TWO_DAYS = 2 * DAY,
 }
 
 const TopBar = (): JSX.Element => {
@@ -28,8 +30,8 @@ const TopBar = (): JSX.Element => {
       clearTimeout(timeoutId);
 
       timeoutId = setTimeout(() => {
-        dispatch(bucketActions.clearBucket());
-      }, BucketTimerConfig.TWENTY_MINUTES);
+        dispatch(shoppingCartActions.clearCart());
+      }, TimeConstants.TWO_DAYS);
     }
 
     return () => {
@@ -54,7 +56,9 @@ const TopBar = (): JSX.Element => {
       </button>
       <button className={styles.shoppingBagButton}>
         <ShoppingBag className={styles.shoppingBagIcon} />
-        {quantity > 0 && <div className={styles.quantity}>{quantity}</div>}
+        {quantity > 0 ? (
+          <div className={styles.quantity}>{quantity}</div>
+        ) : null}
       </button>
     </>
   );

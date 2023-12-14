@@ -3,7 +3,7 @@ import ShoppingBag from 'assets/svgs/ShoppingBag';
 import ProductInfoParameters from 'components/ProductInfoParameters';
 import { Size, Color } from 'types';
 import styles from './index.module.scss';
-import { actions as bucketActions } from '../../redux/slices/bucket/bucket';
+import { actions as bucketActions } from '../../redux/slices/shopping-cart/shopping-cart';
 import { useAppDispatch } from 'libs/hooks/hooks';
 
 interface ProductInfo {
