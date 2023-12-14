@@ -1,7 +1,4 @@
 @import 'styles/constants';
-// @import url('~assets/svgs/Check') screen;
-// @import 'assets/svgs/Check';
-// import Check from 'assets/svgs/Check';
 
 .backdrop {
   position: fixed;
@@ -25,7 +22,7 @@
   display: flex;
   padding-bottom: 75px;
   margin-bottom: 30px;
-  border-bottom: 1px solid #959595;
+  border-bottom: 1px solid $grayLight;
 }
 
 .locationWrapper {
@@ -105,7 +102,7 @@
     background-color: $blackColor;
   }
   input:disabled + &::before {
-    background-color: #e9ecef;
+    background-color: $pageBackground;
   }
 }
 
