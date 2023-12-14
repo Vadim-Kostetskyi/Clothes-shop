@@ -7,13 +7,15 @@ import { QueryReturnValue } from '@reduxjs/toolkit/dist/query/baseQueryTypes';
 import {
   GetProductsPayload,
   GetProductsResponse,
+  GetProductsWithImagesDTO,
   GetProductsWithImagesProps,
 } from './types';
+import { config } from 'libs/packages/config/config';
 
 export const productsApi = createApi({
   reducerPath: 'productsApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://online-store-backend-gamma.vercel.app/api/v1/',
+    baseUrl: config.ENV.API.URL,
   }),
   endpoints: builder => ({
     getProductsByName: builder.query({
@@ -54,8 +56,34 @@ export const productsApi = createApi({
         return { data: { products: [], images: [] } };
       },
     }),
+    getNewNowProducts: builder.query<GetProductsWithImagesDTO[], void>({
+      async queryFn(_arg, _queryApi, _extraOptions, fetchWithBQ) {
+        const rawProducts = await fetchWithBQ('products/new');
+
+        if (rawProducts.error)
+          return { error: rawProducts.error as FetchBaseQueryError };
+
+        const products = rawProducts.data as GetProductsResponse['data'];
+        const productsWithImages: GetProductsWithImagesDTO[] = [];
+
+        for (const product of products) {
+          const rawImages = await fetchWithBQ(`products/images/${product.id}`);
+          if (rawImages.error)
+            return { error: rawImages.error as FetchBaseQueryError };
+
+          const images = rawImages.data as GetProductsWithImagesDTO['images'];
+
+          productsWithImages.push({ product, images });
+        }
+
+        return { data: productsWithImages };
+      },
+    }),
   }),
 });
 
-export const { useGetProductsByNameQuery, useGetProductsWithImagesQuery } =
-  productsApi;
+export const {
+  useGetProductsByNameQuery,
+  useGetProductsWithImagesQuery,
+  useGetNewNowProductsQuery,
+} = productsApi;
