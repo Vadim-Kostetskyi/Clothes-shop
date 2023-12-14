@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useEffect,
-  useState,
-  FormEvent,
-  useMemo,
-} from 'react';
+import React, { useCallback, useState, FormEvent, useMemo, FC } from 'react';
 import { SingleValue } from 'react-select';
 import Selector, { SelectOption } from 'components/Selector';
 import { countries } from './listOfCountries';
@@ -13,7 +7,12 @@ import Copyright from 'components/copyright';
 import { Language } from 'types';
 import styles from './index.module.scss';
 
-const HomePageModal = (): JSX.Element => {
+export interface HomePageModalProps {
+  showModal: boolean;
+  hideModal: () => void;
+}
+
+const HomePageModal: FC<HomePageModalProps> = ({ showModal, hideModal }) => {
   const [selectedCountry, setSelectedCountry] = useState<
     SelectOption | undefined
   >();
@@ -21,18 +20,6 @@ const HomePageModal = (): JSX.Element => {
     Language.English,
   );
   const [showAlert, setShowAlert] = useState(false);
-  const [showModal, setShowModal] = useState(true);
-
-  useEffect(() => {
-    try {
-      const serializedState = localStorage.getItem('isShowModalWindow');
-      if (serializedState) {
-        setShowModal(false);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  }, []);
 
   const selectorWrapperClassName = useMemo(
     () => (showAlert ? styles.selectorWrapperAlert : styles.selectorWrapper),
@@ -70,7 +57,7 @@ const HomePageModal = (): JSX.Element => {
         const serializedLanguage = JSON.stringify(selectedLanguage);
         localStorage.setItem('country', serializedCountry);
         localStorage.setItem('language', serializedLanguage);
-        setShowModal(false);
+        hideModal();
         if (checkboxChecked) {
           localStorage.setItem('isShowModalWindow', 'no');
         }
