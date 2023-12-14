@@ -1,4 +1,4 @@
-import React, { useState, FC } from 'react';
+import React, { useState, FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MenuItem } from 'components/Footer/MenuList';
 import { HeaderMenu } from 'types';
@@ -20,30 +20,30 @@ const CatalogMenuItemMobile: FC<CatalogMenuItemMobileProps> = ({
 
   const { t } = useTranslation();
 
-  const handleCategoryHover = (label: string) => () => {
-    const clothing = label === HeaderMenu.Clothing;
+  const handleCategoryClick = useCallback(
+    (label: string) => () => {
+      setShowSubCategory(label === HeaderMenu.Clothing);
+    },
+    [],
+  );
 
-    if (clothing) {
-      setShowSubCategory(true);
+  const toggleCategory = useCallback(
+    (shouldShow: boolean) => () => {
+      setShowSubCategory(shouldShow);
+    },
+    [],
+  );
+
+  const getClassName = useCallback((label: string) => {
+    switch (label) {
+      case HeaderMenu.Clothing:
+        return styles.clothing;
+      case HeaderMenu.Promotion:
+        return styles.promotion;
+      default:
+        return styles.link;
     }
-  };
-
-  const setClassName = (label: string) => {
-    const clothing = label === HeaderMenu.Clothing;
-    const promotion = label === HeaderMenu.Promotion;
-
-    if (clothing) {
-      return styles.clothing;
-    } else if (promotion) {
-      return styles.promotion;
-    } else {
-      return styles.link;
-    }
-  };
-
-  const toggleCategory = (shouldShow: boolean) => () => {
-    setShowSubCategory(shouldShow);
-  };
+  }, []);
 
   return (
     <div className={styles.wrapper}>
@@ -52,10 +52,8 @@ const CatalogMenuItemMobile: FC<CatalogMenuItemMobileProps> = ({
           <a
             href={href}
             key={id}
-            className={setClassName(label)}
-            onMouseEnter={handleCategoryHover(label)}
-            onMouseLeave={toggleCategory(false)}
-            onFocus={handleCategoryHover(label)}
+            className={getClassName(label)}
+            onClick={handleCategoryClick(label)}
             onBlur={toggleCategory(false)}
           >
             {t('listItem', { label })}
@@ -64,15 +62,9 @@ const CatalogMenuItemMobile: FC<CatalogMenuItemMobileProps> = ({
       </div>
       <div
         className={showSubCategory ? styles.clothingListWrapper : styles.hide}
-        onMouseEnter={toggleCategory(true)}
-        onMouseLeave={toggleCategory(false)}
-        onFocus={toggleCategory(true)}
         onBlur={toggleCategory(false)}
       >
-        <ClothingList
-          items={menuItems[itemLabel]}
-          toggleCategory={toggleCategory}
-        />
+        <ClothingList items={menuItems[itemLabel]} />
       </div>
     </div>
   );
