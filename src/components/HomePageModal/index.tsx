@@ -9,7 +9,7 @@ import { SingleValue } from 'react-select';
 import Selector, { SelectOption } from 'components/Selector';
 import { countries } from './listOfCountries';
 import LanguageSelect from 'components/LanguageSelect';
-import Copyright from 'components/copyright';
+import Copyright from 'components/Copyright';
 import { Language } from 'types';
 import styles from './index.module.scss';
 
@@ -56,7 +56,7 @@ const HomePageModal = (): JSX.Element => {
   const languageButtonClassName = useCallback(
     (language: string) =>
       language === selectedLanguage ? styles.focus : styles.languageButton,
-    [],
+    [selectedLanguage],
   );
 
   const saveCountryLanguage = (event: FormEvent<HTMLFormElement>) => {
