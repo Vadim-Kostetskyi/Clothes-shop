@@ -1,4 +1,4 @@
-import React, { useState, FC } from 'react';
+import React, { useState, FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MenuItem } from 'components/Footer/MenuList';
 import { HeaderMenu } from 'types';
@@ -11,17 +11,6 @@ interface CatalogMenuItemMobileProps {
   menuOptions: Record<string, MenuItem[]>;
 }
 
-const setClassName = (label: string) => {
-  switch (label) {
-    case HeaderMenu.Clothing:
-      return styles.clothing;
-    case HeaderMenu.Promotion:
-      return styles.promotion;
-    default:
-      return styles.link;
-  }
-};
-
 const CatalogMenuItemMobile: FC<CatalogMenuItemMobileProps> = ({
   menuItems,
   itemLabel,
@@ -31,12 +20,30 @@ const CatalogMenuItemMobile: FC<CatalogMenuItemMobileProps> = ({
 
   const { t } = useTranslation();
 
-  const handleCategoryClick = (label: string) => () =>
-    setShowSubCategory(label === HeaderMenu.Clothing);
+  const handleCategoryClick = useCallback(
+    (label: string) => () => {
+      setShowSubCategory(label === HeaderMenu.Clothing);
+    },
+    [],
+  );
 
-  const toggleCategory = (shouldShow: boolean) => () => {
-    setShowSubCategory(shouldShow);
-  };
+  const toggleCategory = useCallback(
+    (shouldShow: boolean) => () => {
+      setShowSubCategory(shouldShow);
+    },
+    [],
+  );
+
+  const getClassName = useCallback((label: string) => {
+    switch (label) {
+      case HeaderMenu.Clothing:
+        return styles.clothing;
+      case HeaderMenu.Promotion:
+        return styles.promotion;
+      default:
+        return styles.link;
+    }
+  }, []);
 
   return (
     <div className={styles.wrapper}>
@@ -45,7 +52,7 @@ const CatalogMenuItemMobile: FC<CatalogMenuItemMobileProps> = ({
           <a
             href={href}
             key={id}
-            className={setClassName(label)}
+            className={getClassName(label)}
             onClick={handleCategoryClick(label)}
             onBlur={toggleCategory(false)}
           >
