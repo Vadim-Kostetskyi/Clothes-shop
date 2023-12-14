@@ -42,4 +42,9 @@
   font-weight: 600;
   line-height: 84px;
   align-self: flex-start;
+  cursor: pointer;
+
+  &:hover {
+    color: $grayLight;
+  }
 }
