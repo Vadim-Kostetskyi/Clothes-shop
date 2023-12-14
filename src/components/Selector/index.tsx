@@ -16,12 +16,10 @@ export interface CountrySelectorProps {
   ) => void;
 }
 
-const Selector: FC<CountrySelectorProps> = ({ options, value, onChange }) => {
-  return (
-    <div className={styles.wrapper}>
-      <Select options={options} value={value} onChange={onChange} />
-    </div>
-  );
-};
+const Selector: FC<CountrySelectorProps> = ({ options, value, onChange }) => (
+  <div className={styles.wrapper}>
+    <Select options={options} value={value} onChange={onChange} />
+  </div>
+);
 
 export default Selector;

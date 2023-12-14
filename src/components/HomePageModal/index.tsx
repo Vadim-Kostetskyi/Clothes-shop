@@ -1,22 +1,31 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useState,
+  FormEvent,
+  useMemo,
+} from 'react';
 import { SingleValue } from 'react-select';
 import Selector, { SelectOption } from 'components/Selector';
 import { countries } from './listOfCountries';
 import LanguageSelect from 'components/LanguageSelect';
 import Copyright from 'components/copyright';
+import { Language } from 'types';
 import styles from './index.module.scss';
 
 const HomePageModal = (): JSX.Element => {
   const [selectedCountry, setSelectedCountry] = useState<
     SelectOption | undefined
-  >(undefined);
-  const [selectedLanguage, setSelectedLanguage] = useState('en');
-  const [alert, setAlert] = useState(false);
+  >();
+  const [selectedLanguage, setSelectedLanguage] = useState<Language>(
+    Language.English,
+  );
+  const [showAlert, setShowAlert] = useState(false);
   const [showModal, setShowModal] = useState(true);
 
   useEffect(() => {
     try {
-      const serializedState = localStorage.getItem('memory');
+      const serializedState = localStorage.getItem('isShowModalWindow');
       if (serializedState) {
         setShowModal(false);
       }
@@ -25,31 +34,37 @@ const HomePageModal = (): JSX.Element => {
     }
   }, []);
 
-  const selectorWrapperClassName = useMemo(() => {
-    return alert ? styles.selectorWrapperAlert : styles.selectorWrapper;
-  }, [alert]);
+  const selectorWrapperClassName = useMemo(
+    () => (showAlert ? styles.selectorWrapperAlert : styles.selectorWrapper),
+    [showAlert],
+  );
 
-  const handleCountryChange = (
-    newValue: SingleValue<SelectOption | undefined>,
-  ) => {
-    const country = newValue as SelectOption;
-    setAlert(false);
-    setSelectedCountry(country);
-  };
+  const handleCountryChange = useCallback(
+    (newValue: SingleValue<SelectOption | undefined>) => {
+      const country = newValue as SelectOption;
+      setShowAlert(false);
+      setSelectedCountry(country);
+    },
+    [setShowAlert, setSelectedCountry],
+  );
 
-  const handleLanguageChange = (language: string) => () => {
-    setSelectedLanguage(language);
-  };
+  const handleLanguageChange = useCallback(
+    (language: Language) => () => setSelectedLanguage(language),
+    [setSelectedLanguage],
+  );
 
-  const languageButtonClassName = (language: string) => {
-    return language === selectedLanguage ? styles.focus : styles.languageButton;
-  };
+  const languageButtonClassName = useCallback(
+    (language: string) =>
+      language === selectedLanguage ? styles.focus : styles.languageButton,
+    [],
+  );
 
-  const saveCountryLanguage = (event: React.FormEvent<HTMLFormElement>) => {
+  const saveCountryLanguage = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const checkboxChecked = (event.target as HTMLFormElement).check.checked;
 
-    if (selectedCountry) {
+    if (!showModal) return null;
+    else if (selectedCountry) {
       try {
         const serializedCountry = JSON.stringify(selectedCountry.label);
         const serializedLanguage = JSON.stringify(selectedLanguage);
@@ -57,13 +72,13 @@ const HomePageModal = (): JSX.Element => {
         localStorage.setItem('language', serializedLanguage);
         setShowModal(false);
         if (checkboxChecked) {
-          localStorage.setItem('memory', 'yes');
+          localStorage.setItem('isShowModalWindow', 'no');
         }
       } catch (error) {
         console.error(error);
       }
     } else {
-      setAlert(true);
+      setShowAlert(true);
     }
   };
 
@@ -87,8 +102,8 @@ const HomePageModal = (): JSX.Element => {
                 <p className={styles.languageText}>Select your language</p>
                 <div className={styles.languageWrapper}>
                   <LanguageSelect
-                    buttonClassName={languageButtonClassName}
-                    languageChange={handleLanguageChange}
+                    getButtonClassName={languageButtonClassName}
+                    handleLanguageChange={handleLanguageChange}
                   />
                 </div>
                 <div className={styles.assentWrapper}>

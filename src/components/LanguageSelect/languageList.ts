@@ -1,4 +1,6 @@
+import { Language } from 'types';
+
 export const languages = [
-  { value: 'en', label: 'EN' },
-  { value: 'ua', label: 'UA' },
+  { value: Language.English, label: 'EN' },
+  { value: Language.Ukrainian, label: 'UA' },
 ];
