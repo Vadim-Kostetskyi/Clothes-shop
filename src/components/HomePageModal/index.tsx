@@ -70,58 +70,51 @@ const HomePageModal: FC<HomePageModalProps> = ({ showModal, hideModal }) => {
   };
 
   return (
-    <>
-      {showModal ? (
-        <div className={styles.backdrop}>
-          <div className={styles.modal}>
-            <div className={styles.modalBox}>
-              <div className={styles.locationWrapper}>
-                <p className={styles.locationText}>Select your location</p>
-                <div className={selectorWrapperClassName}>
-                  <Selector
-                    options={countries}
-                    value={selectedCountry}
-                    onChange={handleCountryChange}
-                  />
-                </div>
-              </div>
-              <div className={styles.languageWrapper}>
-                <p className={styles.languageText}>Select your language</p>
-                <div className={styles.languageWrapper}>
-                  <LanguageSelect
-                    getButtonClassName={languageButtonClassName}
-                    handleLanguageChange={handleLanguageChange}
-                  />
-                </div>
-                <div className={styles.assentWrapper}>
-                  <form
-                    className={styles.agreement}
-                    onSubmit={saveCountryLanguage}
-                  >
-                    <label>
-                      <input
-                        type="checkbox"
-                        name="check"
-                        className={styles.checkbox}
-                      />
-                      <span className={styles.agreementText}>
-                        Remember my selection
-                      </span>
-                    </label>
-                    <button className={styles.assentButton} type="submit">
-                      GO!
-                    </button>
-                  </form>
-                </div>
-              </div>
+    <div className={styles.backdrop}>
+      <div className={styles.modal}>
+        <div className={styles.modalBox}>
+          <div className={styles.locationWrapper}>
+            <p className={styles.locationText}>Select your location</p>
+            <div className={selectorWrapperClassName}>
+              <Selector
+                options={countries}
+                value={selectedCountry}
+                onChange={handleCountryChange}
+              />
             </div>
-            <div>
-              <Copyright />
+          </div>
+          <div className={styles.languageWrapper}>
+            <p className={styles.languageText}>Select your language</p>
+            <div className={styles.languageWrapper}>
+              <LanguageSelect
+                getButtonClassName={languageButtonClassName}
+                handleLanguageChange={handleLanguageChange}
+              />
+            </div>
+            <div className={styles.assentWrapper}>
+              <form className={styles.agreement} onSubmit={saveCountryLanguage}>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="check"
+                    className={styles.checkbox}
+                  />
+                  <span className={styles.agreementText}>
+                    Remember my selection
+                  </span>
+                </label>
+                <button className={styles.assentButton} type="submit">
+                  GO!
+                </button>
+              </form>
             </div>
           </div>
         </div>
-      ) : null}
-    </>
+        <div>
+          <Copyright />
+        </div>
+      </div>
+    </div>
   );
 };
 
