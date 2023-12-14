@@ -9,7 +9,7 @@ import { SingleValue } from 'react-select';
 import Selector, { SelectOption } from 'components/Selector';
 import { countries } from './listOfCountries';
 import LanguageSelect from 'components/LanguageSelect';
-import Copyright from 'components/Copyright';
+import Copyright from 'components/copyright';
 import { Language } from 'types';
 import styles from './index.module.scss';
 

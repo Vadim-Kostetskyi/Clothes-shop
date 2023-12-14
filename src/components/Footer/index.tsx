@@ -1,7 +1,7 @@
 import React from 'react';
 import FooterList from './FooterList';
 import CompanyInfo from './CompanyInfo';
-import Copyright from 'components/Copyright';
+import Copyright from 'components/copyright';
 import styles from './Footer.module.scss';
 
 const Footer = (): JSX.Element => {
