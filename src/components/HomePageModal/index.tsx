@@ -6,6 +6,7 @@ import LanguageSelect from 'components/LanguageSelect';
 import Copyright from 'components/copyright';
 import { Language } from 'types';
 import styles from './index.module.scss';
+import { useTranslation } from 'react-i18next';
 
 export interface HomePageModalProps {
   showModal: boolean;
@@ -20,6 +21,8 @@ const HomePageModal: FC<HomePageModalProps> = ({ showModal, hideModal }) => {
     Language.English,
   );
   const [showAlert, setShowAlert] = useState(false);
+
+  const { t } = useTranslation();
 
   const selectorWrapperClassName = useMemo(
     () => (showAlert ? styles.selectorWrapperAlert : styles.selectorWrapper),
@@ -74,7 +77,9 @@ const HomePageModal: FC<HomePageModalProps> = ({ showModal, hideModal }) => {
       <div className={styles.modal}>
         <div className={styles.modalBox}>
           <div className={styles.locationWrapper}>
-            <p className={styles.locationText}>Select your location</p>
+            <p className={styles.locationText}>
+              {t('homePageModal.selectLocation')}
+            </p>
             <div className={selectorWrapperClassName}>
               <Selector
                 options={countries}
@@ -84,7 +89,10 @@ const HomePageModal: FC<HomePageModalProps> = ({ showModal, hideModal }) => {
             </div>
           </div>
           <div className={styles.languageWrapper}>
-            <p className={styles.languageText}>Select your language</p>
+            <p className={styles.languageText}>
+              {' '}
+              {t('homePageModal.selectLanguage')}
+            </p>
             <div className={styles.languageWrapper}>
               <LanguageSelect
                 getButtonClassName={languageButtonClassName}
@@ -100,11 +108,11 @@ const HomePageModal: FC<HomePageModalProps> = ({ showModal, hideModal }) => {
                     className={styles.checkbox}
                   />
                   <span className={styles.agreementText}>
-                    Remember my selection
+                    {t('homePageModal.rememberSelection')}
                   </span>
                 </label>
                 <button className={styles.assentButton} type="submit">
-                  GO!
+                  {t('homePageModal.go')}!
                 </button>
               </form>
             </div>
