@@ -2,9 +2,13 @@
 
 .header {
   padding: 18px 80px;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  background-color: $pageBackground;
 
   @include media(tablet) {
-    padding: 0 32px 0 32px;
+    padding: 0 32px 15px;
     margin-bottom: 16px;
   }
 }
@@ -46,10 +50,11 @@
 }
 
 .navigation {
-  margin-right: 1.9rem;
+  margin-right: 8.35rem;
 }
 
 .logo {
+  display: block;
   width: 133px;
   @include media(tablet) {
     width: 111px;
