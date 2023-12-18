@@ -8,6 +8,7 @@ import {
   GetProductsPayload,
   GetProductsResponse,
   GetProductsWithImagesProps,
+  SearchProductsProps,
 } from './types';
 
 export const productsApi = createApi({
@@ -54,8 +55,48 @@ export const productsApi = createApi({
         return { data: { products: [], images: [] } };
       },
     }),
+    searchProductsWithImages: builder.mutation<
+      GetProductsWithImagesProps,
+      SearchProductsProps
+    >({
+      async queryFn(_arg, _queryApi, _extraOptions, fetchWithBQ) {
+        const rawProducts = await fetchWithBQ({
+          url: `products/search?page=${_arg.page}&size=${_arg.size}`,
+          method: 'POST',
+          body: _arg.body,
+        });
+
+        if (rawProducts.error)
+          return { error: rawProducts.error as FetchBaseQueryError };
+
+        const products = rawProducts.data as GetProductsResponse['data'];
+        const productsId: string[] = products.reduce((acc: string[], cur) => {
+          acc.push(cur.id);
+          return acc;
+        }, []);
+
+        const images = await Promise.all(
+          productsId.map(async id => {
+            const images = await fetchWithBQ(`products/images/${id}`);
+            return { id, images: images?.data };
+          }),
+        );
+
+        if (images.every(({ id }) => id)) {
+          return { data: { products, images } } as unknown as QueryReturnValue<
+            GetProductsWithImagesProps,
+            FetchBaseQueryError
+          >;
+        }
+
+        return { data: { products: [], images: [] } };
+      },
+    }),
   }),
 });
 
-export const { useGetProductsByNameQuery, useGetProductsWithImagesQuery } =
-  productsApi;
+export const {
+  useGetProductsByNameQuery,
+  useGetProductsWithImagesQuery,
+  useSearchProductsWithImagesMutation,
+} = productsApi;

@@ -1,4 +1,4 @@
-@import 'styles/constants';
+@import "styles/constants";
 
 .button {
   line-height: 48px;
@@ -10,7 +10,7 @@
   font-size: 16px;
   font-weight: 400;
   letter-spacing: 0.16px;
-  transition: all 0.3s;
+  transition: all 0.5s;
   cursor: pointer;
 
   &:hover {
@@ -18,4 +18,12 @@
     background: $textPrimary;
     border-color: $textPrimary;
   }
+}
+
+.buttonsWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0px;
+  gap: 15px;
 }

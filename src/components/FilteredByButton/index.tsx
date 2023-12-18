@@ -1,46 +1,65 @@
-import React from 'react';
+import React, { FC } from 'react';
+import { BodySearchProducts, Subcategory } from 'redux/types';
 import styles from './index.module.scss';
 
 type ButtonsProps = {
   name: string;
-  value: string;
+  value: Subcategory | string;
 };
 
 const buttons: ButtonsProps[] = [
   {
     name: 'All',
-    value: 'all',
+    value: 'CLOTHING',
   },
   {
     name: 'Jackets',
-    value: 'jackets',
+    value: Subcategory.JACKETS,
   },
   {
     name: 'Field jackets',
-    value: 'field jackets',
+    value: Subcategory.CARDIGANS,
   },
   {
     name: 'Overshirts',
-    value: 'overshirts',
+    value: Subcategory.OVERSHIRTS,
   },
   {
     name: 'Quilted coats',
-    value: 'quilted coats',
+    value: Subcategory.QUILTED,
   },
 ];
+interface FilteredByButton {
+  handleClick: (body: BodySearchProducts) => void;
+}
 
-const FilteredByButton = () => {
+const FilteredByButton: FC<FilteredByButton> = ({ handleClick }) => {
   return (
-    <>
+    <div className={styles.buttonsWrapper}>
       {buttons &&
-        buttons.map(({ name, value }) => (
-          <>
-            <button key={value} value={value} className={styles.button}>
-              {name}
-            </button>
-          </>
-        ))}
-    </>
+        buttons.map(({ name, value }) => {
+          const body =
+            value === 'CLOTHING'
+              ? {
+                  category: value as string,
+                }
+              : {
+                  subcategory: value as Subcategory,
+                };
+          return (
+            <>
+              <button
+                key={value}
+                value={value}
+                className={styles.button}
+                onClick={() => handleClick(body)}
+              >
+                {name}
+              </button>
+            </>
+          );
+        })}
+    </div>
   );
 };
 
