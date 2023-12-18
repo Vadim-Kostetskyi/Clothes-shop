@@ -47,16 +47,14 @@ const FilteredByButton: FC<FilteredByButton> = ({ handleClick }) => {
                   subcategory: value as Subcategory,
                 };
           return (
-            <>
-              <button
-                key={value}
-                value={value}
-                className={styles.button}
-                onClick={() => handleClick(body)}
-              >
-                {name}
-              </button>
-            </>
+            <button
+              key={value}
+              value={value}
+              className={styles.button}
+              onClick={() => handleClick(body)}
+            >
+              {name}
+            </button>
           );
         })}
     </div>
