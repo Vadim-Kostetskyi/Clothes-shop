@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import ProductsCards from 'components/ProductsCards';
-import FilteredyButton from 'components/FilteredByButton';
+import FilteredyButton from 'components/FilteringProducts';
 import { useSearchProductsWithImagesMutation } from 'redux/productsApi';
 import { BodySearchProducts, GetProductsWithImagesProps } from 'redux/types';
 import SyncLoader from 'react-spinners/SyncLoader';
+import styles from './index.module.scss';
 
 const ManProducts = (): JSX.Element => {
   const [searchProducts, { isLoading, data }] =
@@ -19,11 +20,6 @@ const ManProducts = (): JSX.Element => {
     });
   }, []);
 
-  if (isLoading)
-    return (
-      <SyncLoader size={10} aria-label="Loading Spinner" data-testid="loader" />
-    );
-
   const handleClick = (body: BodySearchProducts) => {
     searchProducts({
       page: 0,
@@ -34,9 +30,19 @@ const ManProducts = (): JSX.Element => {
   return (
     <>
       <FilteredyButton handleClick={handleClick} />
-      <ProductsCards
-        searchProducts={data ?? ({} as GetProductsWithImagesProps)}
-      />
+      {isLoading ? (
+        <div className={styles.loaderWrapper}>
+          <SyncLoader
+            size={10}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        </div>
+      ) : (
+        <ProductsCards
+          searchProducts={data ?? ({} as GetProductsWithImagesProps)}
+        />
+      )}
     </>
   );
 };

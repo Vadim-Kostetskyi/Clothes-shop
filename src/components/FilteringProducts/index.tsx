@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { BodySearchProducts, Subcategory } from 'redux/types';
 import styles from './index.module.scss';
 
@@ -33,7 +33,9 @@ interface FilteredByButton {
   handleClick: (body: BodySearchProducts) => void;
 }
 
-const FilteredByButton: FC<FilteredByButton> = ({ handleClick }) => {
+const FilteringProducts: FC<FilteredByButton> = ({ handleClick }) => {
+  const [chosen, setChosen] = useState<ButtonsProps | string>(buttons[0].value);
+
   return (
     <div className={styles.buttonsWrapper}>
       {buttons &&
@@ -50,8 +52,11 @@ const FilteredByButton: FC<FilteredByButton> = ({ handleClick }) => {
             <button
               key={value}
               value={value}
-              className={styles.button}
-              onClick={() => handleClick(body)}
+              className={value === chosen ? styles.active : styles.button}
+              onClick={() => {
+                handleClick(body);
+                setChosen(name);
+              }}
             >
               {name}
             </button>
@@ -61,4 +66,4 @@ const FilteredByButton: FC<FilteredByButton> = ({ handleClick }) => {
   );
 };
 
-export default FilteredByButton;
+export default FilteringProducts;

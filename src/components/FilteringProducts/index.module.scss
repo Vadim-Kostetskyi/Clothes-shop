@@ -20,6 +20,13 @@
   }
 }
 
+.active {
+  @extend .button;
+  color: $pageBackground;
+  background: $textPrimary;
+  border-color: $textPrimary;
+}
+
 .buttonsWrapper {
   width: 100%;
   display: flex;
