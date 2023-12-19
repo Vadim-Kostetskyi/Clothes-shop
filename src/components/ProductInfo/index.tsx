@@ -3,7 +3,7 @@ import ShoppingBag from 'assets/svgs/ShoppingBag';
 import ProductInfoParameters from 'components/ProductInfoParameters';
 import { Size, Color } from 'types';
 import styles from './index.module.scss';
-import { actions as bucketActions } from '../../redux/slices/shopping-cart/shopping-cart';
+import { actions as shoppingCartActions } from '../../redux/slices/shopping-cart/shopping-cart';
 import { useAppDispatch } from 'libs/hooks/hooks';
 
 interface ProductInfo {
@@ -38,14 +38,14 @@ const ProductInfo: FC<ProductInfo> = ({
     }
   };
 
-  const addToBasket = () => {
+  const addToShoppingCart = () => {
     if (!selectedSize) {
       setIsError(true);
       return;
     }
 
     dispatch(
-      bucketActions.addItem({ id: productId, price, name: productName }),
+      shoppingCartActions.addItem({ id: productId, price, name: productName }),
     );
     console.log('color:', selectedColor);
     console.log('size:', selectedSize);
@@ -56,7 +56,7 @@ const ProductInfo: FC<ProductInfo> = ({
       <div className={styles.nameBox}>
         <p className={styles.productName}>{productName}</p>
         <div className={styles.baskedWrapper}>
-          <button className={styles.basked} onClick={addToBasket}>
+          <button className={styles.basked} onClick={addToShoppingCart}>
             <ShoppingBag className={styles.baskedImg} />
           </button>
         </div>
