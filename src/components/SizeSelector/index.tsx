@@ -6,6 +6,8 @@ export interface SizeSelectorProps {
   parameters: string[];
   sizes?: Size[];
   active: string | null;
+  buttonStyles?: string;
+  activeStyles?: string;
   handleClick: (param: string, value: string) => void;
 }
 
@@ -13,6 +15,8 @@ const SizeSelector: FC<SizeSelectorProps> = ({
   parameters,
   sizes,
   active,
+  buttonStyles,
+  activeStyles,
   handleClick,
 }) => {
   return (
@@ -21,13 +25,13 @@ const SizeSelector: FC<SizeSelectorProps> = ({
         return (
           <button
             key={index}
-            className={`${styles.parameterBtn} ${
-              active === parameter ? styles.active : ''
+            className={`${buttonStyles || styles.parameterBtn} ${
+              active === parameter ? activeStyles || styles.active : ''
             }`}
             onClick={() => handleClick('size', parameter)}
             disabled={sizes && !sizes.includes(parameter as Size)}
           >
-            {parameter}
+            <p className={styles.text}>{parameter}</p>
           </button>
         );
       })}

@@ -17,6 +17,11 @@
     "discountHeader": "Subscribe to our newsletter",
     "discountPercent": "and get a -{{discountPercent}}% discount"
   },
+  "productOrder": {
+    "selectColour": "Select colour",
+    "selectSize": "Select size",
+    "addToMyShoppingBag": "ADD TO MY SHOPPING BAG"
+  },
   "viewCollection": "View Collection",
   "collections": "Collections"
 }

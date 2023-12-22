@@ -2,13 +2,13 @@ import React, { FC } from 'react';
 import styles from './index.module.scss';
 
 export interface ItemPageProps {
-  images: string[];
+  images: string[] | undefined;
   choosePicture: (index: number) => () => void;
 }
 
 const PicturePanel: FC<ItemPageProps> = ({ images, choosePicture }) => (
   <div className={styles.imageWrapper}>
-    {images.map((path, index) => (
+    {images?.map((path, index) => (
       <button
         key={path}
         className={styles.imageButton}
