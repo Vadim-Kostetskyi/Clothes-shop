@@ -25,5 +25,11 @@
   "viewCollection": "View Collection",
   "collections": "Collections",
   "YouAlsoViewed": "You also viewed",
-  "InSameStyle": "In the same style"
+  "InSameStyle": "In the same style",
+  "homePageModal": {
+    "selectLocation": "Select your location",
+    "selectLanguage": "Select your language",
+    "rememberSelection": "Remember my selection",
+    "go": "GO"
+  }
 }
