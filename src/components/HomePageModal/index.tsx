@@ -62,7 +62,7 @@ const HomePageModal: FC<HomePageModalProps> = ({ showModal, hideModal }) => {
         localStorage.setItem('language', serializedLanguage);
         hideModal();
         if (checkboxChecked) {
-          localStorage.setItem('isShowModalWindow', 'no');
+          localStorage.setItem('shouldShowModal', 'false');
         }
       } catch (error) {
         console.error(error);

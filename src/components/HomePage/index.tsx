@@ -9,10 +9,11 @@ const HomePage = () => {
 
   useEffect(() => {
     try {
-      const serializedState = localStorage.getItem('isShowModalWindow');
-      if (!serializedState) {
-        setShowModal(true);
-      }
+      const serializedState = localStorage.getItem('shouldShowModal');
+      const shouldShowModal = !serializedState;
+      console.log(shouldShowModal);
+
+      setShowModal(shouldShowModal);
     } catch (error) {
       console.error(error);
     }
