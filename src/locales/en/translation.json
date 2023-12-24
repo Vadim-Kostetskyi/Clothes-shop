@@ -18,5 +18,11 @@
     "discountPercent": "and get a -{{discountPercent}}% discount"
   },
   "viewCollection": "View Collection",
-  "collections": "Collections"
+  "collections": "Collections",
+  "homePageModal": {
+    "selectLocation": "Select your location",
+    "selectLanguage": "Select your language",
+    "rememberSelection": "Remember my selection",
+    "go": "GO"
+  }
 }
