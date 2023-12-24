@@ -1,9 +1,10 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import PhotoSwitcher from 'components/PhotoSwitcher';
 import ProductOrderInfo from 'components/ProductOrderInfo';
 import { useGetProductByIdQuery } from 'redux/productsApi';
+import SameStyleProducts from 'components/SameStyleProducts';
 import styles from './index.module.scss';
-import { useParams } from 'react-router-dom';
 
 const ProductOrder = () => {
   const { productId } = useParams();
@@ -19,10 +20,13 @@ const ProductOrder = () => {
   localStorage.setItem('visited', JSON.stringify(visitedProductArray));
 
   return (
-    <div className={styles.wrapper}>
-      <PhotoSwitcher {...data} />
-      <ProductOrderInfo {...data} />
-    </div>
+    <>
+      <div className={styles.wrapper}>
+        <PhotoSwitcher {...data} />
+        <ProductOrderInfo {...data} />
+      </div>
+      <SameStyleProducts subcategory={data?.subcategory} />
+    </>
   );
 };
 

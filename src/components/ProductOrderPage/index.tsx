@@ -1,13 +1,16 @@
-import React, { FC } from 'react';
+import React from 'react';
+import Header from 'components/Header';
+import Footer from 'components/Footer';
 import ProductOrder from 'components/ProductOrder';
-// import styles from './index.module.scss';
+import VisitedProducts from 'components/VisitedProducts';
 
-export interface ProductOrderPageProps {}
-
-const ProductOrderPage: FC<ProductOrderPageProps> = () => {
+const ProductOrderPage = () => {
   return (
     <>
+      <Header />
       <ProductOrder />
+      <VisitedProducts />
+      <Footer />
     </>
   );
 };

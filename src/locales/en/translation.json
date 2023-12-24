@@ -23,5 +23,7 @@
     "addToMyShoppingBag": "ADD TO MY SHOPPING BAG"
   },
   "viewCollection": "View Collection",
-  "collections": "Collections"
+  "collections": "Collections",
+  "YouAlsoViewed": "You also viewed",
+  "InSameStyle": "In the same style"
 }

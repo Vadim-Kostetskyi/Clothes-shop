@@ -22,9 +22,7 @@ interface ProductProps {
 }
 
 export interface ImageItemProps {
-  id: string;
-  name: string;
-  url: string;
+  result: string;
 }
 
 export interface ImageProps {

@@ -34,6 +34,13 @@ export const productsApi = createApi({
         return { data: { images } };
       },
     }),
+    searchProductsByParameter: builder.query({
+      query: ({ body, page, size }) => ({
+        url: `products/search?page=${page}&size=${size}`,
+        method: 'POST',
+        body,
+      }),
+    }),
     getProductsWithImages: builder.query<
       GetProductsWithImagesProps,
       GetProductsPayload
@@ -77,4 +84,5 @@ export const {
   useGetProductsWithImagesQuery,
   useGetProductByIdQuery,
   useGetProductImagesQuery,
+  useSearchProductsByParameterQuery,
 } = productsApi;
