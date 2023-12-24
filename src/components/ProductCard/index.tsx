@@ -24,21 +24,17 @@ const ProductCard: FC<ProductCardProps> = ({
   files = [],
   isMobile,
   image,
-}) => {
-  console.log(id);
-
-  return (
-    <div className={styles.productCard}>
-      {isMobile ? (
-        <img src={image} alt={title} className={styles.image} />
-      ) : (
-        <Link to={`/product-order/${id}`}>
-          <ProductImageSwiper images={files} />
-        </Link>
-      )}
-      <ProductInfo productName={title} price={price} sizes={size} />
-    </div>
-  );
-};
+}) => (
+  <div className={styles.productCard}>
+    {isMobile ? (
+      <img src={image} alt={title} className={styles.image} />
+    ) : (
+      <Link to={`/product-order/${id}`}>
+        <ProductImageSwiper images={files} />
+      </Link>
+    )}
+    <ProductInfo productName={title} price={price} sizes={size} />
+  </div>
+);
 
 export default ProductCard;

@@ -10,9 +10,11 @@ const VisitedProducts = () => {
 
   const visitedProduct = localStorage.getItem('visited');
   const visitedProductArray = visitedProduct ? JSON.parse(visitedProduct) : [];
-  const filteredVisitedProductArray = visitedProductArray?.filter(
-    (item: string) => item !== productId,
-  );
+  console.log(visitedProductArray);
+
+  const filteredVisitedProductArray = visitedProductArray
+    ?.filter((item: string) => item !== productId)
+    .slice(0, 3);
 
   return (
     <div className={styles.wrapper}>

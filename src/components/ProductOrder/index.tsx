@@ -15,7 +15,7 @@ const ProductOrder = () => {
   const newProduct = data?.id;
 
   if (newProduct && !visitedProductArray.includes(newProduct)) {
-    visitedProductArray.push(newProduct);
+    visitedProductArray.unshift(newProduct);
   }
   localStorage.setItem('visited', JSON.stringify(visitedProductArray));
 
