@@ -46,7 +46,7 @@ const MediaQueryCatalogMenu = (): JSX.Element => {
         {isHomePage ? (
           <img src={logo} className={styles.logo} alt="Logo" />
         ) : (
-          <Link to="/">
+          <Link to="/main-page/men">
             <img src={logo} className={styles.logo} alt="Logo" />
           </Link>
         )}
