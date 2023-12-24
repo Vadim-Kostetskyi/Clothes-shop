@@ -50,10 +50,11 @@
 }
 
 .navigation {
-  margin-right: 1.9rem;
+  margin-right: 8.35rem;
 }
 
 .logo {
+  display: block;
   width: 133px;
   @include media(tablet) {
     width: 111px;
