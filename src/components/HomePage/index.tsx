@@ -1,21 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CategoryCards from 'components/CategoryCards';
 import Header from 'components/Header';
+import HomePageModal from 'components/HomePageModal';
 import styles from './index.module.scss';
-import { useGetProductsWithImagesQuery } from 'redux/productsApi';
 
 const HomePage = () => {
-  const { data } = useGetProductsWithImagesQuery({ page: 0, size: 9 });
-  console.log(data);
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    try {
+      const serializedState = localStorage.getItem('shouldShowModal');
+      const shouldShowModal = !serializedState;
+      console.log(shouldShowModal);
+
+      setShowModal(shouldShowModal);
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
+
+  const hideModalWindow = () => setShowModal(false);
+
   return (
-    <>
-      <div className={styles.wrapperHomePage}>
-        <Header />
-        <div className={styles.wrapperCategoryCards}>
-          <CategoryCards />
-        </div>
+    <div className={styles.wrapperHomePage}>
+      <Header />
+      <div className={styles.wrapperCategoryCards}>
+        <CategoryCards />
       </div>
-    </>
+      {showModal ? (
+        <HomePageModal showModal={showModal} hideModal={hideModalWindow} />
+      ) : null}
+    </div>
   );
 };
 

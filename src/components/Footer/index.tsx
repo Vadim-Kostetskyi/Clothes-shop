@@ -1,14 +1,10 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import FooterList from './FooterList';
 import CompanyInfo from './CompanyInfo';
+import Copyright from 'components/copyright';
 import styles from './Footer.module.scss';
 
 const Footer = (): JSX.Element => {
-  const { t } = useTranslation();
-
-  const year = new Date().getFullYear();
-
   return (
     <footer className={styles.footer}>
       <div className={styles.shadowBorder}></div>
@@ -19,7 +15,7 @@ const Footer = (): JSX.Element => {
           <FooterList className={styles.columnMobile} />
         </div>
       </div>
-      <p className={styles.copyright}>{t('copyright', { year })}</p>
+      <Copyright />
     </footer>
   );
 };

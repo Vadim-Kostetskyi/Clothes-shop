@@ -19,6 +19,12 @@
   },
   "viewCollection": "View Collection",
   "collections": "Collections",
+  "homePageModal": {
+    "selectLocation": "Select your location",
+    "selectLanguage": "Select your language",
+    "rememberSelection": "Remember my selection",
+    "go": "GO"
+  },
   "categoryItems": {
     "all": "All",
     "jackets": "Jackets",
