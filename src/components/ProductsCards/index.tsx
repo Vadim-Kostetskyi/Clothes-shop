@@ -7,24 +7,22 @@ interface ProductsCardsProps {
   searchProducts: GetProductsWithImagesProps;
 }
 
-const ProductsCards: FC<ProductsCardsProps> = ({ searchProducts }) => {
-  return (
-    <div className={styles.cardsWrapper}>
-      {searchProducts?.products?.map(({ id, title, price, size }) => {
-        const images =
-          searchProducts?.images?.find(item => item.id === id)?.images ?? [];
-        return (
-          <ProductCard
-            key={id}
-            productName={title}
-            price={price}
-            sizes={size}
-            images={images}
-          />
-        );
-      })}
-    </div>
-  );
-};
+const ProductsCards: FC<ProductsCardsProps> = ({ searchProducts }) => (
+  <div className={styles.cardsWrapper}>
+    {searchProducts?.products?.map(({ id, title, price, size }) => {
+      const images =
+        searchProducts?.images?.find(item => item.id === id)?.images ?? [];
+      return (
+        <ProductCard
+          key={id}
+          productName={title}
+          price={price}
+          sizes={size}
+          images={images}
+        />
+      );
+    })}
+  </div>
+);
 
 export default ProductsCards;

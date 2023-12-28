@@ -1,19 +1,20 @@
 import React, { useEffect } from 'react';
 import ProductsCards from 'components/ProductsCards';
-import FilteredyButton from 'components/FilteringProducts';
-import { useSearchProductsWithImagesMutation } from 'redux/productsApi';
+import FilteredyButton from 'components/FilterTabButtons';
+import { useFetchProductsWithImagesMutation } from 'redux/productsApi';
 import { BodySearchProducts, GetProductsWithImagesProps } from 'redux/types';
 import SyncLoader from 'react-spinners/SyncLoader';
+import { SIZE } from 'utils/constants';
 import styles from './index.module.scss';
 
-const ManProducts = (): JSX.Element => {
+const ProductsGridPage = (): JSX.Element => {
   const [searchProducts, { isLoading, data }] =
-    useSearchProductsWithImagesMutation();
+    useFetchProductsWithImagesMutation();
 
   useEffect(() => {
     searchProducts({
       page: 0,
-      size: 9,
+      size: SIZE,
       body: {
         category: 'CLOTHING',
       },
@@ -23,7 +24,7 @@ const ManProducts = (): JSX.Element => {
   const handleClick = (body: BodySearchProducts) => {
     searchProducts({
       page: 0,
-      size: 9,
+      size: SIZE,
       body,
     });
   };
@@ -47,4 +48,4 @@ const ManProducts = (): JSX.Element => {
   );
 };
 
-export default ManProducts;
+export default ProductsGridPage;

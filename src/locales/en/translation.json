@@ -18,5 +18,12 @@
     "discountPercent": "and get a -{{discountPercent}}% discount"
   },
   "viewCollection": "View Collection",
-  "collections": "Collections"
+  "collections": "Collections",
+  "categoryItems": {
+    "all": "All",
+    "jackets": "Jackets",
+    "fieldJackets": "Field jackets",
+    "overshirts": "Overshirts",
+    "quiltedCoats": "Quilted coats"
+  }
 }

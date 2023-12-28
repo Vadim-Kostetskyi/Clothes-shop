@@ -55,7 +55,7 @@ export const productsApi = createApi({
         return { data: { products: [], images: [] } };
       },
     }),
-    searchProductsWithImages: builder.mutation<
+    fetchProductsWithImages: builder.mutation<
       GetProductsWithImagesProps,
       SearchProductsProps
     >({
@@ -98,5 +98,5 @@ export const productsApi = createApi({
 export const {
   useGetProductsByNameQuery,
   useGetProductsWithImagesQuery,
-  useSearchProductsWithImagesMutation,
+  useFetchProductsWithImagesMutation,
 } = productsApi;
