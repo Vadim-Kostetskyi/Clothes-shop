@@ -4,7 +4,7 @@ import FilteredyButton from 'components/FilterTabButtons';
 import { useFetchProductsWithImagesMutation } from 'redux/productsApi';
 import { BodySearchProducts, GetProductsWithImagesProps } from 'redux/types';
 import SyncLoader from 'react-spinners/SyncLoader';
-import { SIZE } from 'utils/constants';
+import { PRODUCT_GRID_SIZE } from 'utils/constants';
 import styles from './index.module.scss';
 
 const ProductsGridPage = (): JSX.Element => {
@@ -14,7 +14,7 @@ const ProductsGridPage = (): JSX.Element => {
   useEffect(() => {
     searchProducts({
       page: 0,
-      size: SIZE,
+      size: PRODUCT_GRID_SIZE,
       body: {
         category: 'CLOTHING',
       },
@@ -24,7 +24,7 @@ const ProductsGridPage = (): JSX.Element => {
   const handleClick = (body: BodySearchProducts) => {
     searchProducts({
       page: 0,
-      size: SIZE,
+      size: PRODUCT_GRID_SIZE,
       body,
     });
   };

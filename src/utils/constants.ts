@@ -6,4 +6,4 @@ export const MenuItem = {
   KIDS: 'Kids',
 } as const;
 
-export const SIZE = 9;
+export const PRODUCT_GRID_SIZE = 9;
