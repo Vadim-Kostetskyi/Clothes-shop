@@ -15,16 +15,18 @@ const SameStyleProducts: FC<SameStyleProductsProps> = ({ subcategory }) => {
     page: 1,
     size: 3,
   });
+  console.log(data);
 
   return (
     <div className={styles.wrapper}>
-      <p className={styles.title}>{t('InSameStyle')}</p>
+      <p className={styles.title}>{t('inSameStyle')}</p>
       <div className={styles.cardWrapper}>
-        {data?.map(({ id }: { id: string }) => (
-          <div className={styles.card} key={id}>
-            <ProductCardRequest id={id} />
-          </div>
-        ))}
+        {Array.isArray(data) &&
+          data?.map(({ id }: { id: string }) => (
+            <div className={styles.card} key={id}>
+              <ProductCardRequest id={id} />
+            </div>
+          ))}
       </div>
     </div>
   );

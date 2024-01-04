@@ -6,10 +6,14 @@ import styles from './index.module.scss';
 import { ImageItemProps } from 'redux/types';
 
 export interface ProductImageSwiperProps {
+  cardName: string;
   images: ImageItemProps[];
 }
 
-const ProductImageSwiper: FC<ProductImageSwiperProps> = ({ images }) => {
+const ProductImageSwiper: FC<ProductImageSwiperProps> = ({
+  images,
+  cardName,
+}) => {
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
   const [isHidden, setIsHidden] = useState(true);
@@ -31,7 +35,7 @@ const ProductImageSwiper: FC<ProductImageSwiperProps> = ({ images }) => {
       <CoreSwiper navigation={{ prevEl, nextEl }}>
         {images.map(({ result }) => (
           <SwiperSlide key={result}>
-            <img src={result} alt="" className={styles.img} />
+            <img src={result} alt={cardName} className={styles.img} />
           </SwiperSlide>
         ))}
         <div className={isHidden ? styles.hide : styles.wrapperArrows}>

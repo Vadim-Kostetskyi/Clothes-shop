@@ -11,7 +11,6 @@ const HomePage = () => {
     try {
       const serializedState = localStorage.getItem('shouldShowModal');
       const shouldShowModal = !serializedState;
-      console.log(shouldShowModal);
 
       setShowModal(shouldShowModal);
     } catch (error) {

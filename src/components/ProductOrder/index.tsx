@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import PhotoSwitcher from 'components/PhotoSwitcher';
 import ProductOrderInfo from 'components/ProductOrderInfo';
@@ -10,14 +10,18 @@ const ProductOrder = () => {
   const { productId } = useParams();
   const { data } = useGetProductByIdQuery({ id: productId });
 
-  const visitedProduct = localStorage.getItem('visited');
-  const visitedProductArray = visitedProduct ? JSON.parse(visitedProduct) : [];
-  const newProduct = data?.id;
+  useEffect(() => {
+    const visitedProduct = localStorage.getItem('visited');
+    const visitedProductArray = visitedProduct
+      ? JSON.parse(visitedProduct)
+      : [];
+    const newProduct = data?.id;
 
-  if (newProduct && !visitedProductArray.includes(newProduct)) {
-    visitedProductArray.unshift(newProduct);
-  }
-  localStorage.setItem('visited', JSON.stringify(visitedProductArray));
+    if (newProduct && !visitedProductArray.includes(newProduct)) {
+      visitedProductArray.unshift(newProduct);
+    }
+    localStorage.setItem('visited', JSON.stringify(visitedProductArray));
+  }, []);
 
   return (
     <>

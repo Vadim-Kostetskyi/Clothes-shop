@@ -10,14 +10,14 @@
   background-color: $springGreen;
   padding: 18px 0 14px;
   border-radius: 5px;
-}
 
-.addButton:disabled {
-  opacity: 20%;
-}
+  &:disabled {
+    opacity: 20%;
+  }
 
-.addButton:active {
-  background-color: $darkGreen;
+  &:active {
+    background-color: $darkGreen;
+  }
 }
 
 .shoppingBag {

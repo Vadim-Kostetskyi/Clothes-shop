@@ -9,6 +9,7 @@ import {
   GetProductsResponse,
   GetProductsWithImagesProps,
   ProductImage,
+  GetImages,
 } from './types';
 
 export const productsApi = createApi({
@@ -34,7 +35,7 @@ export const productsApi = createApi({
         return { data: { images } };
       },
     }),
-    searchProductsByParameter: builder.query({
+    searchProductsByParameter: builder.query<GetProductsResponse, GetImages>({
       query: ({ body, page, size }) => ({
         url: `products/search?page=${page}&size=${size}`,
         method: 'POST',

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import ProductCardRequest from 'components/ProductCardRequest';
@@ -8,9 +8,8 @@ const VisitedProducts = () => {
   const { t } = useTranslation();
   const { productId } = useParams();
 
-  const visitedProduct = localStorage.getItem('visited');
+  const visitedProduct = useMemo(() => localStorage.getItem('visited'), []);
   const visitedProductArray = visitedProduct ? JSON.parse(visitedProduct) : [];
-  console.log(visitedProductArray);
 
   const filteredVisitedProductArray = visitedProductArray
     ?.filter((item: string) => item !== productId)
@@ -18,7 +17,7 @@ const VisitedProducts = () => {
 
   return (
     <div className={styles.wrapper}>
-      <p className={styles.title}>{t('YouAlsoViewed')}</p>
+      <p className={styles.title}>{t('youAlsoViewed')}</p>
       <div className={styles.cardWrapper}>
         {filteredVisitedProductArray.map((id: string) => (
           <div className={styles.card} key={id}>

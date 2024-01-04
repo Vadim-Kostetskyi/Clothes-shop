@@ -43,3 +43,7 @@ export interface GetProductsWithImagesProps {
 export interface ProductImage {
   result: string;
 }
+
+export interface GetImages extends GetProductsPayload {
+  body: { subcategory: string[] };
+}

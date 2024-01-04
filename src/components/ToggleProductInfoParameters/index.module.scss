@@ -24,11 +24,16 @@
 }
 
 .parameterColorBtn {
-  padding-top: 0;
+  padding: 2px;
+
+  &:not(:last-child) {
+    margin-right: 15px;
+  }
 }
 
 .active {
   border-radius: 4px;
+  padding: 2px;
   border: 0.5px solid $blackColor;
 }
 

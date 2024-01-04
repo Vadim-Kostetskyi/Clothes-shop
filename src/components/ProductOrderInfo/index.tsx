@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useCallback, useState } from 'react';
 import SizeSelector from 'components/SizeSelector';
 import ColorSelection from 'components/ColorSelection';
 import AddToBagButton from 'components/AddToBagButton';
@@ -18,6 +18,19 @@ export interface ItemPageProps {
   composition: string;
 }
 
+const colors = [
+  {
+    label: Color.Black,
+    content: black,
+  },
+  {
+    label: Color.White,
+    content: white,
+  },
+];
+
+const defaultSizes: Size[] = [Size.XS, Size.S, Size.M, Size.L, Size.XL];
+
 const ProductOrderInfo: FC<ItemPageProps> = ({
   title,
   price,
@@ -32,48 +45,33 @@ const ProductOrderInfo: FC<ItemPageProps> = ({
 
   const { t } = useTranslation();
 
-  const colors = [
-    {
-      label: Color.Black,
-      content: black,
-    },
-    {
-      label: Color.White,
-      content: white,
-    },
-  ];
-
-  const defaultSizes: Size[] = [Size.XS, Size.S, Size.M, Size.L, Size.XL];
-
-  const handleChangeSize = (parameter: string, size: string) => {
+  const handleChangeSize = useCallback((parameter: string, size: string) => {
     setSelectedSize(size as Size);
     setIsError(false);
-  };
+  }, []);
 
-  const handleChangeColor = (color: Color) => {
+  const handleChangeColor = useCallback((color: Color) => {
     setSelectedColor(color);
-  };
+  }, []);
 
-  const addToBag = () => {
+  const addToBag = useCallback(() => {
     // TODO: add the function of adding an item to the shopping bag
-    console.log(id);
-    console.log(selectedColor);
-    console.log(selectedSize);
-  };
+    console.log(id, selectedColor, selectedSize);
+  }, []);
 
-  const addToFavorite = () => {
+  const addToFavorite = useCallback(() => {
     // TODO: add the function of adding an item to the favorite
-    console.log(id);
-    console.log(selectedColor);
-    selectedSize && console.log(selectedSize);
-  };
+    console.log(id, selectedColor, selectedSize && selectedSize);
+  }, []);
 
   return (
     <div className={styles.wrapper}>
       <p className={styles.title}>{title}</p>
-      <p className={styles.ref}>Ref. {id}</p>
+      <p className={styles.ref}>
+        {t('productOrder.ref')}. {id}
+      </p>
       <p className={styles.price}>
-        {price} <span className={styles.currency}>€</span>
+        {price} <span className={styles.currency}>{t('currency')}</span>
       </p>
       <div className={styles.colorBox}>
         <p className={styles.submenu}>{t('productOrder.selectColour')}</p>
@@ -81,8 +79,6 @@ const ProductOrderInfo: FC<ItemPageProps> = ({
           colors={colors}
           chosenColor={selectedColor}
           changeColor={handleChangeColor}
-          colorStyles={styles.color}
-          chosenColorStyles={styles.chosenColor}
         />
       </div>
       <p className={styles.submenu}>{t('productOrder.selectSize')}</p>
@@ -103,17 +99,17 @@ const ProductOrderInfo: FC<ItemPageProps> = ({
       />
       <div className={styles.accordionBox}>
         <Accordion
-          title="Description"
+          title={t('productOrder.description')}
           titleStyles={styles.submenu}
           listStyle={styles.listStyle}
-          list={<p className={styles.text}>{description}</p>}
+          list={description}
         />
       </div>
       <div className={styles.accordionBox}>
         <Accordion
-          title="Composition"
+          title={t('productOrder.composition')}
           titleStyles={styles.submenu}
-          list={<p className={styles.text}>{composition}</p>}
+          list={composition}
         />
       </div>
     </div>

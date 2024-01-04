@@ -30,7 +30,7 @@ const ProductCard: FC<ProductCardProps> = ({
       <img src={image} alt={title} className={styles.image} />
     ) : (
       <Link to={`/product-order/${id}`}>
-        <ProductImageSwiper images={files} />
+        <ProductImageSwiper images={files} cardName={title} />
       </Link>
     )}
     <ProductInfo productName={title} price={price} sizes={size} />

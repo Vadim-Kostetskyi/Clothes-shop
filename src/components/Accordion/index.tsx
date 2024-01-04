@@ -1,4 +1,4 @@
-import React, { FC, useState, ReactNode } from 'react';
+import React, { FC, useState, ReactNode, useMemo } from 'react';
 import PlusImg from 'assets/svgs/Plus';
 import MinusImg from 'assets/svgs/Minus';
 import styles from './index.module.scss';
@@ -26,16 +26,19 @@ const Accordion: FC<AccordionProps> = ({
     setIsOpen(!isOpen);
   };
 
-  const imageClassName = () => (isMobile ? styles.mobileImg : styles.img);
+  const imageClassName = useMemo(
+    () => (isMobile ? styles.mobileImg : styles.img),
+    [],
+  );
 
   return (
     <div className={styles.accordion}>
       <button className={styles.box} onClick={toggleAccordion}>
         <p className={titleStyles}>{title}</p>
         {isOpen ? (
-          <MinusImg className={imageClassName()} />
+          <MinusImg className={imageClassName} />
         ) : (
-          <PlusImg className={imageClassName()} />
+          <PlusImg className={imageClassName} />
         )}
       </button>
       <div className={isOpen ? listStyle : styles.hide}>{list}</div>

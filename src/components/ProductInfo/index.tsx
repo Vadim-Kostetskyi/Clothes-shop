@@ -3,6 +3,7 @@ import ShoppingBag from 'assets/svgs/ShoppingBag';
 import ProductInfoParameters from 'components/ProductInfoParameters';
 import { Size, Color } from 'types';
 import styles from './index.module.scss';
+import { useTranslation } from 'react-i18next';
 
 interface ProductInfo {
   productName: string;
@@ -14,6 +15,8 @@ const ProductInfo: FC<ProductInfo> = ({ price, productName, sizes }) => {
   const [selectedColor, setSelectedColor] = useState<Color>(Color.Black);
   const [selectedSize, setSelectedSize] = useState<Size | null>(null);
   const [isError, setIsError] = useState(false);
+
+  const { t } = useTranslation();
 
   const changeParameters = (parameter: string, value: string) => {
     /* eslint-disable */
@@ -51,7 +54,9 @@ const ProductInfo: FC<ProductInfo> = ({ price, productName, sizes }) => {
           </button>
         </div>
       </div>
-      <p className={styles.price}>{price} €</p>
+      <p className={styles.price}>
+        {price} {t('currency')}
+      </p>
       <div className={styles.productInfoParametersWrapper}>
         <ProductInfoParameters
           changeParameters={changeParameters}

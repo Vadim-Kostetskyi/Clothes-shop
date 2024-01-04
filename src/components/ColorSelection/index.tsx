@@ -10,8 +10,8 @@ export interface ColorProps {
 interface ColorSelectionProps {
   colors: ColorProps[];
   chosenColor: Color;
-  colorStyles: string;
-  chosenColorStyles: string;
+  colorStyles?: string;
+  chosenColorStyles?: string;
   changeColor: (color: Color) => void;
 }
 
@@ -19,8 +19,6 @@ const ColorSelection: FC<ColorSelectionProps> = ({
   colors,
   chosenColor,
   changeColor,
-  colorStyles,
-  chosenColorStyles,
 }) => {
   const handleColorChange = (color: Color) => () => {
     changeColor(color);
@@ -30,7 +28,7 @@ const ColorSelection: FC<ColorSelectionProps> = ({
       {colors.map(({ label, content }) => (
         <button
           key={label}
-          className={chosenColor === label ? chosenColorStyles : colorStyles}
+          className={chosenColor === label ? styles.chosenColor : styles.color}
           onClick={handleColorChange(label)}
         >
           <img className={styles.image} src={content} alt={label} />

@@ -1,3 +1,23 @@
+@import 'styles/constants';
+
 .image {
   height: 100%;
+}
+
+.color,
+.chosenColor {
+  height: 121px;
+
+  &:not(:last-child) {
+    margin-right: 15px;
+  }
+}
+
+.color {
+  border: 1px solid $pageBackground;
+}
+
+.chosenColor {
+  border-radius: 5px;
+  border: 1px solid $grayDark;
 }

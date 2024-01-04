@@ -10,7 +10,7 @@ interface ProductCardRequestProps {
 }
 
 const ProductCardRequest: FC<ProductCardRequestProps> = ({ id }) => {
-  const { data } = useGetProductByIdQuery({ id: id });
+  const { data } = useGetProductByIdQuery({ id });
   const images = useGetProductImagesQuery(data?.files);
 
   return <ProductCard {...data} files={images.data?.images} />;

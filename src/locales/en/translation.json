@@ -20,16 +20,20 @@
   "productOrder": {
     "selectColour": "Select colour",
     "selectSize": "Select size",
-    "addToMyShoppingBag": "ADD TO MY SHOPPING BAG"
+    "addToMyShoppingBag": "ADD TO MY SHOPPING BAG",
+    "ref": "Ref",
+    "description": "Description",
+    "composition": "Composition"
   },
   "viewCollection": "View Collection",
   "collections": "Collections",
-  "YouAlsoViewed": "You also viewed",
-  "InSameStyle": "In the same style",
+  "youAlsoViewed": "You also viewed",
+  "inSameStyle": "In the same style",
   "homePageModal": {
     "selectLocation": "Select your location",
     "selectLanguage": "Select your language",
     "rememberSelection": "Remember my selection",
     "go": "GO"
-  }
+  },
+  "currency": "€"
 }
