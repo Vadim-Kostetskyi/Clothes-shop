@@ -5,3 +5,5 @@ export const MenuItem = {
   MEN: 'Men',
   KIDS: 'Kids',
 } as const;
+
+export const PRODUCT_GRID_SIZE = 9;

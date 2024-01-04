@@ -5,7 +5,7 @@ export interface GetProductsPayload {
   size: number;
 }
 
-interface ProductProps {
+export interface ProductProps {
   id: string;
   title: string;
   price: string;
@@ -41,8 +41,32 @@ export interface GetProductsWithImagesProps {
   images: ImageProps[];
   error?: boolean;
 }
-
 export interface GetProductsWithImagesDTO {
   product: ProductProps;
   images: ImageItemProps[];
+}
+
+export interface SearchProductsProps {
+  page: number;
+  size: number;
+  body: BodySearchProducts;
+}
+
+export type BodySearchProducts =
+  | {
+      category: string;
+    }
+  | {
+      subcategory: Subcategory;
+    };
+
+export enum Subcategory {
+  JACKETS = 'JACKETS',
+  COATS = 'COATS',
+  TRENCH = 'TRENCH',
+  GILETS = 'GILETS',
+  OVERSHIRTS = 'OVERSHIRTS',
+  SWEATERS = 'SWEATERS',
+  CARDIGANS = 'CARDIGANS',
+  QUILTED = 'QUILTED',
 }

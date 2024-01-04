@@ -7,18 +7,23 @@ import Footer from 'components/Footer';
 import ScrollToTop from 'components/ScrollToTop';
 import Collection from 'components/Collection';
 import ProductsCards from 'components/ProductsCards';
+import { useGetProductsWithImagesQuery } from 'redux/productsApi';
 
-const MainPage = () => (
-  <>
-    <Header />
-    <CollectionImageSwiper />
-    <NewNow />
-    <Collection />
-    <FormSubscription />
-    <ProductsCards />
-    <Footer />
-    <ScrollToTop />
-  </>
-);
+const MainPage = () => {
+  const { data } = useGetProductsWithImagesQuery({ page: 0, size: 9 });
+
+  return (
+    <>
+      <Header />
+      <CollectionImageSwiper />
+      <NewNow />
+      <Collection />
+      <FormSubscription />
+      {data && <ProductsCards searchProducts={data} />}
+      <Footer />
+      <ScrollToTop />
+    </>
+  );
+};
 
 export default MainPage;
