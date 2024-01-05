@@ -1,6 +1,7 @@
 import { CaseReducer, PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { AddItemPayload } from './libs/types/types';
 import { SliceName } from '../libs/enums/enums';
+import { useLocalStorage } from 'libs/hooks/hooks';
 
 type State = {
   items: AddItemPayload[];
@@ -8,21 +9,16 @@ type State = {
   totalPrice: number;
 };
 
-const saveStateToLocalStorage = (state: State): void => {
-  const serializedState = JSON.stringify(state);
-  localStorage.setItem(SliceName.SHOPPING_CART, serializedState);
-};
-
-const loadStateFromLocalStorage = (): State | undefined => {
-  const serializedState = localStorage.getItem(SliceName.SHOPPING_CART);
-  return serializedState ? JSON.parse(serializedState) : undefined;
-};
-
-const initialState: State = loadStateFromLocalStorage() ?? {
+const initialState: State = {
   items: [],
   quantity: 0,
   totalPrice: 0,
 };
+
+const { getItem, setItem } = useLocalStorage<State>(
+  SliceName.SHOPPING_CART,
+  initialState,
+);
 
 const addItem: CaseReducer<State, PayloadAction<AddItemPayload>> = (
   state,
@@ -33,7 +29,7 @@ const addItem: CaseReducer<State, PayloadAction<AddItemPayload>> = (
   state.quantity++;
   state.totalPrice += newItem.price;
 
-  saveStateToLocalStorage(state);
+  setItem(state);
 };
 
 const removeItem: CaseReducer<State, PayloadAction<string>> = (
@@ -46,19 +42,19 @@ const removeItem: CaseReducer<State, PayloadAction<string>> = (
     state.items = state.items.filter(item => item.id !== itemId);
     state.quantity--;
     state.totalPrice -= itemToRemove.price;
-    saveStateToLocalStorage(state);
+    setItem(state);
   }
 };
 
 const clearCart: CaseReducer<State> = () => {
-  saveStateToLocalStorage(initialState);
+  setItem(initialState);
 
   return initialState;
 };
 
 const { reducer, actions, name } = createSlice({
   name: SliceName.SHOPPING_CART,
-  initialState,
+  initialState: { ...initialState, ...getItem() },
   reducers: {
     addItem,
     removeItem,
