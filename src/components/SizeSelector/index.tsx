@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback } from 'react';
 import { clsx } from 'clsx';
 import { Size } from 'types';
 import styles from './index.module.scss';
@@ -6,27 +6,30 @@ import styles from './index.module.scss';
 export interface SizeSelectorProps {
   parameters: string[];
   sizes?: Size[];
-  active: string | null;
-  buttonStyles?: string;
-  activeStyles?: string;
-  handleClick: (param: string, value: string) => void;
+  active?: string;
+  handleClick: (param: string, size: Size) => void;
+  isProductOrder?: boolean;
 }
 
 const SizeSelector: FC<SizeSelectorProps> = ({
   parameters,
   sizes,
   active,
-  buttonStyles,
-  activeStyles,
   handleClick,
+  isProductOrder,
 }) => {
-  const isActiveStyles = activeStyles || styles.active;
+  const isActiveStyles = isProductOrder
+    ? styles.activeProductOrder
+    : styles.active;
 
-  const combinedClassName = (parameter: string) =>
-    clsx(
-      buttonStyles || styles.parameterBtn,
-      active === parameter ? isActiveStyles : '',
-    );
+  const combinedClassName = useCallback(
+    (parameter: string) =>
+      clsx(
+        isProductOrder ? styles.productOrderParameterBtn : styles.parameterBtn,
+        active === parameter ? isActiveStyles : '',
+      ),
+    [active],
+  );
 
   return (
     <>
@@ -34,7 +37,7 @@ const SizeSelector: FC<SizeSelectorProps> = ({
         <button
           key={index}
           className={combinedClassName(parameter)}
-          onClick={() => handleClick('size', parameter)}
+          onClick={() => handleClick('size', parameter as Size)}
           disabled={sizes && !sizes.includes(parameter as Size)}
         >
           <p className={styles.text}>{parameter}</p>

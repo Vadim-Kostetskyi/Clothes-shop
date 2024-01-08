@@ -39,14 +39,14 @@ const ProductOrderInfo: FC<ItemPageProps> = ({
   composition,
   id,
 }) => {
-  const [selectedSize, setSelectedSize] = useState<Size | null>(null);
+  const [selectedSize, setSelectedSize] = useState<Size | undefined>();
   const [selectedColor, setSelectedColor] = useState<Color>(Color.Black);
   const [isError, setIsError] = useState(true);
 
   const { t } = useTranslation();
 
-  const handleChangeSize = useCallback((parameter: string, size: string) => {
-    setSelectedSize(size as Size);
+  const handleChangeSize = useCallback((parameter: string, size: Size) => {
+    setSelectedSize(size);
     setIsError(false);
   }, []);
 
@@ -57,12 +57,12 @@ const ProductOrderInfo: FC<ItemPageProps> = ({
   const addToBag = useCallback(() => {
     // TODO: add the function of adding an item to the shopping bag
     console.log(id, selectedColor, selectedSize);
-  }, []);
+  }, [id, selectedColor, selectedSize]);
 
   const addToFavorite = useCallback(() => {
     // TODO: add the function of adding an item to the favorite
-    console.log(id, selectedColor, selectedSize && selectedSize);
-  }, []);
+    console.log(id, selectedColor, selectedSize);
+  }, [id, selectedColor, selectedSize]);
 
   return (
     <div className={styles.wrapper}>
@@ -88,8 +88,7 @@ const ProductOrderInfo: FC<ItemPageProps> = ({
           sizes={size}
           active={selectedSize}
           handleClick={handleChangeSize}
-          activeStyles={styles.activeSize}
-          buttonStyles={styles.sizeButton}
+          isProductOrder={true}
         />
       </div>
       <AddToBagButton

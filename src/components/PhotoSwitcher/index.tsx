@@ -13,7 +13,6 @@ const PhotoSwitcher: FC<PhotoSwitcherProps> = ({ files, title }) => {
   const { data } = useGetProductImagesQuery(files);
 
   const [images, setImages] = useState<string[] | undefined>();
-  const smallImages = images?.slice(1);
 
   useEffect(() => {
     const productImages = data?.images.map(el => el.result) || [];
@@ -66,7 +65,7 @@ const PhotoSwitcher: FC<PhotoSwitcherProps> = ({ files, title }) => {
   return (
     <div className={styles.wrapper}>
       <PicturePanel
-        images={smallImages}
+        images={images?.slice(1)}
         choosePicture={moveImageToStart}
         cardName={title}
       />

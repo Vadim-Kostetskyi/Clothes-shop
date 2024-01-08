@@ -15,7 +15,7 @@ const ProductInfoParameters: FC<ProductInfoParameters> = ({
   sizes,
   error,
 }) => {
-  const [activeSize, setActiveSize] = useState<Size | null>(null);
+  const [activeSize, setActiveSize] = useState<Size | undefined>();
   const [activeColor, setActiveColor] = useState<Color>(Color.Black);
   const [open, setOpen] = useState<boolean[]>([false, false]);
 

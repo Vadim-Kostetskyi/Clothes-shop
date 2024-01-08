@@ -21,7 +21,7 @@ const ProductOrder = () => {
       visitedProductArray.unshift(newProduct);
     }
     localStorage.setItem('visited', JSON.stringify(visitedProductArray));
-  }, []);
+  }, [productId]);
 
   return (
     <>

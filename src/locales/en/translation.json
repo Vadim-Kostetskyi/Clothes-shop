@@ -27,8 +27,8 @@
   },
   "viewCollection": "View Collection",
   "collections": "Collections",
-  "youAlsoViewed": "You also viewed",
-  "inSameStyle": "In the same style",
+  "viewedProducts": "Viewed products",
+  "similarProducts": "Similar products",
   "homePageModal": {
     "selectLocation": "Select your location",
     "selectLanguage": "Select your language",

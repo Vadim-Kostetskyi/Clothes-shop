@@ -9,15 +9,22 @@ const VisitedProducts = () => {
   const { productId } = useParams();
 
   const visitedProduct = useMemo(() => localStorage.getItem('visited'), []);
-  const visitedProductArray = visitedProduct ? JSON.parse(visitedProduct) : [];
+  const visitedProductArray = useMemo(
+    () => (visitedProduct ? JSON.parse(visitedProduct) : []),
+    [visitedProduct],
+  );
 
-  const filteredVisitedProductArray = visitedProductArray
-    ?.filter((item: string) => item !== productId)
-    .slice(0, 3);
+  const filteredVisitedProductArray = useMemo(
+    () =>
+      visitedProductArray
+        ?.filter((item: string) => item !== productId)
+        .slice(0, 3),
+    [productId],
+  );
 
   return (
     <div className={styles.wrapper}>
-      <p className={styles.title}>{t('youAlsoViewed')}</p>
+      <p className={styles.title}>{t('viewedProducts')}</p>
       <div className={styles.cardWrapper}>
         {filteredVisitedProductArray.map((id: string) => (
           <div className={styles.card} key={id}>
