@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import CatalogMenu from 'components/CatalogMenu';
 import CatalogMenuMobile from 'components/CatalogMenuMobile';
@@ -46,9 +46,9 @@ const MediaQueryCatalogMenu = (): JSX.Element => {
         {isHomePage ? (
           <img src={logo} className={styles.logo} alt="Logo" />
         ) : (
-          <Link to="/main-page/men">
+          <a href="/main-page/men">
             <img src={logo} className={styles.logo} alt="Logo" />
-          </Link>
+          </a>
         )}
         {isHomePage ? null : (
           <div className={styles.userBox}>

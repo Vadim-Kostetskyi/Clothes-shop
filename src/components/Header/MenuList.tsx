@@ -13,12 +13,12 @@ export const menuName: MenuItem[] = [
 export const category: MenuContent = {
   Women: [],
   Men: [
-    { id: 0, href: '#', label: 'New now' },
+    { id: 0, href: '/main-page/men/products', label: 'New now' },
     { id: 1, href: '#', label: 'Clothing' },
     { id: 2, href: '#', label: 'Suits' },
     { id: 3, href: '#', label: 'Shoes and accessories' },
     { id: 4, href: '#', label: 'Promotion' },
-    { id: 5, href: '#', label: 'Collections' },
+    { id: 5, href: '/main-page/men/products', label: 'Collections' },
   ],
   Kids: [],
 };
@@ -26,7 +26,7 @@ export const category: MenuContent = {
 export const subcategory: MenuContent = {
   Women: [],
   Men: [
-    { id: 0, href: '#', label: 'See all' },
+    { id: 0, href: '/main-page/men/products', label: 'See all' },
     { id: 1, href: '#', label: 'Coats' },
     { id: 2, href: '#', label: 'Cardigans and sweaters' },
     { id: 3, href: '#', label: 'Jackets and overshirts' },
