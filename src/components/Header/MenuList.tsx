@@ -18,7 +18,7 @@ export const category: MenuContent = {
     { id: 2, href: '#', label: 'Suits' },
     { id: 3, href: '#', label: 'Shoes and accessories' },
     { id: 4, href: '#', label: 'Promotion' },
-    { id: 5, href: '/main-page/men/products', label: 'Collections' },
+    { id: 5, href: '#', label: 'Collections' },
   ],
   Kids: [],
 };
