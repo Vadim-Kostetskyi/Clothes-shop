@@ -19,3 +19,8 @@ export enum HeaderMenu {
   Promotion = 'Promotion',
   Collections = 'Collections',
 }
+
+export enum Language {
+  English = 'en',
+  Ukrainian = 'ua',
+}

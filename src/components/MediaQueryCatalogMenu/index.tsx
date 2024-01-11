@@ -43,9 +43,13 @@ const MediaQueryCatalogMenu = (): JSX.Element => {
             </div>
           </nav>
         )}
-        <Link to="/">
+        {isHomePage ? (
           <img src={logo} className={styles.logo} alt="Logo" />
-        </Link>
+        ) : (
+          <Link to="/main-page/men">
+            <img src={logo} className={styles.logo} alt="Logo" />
+          </Link>
+        )}
         {isHomePage ? null : (
           <div className={styles.userBox}>
             <TopBar />

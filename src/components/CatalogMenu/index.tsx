@@ -1,8 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { menuName, subcategory, category } from './MenuList';
+import { menuName, subcategory, category } from '../Header/MenuList';
 import CatalogMenuItem from 'components/CatalogMenuItem';
 import styles from './index.module.scss';
+import { MenuItem } from 'utils/constants';
 
 const CatalogMenu = (): JSX.Element => {
   const { t } = useTranslation();
@@ -15,11 +16,13 @@ const CatalogMenu = (): JSX.Element => {
             {t('listItem', { label })}
           </a>
           <div className={styles.menuListContainer}>
-            <CatalogMenuItem
-              menuItems={subcategory}
-              itemLabel={label}
-              menuOptions={category}
-            />
+            {label === MenuItem.MEN && (
+              <CatalogMenuItem
+                menuItems={subcategory}
+                itemLabel={label}
+                menuOptions={category}
+              />
+            )}
           </div>
         </div>
       ))}

@@ -19,5 +19,19 @@
   },
   "viewCollection": "View Collection",
   "collections": "Collections",
-  "topCategories": "Top Categories"
+  "topCategories": "Top Categories",
+  "homePageModal": {
+    "selectLocation": "Select your location",
+    "selectLanguage": "Select your language",
+    "rememberSelection": "Remember my selection",
+    "go": "GO"
+  },
+  "categoryItems": {
+    "all": "All",
+    "jackets": "Jackets",
+    "fieldJackets": "Field jackets",
+    "overshirts": "Overshirts",
+    "quiltedCoats": "Quilted coats"
+  }
 }
+
