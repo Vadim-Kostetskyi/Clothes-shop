@@ -1,7 +1,7 @@
 @import 'styles/constants';
 
-.componentWrapper {
-  @include media(tablet) {
+.collectionWrapper {
+  @include media(desktop) {
     margin: 0px 32px;
   }
 }
