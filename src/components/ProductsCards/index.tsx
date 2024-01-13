@@ -13,10 +13,10 @@ const Productscards = () => {
         return (
           <ProductCard
             key={id}
-            title={title}
+            productName={title}
             price={price}
-            size={size}
-            files={images}
+            sizes={size}
+            images={images}
           />
         );
       })}

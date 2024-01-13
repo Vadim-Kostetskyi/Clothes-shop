@@ -3,7 +3,7 @@ import styles from './index.module.scss';
 
 export interface ItemPageProps {
   cardName: string;
-  images: string[] | undefined;
+  images?: string[];
   choosePicture: (index: number) => () => void;
 }
 

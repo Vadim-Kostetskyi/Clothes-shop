@@ -8,10 +8,10 @@ import { Link } from 'react-router-dom';
 
 export interface ProductCardProps {
   id?: string;
-  title: string;
+  productName: string;
   price: string;
-  size: Size[];
-  files?: ImageItemProps[];
+  sizes: Size[];
+  images?: ImageItemProps[];
   isMobile?: boolean;
   image?: string;
 }
@@ -19,21 +19,21 @@ export interface ProductCardProps {
 const ProductCard: FC<ProductCardProps> = ({
   id,
   price,
-  title,
-  size,
-  files = [],
+  productName,
+  sizes,
+  images = [],
   isMobile,
   image,
 }) => (
   <div className={styles.productCard}>
     {isMobile ? (
-      <img src={image} alt={title} className={styles.image} />
+      <img src={image} alt={productName} className={styles.image} />
     ) : (
       <Link to={`/product-order/${id}`}>
-        <ProductImageSwiper images={files} cardName={title} />
+        <ProductImageSwiper images={images} cardName={productName} />
       </Link>
     )}
-    <ProductInfo productName={title} price={price} sizes={size} />
+    <ProductInfo productName={productName} price={price} sizes={sizes} />
   </div>
 );
 

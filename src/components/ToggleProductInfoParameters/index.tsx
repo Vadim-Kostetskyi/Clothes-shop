@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from 'react';
+import React, { FC, useCallback, useMemo } from 'react';
 import Cross from 'assets/svgs/Cross';
 import { Size } from 'types';
 import SizeSelector from 'components/SizeSelector';
@@ -32,8 +32,11 @@ const ToggleProductInfoParameters: FC<ToggleProductInfoParameters> = ({
     [styles.hide]: open[index],
   });
 
-  const getCombinedClass = (parameter: string) =>
-    clsx(styles.parameterColorBtn, { [styles.active]: active === parameter });
+  const getCombinedClass = useCallback(
+    (parameter: string) =>
+      clsx(styles.parameterColorBtn, { [styles.active]: active === parameter }),
+    [active],
+  );
 
   const parameterBoxClassName = useMemo(
     () => clsx(styles.parameterBox, { [styles.hide]: !open[index] }),

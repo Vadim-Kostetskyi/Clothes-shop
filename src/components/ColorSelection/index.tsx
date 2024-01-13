@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback } from 'react';
 import { Color } from 'types';
 import styles from './index.module.scss';
 
@@ -20,9 +20,12 @@ const ColorSelection: FC<ColorSelectionProps> = ({
   chosenColor,
   changeColor,
 }) => {
-  const handleColorChange = (color: Color) => () => {
-    changeColor(color);
-  };
+  const handleColorChange = useCallback(
+    (color: Color) => () => {
+      changeColor(color);
+    },
+    [changeColor],
+  );
   return (
     <>
       {colors.map(({ label, content }) => (
