@@ -10,6 +10,7 @@ import Search from 'assets/svgs/Search';
 import Menu from 'assets/svgs/Menu';
 import Cross from 'assets/svgs/Cross';
 import styles from './index.module.scss';
+import { Link } from 'react-router-dom';
 
 const MediaQueryCatalogMenu = (): JSX.Element => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -46,9 +47,9 @@ const MediaQueryCatalogMenu = (): JSX.Element => {
         {isHomePage ? (
           <img src={logo} className={styles.logo} alt="Logo" />
         ) : (
-          <a href="/main-page/men">
+          <Link to="/main-page/men">
             <img src={logo} className={styles.logo} alt="Logo" />
-          </a>
+          </Link>
         )}
         {isHomePage ? null : (
           <div className={styles.userBox}>
