@@ -28,8 +28,8 @@ export const productsApi = createApi({
       queryFn: async (ids, _queryApi, _extraOptions, fetchWithBQ) => {
         const images = await Promise.all(
           ids.map(async id => {
-            const result = await fetchWithBQ(`files/url/${id}`);
-            return result.data as ProductImage;
+            const { data } = await fetchWithBQ(`files/url/${id}`);
+            return data as ProductImage;
           }),
         );
         return { data: { images } };

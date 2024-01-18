@@ -13,12 +13,12 @@ export interface ItemPageProps {
   id: string;
   title: string;
   price: number;
-  size: Size[];
+  sizes: Size[];
   description: string;
   composition: string;
 }
 
-const colors = [
+const clothesColors = [
   {
     label: Color.Black,
     content: black,
@@ -29,12 +29,12 @@ const colors = [
   },
 ];
 
-const defaultSizes: Size[] = [Size.XS, Size.S, Size.M, Size.L, Size.XL];
+const defaultSizes: Size[] = Object.values(Size);
 
 const ProductOrderInfo: FC<ItemPageProps> = ({
   title,
   price,
-  size,
+  sizes,
   description,
   composition,
   id,
@@ -54,7 +54,7 @@ const ProductOrderInfo: FC<ItemPageProps> = ({
     setSelectedColor(color);
   }, []);
 
-  const addToBag = useCallback(() => {
+  const addToShoppingCart = useCallback(() => {
     // TODO: add the function of adding an item to the shopping bag
     console.log(id, selectedColor, selectedSize);
   }, [id, selectedColor, selectedSize]);
@@ -76,7 +76,7 @@ const ProductOrderInfo: FC<ItemPageProps> = ({
       <div className={styles.colorBox}>
         <p className={styles.submenu}>{t('productOrder.selectColour')}</p>
         <ColorSelection
-          colors={colors}
+          colors={clothesColors}
           chosenColor={selectedColor}
           changeColor={handleChangeColor}
         />
@@ -85,14 +85,14 @@ const ProductOrderInfo: FC<ItemPageProps> = ({
       <div className={styles.sizeBox}>
         <SizeSelector
           parameters={defaultSizes}
-          sizes={size}
+          sizes={sizes}
           active={selectedSize}
           handleClick={handleChangeSize}
           isProductOrder={true}
         />
       </div>
       <AddToBagButton
-        addToBag={addToBag}
+        addToBag={addToShoppingCart}
         addToFavorite={addToFavorite}
         isError={isError}
       />

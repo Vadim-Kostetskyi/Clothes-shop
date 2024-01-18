@@ -11,16 +11,20 @@ const ProductOrder = () => {
   const { data } = useGetProductByIdQuery({ id: productId });
 
   useEffect(() => {
-    const visitedProduct = localStorage.getItem('visited');
-    const visitedProductArray = visitedProduct
-      ? JSON.parse(visitedProduct)
-      : [];
-    const newProduct = data?.id;
+    try {
+      const visitedProduct = localStorage.getItem('visited');
+      const visitedProductArray = visitedProduct
+        ? JSON.parse(visitedProduct)
+        : [];
+      const newProduct = data?.id;
 
-    if (newProduct && !visitedProductArray.includes(newProduct)) {
-      visitedProductArray.unshift(newProduct);
+      if (newProduct && !visitedProductArray.includes(newProduct)) {
+        visitedProductArray.unshift(newProduct);
+      }
+      localStorage.setItem('visited', JSON.stringify(visitedProductArray));
+    } catch (error) {
+      console.error('Error handling localStorage:', error);
     }
-    localStorage.setItem('visited', JSON.stringify(visitedProductArray));
   }, [productId]);
 
   return (

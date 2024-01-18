@@ -19,10 +19,11 @@ const ProductCardRequest: FC<ProductCardRequestProps> = ({ id }) => {
       productName: data?.title,
       price: data?.price,
       sizes: data?.size,
+      images: images.data?.images,
     }),
-    [data],
+    [data, images],
   );
 
-  return <ProductCard {...props} images={images.data?.images} />;
+  return <ProductCard {...props} />;
 };
 export default ProductCardRequest;

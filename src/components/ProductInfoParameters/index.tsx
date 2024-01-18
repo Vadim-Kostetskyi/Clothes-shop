@@ -21,8 +21,8 @@ const ProductInfoParameters: FC<ProductInfoParameters> = ({
 
   const { t } = useTranslation();
 
-  const colors: Color[] = [Color.Black, Color.White];
-  const defaultSizes: Size[] = [Size.XS, Size.S, Size.M, Size.L, Size.XL];
+  const colors: Color[] = Object.values(Color);
+  const defaultSizes: Size[] = Object.values(Size);
 
   const handleClick = (param: string, value: Color | string) => {
     if (param === 'color') {
