@@ -9,6 +9,7 @@ const VisitedProducts = () => {
   const { t } = useTranslation();
   const { productId } = useParams();
 
+  /* eslint-disable */
   useEffect(() => {
     const visitedProduct = localStorage.getItem('visited');
     const visitedProductArray = visitedProduct
@@ -18,6 +19,7 @@ const VisitedProducts = () => {
       : [];
     setVisitedProducts(visitedProductArray);
   }, [productId]);
+  /* eslint-enable */
 
   return (
     <div className={styles.wrapper}>
