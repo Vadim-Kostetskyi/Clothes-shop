@@ -18,13 +18,15 @@ const ProductImageSwiper: FC<ProductImageSwiperProps> = ({ images }) => {
   const handleFocus = useCallback(() => setIsHidden(false), []);
   const handleBlur = useCallback(() => setIsHidden(true), []);
 
-  const imagesSlides = useCallback(() => {
-    return images.map(({ id, name, url }) => (
-      <SwiperSlide key={id}>
-        <img src={url} alt={name} className={styles.img} />
-      </SwiperSlide>
-    ));
-  }, [images]);
+  const imagesSlides = useCallback(
+    () =>
+      images.map(({ id, name, url }) => (
+        <SwiperSlide key={id}>
+          <img src={url} alt={name} className={styles.img} />
+        </SwiperSlide>
+      )),
+    [images],
+  );
 
   return (
     <div

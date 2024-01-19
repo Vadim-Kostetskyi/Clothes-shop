@@ -9,14 +9,7 @@ import {
   actions as shoppingCartActions,
 } from 'redux/slices/shopping-cart/shopping-cart';
 import { useAppDispatch, useAppSelector } from 'libs/hooks/hooks';
-
-enum TimeConstants {
-  SECOND = 1000,
-  MINUTE = 60 * SECOND,
-  HOUR = 60 * MINUTE,
-  DAY = 24 * HOUR,
-  TWO_DAYS = 2 * DAY,
-}
+import { TimeConstants } from 'utils/constants';
 
 const TopBar = (): JSX.Element => {
   const { t } = useTranslation();
@@ -54,8 +47,8 @@ const TopBar = (): JSX.Element => {
       <button className={styles.userButton}>
         <User className={styles.userIcon} />
       </button>
-      <button className={styles.shoppingBagButton}>
-        <ShoppingBag className={styles.shoppingBagIcon} />
+      <button className={styles.shoppingCartButton}>
+        <ShoppingBag className={styles.shoppingCartIcon} />
         {quantity > 0 ? (
           <div className={styles.quantity}>{quantity}</div>
         ) : null}

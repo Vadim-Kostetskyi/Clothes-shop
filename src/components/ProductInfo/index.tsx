@@ -55,9 +55,9 @@ const ProductInfo: FC<ProductInfo> = ({
     <div className={styles.info}>
       <div className={styles.nameBox}>
         <p className={styles.productName}>{productName}</p>
-        <div className={styles.baskedWrapper}>
-          <button className={styles.basked} onClick={addToShoppingCart}>
-            <ShoppingBag className={styles.baskedImg} />
+        <div className={styles.shoppingCartWrapper}>
+          <button className={styles.shoppingCart} onClick={addToShoppingCart}>
+            <ShoppingBag className={styles.shoppingCartImg} />
           </button>
         </div>
       </div>

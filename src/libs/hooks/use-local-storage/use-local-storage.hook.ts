@@ -1,7 +1,11 @@
 export const useLocalStorage = <T>(
   key: string,
   initialValue: T,
-): { setItem: (value: T) => void; getItem: () => T } => {
+): {
+  setItem: (value: T) => void;
+  getItem: () => T;
+  removeItem: () => void;
+} => {
   const getItem = (): T => {
     try {
       const item = localStorage.getItem(key);
@@ -20,5 +24,13 @@ export const useLocalStorage = <T>(
     }
   };
 
-  return { setItem, getItem };
+  const removeItem = (): void => {
+    try {
+      localStorage.removeItem(key);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return { setItem, getItem, removeItem };
 };

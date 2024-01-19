@@ -41,7 +41,7 @@ export interface GetProductsWithImagesProps {
   images: ImageProps[];
   error?: boolean;
 }
-export interface GetProductsWithImagesDTO {
+export interface GetProductsWithImages {
   product: ProductProps;
   images: ImageItemProps[];
 }

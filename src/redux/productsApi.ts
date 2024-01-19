@@ -7,16 +7,16 @@ import { QueryReturnValue } from '@reduxjs/toolkit/dist/query/baseQueryTypes';
 import {
   GetProductsPayload,
   GetProductsResponse,
-  GetProductsWithImagesDTO,
+  GetProductsWithImages,
   GetProductsWithImagesProps,
   SearchProductsProps,
 } from './types';
-import { config } from 'libs/packages/config/config';
+import { BASE_URL } from './routes';
 
 export const productsApi = createApi({
   reducerPath: 'productsApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: config.ENV.API.URL,
+    baseUrl: BASE_URL,
   }),
   endpoints: builder => ({
     getProductsByName: builder.query({
@@ -57,7 +57,7 @@ export const productsApi = createApi({
         return { data: { products: [], images: [] } };
       },
     }),
-    getNewNowProducts: builder.query<GetProductsWithImagesDTO[], void>({
+    getNewNowProducts: builder.query<GetProductsWithImages[], void>({
       async queryFn(_arg, _queryApi, _extraOptions, fetchWithBQ) {
         const rawProducts = await fetchWithBQ('products/new');
 
@@ -65,14 +65,14 @@ export const productsApi = createApi({
           return { error: rawProducts.error as FetchBaseQueryError };
 
         const products = rawProducts.data as GetProductsResponse['data'];
-        const productsWithImages: GetProductsWithImagesDTO[] = [];
+        const productsWithImages: GetProductsWithImages[] = [];
 
         for (const product of products) {
           const rawImages = await fetchWithBQ(`products/images/${product.id}`);
           if (rawImages.error)
             return { error: rawImages.error as FetchBaseQueryError };
 
-          const images = rawImages.data as GetProductsWithImagesDTO['images'];
+          const images = rawImages.data as GetProductsWithImages['images'];
 
           productsWithImages.push({ product, images });
         }

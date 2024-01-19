@@ -5,44 +5,42 @@ import NewNowMobile from 'components/NewNowMobile';
 import styles from './index.module.scss';
 
 import { useGetNewNowProductsQuery } from 'redux/productsApi';
-import { GetProductsWithImagesDTO } from 'redux/types';
+import { GetProductsWithImages } from 'redux/types';
 import { SwiperSlide } from 'swiper/react';
 
 const renderCards = (
-  data?: GetProductsWithImagesDTO[],
+  data?: GetProductsWithImages[],
   isMobile?: boolean,
-): JSX.Element => {
-  return (
-    <>
-      {data?.map(({ product, images }) => {
-        const { id, title, price, size } = product;
+): JSX.Element => (
+  <>
+    {data?.map(({ product, images }) => {
+      const { id, title, price, size } = product;
 
-        return isMobile ? (
-          <SwiperSlide key={id} className={styles.swiperSlide}>
-            <ProductCard
-              productId={id}
-              key={id}
-              productName={title}
-              price={price}
-              sizes={size}
-              image={images[0].url}
-              isMobile
-            />
-          </SwiperSlide>
-        ) : (
+      return isMobile ? (
+        <SwiperSlide key={id} className={styles.swiperSlide}>
           <ProductCard
             productId={id}
             key={id}
             productName={title}
             price={price}
             sizes={size}
-            images={images}
+            image={images[0].url}
+            isMobile
           />
-        );
-      })}
-    </>
-  );
-};
+        </SwiperSlide>
+      ) : (
+        <ProductCard
+          productId={id}
+          key={id}
+          productName={title}
+          price={price}
+          sizes={size}
+          images={images}
+        />
+      );
+    })}
+  </>
+);
 
 const NewNow = (): JSX.Element => {
   const { t } = useTranslation();

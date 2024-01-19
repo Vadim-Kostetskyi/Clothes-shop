@@ -19,12 +19,12 @@
   }
 }
 
-.basked {
+.shoppingCart {
   width: 24px;
   height: 24px;
 }
 
-.baskedImg {
+.shoppingCartImg {
   width: 20px;
 }
 
@@ -35,7 +35,7 @@
   margin-bottom: 10px;
 }
 
-.baskedWrapper,
+.shoppingCartWrapper,
 .productInfoParametersWrapper {
   @include media(tablet) {
     display: none;
