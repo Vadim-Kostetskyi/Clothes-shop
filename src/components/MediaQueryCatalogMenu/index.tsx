@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import CatalogMenu from 'components/CatalogMenu';
 import CatalogMenuMobile from 'components/CatalogMenuMobile';
@@ -10,6 +10,7 @@ import Search from 'assets/svgs/Search';
 import Menu from 'assets/svgs/Menu';
 import Cross from 'assets/svgs/Cross';
 import styles from './index.module.scss';
+import { Link } from 'react-router-dom';
 
 const MediaQueryCatalogMenu = (): JSX.Element => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
