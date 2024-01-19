@@ -1,9 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { BASE_URL } from './routes';
 
 export const filesApi = createApi({
   reducerPath: 'filesApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://online-store-backend-gamma.vercel.app/api/v1/',
+    baseUrl: BASE_URL,
   }),
   endpoints: builder => ({
     getFilesById: builder.query({
