@@ -16,6 +16,7 @@ export interface ItemPageProps {
   sizes: Size[];
   description: string;
   composition: string;
+  vendorCode: number;
 }
 
 const clothesColors = [
@@ -38,6 +39,7 @@ const ProductOrderInfo: FC<ItemPageProps> = ({
   description,
   composition,
   id,
+  vendorCode,
 }) => {
   const [selectedSize, setSelectedSize] = useState<Size | undefined>();
   const [selectedColor, setSelectedColor] = useState<Color>(Color.Black);
@@ -64,11 +66,25 @@ const ProductOrderInfo: FC<ItemPageProps> = ({
     console.log(id, selectedColor, selectedSize);
   }, [id, selectedColor, selectedSize]);
 
+  const productDescription = [
+    {
+      title: t('productOrder.description'),
+      titleStyles: styles.submenu,
+      listStyle: styles.listStyle,
+      list: description,
+    },
+    {
+      title: t('productOrder.composition'),
+      titleStyles: styles.submenu,
+      list: composition,
+    },
+  ];
+
   return (
     <div className={styles.wrapper}>
       <p className={styles.title}>{title}</p>
       <p className={styles.ref}>
-        {t('productOrder.ref')}. {id}
+        {t('productOrder.ref')}. {vendorCode}
       </p>
       <p className={styles.price}>
         {price} <span className={styles.currency}>{t('currency')}</span>
@@ -96,21 +112,11 @@ const ProductOrderInfo: FC<ItemPageProps> = ({
         addToFavorite={addToFavorite}
         isError={isError}
       />
-      <div className={styles.accordionBox}>
-        <Accordion
-          title={t('productOrder.description')}
-          titleStyles={styles.submenu}
-          listStyle={styles.listStyle}
-          list={description}
-        />
-      </div>
-      <div className={styles.accordionBox}>
-        <Accordion
-          title={t('productOrder.composition')}
-          titleStyles={styles.submenu}
-          list={composition}
-        />
-      </div>
+      {productDescription.map(props => (
+        <div className={styles.accordionBox} key={props.title}>
+          <Accordion {...props} />
+        </div>
+      ))}
     </div>
   );
 };
