@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import CoreSwiper from 'components/CoreSwiper';
-import ArrowSwiper from 'assets/svgs/ArrowSwiper';
 import Image1 from '../../assets/images/swiper-man-image-1.png';
 import Image2 from '../../assets/images/swiper-man-image-2.png';
 import Image3 from '../../assets/images/swiper-man-image-3.png';
@@ -49,17 +48,11 @@ const slides: SlidesProps[] = [
 ];
 
 const CollectionImageSwiper = () => {
-  const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
-  const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
-
   return (
-    <div className={styles.swiper}>
+    <div className={`${styles.swiper} main-page-swiper`}>
       <CoreSwiper
         modules={[Pagination, Autoplay]}
-        navigation={{
-          prevEl,
-          nextEl,
-        }}
+        navigation={true}
         pagination={{
           clickable: true,
           enabled: true,
@@ -73,25 +66,9 @@ const CollectionImageSwiper = () => {
         {slides.map(({ text, image, imageSmall, id }) => (
           <SwiperSlide key={id}>
             <div className={styles.itemsWrapper}>
-              <picture className={styles.imagesWrapper}>
-                <source media="(max-width: 960px)" srcSet={imageSmall} />
+              <picture>
+                <source media="(max-width: 480px)" srcSet={imageSmall} />
                 <img src={image} alt={text} className={styles.image} />
-                <div className={styles.wrapperArrows}>
-                  <button
-                    ref={node => setPrevEl(node)}
-                    className={styles.itemArrows}
-                  >
-                    <ArrowSwiper className={styles.arrow} />
-                  </button>
-                  <button
-                    ref={node => setNextEl(node)}
-                    className={styles.itemArrows}
-                  >
-                    <ArrowSwiper
-                      className={`${styles.arrow} ${styles.arrowNext}`}
-                    />
-                  </button>
-                </div>
               </picture>
               <p className={styles.text}>{text}</p>
             </div>
