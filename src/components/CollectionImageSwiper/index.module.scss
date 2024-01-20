@@ -2,52 +2,31 @@
 
 .swiper {
   padding-top: 120px;
+
+  & > div {
+    margin: 0px auto;
+    max-width: 1280px;
+  }
   @include media(tablet) {
     padding-top: 155px;
+    margin: 0px 32px;
   }
 }
 
 .image {
-  height: 855px;
-  max-width: $max-content-width;
+  max-height: 855px;
 
   @include laptopOnly {
-    padding: 0px 32px;
     max-width: 100%;
     display: flex;
     justify-content: center;
   }
 }
 
-.imagesWrapper {
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
-
 .itemsWrapper {
   display: flex;
   justify-content: center;
   position: relative;
-}
-
-.wrapperArrows {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  position: absolute;
-  top: calc(50% - 24px);
-  z-index: 1;
-
-  @include laptopOnly {
-    width: 94%;
-  }
-}
-
-.arrow {
-  cursor: pointer;
-  opacity: 0.5;
-  margin: 0px 11px;
 }
 
 .bullet {
@@ -67,18 +46,6 @@
   border-radius: 2px;
   background: $brilliance;
   margin: 0px 12px 14px 0px;
-}
-
-.itemArrows {
-  display: flex;
-  width: 48px;
-  height: 48px;
-  justify-content: center;
-  align-items: center;
-}
-
-.arrowNext {
-  transform: rotate(0.5turn);
 }
 
 .text {
