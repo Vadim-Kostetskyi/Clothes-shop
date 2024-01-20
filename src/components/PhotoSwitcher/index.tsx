@@ -16,9 +16,7 @@ const PhotoSwitcher: FC<PhotoSwitcherProps> = ({ id, title }) => {
   const [images, setImages] = useState<ImageItemProps[] | undefined>();
 
   useEffect(() => {
-    if (data) {
-      setImages(data);
-    }
+    setImages(data);
   }, [data]);
 
   const moveImageToStart = useCallback(

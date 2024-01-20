@@ -2,24 +2,24 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import ProductCardRequest from 'components/ProductCardRequest';
+import { useLocalStorage } from 'libs/hooks/hooks';
 import styles from './index.module.scss';
 
 const VisitedProducts = () => {
-  const [visitedProducts, setVisitedProducts] = useState([]);
+  const [visitedProducts, setVisitedProducts] = useState<string[]>([]);
   const { t } = useTranslation();
   const { productId } = useParams();
 
-  /* eslint-disable */
   useEffect(() => {
-    const visitedProduct = localStorage.getItem('visited');
+    const { getItem } = useLocalStorage<string[]>('visited', []);
+    const visitedProduct = getItem();
+
     const visitedProductArray = visitedProduct
-      ? JSON.parse(visitedProduct)
-          .filter((item: string) => item !== productId)
-          .slice(0, 3)
+      ? visitedProduct.filter((item: string) => item !== productId).slice(0, 3)
       : [];
+
     setVisitedProducts(visitedProductArray);
   }, [productId]);
-  /* eslint-enable */
 
   return (
     <div className={styles.wrapper}>
