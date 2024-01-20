@@ -1,30 +1,32 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useCallback, useState } from 'react';
 import { SwiperSlide } from 'swiper/react';
 import CoreSwiper from 'components/CoreSwiper';
 import ArrowSwiperCard from 'assets/svgs/ArrowSwiperCard';
-import styles from './index.module.scss';
 import { ImageItemProps } from 'redux/types';
+import { getValidClassNames } from 'libs/helpers/helpers';
 
+import styles from './index.module.scss';
 export interface ProductImageSwiperProps {
-  cardName: string;
   images: ImageItemProps[];
 }
 
-const ProductImageSwiper: FC<ProductImageSwiperProps> = ({
-  images,
-  cardName,
-}) => {
+const ProductImageSwiper: FC<ProductImageSwiperProps> = ({ images }) => {
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
   const [isHidden, setIsHidden] = useState(true);
 
-  const handleFocus = () => {
-    setIsHidden(false);
-  };
+  const handleFocus = useCallback(() => setIsHidden(false), []);
+  const handleBlur = useCallback(() => setIsHidden(true), []);
 
-  const handleBlur = () => {
-    setIsHidden(true);
-  };
+  const imagesSlides = useCallback(
+    () =>
+      images.map(({ id, name, url }) => (
+        <SwiperSlide key={id}>
+          <img src={url} alt={name} className={styles.img} />
+        </SwiperSlide>
+      )),
+    [images],
+  );
 
   return (
     <div
@@ -33,15 +35,11 @@ const ProductImageSwiper: FC<ProductImageSwiperProps> = ({
       className={styles.productImageSwiper}
     >
       <CoreSwiper navigation={{ prevEl, nextEl }}>
-        {images.map(({ result }) => (
-          <SwiperSlide key={result}>
-            <img src={result} alt={cardName} className={styles.img} />
-          </SwiperSlide>
-        ))}
+        {imagesSlides()}
         <div className={isHidden ? styles.hide : styles.wrapperArrows}>
           <button ref={node => setPrevEl(node)} className={styles.itemArrow}>
             <ArrowSwiperCard
-              className={`${styles.arrow} ${styles.arrowPrev}`}
+              className={getValidClassNames(styles.arrow, styles.arrowPrev)}
             />
           </button>
           <button ref={node => setNextEl(node)} className={styles.itemArrow}>

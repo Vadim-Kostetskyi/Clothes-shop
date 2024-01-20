@@ -5,7 +5,7 @@ export interface GetProductsPayload {
   size: number;
 }
 
-interface ProductProps {
+export interface ProductProps {
   id: string;
   title: string;
   price: string;
@@ -22,7 +22,9 @@ interface ProductProps {
 }
 
 export interface ImageItemProps {
-  result: string;
+  id: string;
+  name: string;
+  url: string;
 }
 
 export interface ImageProps {
@@ -31,7 +33,6 @@ export interface ImageProps {
 }
 
 export interface GetProductsResponse {
-  pages?: string;
   products: ProductProps[];
 }
 
@@ -40,11 +41,32 @@ export interface GetProductsWithImagesProps {
   images: ImageProps[];
   error?: boolean;
 }
-
-export interface ProductImage {
-  result: string;
+export interface GetProductsWithImages {
+  product: ProductProps;
+  images: ImageItemProps[];
 }
 
-export interface GetImages extends GetProductsPayload {
-  body: { subcategory: string[] };
+export interface SearchProductsProps {
+  page: number;
+  size: number;
+  body: BodySearchProducts;
+}
+
+export type BodySearchProducts =
+  | {
+      category: string;
+    }
+  | {
+      subcategory: Subcategory;
+    };
+
+export enum Subcategory {
+  JACKETS = 'JACKETS',
+  COATS = 'COATS',
+  TRENCH = 'TRENCH',
+  GILETS = 'GILETS',
+  OVERSHIRTS = 'OVERSHIRTS',
+  SWEATERS = 'SWEATERS',
+  CARDIGANS = 'CARDIGANS',
+  QUILTED = 'QUILTED',
 }

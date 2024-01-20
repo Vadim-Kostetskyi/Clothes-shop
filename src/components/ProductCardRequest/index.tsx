@@ -11,15 +11,15 @@ interface ProductCardRequestProps {
 
 const ProductCardRequest: FC<ProductCardRequestProps> = ({ id }) => {
   const { data } = useGetProductByIdQuery({ id });
-  const images = useGetProductImagesQuery(data?.files);
+  const images = useGetProductImagesQuery({ id });
 
   const props = useMemo(
     () => ({
-      id: data?.id,
+      productId: data?.id,
       productName: data?.title,
       price: data?.price,
       sizes: data?.size,
-      images: images.data?.images,
+      images: images?.data,
     }),
     [data, images],
   );

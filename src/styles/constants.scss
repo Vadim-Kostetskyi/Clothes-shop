@@ -9,7 +9,7 @@ $grayDark: #636363;
 $paleGray: #ececec;
 $cream: #f5f5dc;
 $darkGreen: #00997a;
-$springGreen: #00ca8d;
+$greenMint: #00ca8d;
 
 $font-family-main: League Spartan;
 
@@ -17,7 +17,7 @@ $mobile: 480px;
 $tablet: 960px;
 $laptopMin: 961px;
 $laptop: 1280px;
-$desktop: 1440px;
+$desktop: 1439px;
 $max-content-width: 1280px;
 
 @mixin media($breakpoint) {

@@ -7,7 +7,7 @@ import { ImageItemProps } from 'redux/types';
 import { Link } from 'react-router-dom';
 
 export interface ProductCardProps {
-  id?: string;
+  productId: string;
   productName: string;
   price: string;
   sizes: Size[];
@@ -17,7 +17,7 @@ export interface ProductCardProps {
 }
 
 const ProductCard: FC<ProductCardProps> = ({
-  id,
+  productId,
   price,
   productName,
   sizes,
@@ -29,11 +29,16 @@ const ProductCard: FC<ProductCardProps> = ({
     {isMobile ? (
       <img src={image} alt={productName} className={styles.image} />
     ) : (
-      <Link to={`/product-order/${id}`}>
-        <ProductImageSwiper images={images} cardName={productName} />
+      <Link to={`/product-order/${productId}`}>
+        <ProductImageSwiper images={images} />
       </Link>
     )}
-    <ProductInfo productName={productName} price={price} sizes={sizes} />
+    <ProductInfo
+      productId={productId}
+      productName={productName}
+      price={Number.parseFloat(price)}
+      sizes={sizes}
+    />
   </div>
 );
 

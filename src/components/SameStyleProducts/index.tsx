@@ -2,10 +2,11 @@ import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSearchProductsByParameterQuery } from 'redux/productsApi';
 import ProductCardRequest from 'components/ProductCardRequest';
+import { Subcategory } from 'redux/types';
 import styles from '../VisitedProducts/index.module.scss';
 
 interface SameStyleProductsProps {
-  subcategory: string[];
+  subcategory: Subcategory;
 }
 
 const SameStyleProducts: FC<SameStyleProductsProps> = ({ subcategory }) => {

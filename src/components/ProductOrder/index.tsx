@@ -4,6 +4,7 @@ import PhotoSwitcher from 'components/PhotoSwitcher';
 import ProductOrderInfo from 'components/ProductOrderInfo';
 import { useGetProductByIdQuery } from 'redux/productsApi';
 import SameStyleProducts from 'components/SameStyleProducts';
+import { useLocalStorage } from 'libs/hooks/hooks';
 import styles from './index.module.scss';
 
 const ProductOrder = () => {
@@ -11,19 +12,11 @@ const ProductOrder = () => {
   const { data } = useGetProductByIdQuery({ id: productId });
 
   useEffect(() => {
-    try {
-      const visitedProduct = localStorage.getItem('visited');
-      const visitedProductArray = visitedProduct
-        ? JSON.parse(visitedProduct)
-        : [];
-      const newProduct = data?.id;
-
-      if (newProduct && !visitedProductArray.includes(newProduct)) {
-        visitedProductArray.unshift(newProduct);
-      }
-      localStorage.setItem('visited', JSON.stringify(visitedProductArray));
-    } catch (error) {
-      console.error('Error handling localStorage:', error);
+    const { getItem, setItem } = useLocalStorage<string[]>('visited', []);
+    const visitedProduct = getItem();
+    if (data && !visitedProduct.includes(data.id)) {
+      visitedProduct.unshift(data.id);
+      setItem(visitedProduct);
     }
   }, [productId]);
 

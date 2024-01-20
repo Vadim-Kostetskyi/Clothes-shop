@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import HomePage from './HomePage';
 import MainPage from './MainPage';
-import ManProducts from './ManProducts';
+import ProductsGridPage from './ProductsGridPage';
 import ProductOrderPage from './ProductOrderPage';
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/main-page/men" element={<MainPage />} />
-      <Route path="/main-page/men/products" element={<ManProducts />} />
+      <Route path="/main-page/men/products" element={<ProductsGridPage />} />
       <Route path="/product-order" element={<ProductOrderPage />} />
       <Route path="/product-order/:productId" element={<ProductOrderPage />} />
     </Routes>

@@ -3,20 +3,22 @@ import ArrowSwiperCard from 'assets/svgs/ArrowSwiperCard';
 import PicturePanel from 'components/PicturePanel';
 import { useGetProductImagesQuery } from 'redux/productsApi';
 import styles from './index.module.scss';
+import { ImageItemProps } from 'redux/types';
 
 export interface PhotoSwitcherProps {
-  files: string[];
+  id: string;
   title: string;
 }
 
-const PhotoSwitcher: FC<PhotoSwitcherProps> = ({ files, title }) => {
-  const { data } = useGetProductImagesQuery(files);
+const PhotoSwitcher: FC<PhotoSwitcherProps> = ({ id, title }) => {
+  const { data } = useGetProductImagesQuery({ id });
 
-  const [images, setImages] = useState<string[] | undefined>();
+  const [images, setImages] = useState<ImageItemProps[] | undefined>();
 
   useEffect(() => {
-    const productImages = data?.images.map(el => el.result) || [];
-    setImages(productImages);
+    if (data) {
+      setImages(data);
+    }
   }, [data]);
 
   const moveImageToStart = useCallback(
@@ -36,6 +38,7 @@ const PhotoSwitcher: FC<PhotoSwitcherProps> = ({ files, title }) => {
         ...images.slice(startIndex),
         ...images.slice(0, startIndex),
       ];
+
       setImages(rotatedImages);
     },
     [images],
@@ -72,7 +75,7 @@ const PhotoSwitcher: FC<PhotoSwitcherProps> = ({ files, title }) => {
       <div className={styles.largeImageWrapper}>
         <img
           className={styles.largeImage}
-          src={images && images[0]}
+          src={images && images[0].url}
           alt={title}
         />
         <div className={styles.arrowsWrapper}>
