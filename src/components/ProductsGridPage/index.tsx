@@ -13,7 +13,7 @@ const ProductsGridPage = (): JSX.Element => {
 
   useEffect(() => {
     searchProducts({
-      page: 0,
+      page: 1,
       size: PRODUCT_GRID_SIZE,
       body: {
         category: 'CLOTHING',
@@ -23,7 +23,7 @@ const ProductsGridPage = (): JSX.Element => {
 
   const handleClick = (body: BodySearchProducts) => {
     searchProducts({
-      page: 0,
+      page: 1,
       size: PRODUCT_GRID_SIZE,
       body,
     });
