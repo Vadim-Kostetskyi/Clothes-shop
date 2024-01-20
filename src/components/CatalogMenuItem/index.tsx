@@ -54,7 +54,6 @@ const CatalogMenuItemMobile: FC<CatalogMenuItemMobileProps> = ({
             key={id}
             className={getClassName(label)}
             onClick={handleCategoryClick(label)}
-            onBlur={toggleCategory(false)}
           >
             {t('listItem', { label })}
           </a>
