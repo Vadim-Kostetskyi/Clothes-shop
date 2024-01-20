@@ -24,3 +24,17 @@ body {
   margin: 0;
   font-family: League Spartan;
 }
+
+.main-page-swiper {
+  .swiper-button-prev {
+    &::after {
+      content: url(../assets/svgs/ArrowSwiper.svg);
+    }
+    cursor: pointer;
+    opacity: 0.5;
+  }
+  .swiper-button-next {
+    @extend .swiper-button-prev;
+    transform: rotate(0.5turn);
+  }
+}
