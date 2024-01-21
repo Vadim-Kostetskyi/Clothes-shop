@@ -1,42 +1,24 @@
 @import 'styles/constants';
 
-.image {
-  width: 314px;
-  height: 503px;
-}
-
-.categoryWrapper {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  gap: 8px;
-}
-
-.itemWrapper {
-  position: relative;
-}
-
-.text {
-  position: absolute;
-  right: 39%;
-  bottom: calc(0% - 56px);
-  color: $textPrimary;
-  font-family: $font-family-main;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 84px;
+.swiper {
+  & > div {
+    margin: 0px auto;
+    max-width: $max-content-width;
+  }
+  @include media(tablet) {
+    max-width: 448px;
+    margin: 0px 32px;
+  }
 }
 
 .title {
-  margin: 0px 80px 16px;
-  line-height: 53px;
-  display: flex;
-  align-items: center;
-  color: $blackColor;
-  font-family: $font-family-main;
+  max-width: 1280px;
+  margin: 80px auto 0px;
   font-size: 32px;
   font-weight: 600;
+  line-height: 84px;
+  color: $textPrimary;
+  font-family: $font-family-main;
   cursor: pointer;
 
   &:hover {
@@ -44,19 +26,20 @@
   }
 }
 
-.cardsWrapper {
-  margin: 80px 0px;
+.image {
+  width: 314px;
+  max-width: 100%;
+  max-height: 503px;
+  @include media(tablet) {
+    width: 220px;
+    height: 341px;
+  }
 }
 
-.imageWrapper {
-  height: 503px;
-  overflow: hidden;
-  img {
-    transition: transform 0.5s ease;
-  }
-  &:hover {
-    img {
-      transform: scale(1.2);
-    }
-  }
+.text {
+  display: flex;
+  justify-content: center;
+  color: $textPrimary;
+  font-family: $font-family-main;
+  line-height: 48px;
 }

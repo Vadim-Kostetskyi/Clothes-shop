@@ -60,6 +60,11 @@ export type BodySearchProducts =
       subcategory: Subcategory;
     };
 
+export interface TopCategoriesProductsProps {
+  name: string;
+  url: string;
+}
+
 export enum Subcategory {
   JACKETS = 'JACKETS',
   COATS = 'COATS',

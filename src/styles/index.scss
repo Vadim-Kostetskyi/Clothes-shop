@@ -25,7 +25,7 @@ body {
   font-family: League Spartan;
 }
 
-.main-page-swiper {
+.collection-swiper {
   .swiper-button-prev {
     &::after {
       content: url(../assets/svgs/ArrowSwiper.svg);
@@ -36,5 +36,19 @@ body {
   .swiper-button-next {
     @extend .swiper-button-prev;
     transform: rotate(0.5turn);
+  }
+
+  .swiper-button-disabled {
+    display: none;
+  }
+}
+
+.topCategories-swiper {
+  @extend .collection-swiper;
+  .swiper-button-prev {
+    top: calc(50% - 24px);
+  }
+  .swiper-button-disabled {
+    display: none;
   }
 }

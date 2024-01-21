@@ -49,7 +49,7 @@ const slides: SlidesProps[] = [
 
 const CollectionImageSwiper = () => {
   return (
-    <div className={`${styles.swiper} main-page-swiper`}>
+    <div className={`${styles.swiper} collection-swiper`}>
       <CoreSwiper
         modules={[Pagination, Autoplay]}
         navigation={true}
