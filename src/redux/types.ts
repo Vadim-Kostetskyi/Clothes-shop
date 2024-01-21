@@ -33,7 +33,8 @@ export interface ImageProps {
 }
 
 export interface GetProductsResponse {
-  data: ProductProps[];
+  products: ProductProps[];
+  pages: number;
 }
 
 export interface GetProductsWithImagesProps {
