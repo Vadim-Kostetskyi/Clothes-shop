@@ -5,6 +5,7 @@ import { Size, Color } from 'types';
 import styles from './index.module.scss';
 import { actions as shoppingCartActions } from '../../redux/slices/shopping-cart/shopping-cart';
 import { useAppDispatch } from 'libs/hooks/hooks';
+import { useTranslation } from 'react-i18next';
 
 interface ProductInfo {
   productId: string;
@@ -23,6 +24,7 @@ const ProductInfo: FC<ProductInfo> = ({
   const [selectedSize, setSelectedSize] = useState<Size | null>(null);
   const [isError, setIsError] = useState(false);
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
 
   const changeParameters = (parameter: string, value: string): void => {
     switch (parameter) {
@@ -61,7 +63,9 @@ const ProductInfo: FC<ProductInfo> = ({
           </button>
         </div>
       </div>
-      <p className={styles.price}>{price}</p>
+      <p className={styles.price}>
+        {price} {t('currency')}
+      </p>
       <div className={styles.productInfoParametersWrapper}>
         <ProductInfoParameters
           changeParameters={changeParameters}

@@ -22,6 +22,22 @@ export const productsApi = createApi({
     getProductsByName: builder.query({
       query: ({ page, size }) => `products/?page=${page}&size=${size}`,
     }),
+    getProductById: builder.query({
+      query: ({ id }) => `products/${id}`,
+    }),
+    getProductImages: builder.query({
+      query: ({ id }) => `products/images/${id}`,
+    }),
+    searchProductsByParameter: builder.query<
+      GetProductsResponse,
+      SearchProductsProps
+    >({
+      query: ({ body, page, size }) => ({
+        url: `products/search?page=${page}&size=${size}`,
+        method: 'POST',
+        body,
+      }),
+    }),
     getProductsWithImages: builder.query<
       GetProductsWithImagesProps,
       GetProductsPayload
@@ -34,7 +50,7 @@ export const productsApi = createApi({
         if (rawProducts.error)
           return { error: rawProducts.error as FetchBaseQueryError };
 
-        const products = rawProducts.data as GetProductsResponse['data'];
+        const products = rawProducts.data as GetProductsResponse['products'];
         const productsId: string[] = products.reduce((acc: string[], cur) => {
           acc.push(cur.id);
           return acc;
@@ -64,7 +80,7 @@ export const productsApi = createApi({
         if (rawProducts.error)
           return { error: rawProducts.error as FetchBaseQueryError };
 
-        const products = rawProducts.data as GetProductsResponse['data'];
+        const products = rawProducts.data as GetProductsResponse['products'];
         const productsWithImages: GetProductsWithImages[] = [];
 
         for (const product of products) {
@@ -94,7 +110,7 @@ export const productsApi = createApi({
         if (rawProducts.error)
           return { error: rawProducts.error as FetchBaseQueryError };
 
-        const products = rawProducts.data as GetProductsResponse['data'];
+        const products = rawProducts.data as GetProductsResponse['products'];
         const productsId: string[] = products.reduce((acc: string[], cur) => {
           acc.push(cur.id);
           return acc;
@@ -125,4 +141,7 @@ export const {
   useGetProductsWithImagesQuery,
   useFetchProductsWithImagesMutation,
   useGetNewNowProductsQuery,
+  useGetProductImagesQuery,
+  useSearchProductsByParameterQuery,
+  useGetProductByIdQuery,
 } = productsApi;

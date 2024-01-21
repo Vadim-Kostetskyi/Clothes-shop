@@ -17,8 +17,18 @@
     "discountHeader": "Subscribe to our newsletter",
     "discountPercent": "and get a -{{discountPercent}}% discount"
   },
+  "productOrder": {
+    "selectColour": "Select colour",
+    "selectSize": "Select size",
+    "addToMyShoppingBag": "ADD TO MY SHOPPING BAG",
+    "ref": "Ref",
+    "description": "Description",
+    "composition": "Composition"
+  },
   "viewCollection": "View Collection",
   "collections": "Collections",
+  "viewedProducts": "Viewed products",
+  "similarProducts": "Similar products",
   "homePageModal": {
     "selectLocation": "Select your location",
     "selectLanguage": "Select your language",
@@ -31,5 +41,6 @@
     "fieldJackets": "Field jackets",
     "overshirts": "Overshirts",
     "quiltedCoats": "Quilted coats"
-  }
+  },
+  "currency": "€"
 }
