@@ -34,7 +34,8 @@ export const productsApi = createApi({
         if (rawProducts.error)
           return { error: rawProducts.error as FetchBaseQueryError };
 
-        const products = (rawProducts.data as GetProductsResponse).products;
+        const products =
+          (rawProducts.data as GetProductsResponse)?.products ?? [];
 
         const productsId: string[] = products.reduce((acc: string[], cur) => {
           acc.push(cur.id);
@@ -65,7 +66,8 @@ export const productsApi = createApi({
         if (rawProducts.error)
           return { error: rawProducts.error as FetchBaseQueryError };
 
-        const products = (rawProducts.data as GetProductsResponse).products;
+        const products =
+          (rawProducts.data as GetProductsResponse)?.products ?? [];
         const productsWithImages: GetProductsWithImages[] = [];
 
         for (const product of products) {
@@ -95,7 +97,8 @@ export const productsApi = createApi({
         if (rawProducts.error)
           return { error: rawProducts.error as FetchBaseQueryError };
 
-        const products = (rawProducts.data as GetProductsResponse).products;
+        const products =
+          (rawProducts.data as GetProductsResponse)?.products ?? [];
 
         const productsId: string[] = products.reduce((acc: string[], cur) => {
           acc.push(cur.id);
