@@ -3,9 +3,8 @@ import ProductsCards from 'components/ProductsCards';
 import FilteredyButton from 'components/FilterTabButtons';
 import { useFetchProductsWithImagesMutation } from 'redux/productsApi';
 import { BodySearchProducts, GetProductsWithImagesProps } from 'redux/types';
-import SyncLoader from 'react-spinners/SyncLoader';
+import Loader from '../../components/Loader';
 import { PRODUCT_GRID_SIZE } from 'utils/constants';
-import styles from './index.module.scss';
 
 const ProductsGridPage = (): JSX.Element => {
   const [searchProducts, { isLoading, data }] =
@@ -32,13 +31,7 @@ const ProductsGridPage = (): JSX.Element => {
     <>
       <FilteredyButton handleClick={handleClick} />
       {isLoading ? (
-        <div className={styles.loaderWrapper}>
-          <SyncLoader
-            size={10}
-            aria-label="Loading Spinner"
-            data-testid="loader"
-          />
-        </div>
+        <Loader />
       ) : (
         <ProductsCards
           searchProducts={data ?? ({} as GetProductsWithImagesProps)}
