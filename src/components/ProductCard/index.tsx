@@ -4,6 +4,7 @@ import ProductInfo from 'components/ProductInfo';
 import { Size } from 'types';
 import styles from './index.module.scss';
 import { ImageItemProps } from 'redux/types';
+import { Link } from 'react-router-dom';
 
 export interface ProductCardProps {
   productId: string;
@@ -28,7 +29,9 @@ const ProductCard: FC<ProductCardProps> = ({
     {isMobile ? (
       <img src={image} alt={productName} className={styles.image} />
     ) : (
-      <ProductImageSwiper images={images} />
+      <Link to={`/product-order/${productId}`}>
+        <ProductImageSwiper images={images} />
+      </Link>
     )}
     <ProductInfo
       productId={productId}

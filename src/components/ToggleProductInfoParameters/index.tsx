@@ -1,7 +1,9 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback, useMemo } from 'react';
 import Cross from 'assets/svgs/Cross';
 import { Size } from 'types';
+import SizeSelector from 'components/SizeSelector';
 import styles from './index.module.scss';
+import { clsx } from 'clsx';
 
 interface ToggleProductInfoParameters {
   text: string;
@@ -9,7 +11,7 @@ interface ToggleProductInfoParameters {
   parameters: string[];
   index: number;
   sizes?: Size[];
-  active: string | null;
+  active?: string;
   productInfo: string;
   toggle: (element: number) => void;
   handleClick: (param: string, value: string) => void;
@@ -25,56 +27,65 @@ const ToggleProductInfoParameters: FC<ToggleProductInfoParameters> = ({
   index,
   sizes,
   productInfo,
-}) => (
-  <div className={styles.toggleParameter}>
-    <div>
+}) => {
+  const parametersClassName = clsx(styles.parametersBtn, {
+    [styles.hide]: open[index],
+  });
+
+  const getCombinedClass = useCallback(
+    (parameter: string) =>
+      clsx(styles.parameterColorBtn, { [styles.active]: active === parameter }),
+    [active],
+  );
+
+  const parameterBoxClassName = useMemo(
+    () => clsx(styles.parameterBox, { [styles.hide]: !open[index] }),
+    [open[index]],
+  );
+
+  const handleOpenCloseParameters = () => toggle(index);
+
+  return (
+    <div className={styles.toggleParameter}>
       <button
-        onClick={() => toggle(index)}
-        className={`${styles.parametersBtn} ${open[index] ? styles.hide : ''}`}
+        onClick={handleOpenCloseParameters}
+        className={parametersClassName}
       >
         {text}
       </button>
-    </div>
-    <div className={`${styles.parameterBox} ${open[index] ? '' : styles.hide}`}>
-      <div className={styles.parametersBtn}>
-        {parameters.map((parameter, index) => {
-          if (productInfo === 'color') {
-            return (
+      <div className={parameterBoxClassName}>
+        <div className={styles.parametersBtn}>
+          {productInfo === 'color' ? (
+            parameters.map((parameter, index) => (
               <button
                 key={index}
-                className={`${styles.parameterBtn} ${styles.parameterColorBtn}
-                  ${active === parameter ? styles.active : ''}`}
+                className={getCombinedClass(parameter)}
                 onClick={() => handleClick(productInfo, parameter)}
               >
                 <div
-                  className={`${
+                  className={
                     parameter === 'black'
                       ? styles.blackColor
                       : styles.whiteColor
-                  }`}
+                  }
                 ></div>
               </button>
-            );
-          }
-          return (
-            <button
-              key={index}
-              className={`${styles.parameterBtn} ${
-                active === parameter ? styles.active : ''
-              }`}
-              onClick={() => handleClick(productInfo, parameter)}
-              disabled={sizes && !sizes.includes(parameter as Size)}
-            >
-              {parameter}
-            </button>
-          );
-        })}
+            ))
+          ) : (
+            <SizeSelector
+              parameters={parameters}
+              sizes={sizes}
+              active={active}
+              handleClick={handleClick}
+            />
+          )}
+        </div>
+        <button className={styles.crossBtn} onClick={handleOpenCloseParameters}>
+          <Cross className={styles.crossImg} />
+        </button>
       </div>
-      <button className={styles.crossBtn} onClick={() => toggle(index)}>
-        <Cross className={styles.crossImg} />
-      </button>
     </div>
-  </div>
-);
+  );
+};
 
 export default ToggleProductInfoParameters;
