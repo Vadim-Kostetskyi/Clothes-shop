@@ -3,7 +3,7 @@ import ProductsCards from 'components/ProductsCards';
 import FilteredyButton from 'components/FilterTabButtons';
 import { useFetchProductsWithImagesMutation } from 'redux/productsApi';
 import { BodySearchProducts, GetProductsWithImagesProps } from 'redux/types';
-import Loader from '../../components/Loader';
+import Loader from 'components/Loader';
 import { PRODUCT_GRID_SIZE } from 'utils/constants';
 
 const ProductsGridPage = (): JSX.Element => {
