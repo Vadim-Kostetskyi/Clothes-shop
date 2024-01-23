@@ -5,6 +5,7 @@ import { Swiper } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { SwiperSlide } from 'swiper/react';
 import { TopCategoriesProductsProps } from 'redux/types';
+import { clsx } from 'clsx';
 import styles from './index.module.scss';
 
 const TopCategories = () => {
@@ -12,7 +13,7 @@ const TopCategories = () => {
   const { t } = useTranslation();
 
   return (
-    <div className={`${styles.swiper} topCategories-swiper`}>
+    <div className={clsx(styles.swiper, 'topCategories-swiper')}>
       <h1 className={styles.title}>{t('topCategories')}</h1>
       <Swiper
         modules={[Navigation]}
@@ -26,16 +27,14 @@ const TopCategories = () => {
         }}
       >
         {/* TODO: add loader in OS-177 */}
-        {data?.map(({ name, url }: TopCategoriesProductsProps) => {
-          return (
-            <SwiperSlide key={name}>
-              <img src={url} alt={name} className={styles.image} />
-              <div className={styles.text}>
-                <p>{name}</p>
-              </div>
-            </SwiperSlide>
-          );
-        })}
+        {data?.map(({ name, url }: TopCategoriesProductsProps) => (
+          <SwiperSlide key={name}>
+            <img src={url} alt={name} className={styles.image} />
+            <div className={styles.text}>
+              <p>{name}</p>
+            </div>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );

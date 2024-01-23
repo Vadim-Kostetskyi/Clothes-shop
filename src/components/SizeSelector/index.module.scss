@@ -1,0 +1,42 @@
+@import 'styles/constants';
+
+.parameterBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding-top: 1px;
+  font-family: $font-family-main;
+  font-size: 14px;
+
+  &:not(:last-child) {
+    margin-right: 15px;
+  }
+}
+
+.productOrderParameterBtn {
+  width: 50px;
+  font-family: $font-family-main;
+  font-size: 20px;
+  border: 1px solid $grayDark;
+  border-radius: 4px;
+
+  &:not(:last-child) {
+    margin-right: 15px;
+  }
+}
+
+.active {
+  border-radius: 4px;
+  border: 0.5px solid $blackColor;
+}
+
+.activeProductOrder {
+  color: $brilliance;
+  background-color: $blackColor;
+}
+
+.text {
+  padding: 17px 0 13px;
+}
