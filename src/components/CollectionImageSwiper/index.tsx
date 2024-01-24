@@ -10,6 +10,7 @@ import ImageSmall1 from '../../assets/images/swiper-man-image-small-1.png';
 import ImageSmall2 from '../../assets/images/swiper-man-image-small-2.png';
 import ImageSmall3 from '../../assets/images/swiper-man-image-small-3.png';
 import ImageSmall4 from '../../assets/images/swiper-man-image-small-4.png';
+import { clsx } from 'clsx';
 import styles from './index.module.scss';
 import 'swiper/scss/pagination';
 
@@ -49,7 +50,7 @@ const slides: SlidesProps[] = [
 
 const CollectionImageSwiper = () => {
   return (
-    <div className={`${styles.swiper} main-page-swiper`}>
+    <div className={clsx(styles.swiper, 'collection-swiper')}>
       <CoreSwiper
         modules={[Pagination, Autoplay]}
         navigation={true}
