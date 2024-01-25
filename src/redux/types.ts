@@ -34,6 +34,7 @@ export interface ImageProps {
 
 export interface GetProductsResponse {
   products: ProductProps[];
+  pages: number;
 }
 
 export interface GetProductsWithImagesProps {
