@@ -22,6 +22,25 @@ export const productsApi = createApi({
     getProductsByName: builder.query({
       query: ({ page, size }) => `products/?page=${page}&size=${size}`,
     }),
+    getTopCategoriesByName: builder.query({
+      query: () => 'products/top',
+    }),
+    getProductById: builder.query({
+      query: ({ id }) => `products/${id}`,
+    }),
+    getProductImages: builder.query({
+      query: ({ id }) => `products/images/${id}`,
+    }),
+    searchProductsByParameter: builder.query<
+      GetProductsResponse,
+      SearchProductsProps
+    >({
+      query: ({ body, page, size }) => ({
+        url: `products/search?page=${page}&size=${size}`,
+        method: 'POST',
+        body,
+      }),
+    }),
     getProductsWithImages: builder.query<
       GetProductsWithImagesProps,
       GetProductsPayload
@@ -130,4 +149,8 @@ export const {
   useGetProductsWithImagesQuery,
   useFetchProductsWithImagesMutation,
   useGetNewNowProductsQuery,
+  useGetProductImagesQuery,
+  useSearchProductsByParameterQuery,
+  useGetProductByIdQuery,
+  useGetTopCategoriesByNameQuery,
 } = productsApi;

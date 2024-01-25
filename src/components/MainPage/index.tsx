@@ -6,6 +6,7 @@ import NewNow from 'components/NewNow';
 import Footer from 'components/Footer';
 import ScrollToTop from 'components/ScrollToTop';
 import Collection from 'components/Collection';
+import TopCategories from 'components/TopCategories';
 
 const MainPage = () => (
   <>
@@ -13,6 +14,7 @@ const MainPage = () => (
     <CollectionImageSwiper />
     <NewNow />
     <Collection />
+    <TopCategories />
     <FormSubscription />
     <Footer />
     <ScrollToTop />
