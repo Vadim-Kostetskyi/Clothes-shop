@@ -22,6 +22,9 @@ export const productsApi = createApi({
     getProductsByName: builder.query({
       query: ({ page, size }) => `products/?page=${page}&size=${size}`,
     }),
+    getTopCategoriesByName: builder.query({
+      query: () => 'products/top',
+    }),
     getProductById: builder.query({
       query: ({ id }) => `products/${id}`,
     }),
@@ -50,7 +53,9 @@ export const productsApi = createApi({
         if (rawProducts.error)
           return { error: rawProducts.error as FetchBaseQueryError };
 
-        const products = rawProducts.data as GetProductsResponse['products'];
+        const products =
+          (rawProducts?.data as GetProductsResponse['products']) ?? [];
+
         const productsId: string[] = products.reduce((acc: string[], cur) => {
           acc.push(cur.id);
           return acc;
@@ -80,7 +85,8 @@ export const productsApi = createApi({
         if (rawProducts.error)
           return { error: rawProducts.error as FetchBaseQueryError };
 
-        const products = rawProducts.data as GetProductsResponse['products'];
+        const products =
+          (rawProducts?.data as GetProductsResponse['products']) ?? [];
         const productsWithImages: GetProductsWithImages[] = [];
 
         for (const product of products) {
@@ -110,7 +116,9 @@ export const productsApi = createApi({
         if (rawProducts.error)
           return { error: rawProducts.error as FetchBaseQueryError };
 
-        const products = rawProducts.data as GetProductsResponse['products'];
+        const products =
+          (rawProducts.data as GetProductsResponse)?.products ?? [];
+
         const productsId: string[] = products.reduce((acc: string[], cur) => {
           acc.push(cur.id);
           return acc;
@@ -144,4 +152,5 @@ export const {
   useGetProductImagesQuery,
   useSearchProductsByParameterQuery,
   useGetProductByIdQuery,
+  useGetTopCategoriesByNameQuery,
 } = productsApi;

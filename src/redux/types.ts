@@ -34,6 +34,7 @@ export interface ImageProps {
 
 export interface GetProductsResponse {
   products: ProductProps[];
+  pages: number;
 }
 
 export interface GetProductsWithImagesProps {
@@ -59,6 +60,11 @@ export type BodySearchProducts =
   | {
       subcategory: Subcategory;
     };
+
+export interface TopCategoriesProductsProps {
+  name: string;
+  url: string;
+}
 
 export enum Subcategory {
   JACKETS = 'JACKETS',

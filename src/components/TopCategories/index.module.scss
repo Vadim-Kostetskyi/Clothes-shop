@@ -1,0 +1,45 @@
+@import 'styles/constants';
+
+.swiper {
+  & > div {
+    margin: 0px auto;
+    max-width: $max-content-width;
+  }
+  @include media(tablet) {
+    max-width: 448px;
+    margin: 0px 32px;
+  }
+}
+
+.title {
+  max-width: 1280px;
+  margin: 80px auto 0px;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 84px;
+  color: $textPrimary;
+  font-family: $font-family-main;
+  cursor: pointer;
+
+  &:hover {
+    color: $grayLight;
+  }
+}
+
+.image {
+  width: 314px;
+  max-width: 100%;
+  max-height: 503px;
+  @include media(tablet) {
+    width: 220px;
+    height: 341px;
+  }
+}
+
+.text {
+  display: flex;
+  justify-content: center;
+  color: $textPrimary;
+  font-family: $font-family-main;
+  line-height: 48px;
+}
