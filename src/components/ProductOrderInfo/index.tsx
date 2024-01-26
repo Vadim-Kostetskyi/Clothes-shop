@@ -4,8 +4,8 @@ import ColorSelection from 'components/ColorSelection';
 import AddToBagButton from 'components/AddToBagButton';
 import Accordion from 'components/Accordion';
 import { Size, Color } from 'types';
-import black from '../../assets/images/chooseColor/black.png';
-import white from '../../assets/images/chooseColor/white.png';
+import black from 'assets/images/chooseColor/black.png';
+import white from 'assets/images/chooseColor/white.png';
 import styles from './index.module.scss';
 import { useTranslation } from 'react-i18next';
 
