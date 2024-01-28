@@ -22,7 +22,7 @@ const categories: CategoryCardProps[] = [
     image: MenCategoryImage,
     imageSmall: MenImageSmall,
     category: 'Men',
-    href: '/main-page/men',
+    href: '/men',
   },
   {
     id: 2,

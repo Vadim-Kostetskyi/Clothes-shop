@@ -8,7 +8,7 @@ export interface SizeSelectorProps {
   sizes?: Size[];
   active?: string;
   handleClick: (param: string, size: Size) => void;
-  isProductOrder?: boolean;
+  isProductDetails?: boolean;
 }
 
 const SizeSelector: FC<SizeSelectorProps> = ({
@@ -16,16 +16,18 @@ const SizeSelector: FC<SizeSelectorProps> = ({
   sizes,
   active,
   handleClick,
-  isProductOrder,
+  isProductDetails,
 }) => {
-  const isActiveStyles = isProductOrder
-    ? styles.activeProductOrder
+  const isActiveStyles = isProductDetails
+    ? styles.activeProductDetails
     : styles.active;
 
   const combinedClassName = useCallback(
     (parameter: string) =>
       clsx(
-        isProductOrder ? styles.productOrderParameterBtn : styles.parameterBtn,
+        isProductDetails
+          ? styles.productDetailsParameterBtn
+          : styles.parameterBtn,
         active === parameter ? isActiveStyles : '',
       ),
     [active],

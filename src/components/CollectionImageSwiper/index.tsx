@@ -2,14 +2,14 @@ import React from 'react';
 import { SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import CoreSwiper from 'components/CoreSwiper';
-import Image1 from 'assets/images/swiper-man-image-1.png';
-import Image2 from 'assets/images/swiper-man-image-2.png';
-import Image3 from 'assets/images/swiper-man-image-3.png';
-import Image4 from 'assets/images/swiper-man-image-4.png';
-import ImageSmall1 from 'assets/images/swiper-man-image-small-1.png';
-import ImageSmall2 from 'assets/images/swiper-man-image-small-2.png';
-import ImageSmall3 from 'assets/images/swiper-man-image-small-3.png';
-import ImageSmall4 from 'assets/images/swiper-man-image-small-4.png';
+import ManImage1 from 'assets/images/swiper-man-image-1.png';
+import ManImage2 from 'assets/images/swiper-man-image-2.png';
+import ManImage3 from 'assets/images/swiper-man-image-3.png';
+import ManImage4 from 'assets/images/swiper-man-image-4.png';
+import ManImageSmall1 from 'assets/images/swiper-man-image-small-1.png';
+import ManImageSmall2 from 'assets/images/swiper-man-image-small-2.png';
+import ManImageSmall3 from 'assets/images/swiper-man-image-small-3.png';
+import ManImageSmall4 from 'assets/images/swiper-man-image-small-4.png';
 import { clsx } from 'clsx';
 import styles from './index.module.scss';
 import 'swiper/scss/pagination';
@@ -25,26 +25,26 @@ const slides: SlidesProps[] = [
   {
     id: 0,
     text: 'Golden Hour Glam',
-    image: Image1,
-    imageSmall: ImageSmall1,
+    image: ManImage1,
+    imageSmall: ManImageSmall1,
   },
   {
     id: 1,
     text: 'Autumn Eleganse',
-    image: Image2,
-    imageSmall: ImageSmall2,
+    image: ManImage2,
+    imageSmall: ManImageSmall2,
   },
   {
     id: 2,
     text: 'No Limits',
-    image: Image3,
-    imageSmall: ImageSmall3,
+    image: ManImage3,
+    imageSmall: ManImageSmall3,
   },
   {
     id: 3,
     text: 'Symphony of clothes',
-    image: Image4,
-    imageSmall: ImageSmall4,
+    image: ManImage4,
+    imageSmall: ManImageSmall4,
   },
 ];
 

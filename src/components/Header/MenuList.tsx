@@ -6,14 +6,14 @@ export type MenuContent = {
 
 export const menuName: MenuItem[] = [
   { id: 0, href: '#', label: 'Women' },
-  { id: 1, href: '/main-page/men', label: 'Men' },
+  { id: 1, href: '/men', label: 'Men' },
   { id: 2, href: '#', label: 'Kids' },
 ];
 
 export const category: MenuContent = {
   Women: [],
   Men: [
-    { id: 0, href: '/main-page/men/products', label: 'New now' },
+    { id: 0, href: '/men/products-grid', label: 'New now' },
     { id: 1, href: '#', label: 'Clothing' },
     { id: 2, href: '#', label: 'Suits' },
     { id: 3, href: '#', label: 'Shoes and accessories' },
@@ -26,7 +26,7 @@ export const category: MenuContent = {
 export const subcategory: MenuContent = {
   Women: [],
   Men: [
-    { id: 0, href: '/main-page/men/products', label: 'See all' },
+    { id: 0, href: '/men/products-grid', label: 'See all' },
     { id: 1, href: '#', label: 'Coats' },
     { id: 2, href: '#', label: 'Cardigans and sweaters' },
     { id: 3, href: '#', label: 'Jackets and overshirts' },

@@ -8,7 +8,7 @@ import ScrollToTop from 'components/ScrollToTop';
 import Collection from 'components/Collection';
 import TopCategories from 'components/TopCategories';
 
-const MainPage = () => (
+const CategoryPage = () => (
   <>
     <Header />
     <CollectionImageSwiper />
@@ -21,4 +21,4 @@ const MainPage = () => (
   </>
 );
 
-export default MainPage;
+export default CategoryPage;
