@@ -4,8 +4,8 @@ import ColorSelection from 'components/ColorSelection';
 import AddToBagButton from 'components/AddToBagButton';
 import Accordion from 'components/Accordion';
 import { Size, Color } from 'types';
-import BlackItemColor from 'assets/images/chooseColor/blackItemColor.png';
-import WhiteItemColor from 'assets/images/chooseColor/whiteItemColor.png';
+import BlackColor from 'assets/images/chooseColor/black.png';
+import WhiteColor from 'assets/images/chooseColor/white.png';
 import styles from './index.module.scss';
 import { useTranslation } from 'react-i18next';
 
@@ -22,11 +22,11 @@ export interface ItemPageProps {
 const clothesColors = [
   {
     label: Color.Black,
-    content: BlackItemColor,
+    content: BlackColor,
   },
   {
     label: Color.White,
-    content: WhiteItemColor,
+    content: WhiteColor,
   },
 ];
 
