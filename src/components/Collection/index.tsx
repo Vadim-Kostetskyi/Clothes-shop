@@ -1,6 +1,6 @@
 import React from 'react';
-import ManCollection1 from '../../assets/images/collection-man-image-1.png';
-import ManCollection2 from '../../assets/images/colection-man-image-2.png';
+import ManCollection1 from 'assets/images/collection-man-image-1.png';
+import ManCollection2 from 'assets/images/colection-man-image-2.png';
 import styles from './index.module.scss';
 import { useTranslation } from 'react-i18next';
 

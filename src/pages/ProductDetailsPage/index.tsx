@@ -1,16 +1,16 @@
 import React from 'react';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
-import ProductOrder from 'components/ProductOrder';
+import ProductDetails from 'components/ProductDetails';
 import VisitedProducts from 'components/VisitedProducts';
 
-const ProductOrderPage = () => (
+const ProductDetailsPage = () => (
   <>
     <Header />
-    <ProductOrder />
+    <ProductDetails />
     <VisitedProducts />
     <Footer />
   </>
 );
 
-export default ProductOrderPage;
+export default ProductDetailsPage;

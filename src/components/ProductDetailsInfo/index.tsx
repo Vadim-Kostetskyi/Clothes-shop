@@ -4,8 +4,8 @@ import ColorSelection from 'components/ColorSelection';
 import AddToBagButton from 'components/AddToBagButton';
 import Accordion from 'components/Accordion';
 import { Size, Color } from 'types';
-import black from '../../assets/images/chooseColor/black.png';
-import white from '../../assets/images/chooseColor/white.png';
+import BlackColor from 'assets/images/chooseColor/black.png';
+import WhiteColor from 'assets/images/chooseColor/white.png';
 import styles from './index.module.scss';
 import { useTranslation } from 'react-i18next';
 
@@ -22,17 +22,17 @@ export interface ItemPageProps {
 const clothesColors = [
   {
     label: Color.Black,
-    content: black,
+    content: BlackColor,
   },
   {
     label: Color.White,
-    content: white,
+    content: WhiteColor,
   },
 ];
 
 const defaultSizes: Size[] = Object.values(Size);
 
-const ProductOrderInfo: FC<ItemPageProps> = ({
+const ProductDetailsInfo: FC<ItemPageProps> = ({
   title,
   price,
   sizes,
@@ -68,13 +68,13 @@ const ProductOrderInfo: FC<ItemPageProps> = ({
 
   const productDescription = [
     {
-      title: t('productOrder.description'),
+      title: t('productDetails.description'),
       titleStyles: styles.submenu,
       listStyle: styles.listStyle,
       list: description,
     },
     {
-      title: t('productOrder.composition'),
+      title: t('productDetails.composition'),
       titleStyles: styles.submenu,
       list: composition,
     },
@@ -84,27 +84,27 @@ const ProductOrderInfo: FC<ItemPageProps> = ({
     <div className={styles.wrapper}>
       <p className={styles.title}>{title}</p>
       <p className={styles.ref}>
-        {t('productOrder.ref')}. {vendorCode}
+        {t('productDetails.ref')}. {vendorCode}
       </p>
       <p className={styles.price}>
         {price} <span className={styles.currency}>{t('currency')}</span>
       </p>
       <div className={styles.colorBox}>
-        <p className={styles.submenu}>{t('productOrder.selectColour')}</p>
+        <p className={styles.submenu}>{t('productDetails.selectColour')}</p>
         <ColorSelection
           colors={clothesColors}
           chosenColor={selectedColor}
           changeColor={handleChangeColor}
         />
       </div>
-      <p className={styles.submenu}>{t('productOrder.selectSize')}</p>
+      <p className={styles.submenu}>{t('productDetails.selectSize')}</p>
       <div className={styles.sizeBox}>
         <SizeSelector
           parameters={defaultSizes}
           sizes={sizes}
           active={selectedSize}
           handleClick={handleChangeSize}
-          isProductOrder={true}
+          isProductDetails={true}
         />
       </div>
       <AddToBagButton
@@ -121,4 +121,4 @@ const ProductOrderInfo: FC<ItemPageProps> = ({
   );
 };
 
-export default ProductOrderInfo;
+export default ProductDetailsInfo;
