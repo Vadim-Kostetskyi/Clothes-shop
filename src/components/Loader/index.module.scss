@@ -1,9 +1,96 @@
 .loaderWrapper {
-  width: 100%;
-  display: flex;
-  justify-content: center;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 72px;
+  height: 72px;
+  display: flex;
+  gap: 18px;
+  padding: 32.75px 14.25px;
+
+  & .loaderItemWrapper:nth-of-type(2) {
+    & .loader {
+      animation-delay: 150ms;
+    }
+    & .loaderColor {
+      animation-delay: 150ms, 150ms;
+    }
+  }
+
+  & .loaderItemWrapper:nth-of-type(3) {
+    & .loader {
+      animation-delay: 300ms;
+    }
+    & .loaderColor {
+      animation-delay: 300ms, 150ms;
+    }
+  }
+
+  &:hover {
+    .loader {
+      opacity: 0;
+    }
+    .loaderColor {
+      opacity: 1;
+    }
+  }
+}
+
+.loaderItemWrapper {
+  position: relative;
+}
+
+.loader {
+  width: 7.5px;
+  height: 7.5px;
+  background-color: #141414;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  transition: opacity 0.5s linear;
+  animation: animloader 1804ms linear infinite;
+  }
+
+@keyframes animloader {
+  0%, 41.5%, 75.5%, 100%  {
+    transform: scale(1)
+  }
+  50% {
+    transform: translateY(40%) scaleY(0.5)
+  }
+  58.5% {
+    transform: translateY(-270%) scaleX(0.4)
+  }
+  67%  {
+    transform: translateY(60%) scaleY(0.25)
+  }
+}
+
+.loaderColor {
+  @extend .loader;
+  opacity: 0;
+  animation: animloader 1804ms linear infinite, animloaderhover 3750ms linear 150ms infinite;
+}
+
+@keyframes animloaderhover {
+  0%, 100% {
+    background-color: #E57373;
+  }
+  16.7% {
+    background-color: #FFD54F;
+  }
+  33.4% {
+    background-color: #81C784;
+  }
+  50% {
+    background-color: #64B5F6;
+  }
+  66.6% {
+    background-color: #7986CB;
+  }
+  83.3% {
+    background-color: #BA68C8;
+  }
 }
