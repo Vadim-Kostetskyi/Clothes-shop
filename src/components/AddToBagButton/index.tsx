@@ -26,7 +26,7 @@ const AddToBagButton: FC<AddToBagButtonProps> = ({
       >
         <ShoppingBag className={styles.shoppingBag} />
         <span className={styles.text}>
-          {t('productOrder.addToMyShoppingBag')}
+          {t('productDetails.addToMyShoppingBag')}
         </span>
       </button>
       <button className={styles.heartButton} onClick={addToFavorite}>

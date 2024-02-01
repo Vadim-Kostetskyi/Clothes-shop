@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import PhotoSwitcher from 'components/PhotoSwitcher';
-import ProductOrderInfo from 'components/ProductOrderInfo';
+import ProductDetailsInfo from 'components/ProductDetailsInfo';
 import { useGetProductByIdQuery } from 'redux/productsApi';
 import SameStyleProducts from 'components/SameStyleProducts';
 import { useLocalStorage } from 'libs/hooks/hooks';
 import styles from './index.module.scss';
 
-const ProductOrder = () => {
+const ProductDetails = () => {
   const { productId } = useParams();
   const { data } = useGetProductByIdQuery({ id: productId });
 
@@ -24,11 +24,11 @@ const ProductOrder = () => {
     <>
       <div className={styles.wrapper}>
         <PhotoSwitcher {...data} />
-        <ProductOrderInfo {...data} />
+        <ProductDetailsInfo {...data} />
       </div>
       <SameStyleProducts subcategory={data?.subcategory} />
     </>
   );
 };
 
-export default ProductOrder;
+export default ProductDetails;

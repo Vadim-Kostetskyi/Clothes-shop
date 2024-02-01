@@ -29,7 +29,7 @@ const ProductCard: FC<ProductCardProps> = ({
     {isMobile ? (
       <img src={image} alt={productName} className={styles.image} />
     ) : (
-      <Link to={`/product-order/${productId}`}>
+      <Link to={`/product/${productId}`}>
         <ProductImageSwiper images={images} />
       </Link>
     )}
