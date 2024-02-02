@@ -51,46 +51,52 @@
   opacity: 1;
   transition: opacity 0.5s linear;
   animation: animloader 1804ms linear infinite;
-  }
+}
 
 @keyframes animloader {
-  0%, 41.5%, 75.5%, 100%  {
-    transform: scale(1)
+  0%,
+  41.5%,
+  75.5%,
+  100% {
+    transform: scale(1);
   }
   50% {
-    transform: translateY(40%) scaleY(0.5)
+    transform: translateY(40%) scaleY(0.5);
   }
   58.5% {
-    transform: translateY(-270%) scaleX(0.4)
+    transform: translateY(-270%) scaleX(0.4);
   }
-  67%  {
-    transform: translateY(60%) scaleY(0.25)
+  67% {
+    transform: translateY(60%) scaleY(0.25);
   }
 }
 
 .loaderColor {
   @extend .loader;
   opacity: 0;
-  animation: animloader 1804ms linear infinite, animloaderhover 3750ms linear 150ms infinite;
+  animation:
+    animloader 1804ms linear infinite,
+    animloaderhover 3750ms linear 150ms infinite;
 }
 
 @keyframes animloaderhover {
-  0%, 100% {
-    background-color: #E57373;
+  0%,
+  100% {
+    background-color: #e57373;
   }
   16.7% {
-    background-color: #FFD54F;
+    background-color: #ffd54f;
   }
   33.4% {
-    background-color: #81C784;
+    background-color: #81c784;
   }
   50% {
-    background-color: #64B5F6;
+    background-color: #64b5f6;
   }
   66.6% {
-    background-color: #7986CB;
+    background-color: #7986cb;
   }
   83.3% {
-    background-color: #BA68C8;
+    background-color: #ba68c8;
   }
 }
