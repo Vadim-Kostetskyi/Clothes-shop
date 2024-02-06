@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import ProductsCards from 'components/ProductsCards';
-import FilteredyButton from 'components/FilterTabButtons';
-import { useFetchProductsWithImagesMutation } from 'redux/productsApi';
-import { BodySearchProducts, GetProductsWithImagesProps } from 'redux/types';
+import FilteredButton from 'components/FilterTabButtons';
+import Header from 'components/Header';
 import Loader from 'components/Loader';
-import { PRODUCT_GRID_SIZE } from 'utils/constants';
+import Footer from 'components/Footer';
+import { FIRST_PAGE, PRODUCT_GRID_SIZE } from 'utils/constants';
+import { BodySearchProducts } from 'redux/types';
+import { Category } from 'types';
+import { useFetchProductsWithImagesMutation } from 'redux/productsApi';
 
 const ProductsGridPage = (): JSX.Element => {
   const [searchProducts, { isLoading, data }] =
@@ -12,31 +15,27 @@ const ProductsGridPage = (): JSX.Element => {
 
   useEffect(() => {
     searchProducts({
-      page: 1,
+      page: FIRST_PAGE,
       size: PRODUCT_GRID_SIZE,
       body: {
-        category: 'CLOTHING',
+        category: Category.CLOTHING,
       },
     });
   }, []);
 
   const handleClick = (body: BodySearchProducts) => {
     searchProducts({
-      page: 1,
+      page: FIRST_PAGE,
       size: PRODUCT_GRID_SIZE,
       body,
     });
   };
   return (
     <>
-      <FilteredyButton handleClick={handleClick} />
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <ProductsCards
-          searchProducts={data ?? ({} as GetProductsWithImagesProps)}
-        />
-      )}
+      <Header />
+      <FilteredButton handleClick={handleClick} />
+      {isLoading ? <Loader /> : <ProductsCards searchProducts={data} />}
+      <Footer />
     </>
   );
 };
