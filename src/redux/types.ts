@@ -19,6 +19,7 @@ export interface ProductProps {
   collection: string;
   manufacturer: string;
   files: string[];
+  quantity: number;
 }
 
 export interface ImageItemProps {
