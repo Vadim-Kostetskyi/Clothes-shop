@@ -1,7 +1,7 @@
 import { CaseReducer, PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { AddItemPayload } from './types/types';
 import { SliceName } from '../enums/enums';
-import { useLocalStorage } from 'hooks/hooks';
+import { useLocalStorage } from 'hooks';
 
 type State = {
   items: AddItemPayload[];

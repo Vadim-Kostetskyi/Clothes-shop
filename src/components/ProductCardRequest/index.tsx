@@ -1,5 +1,5 @@
 import React, { FC, useMemo } from 'react';
-import ProductCard from 'components/ProductCard';
+import ProductCard from 'modules/product/components/ProductCard';
 import {
   useGetProductByIdQuery,
   useGetProductImagesQuery,
@@ -9,6 +9,7 @@ interface ProductCardRequestProps {
   id: string;
 }
 
+// TODO: refactor https://allalitvinenko.atlassian.net/browse/OS-185
 const ProductCardRequest: FC<ProductCardRequestProps> = ({ id }) => {
   const { data } = useGetProductByIdQuery({ id });
   const images = useGetProductImagesQuery({ id });

@@ -8,6 +8,7 @@ import { FIRST_PAGE, SIMILAR_PRODUCTS_SIZE } from 'utils/constants';
 
 import styles from '../VisitedProducts/index.module.scss';
 
+// TODO: refactor https://allalitvinenko.atlassian.net/browse/OS-185
 const SameStyleProducts: FC<BodySearchProducts> = ({
   subcategory = Subcategory.JACKETS,
 }) => {

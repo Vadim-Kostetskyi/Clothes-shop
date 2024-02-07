@@ -1,8 +1,8 @@
 import React, { useState, FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { MenuItem } from 'components/Footer/MenuList';
+import { MenuItem } from 'modules/core/containers/Footer/menu-data';
 import { HeaderMenu } from 'types/types';
-import ClothingList from 'components/ClothingList';
+import ClothingList from 'components/NestedMenu';
 import styles from './index.module.scss';
 
 interface CatalogMenuItemMobileProps {

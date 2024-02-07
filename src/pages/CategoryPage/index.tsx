@@ -1,24 +1,21 @@
 import React from 'react';
-import CollectionImageSwiper from 'components/CollectionImageSwiper';
-import Header from 'components/Header';
-import FormSubscription from 'components/FormSubscription';
-import NewNow from 'components/NewNow';
-import Footer from 'components/Footer';
-import ScrollToTop from 'components/ScrollToTop';
-import Collection from 'components/Collection';
-import TopCategories from 'components/TopCategories';
+import CollectionImageSwiper from 'modules/product/components/CollectionImageSwiper';
+import NewsletterSubscription from 'modules/core/containers/NewsletterSubscription';
+import NewNow from 'modules/product/containers/NewNow';
+import ScrollToTop from 'modules/core/components/ScrollToTop';
+import Collection from 'modules/product/components/Collection';
+import TopCategories from 'modules/product/containers/TopCategories';
+import MainLayout from 'modules/core/components/MainLayout';
 
 const CategoryPage = () => (
-  <>
-    <Header />
+  <MainLayout>
     <CollectionImageSwiper />
     <NewNow />
     <Collection />
     <TopCategories />
-    <FormSubscription />
-    <Footer />
+    <NewsletterSubscription />
     <ScrollToTop />
-  </>
+  </MainLayout>
 );
 
 export default CategoryPage;
