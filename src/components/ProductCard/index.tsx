@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import ProductImageSwiper from 'components/ProductImageSwiper';
 import ProductInfo from 'components/ProductInfo';
-import { Size } from 'types';
+import { Size } from 'types/types';
 import styles from './index.module.scss';
 import { ImageItemProps } from 'redux/types';
 import { Link } from 'react-router-dom';

@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useMemo } from 'react';
 import Cross from 'assets/svgs/Cross';
-import { Size } from 'types';
+import { Size } from 'types/types';
 import SizeSelector from 'components/SizeSelector';
 import styles from './index.module.scss';
 import { clsx } from 'clsx';

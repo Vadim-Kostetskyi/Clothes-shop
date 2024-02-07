@@ -10,7 +10,7 @@ import ManImageSmall1 from 'assets/images/swiper-man-image-small-1.png';
 import ManImageSmall2 from 'assets/images/swiper-man-image-small-2.png';
 import ManImageSmall3 from 'assets/images/swiper-man-image-small-3.png';
 import ManImageSmall4 from 'assets/images/swiper-man-image-small-4.png';
-import { getValidClassNames } from 'libs/helpers/helpers';
+import { getValidClassNames } from 'helpers/helpers';
 import 'swiper/scss/pagination';
 import styles from './index.module.scss';
 

@@ -4,7 +4,7 @@ import PhotoSwitcher from 'components/PhotoSwitcher';
 import ProductDetailsInfo from 'components/ProductDetailsInfo';
 import { useGetProductByIdQuery } from 'redux/productsApi';
 import SameStyleProducts from 'components/SameStyleProducts';
-import { useLocalStorage } from 'libs/hooks/hooks';
+import { useLocalStorage } from 'hooks/hooks';
 import styles from './index.module.scss';
 
 const ProductDetails = () => {

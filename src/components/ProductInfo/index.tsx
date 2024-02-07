@@ -1,10 +1,10 @@
 import React, { useState, FC } from 'react';
 import ShoppingBag from 'assets/svgs/ShoppingBag';
 import ProductInfoParameters from 'components/ProductInfoParameters';
-import { Size, Color } from 'types';
+import { Size, Color } from 'types/types';
 import styles from './index.module.scss';
 import { actions as shoppingCartActions } from '../../redux/slices/shopping-cart/shopping-cart';
-import { useAppDispatch, useAppSelector } from 'libs/hooks/hooks';
+import { useAppDispatch, useAppSelector } from 'hooks/hooks';
 import { useTranslation } from 'react-i18next';
 import { selectQuantityByProductId } from 'redux/slices/shopping-cart/selectors';
 

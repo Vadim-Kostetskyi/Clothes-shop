@@ -1,5 +1,5 @@
 import React, { FC, useCallback } from 'react';
-import { Color } from 'types';
+import { Color } from 'types/types';
 import styles from './index.module.scss';
 
 export interface ColorProps {

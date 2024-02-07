@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { languages } from './languageList';
-import { Language } from 'types';
+import { Language } from 'types/types';
 
 export interface LanguageSelectProps {
   getButtonClassName: (language: string) => string;

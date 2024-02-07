@@ -2,7 +2,7 @@ import React, { FC, useCallback, useState } from 'react';
 import { BodySearchProducts } from 'redux/types';
 import { getButtons, ButtonsProps } from './data';
 import { useTranslation } from 'react-i18next';
-import { Category, Subcategory } from 'types';
+import { Category, Subcategory } from 'types/types';
 import styles from './index.module.scss';
 
 interface FilterTabButtons {

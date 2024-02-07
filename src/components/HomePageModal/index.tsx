@@ -4,7 +4,7 @@ import Selector, { SelectOption } from 'components/Selector';
 import { countries } from './listOfCountries';
 import LanguageSelect from 'components/LanguageSelect';
 import Copyright from 'components/copyright';
-import { Language } from 'types';
+import { Language } from 'types/types';
 import styles from './index.module.scss';
 import { useTranslation } from 'react-i18next';
 

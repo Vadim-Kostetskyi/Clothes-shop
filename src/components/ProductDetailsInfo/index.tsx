@@ -3,7 +3,7 @@ import SizeSelector from 'components/SizeSelector';
 import ColorSelection from 'components/ColorSelection';
 import AddToBagButton from 'components/AddToBagButton';
 import Accordion from 'components/Accordion';
-import { Size, Color } from 'types';
+import { Size, Color } from 'types/types';
 import BlackColor from 'assets/images/chooseColor/black.png';
 import WhiteColor from 'assets/images/chooseColor/white.png';
 import styles from './index.module.scss';

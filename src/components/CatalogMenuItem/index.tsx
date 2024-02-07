@@ -1,7 +1,7 @@
 import React, { useState, FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MenuItem } from 'components/Footer/MenuList';
-import { HeaderMenu } from 'types';
+import { HeaderMenu } from 'types/types';
 import ClothingList from 'components/ClothingList';
 import styles from './index.module.scss';
 

@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import ToggleProductInfoParameters from 'components/ToggleProductInfoParameters';
-import { Color, Size } from 'types';
+import { Color, Size } from 'types/types';
 import styles from './index.module.scss';
 
 interface ProductInfoParameters {

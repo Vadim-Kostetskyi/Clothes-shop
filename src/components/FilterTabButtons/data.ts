@@ -1,5 +1,5 @@
 import { TFunction } from 'i18next';
-import { Category, Subcategory } from 'types';
+import { Category, Subcategory } from 'types/types';
 
 export type ButtonsProps = {
   name: string;

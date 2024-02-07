@@ -6,7 +6,7 @@ import './styles/index.scss';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import { store } from 'redux/store';
-import './i18n';
+import './translations/i18n';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,

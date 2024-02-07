@@ -2,7 +2,7 @@ import React, { FC, useCallback, useMemo, useState } from 'react';
 import { Navigation, Virtual } from 'swiper/modules';
 import { Swiper } from 'swiper/react';
 import ArrowSwiperCard from 'assets/svgs/ArrowSwiperCard';
-import { getValidClassNames } from 'libs/helpers/helpers';
+import { getValidClassNames } from 'helpers/helpers';
 import styles from './index.module.scss';
 
 export interface NewNowMobile {

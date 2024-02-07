@@ -1,6 +1,6 @@
 import React, { FC, useCallback } from 'react';
 import { clsx } from 'clsx';
-import { Size } from 'types';
+import { Size } from 'types/types';
 import styles from './index.module.scss';
 
 export interface SizeSelectorProps {

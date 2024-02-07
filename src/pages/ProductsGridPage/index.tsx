@@ -6,7 +6,7 @@ import Loader from 'components/Loader';
 import Footer from 'components/Footer';
 import { FIRST_PAGE, PRODUCT_GRID_SIZE } from 'utils/constants';
 import { BodySearchProducts } from 'redux/types';
-import { Category } from 'types';
+import { Category } from 'types/types';
 import { useFetchProductsWithImagesMutation } from 'redux/productsApi';
 
 const ProductsGridPage = (): JSX.Element => {

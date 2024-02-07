@@ -8,7 +8,7 @@ import {
   selectQuantity,
   actions as shoppingCartActions,
 } from 'redux/slices/shopping-cart/shopping-cart';
-import { useAppDispatch, useAppSelector } from 'libs/hooks/hooks';
+import { useAppDispatch, useAppSelector } from 'hooks/hooks';
 import { TimeConstants } from 'utils/constants';
 
 const TopBar = (): JSX.Element => {

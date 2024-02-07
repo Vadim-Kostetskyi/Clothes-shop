@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import ProductCardRequest from 'components/ProductCardRequest';
-import { useLocalStorage } from 'libs/hooks/hooks';
+import { useLocalStorage } from 'hooks/hooks';
 import styles from './index.module.scss';
 
 const VisitedProducts = () => {
