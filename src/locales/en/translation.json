@@ -20,6 +20,7 @@
   "productDetails": {
     "selectColour": "Select colour",
     "selectSize": "Select size",
+    "itemNotAvailable": "Selected item is not available",
     "addToMyShoppingBag": "ADD TO MY SHOPPING BAG",
     "ref": "Ref",
     "description": "Description",

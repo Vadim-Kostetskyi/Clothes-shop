@@ -14,6 +14,7 @@ export interface ProductCardProps {
   images?: ImageItemProps[];
   isMobile?: boolean;
   image?: string;
+  quantity: number;
 }
 
 const ProductCard: FC<ProductCardProps> = ({
@@ -24,6 +25,7 @@ const ProductCard: FC<ProductCardProps> = ({
   images = [],
   isMobile,
   image,
+  quantity,
 }) => (
   <div className={styles.productCard}>
     {isMobile ? (
@@ -38,6 +40,7 @@ const ProductCard: FC<ProductCardProps> = ({
       productName={productName}
       price={Number.parseFloat(price)}
       sizes={sizes}
+      quantity={Number(quantity)}
     />
   </div>
 );

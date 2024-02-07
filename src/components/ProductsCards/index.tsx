@@ -9,7 +9,7 @@ interface ProductsCardsProps {
 
 const ProductsCards: FC<ProductsCardsProps> = ({ searchProducts }) => (
   <div className={styles.cardsWrapper}>
-    {searchProducts?.products?.map(({ id, title, price, size }) => {
+    {searchProducts?.products?.map(({ id, title, price, size, quantity }) => {
       const images =
         searchProducts?.images?.find(item => item.id === id)?.images ?? [];
 
@@ -21,6 +21,7 @@ const ProductsCards: FC<ProductsCardsProps> = ({ searchProducts }) => (
           price={price}
           sizes={size}
           images={images}
+          quantity={quantity}
         />
       );
     })}
