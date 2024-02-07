@@ -23,7 +23,7 @@ const CategoryCard: FC<CategoryCardProps> = ({
         <img src={image} alt={category} className={styles.image} />
       </picture>
       <div className={styles.categoryTextWrapper}>
-        <p className={styles.categorylink}>Go to fashion</p>
+        <p className={styles.categoryLink}>Go to fashion</p>
         <p className={styles.categoryTitle}>{category}</p>
       </div>
     </a>
