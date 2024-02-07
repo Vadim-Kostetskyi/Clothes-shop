@@ -1,15 +1,15 @@
 import { TFunction } from 'i18next';
-import { Subcategory } from 'redux/types';
+import { Category, Subcategory } from 'types';
 
 export type ButtonsProps = {
   name: string;
-  value: Subcategory | string;
+  value: Category | Subcategory;
 };
 
 export const getButtons = (t: TFunction<string, string>): ButtonsProps[] => [
   {
     name: t('categoryItems.all'),
-    value: 'CLOTHING',
+    value: Category.CLOTHING,
   },
   {
     name: t('categoryItems.jackets'),

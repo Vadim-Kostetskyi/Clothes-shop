@@ -1,20 +1,21 @@
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSearchProductsByParameterQuery } from 'redux/productsApi';
+import { BodySearchProducts } from 'redux/types';
 import ProductCardRequest from 'components/ProductCardRequest';
-import { Subcategory } from 'redux/types';
+import { Subcategory } from 'types';
+import { FIRST_PAGE, SIMILAR_PRODUCTS_SIZE } from 'utils/constants';
+
 import styles from '../VisitedProducts/index.module.scss';
 
-interface SameStyleProductsProps {
-  subcategory: Subcategory;
-}
-
-const SameStyleProducts: FC<SameStyleProductsProps> = ({ subcategory }) => {
+const SameStyleProducts: FC<BodySearchProducts> = ({
+  subcategory = Subcategory.JACKETS,
+}) => {
   const { t } = useTranslation();
   const { data } = useSearchProductsByParameterQuery({
     body: { subcategory },
-    page: 1,
-    size: 3,
+    page: FIRST_PAGE,
+    size: SIMILAR_PRODUCTS_SIZE,
   });
 
   return (
@@ -22,7 +23,7 @@ const SameStyleProducts: FC<SameStyleProductsProps> = ({ subcategory }) => {
       <p className={styles.title}>{t('similarProducts')}</p>
       <div className={styles.cardWrapper}>
         {Array.isArray(data?.products) &&
-          data?.products.map(({ id }: { id: string }) => {
+          data?.products.map(({ id }) => {
             return (
               <div className={styles.card} key={id}>
                 <ProductCardRequest id={id} />

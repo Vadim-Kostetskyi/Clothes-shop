@@ -24,3 +24,18 @@ export enum Language {
   English = 'en',
   Ukrainian = 'ua',
 }
+
+export enum Category {
+  CLOTHING = 'CLOTHING',
+}
+
+export enum Subcategory {
+  JACKETS = 'JACKETS',
+  COATS = 'COATS',
+  TRENCH = 'TRENCH',
+  GILETS = 'GILETS',
+  OVERSHIRTS = 'OVERSHIRTS',
+  SWEATERS = 'SWEATERS',
+  CARDIGANS = 'CARDIGANS',
+  QUILTED = 'QUILTED',
+}

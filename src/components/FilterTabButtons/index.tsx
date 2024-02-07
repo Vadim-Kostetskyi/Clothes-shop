@@ -1,8 +1,9 @@
 import React, { FC, useCallback, useState } from 'react';
-import { BodySearchProducts, Subcategory } from 'redux/types';
-import styles from './index.module.scss';
+import { BodySearchProducts } from 'redux/types';
 import { getButtons, ButtonsProps } from './data';
 import { useTranslation } from 'react-i18next';
+import { Category, Subcategory } from 'types';
+import styles from './index.module.scss';
 
 interface FilterTabButtons {
   handleClick: (body: BodySearchProducts) => void;
@@ -24,9 +25,9 @@ const FilterTabButtons: FC<FilterTabButtons> = ({ handleClick }) => {
       {buttons?.length &&
         buttons.map(({ name, value }) => {
           const body =
-            value === 'CLOTHING'
+            value === Category.CLOTHING
               ? {
-                  category: value as string,
+                  category: value,
                 }
               : {
                   subcategory: value as Subcategory,
