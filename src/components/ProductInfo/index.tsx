@@ -4,14 +4,16 @@ import ProductInfoParameters from 'components/ProductInfoParameters';
 import { Size, Color } from 'types';
 import styles from './index.module.scss';
 import { actions as shoppingCartActions } from '../../redux/slices/shopping-cart/shopping-cart';
-import { useAppDispatch } from 'libs/hooks/hooks';
+import { useAppDispatch, useAppSelector } from 'libs/hooks/hooks';
 import { useTranslation } from 'react-i18next';
+import { selectQuantityByProductId } from 'redux/slices/shopping-cart/selectors';
 
 interface ProductInfo {
   productId: string;
   productName: string;
   price: number;
   sizes: Size[];
+  quantity: number;
 }
 
 const ProductInfo: FC<ProductInfo> = ({
@@ -19,11 +21,14 @@ const ProductInfo: FC<ProductInfo> = ({
   price,
   productName,
   sizes,
+  quantity,
 }) => {
   const [selectedColor, setSelectedColor] = useState<Color>(Color.Black);
   const [selectedSize, setSelectedSize] = useState<Size | null>(null);
-  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState<string | undefined>();
   const dispatch = useAppDispatch();
+  const productQuantity =
+    useAppSelector(state => selectQuantityByProductId(state, productId)) ?? 0;
   const { t } = useTranslation();
 
   const changeParameters = (parameter: string, value: string): void => {
@@ -33,7 +38,7 @@ const ProductInfo: FC<ProductInfo> = ({
         break;
       case 'size':
         setSelectedSize(value as Size);
-        setIsError(false);
+        setError('');
         break;
       default:
         break;
@@ -42,13 +47,24 @@ const ProductInfo: FC<ProductInfo> = ({
 
   const addToShoppingCart = () => {
     if (!selectedSize) {
-      setIsError(true);
+      setError(t('selectSize'));
+      return;
+    }
+    if (productQuantity > quantity) {
+      setError(t('productDetails.itemNotAvailable'));
       return;
     }
 
+    setError('');
+
     dispatch(
-      shoppingCartActions.addItem({ id: productId, price, name: productName }),
+      shoppingCartActions.addItem({
+        id: productId,
+        price,
+        name: productName,
+      }),
     );
+
     console.log('color:', selectedColor);
     console.log('size:', selectedSize);
   };
@@ -69,7 +85,7 @@ const ProductInfo: FC<ProductInfo> = ({
       <div className={styles.productInfoParametersWrapper}>
         <ProductInfoParameters
           changeParameters={changeParameters}
-          error={isError}
+          error={error}
           sizes={sizes}
         />
       </div>

@@ -7,7 +7,7 @@ import styles from './index.module.scss';
 interface ProductInfoParameters {
   changeParameters: (parameter: string, value: string) => void;
   sizes: Size[];
-  error: boolean;
+  error?: string;
 }
 
 const ProductInfoParameters: FC<ProductInfoParameters> = ({
@@ -49,7 +49,7 @@ const ProductInfoParameters: FC<ProductInfoParameters> = ({
 
   return (
     <div className={styles.parameters}>
-      {error && <p className={styles.error}>{t('selectSize')}</p>}
+      {error && <p className={styles.error}>{error}</p>}
       <ToggleProductInfoParameters
         parameters={colors}
         productInfo="color"

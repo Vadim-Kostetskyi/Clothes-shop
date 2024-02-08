@@ -10,10 +10,12 @@ const LoaderItem = (): JSX.Element => (
 );
 
 const Loader = (): JSX.Element => (
-  <div className={styles.loaderWrapper}>
-    <LoaderItem />
-    <LoaderItem />
-    <LoaderItem />
+  <div className={styles.loaderContainer}>
+    <div className={styles.loaderWrapper}>
+      <LoaderItem />
+      <LoaderItem />
+      <LoaderItem />
+    </div>
   </div>
 );
 
