@@ -16,6 +16,11 @@
   bottom: 0;
   padding: 72px 80px 32px;
   background-color: $pageBackground;
+
+  @include media(mobile) {
+    height: 50vh;
+    padding: 32px 32px 66px 32px;
+  }
 }
 
 .modalBox {
@@ -29,9 +34,36 @@
   margin-right: 20%;
 }
 
+.modalBoxMobile {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 36px;
+}
+
+.modalFieldsMobile {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.fieldWrapperMobile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+
 .locationText,
 .languageText {
   padding-bottom: 24px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.fieldTextMobile {
   font-size: 20px;
   font-weight: 500;
 }
@@ -64,6 +96,10 @@
   }
 }
 
+.languageButton:hover {
+  cursor: pointer;
+}
+
 .focus {
   color: $brilliance;
   background-color: $blackColor;
@@ -75,12 +111,24 @@
   opacity: 0;
 }
 
+.agreement {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.agreementLabelMobile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .agreementText {
   display: flex;
   align-items: center;
   user-select: none;
   font-size: 12px;
-  margin-bottom: 16px;
 
   &::before {
     content: '';
@@ -112,4 +160,10 @@
   color: $brilliance;
   background-color: $blackColor;
   border-radius: 4px;
+  transition: opacity 2s;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
 }

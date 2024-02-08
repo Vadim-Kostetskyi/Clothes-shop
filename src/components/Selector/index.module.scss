@@ -1,3 +1,9 @@
+@import 'styles/constants';
+
 .wrapper {
   width: 530px;
+
+  @include media(mobile) {
+    width: 100%;
+  }
 }
