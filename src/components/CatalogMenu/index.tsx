@@ -5,7 +5,7 @@ import {
   menuName,
   subcategory,
   category,
-} from '../../modules/core/containers/Header/menu-data';
+} from 'modules/core/containers/Header/menu-data';
 import CatalogMenuItem from 'components/CatalogMenuItem';
 import { MenuItem } from 'utils/constants';
 import styles from './index.module.scss';

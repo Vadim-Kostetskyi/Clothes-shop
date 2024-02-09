@@ -79,3 +79,4 @@ const Header = (): JSX.Element => {
 };
 
 export default Header;
+export { menuName, category, subcategory } from './menu-data';

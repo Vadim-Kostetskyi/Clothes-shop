@@ -223,3 +223,5 @@ export const countries = [
   { value: 'zm', label: 'Zambia' },
   { value: 'zw', label: 'Zimbabwe' },
 ];
+
+export const DEFAULT_COUNTRY = { value: 'ua', label: 'Ukraine' };

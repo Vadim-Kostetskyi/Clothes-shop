@@ -1,20 +1,4 @@
-// TODO: move types to types.ts
-export type MenuItem = {
-  id: number;
-  href: string;
-  label: string;
-};
-
-export type MenuContent = {
-  [key: string]: MenuItem[];
-};
-
-export type MenuList = {
-  id: number;
-  listNumber: number;
-  contentName: string;
-  label: string;
-};
+import { MenuContent, MenuList } from 'types/types';
 
 export const menuName: MenuList[] = [
   { id: 0, listNumber: 0, contentName: 'help', label: 'Help' },

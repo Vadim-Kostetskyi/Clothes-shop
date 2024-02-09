@@ -4,7 +4,7 @@ import {
   menuName,
   category,
   subcategory,
-} from '../../containers/Header/menu-data';
+} from 'modules/core/containers/Header';
 import HamburgerMenuItem from 'modules/core/components/HamburgerMenuItem';
 import styles from './index.module.scss';
 
