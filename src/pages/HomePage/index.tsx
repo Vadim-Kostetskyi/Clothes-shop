@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import CategoryCards from 'components/CategoryCards';
-import Header from 'components/Header';
-import HomePageModal from 'components/HomePageModal';
+import CategoryCards from 'modules/core/components/CategoryCards';
+import PreferencesModal from 'modules/core/components/PreferencesModal';
 import styles from './index.module.scss';
+import MainLayout from 'modules/core/components/MainLayout';
 
 const HomePage = () => {
   const [showModal, setShowModal] = useState(false);
@@ -21,15 +21,16 @@ const HomePage = () => {
   const hideModalWindow = () => setShowModal(false);
 
   return (
-    <div className={styles.wrapperHomePage}>
-      <Header />
-      <div className={styles.wrapperCategoryCards}>
-        <CategoryCards />
+    <MainLayout showFooter={false}>
+      <div className={styles.wrapperHomePage}>
+        <div className={styles.wrapperCategoryCards}>
+          <CategoryCards />
+        </div>
+        {showModal ? (
+          <PreferencesModal showModal={showModal} hideModal={hideModalWindow} />
+        ) : null}
       </div>
-      {showModal ? (
-        <HomePageModal showModal={showModal} hideModal={hideModalWindow} />
-      ) : null}
-    </div>
+    </MainLayout>
   );
 };
 

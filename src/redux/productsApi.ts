@@ -19,12 +19,15 @@ export const productsApi = createApi({
     baseUrl: BASE_URL,
   }),
   endpoints: builder => ({
+    // TODO: add types builder.query<ResponseProps, PayloadProps>
+    // https://allalitvinenko.atlassian.net/browse/OS-188
     getProductsByName: builder.query({
       query: ({ page, size }) => `products/?page=${page}&size=${size}`,
     }),
     getTopCategoriesByName: builder.query({
       query: () => 'products/top',
     }),
+    // TODO: https://allalitvinenko.atlassian.net/browse/OS-187
     getProductById: builder.query({
       query: ({ id }) => `products/${id}`,
     }),
