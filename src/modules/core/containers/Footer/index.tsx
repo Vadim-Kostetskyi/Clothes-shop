@@ -1,6 +1,6 @@
 import React from 'react';
-import FooterList from '../../components/FooterList';
-import CompanyInfo from '../../components/CompanyInfo';
+import FooterList from 'modules/core/components/FooterList';
+import CompanyInfo from 'modules/core/components/CompanyInfo';
 import Copyright from 'modules/core/components/Copyright';
 import styles from './Footer.module.scss';
 
@@ -21,3 +21,5 @@ const Footer = (): JSX.Element => {
 };
 
 export default Footer;
+export { styles };
+export { menuName, listContent } from './menu-data';

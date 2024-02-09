@@ -6,7 +6,7 @@ import TwitterImg from 'assets/svgs/Twitter';
 import PinterestImg from 'assets/svgs/Pinterest';
 import EarthImg from 'assets/svgs/Earth';
 import PhoneImg from 'assets/svgs/Phone';
-import styles from '../../containers/Footer/Footer.module.scss';
+import styles from 'modules/core/containers/Footer/Footer.module.scss';
 
 const socialIcons = [InstagramImg, FacebookImg, TwitterImg, PinterestImg];
 

@@ -3,7 +3,7 @@ import { SingleValue } from 'react-select';
 import CountrySelect, {
   SelectOptionProps,
 } from 'modules/core/components/CountrySelect';
-import { countries } from './listOfCountries';
+import { countries, DEFAULT_COUNTRY } from './listOfCountries';
 import LanguageSelect from 'modules/core/components/LanguageSelect';
 import Copyright from 'modules/core/components/Copyright';
 import { Language } from 'types/types';
@@ -21,7 +21,7 @@ const PreferencesModal: FC<PreferencesModalProps> = ({
 }) => {
   const [selectedCountry, setSelectedCountry] = useState<
     SelectOptionProps | undefined
-  >();
+  >(DEFAULT_COUNTRY);
   const [selectedLanguage, setSelectedLanguage] = useState<Language>(
     Language.English,
   );

@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { MenuItem } from 'modules/core/containers/Footer/menu-data';
+import { MenuItem } from 'types/types';
+
 import styles from './index.module.scss';
 
 interface SubCategoryMenuProps {

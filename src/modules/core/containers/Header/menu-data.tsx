@@ -1,8 +1,4 @@
-import { MenuItem } from 'modules/core/containers/Footer/menu-data';
-
-export type MenuContent = {
-  [key: string]: MenuItem[];
-};
+import { MenuItem } from 'types/types';
 
 export const menuName: MenuItem[] = [
   { id: 0, href: '#', label: 'Women' },
@@ -10,7 +6,7 @@ export const menuName: MenuItem[] = [
   { id: 2, href: '#', label: 'Kids' },
 ];
 
-export const category: MenuContent = {
+export const category: Record<string, MenuItem[]> = {
   Women: [],
   Men: [
     { id: 0, href: '/men/products-grid', label: 'New now' },
@@ -23,7 +19,7 @@ export const category: MenuContent = {
   Kids: [],
 };
 
-export const subcategory: MenuContent = {
+export const subcategory: Record<string, MenuItem[]> = {
   Women: [],
   Men: [
     { id: 0, href: '/men/products-grid', label: 'See all' },

@@ -1,8 +1,7 @@
 import React, { FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { MenuItem } from 'modules/core/containers/Footer/menu-data';
 import NestedMenu from 'components/NestedMenu';
-import { HeaderMenu } from 'types/types';
+import { HeaderMenu, MenuItem } from 'types/types';
 import Accordion from 'modules/core/components/Accordion';
 import styles from './index.module.scss';
 import { Link } from 'react-router-dom';
