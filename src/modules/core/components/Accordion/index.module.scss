@@ -30,6 +30,7 @@
 
 .hide {
   max-height: 0;
+  opacity: 0;
   overflow: hidden;
   transition: height 200ms ease-in;
 }

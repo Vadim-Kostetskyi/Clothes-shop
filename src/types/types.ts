@@ -7,8 +7,8 @@ export enum Size {
 }
 
 export enum Color {
-  Black = 'black',
-  White = 'white',
+  Black = 'Black',
+  Beige = 'Beige',
 }
 
 export enum HeaderMenu {
@@ -38,6 +38,12 @@ export enum Subcategory {
   SWEATERS = 'SWEATERS',
   CARDIGANS = 'CARDIGANS',
   QUILTED = 'QUILTED',
+}
+
+export enum FilterItems {
+  NewNow = 'New now',
+  PriceLowToHigh = 'Price low to high',
+  PriceHighToLow = 'Price high to low',
 }
 
 export type MenuItem = {
