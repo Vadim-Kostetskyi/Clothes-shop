@@ -25,6 +25,7 @@
   position: absolute;
   right: 30px;
   bottom: 23px;
+  cursor: pointer;
 }
 
 .cross {
@@ -50,10 +51,15 @@
   color: $grayDark;
   border-radius: 4px;
   background-color: $paleGray;
+  cursor: pointer;
 
   &:not(:last-child) {
     margin-right: 15px;
   }
+}
+
+.buttonClear {
+  cursor: auto;
 }
 
 .buttonClearActive {
