@@ -22,17 +22,20 @@ const VisitedProducts = () => {
     setVisitedProducts(visitedProductArray);
   }, [productId]);
 
-  return (
+  return visitedProducts.length === 0 ? null : (
     <div className={styles.wrapper}>
-      <p className={styles.title}>{t('viewedProducts')}</p>
-      <div className={styles.cardWrapper}>
-        {visitedProducts.map((id: string) => (
-          <div className={styles.card} key={id}>
-            <ProductCardRequest id={id} />
-          </div>
-        ))}
+      <h1 className={styles.title}>{t('viewedProducts')}</h1>
+      <div className={styles.cardsWrapper}>
+        <div className={styles.cardWrapper}>
+          {visitedProducts.map((id: string) => (
+            <div className={styles.card} key={id}>
+              <ProductCardRequest id={id} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
 };
+
 export default VisitedProducts;

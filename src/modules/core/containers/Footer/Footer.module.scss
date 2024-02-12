@@ -2,7 +2,9 @@
 @import 'styles/constants';
 
 .footer {
-  margin: 15px 80px 0 80px;
+  margin: 0px 80px 32px;
+  width: 100%;
+  max-width: $max-content-width;
 
   @include media(laptop) {
     margin: 32px 32px 0;

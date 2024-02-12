@@ -12,12 +12,9 @@
 .newNowBox {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: max-content;
-  margin-bottom: 80px;
+  gap: 16px;
   @include media(tablet) {
     width: auto;
-    margin-bottom: 80px;
   }
 }
 
@@ -40,7 +37,7 @@
 
 .title {
   font-weight: 600;
-  line-height: 84px;
+  line-height: 53px;
   align-self: flex-start;
   cursor: pointer;
 

@@ -21,16 +21,16 @@ const SameStyleProducts: FC<BodySearchProducts> = ({
 
   return (
     <div className={styles.wrapper}>
-      <p className={styles.title}>{t('similarProducts')}</p>
-      <div className={styles.cardWrapper}>
-        {Array.isArray(data?.products) &&
-          data?.products.map(({ id }) => {
-            return (
+      <h1 className={styles.title}>{t('similarProducts')}</h1>
+      <div className={styles.cardsWrapper}>
+        <div className={styles.cardWrapper}>
+          {Array.isArray(data?.products) &&
+            data?.products.map(({ id }) => (
               <div className={styles.card} key={id}>
                 <ProductCardRequest id={id} />
               </div>
-            );
-          })}
+            ))}
+        </div>
       </div>
     </div>
   );
