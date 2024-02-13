@@ -6,11 +6,16 @@ import {
   reducer as shoppingCartReducer,
   name as shoppingCartName,
 } from './slices/shopping-cart/shopping-cart';
+import {
+  reducer as viewportWidthReducer,
+  name as viewportWidthName,
+} from './slices/viewport-width/viewport-width';
 
 const rootReducer = combineReducers({
   [productsApi.reducerPath]: productsApi.reducer,
   [filesApi.reducerPath]: filesApi.reducer,
   [shoppingCartName]: shoppingCartReducer,
+  [viewportWidthName]: viewportWidthReducer,
 });
 
 export const store = configureStore({

@@ -1,6 +1,8 @@
 import React, { FC, CSSProperties } from 'react';
-import Select, { SingleValue, ActionMeta, StylesConfig } from 'react-select';
+import Select, { SingleValue, ActionMeta } from 'react-select';
 import styles from './index.module.scss';
+import { CssProperties } from 'utils/constants';
+import { getSelectStyle } from 'libs/helpers/helpers';
 
 export interface SelectOption {
   label: string;
@@ -24,26 +26,16 @@ const Selector: FC<CountrySelectorProps> = ({
   isMobile,
 }) => {
   const customControlStyles: CSSProperties = {
-    cursor: 'pointer',
-    borderColor: '#959595',
+    cursor: CssProperties.CURSOR_POINTER,
+    borderColor: CssProperties.BORDER_COLOR,
+    height: CssProperties.HEIGHT,
   };
 
   const customMenuListStyles: CSSProperties = {
-    maxHeight: isMobile ? '225px' : '300px',
+    maxHeight: isMobile ? '220px' : '194px',
   };
 
-  type IsMulti = false;
-
-  const selectStyle: StylesConfig<SelectOption, IsMulti> = {
-    control: provided => ({
-      ...provided,
-      ...customControlStyles,
-    }),
-    menuList: provided => ({
-      ...provided,
-      ...customMenuListStyles,
-    }),
-  };
+  const selectStyle = getSelectStyle(customControlStyles, customMenuListStyles);
 
   return (
     <div className={styles.wrapper}>

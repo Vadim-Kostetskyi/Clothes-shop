@@ -11,7 +11,7 @@ const LanguageSelect: FC<LanguageSelectProps> = ({
   getButtonClassName,
   handleLanguageChange,
 }) => (
-  <>
+  <div>
     {languages.map(({ value, label }) => (
       <button
         key={value}
@@ -21,7 +21,7 @@ const LanguageSelect: FC<LanguageSelectProps> = ({
         {label}
       </button>
     ))}
-  </>
+  </div>
 );
 
 export default LanguageSelect;

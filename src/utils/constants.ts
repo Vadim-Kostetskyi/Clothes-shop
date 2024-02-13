@@ -15,3 +15,9 @@ export enum TimeConstants {
   DAY = 24 * HOUR,
   TWO_DAYS = 2 * DAY,
 }
+
+export enum CssProperties {
+  CURSOR_POINTER = 'pointer',
+  BORDER_COLOR = '#959595',
+  HEIGHT = '50px',
+}

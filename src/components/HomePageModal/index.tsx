@@ -7,6 +7,7 @@ import Copyright from 'components/copyright';
 import { Language } from 'types';
 import styles from './index.module.scss';
 import { useTranslation } from 'react-i18next';
+import { useGetViewportWidth } from 'libs/hooks/hooks';
 
 export interface HomePageModalProps {
   showModal: boolean;
@@ -30,7 +31,7 @@ const HomePageModal: FC<HomePageModalProps> = ({ showModal, hideModal }) => {
   );
 
   const handleCountryChange = useCallback(
-    (newValue: SingleValue<SelectOption> | undefined) => {
+    (newValue: SingleValue<SelectOption | undefined>) => {
       const country = newValue as SelectOption;
       setShowAlert(false);
       setSelectedCountry(country);
@@ -72,110 +73,54 @@ const HomePageModal: FC<HomePageModalProps> = ({ showModal, hideModal }) => {
     }
   };
 
-  const isMobile = window.innerWidth <= 480;
+  const isMobile = useGetViewportWidth() <= 480;
 
   return (
     <div className={styles.backdrop}>
-      {isMobile ? (
-        <div className={styles.modal}>
-          <div className={styles.modalBoxMobile}>
-            <div className={styles.modalFieldsMobile}>
-              <div className={styles.fieldWrapperMobile}>
-                <p className={styles.fieldTextMobile}>
-                  {t('homePageModal.selectLocation')}
-                </p>
-                <div className={selectorWrapperClassName}>
-                  <Selector
-                    options={countries}
-                    value={selectedCountry}
-                    onChange={handleCountryChange}
-                    isMobile
-                  />
-                </div>
-              </div>
-              <div className={styles.fieldWrapperMobile}>
-                <p className={styles.fieldTextMobile}>
-                  {' '}
-                  {t('homePageModal.selectLanguage')}
-                </p>
-                <div className={styles.languageWrapper}>
-                  <LanguageSelect
-                    getButtonClassName={languageButtonClassName}
-                    handleLanguageChange={handleLanguageChange}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className={styles.assentWrapper}>
-              <form className={styles.agreement} onSubmit={saveCountryLanguage}>
-                <label className={styles.agreementLabel}>
-                  <input
-                    type="checkbox"
-                    name="check"
-                    className={styles.checkbox}
-                  />
-                  <span className={styles.agreementText}>
-                    {t('homePageModal.rememberSelection')}
-                  </span>
-                </label>
-                <button className={styles.assentButton} type="submit">
-                  {t('homePageModal.go')}!
-                </button>
-              </form>
+      <div className={styles.modal}>
+        <div className={styles.modalBox}>
+          <div className={styles.locationWrapper}>
+            <p className={styles.locationText}>
+              {t('homePageModal.selectLocation')}
+            </p>
+            <div className={selectorWrapperClassName}>
+              <Selector
+                options={countries}
+                value={selectedCountry}
+                onChange={handleCountryChange}
+              />
             </div>
           </div>
-        </div>
-      ) : (
-        <div className={styles.modal}>
-          <div className={styles.modalBox}>
-            <div className={styles.locationWrapper}>
-              <p className={styles.locationText}>
-                {t('homePageModal.selectLocation')}
-              </p>
-              <div className={selectorWrapperClassName}>
-                <Selector
-                  options={countries}
-                  value={selectedCountry}
-                  onChange={handleCountryChange}
-                />
-              </div>
-            </div>
+          <div className={styles.rightSectionWrapper}>
             <div className={styles.languageWrapper}>
               <p className={styles.languageText}>
                 {' '}
                 {t('homePageModal.selectLanguage')}
               </p>
-              <div className={styles.languageWrapper}>
-                <LanguageSelect
-                  getButtonClassName={languageButtonClassName}
-                  handleLanguageChange={handleLanguageChange}
-                />
-              </div>
-              <div className={styles.assentWrapper}>
-                <form
-                  className={styles.agreement}
-                  onSubmit={saveCountryLanguage}
-                >
-                  <label className={styles.agreementLabel}>
-                    <input
-                      type="checkbox"
-                      name="check"
-                      className={styles.checkbox}
-                    />
-                    <span className={styles.agreementText}>
-                      {t('homePageModal.rememberSelection')}
-                    </span>
-                  </label>
-                  <button className={styles.assentButton} type="submit">
-                    {t('homePageModal.go')}!
-                  </button>
-                </form>
-              </div>
+              <LanguageSelect
+                getButtonClassName={languageButtonClassName}
+                handleLanguageChange={handleLanguageChange}
+              />
             </div>
+            <form className={styles.agreement} onSubmit={saveCountryLanguage}>
+              <label className={styles.agreementLabel}>
+                <input
+                  type="checkbox"
+                  name="check"
+                  className={styles.checkbox}
+                />
+                <span className={styles.agreementText}>
+                  {t('homePageModal.rememberSelection')}
+                </span>
+              </label>
+              <button className={styles.assentButton} type="submit">
+                {t('homePageModal.go')}!
+              </button>
+            </form>
           </div>
-          <Copyright />
         </div>
-      )}
+        {!isMobile && <Copyright />}
+      </div>
     </div>
   );
 };
