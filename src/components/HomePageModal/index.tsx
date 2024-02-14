@@ -7,7 +7,9 @@ import Copyright from 'components/copyright';
 import { Language } from 'types';
 import styles from './index.module.scss';
 import { useTranslation } from 'react-i18next';
-import { useGetViewportWidth } from 'libs/hooks/hooks';
+import { useAppSelector } from 'libs/hooks/hooks';
+import { selectViewportWidth } from 'redux/slices/viewport-width/viewport-width';
+import { ViewportWidth } from 'utils/constants';
 
 export interface HomePageModalProps {
   showModal: boolean;
@@ -73,7 +75,9 @@ const HomePageModal: FC<HomePageModalProps> = ({ showModal, hideModal }) => {
     }
   };
 
-  const isMobile = useGetViewportWidth() <= 480;
+  const viewportWidth = useAppSelector(selectViewportWidth);
+
+  const isMobile = viewportWidth <= ViewportWidth.MOBILE;
 
   return (
     <div className={styles.backdrop}>
@@ -88,6 +92,7 @@ const HomePageModal: FC<HomePageModalProps> = ({ showModal, hideModal }) => {
                 options={countries}
                 value={selectedCountry}
                 onChange={handleCountryChange}
+                isMobile={isMobile}
               />
             </div>
           </div>

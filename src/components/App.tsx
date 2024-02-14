@@ -4,8 +4,11 @@ import HomePage from 'pages/HomePage';
 import CategoryPage from 'pages/CategoryPage';
 import ProductsGridPage from 'pages/ProductsGridPage';
 import ProductDetailsPage from 'pages/ProductDetailsPage';
+import { useGetViewportWidth } from 'libs/hooks/hooks';
 
 function App() {
+  useGetViewportWidth();
+
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />

@@ -21,3 +21,7 @@ export enum CssProperties {
   BORDER_COLOR = '#959595',
   HEIGHT = '50px',
 }
+
+export enum ViewportWidth {
+  MOBILE = 480,
+}

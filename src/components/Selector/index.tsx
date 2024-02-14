@@ -1,6 +1,5 @@
 import React, { FC, CSSProperties } from 'react';
 import Select, { SingleValue, ActionMeta } from 'react-select';
-import styles from './index.module.scss';
 import { CssProperties } from 'utils/constants';
 import { getSelectStyle } from 'libs/helpers/helpers';
 
@@ -38,14 +37,12 @@ const Selector: FC<CountrySelectorProps> = ({
   const selectStyle = getSelectStyle(customControlStyles, customMenuListStyles);
 
   return (
-    <div className={styles.wrapper}>
-      <Select
-        options={options}
-        value={value}
-        onChange={onChange}
-        styles={selectStyle}
-      />
-    </div>
+    <Select
+      options={options}
+      value={value}
+      onChange={onChange}
+      styles={selectStyle}
+    />
   );
 };
 

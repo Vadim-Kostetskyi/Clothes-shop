@@ -25,9 +25,20 @@
 
 .modalBox {
   display: flex;
+  justify-content: flex-start;
+  gap: 20%;
   padding-bottom: 77px;
   margin-bottom: 32px;
   border-bottom: 1px solid $grayLight;
+  height: 100%;
+
+  @media only screen and (max-width: 650px) {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
 
   @include media(mobile) {
     width: 100%;
@@ -36,19 +47,26 @@
     flex-direction: column;
     gap: 32px;
     border-bottom-width: 0px;
+    padding-right: 0px;
     padding-bottom: 0px;
     margin-bottom: 0px;
   }
 }
 
 .locationWrapper {
-  margin-right: 20%;
   display: flex;
   flex-direction: column;
   gap: 24px;
+  width: 40%;
+  min-width: max-content;
+
+  @media only screen and (max-width: 650px) {
+    width: 80%;
+  }
 
   @include media(mobile) {
     margin-right: 0px;
+    width: 100%;
   }
 }
 
@@ -64,6 +82,7 @@
   border-style: solid;
   border-color: $pageBackground;
   border-radius: 5px;
+  width: 100%;
 }
 
 .selectorWrapperAlert {
@@ -73,13 +92,26 @@
 .rightSectionWrapper {
   display: flex;
   flex-direction: column;
-  gap: 124px;
+  justify-content: space-between;
+  width: 20%;
+  min-width: max-content;
+  height: 100%;
+
+  @include media(mobile) {
+    width: 100%;
+  }
 }
 
 .languageWrapper {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  min-width: max-content;
+  margin-bottom: 40%;
+
+  @include media(mobile) {
+    margin-bottom: 0px;
+  }
 }
 
 .languageButton,
@@ -153,7 +185,7 @@
 }
 
 .assentButton {
-  padding: 13px 80px 12px;
+  padding: 18px 80px;
   font-size: 20px;
   color: $brilliance;
   background-color: $blackColor;
