@@ -3,7 +3,7 @@ import ShoppingBag from 'assets/svgs/ShoppingBag';
 import ProductInfoParameters from 'modules/product/components/ProductInfoParameters';
 import { Size, Color } from 'types/types';
 import styles from './index.module.scss';
-import { actions as shoppingCartActions } from 'redux/slices/shopping-cart/shopping-cart';
+import { actions as shoppingCartActions } from 'redux/slices/shopping-cart';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import { useTranslation } from 'react-i18next';
 import { selectQuantityByProductId } from 'redux/slices/shopping-cart/selectors';
@@ -14,6 +14,7 @@ interface ProductInfo {
   price: number;
   sizes: Size[];
   quantity: number;
+  vendorCode?: number;
 }
 
 const ProductInfo: FC<ProductInfo> = ({
@@ -22,6 +23,7 @@ const ProductInfo: FC<ProductInfo> = ({
   productName,
   sizes,
   quantity,
+  vendorCode = 0,
 }) => {
   const [selectedColor, setSelectedColor] = useState<Color>(Color.Black);
   const [selectedSize, setSelectedSize] = useState<Size | null>(null);
@@ -62,7 +64,10 @@ const ProductInfo: FC<ProductInfo> = ({
       shoppingCartActions.addItem({
         id: productId,
         price,
-        name: productName,
+        title: productName,
+        vendorCode,
+        colour: selectedColor,
+        size: selectedSize,
       }),
     );
 

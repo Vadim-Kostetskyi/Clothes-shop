@@ -1,0 +1,26 @@
+@import 'styles/constants';
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 67px;
+  border-bottom: 1px solid $grayLight;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.crossIcon {
+  width: 14px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 25px;
+  right: 8px;
+  padding: 0 8px;
+  cursor: pointer;
+}

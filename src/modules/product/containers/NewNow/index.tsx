@@ -15,7 +15,7 @@ const renderCards = (
 ): JSX.Element => (
   <>
     {data?.map(({ product, images }) => {
-      const { id, title, price, size, quantity } = product;
+      const { id, title, price, size, quantity, vendorCode } = product;
 
       // TODO: refactor this
       return isMobile ? (
@@ -28,6 +28,7 @@ const renderCards = (
             sizes={size}
             image={images[0].url}
             quantity={quantity}
+            vendorCode={vendorCode}
             isMobile
           />
         </SwiperSlide>
@@ -40,6 +41,7 @@ const renderCards = (
           sizes={size}
           images={images}
           quantity={quantity}
+          vendorCode={vendorCode}
         />
       );
     })}

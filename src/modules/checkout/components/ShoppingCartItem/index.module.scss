@@ -1,10 +1,11 @@
 @import 'styles/constants';
 
-.shoppingCartItemContainer {
+.container {
   display: flex;
   align-items: center;
   width: 397px;
   height: 201px;
+  padding-bottom: 16px;
   border-bottom: solid 1px $lightGray;
 
   .productImage {
@@ -36,6 +37,10 @@
         justify-content: center;
         align-items: baseline;
         width: 48px;
+      }
+
+      .deleteIcon {
+        cursor: pointer;
       }
     }
 

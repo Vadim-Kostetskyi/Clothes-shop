@@ -2,6 +2,7 @@ import { CaseReducer, PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { AddItemPayload } from './types/types';
 import { SliceName } from '../enums/enums';
 import { useLocalStorage } from 'hooks';
+import { Color, Size } from 'types/types';
 
 type State = {
   items: AddItemPayload[];
@@ -32,16 +33,30 @@ const addItem: CaseReducer<State, PayloadAction<AddItemPayload>> = (
   setItem(state);
 };
 
-const removeItem: CaseReducer<State, PayloadAction<string>> = (
+type DeleteItemProps = { id: string; colour: Color; size: Size };
+
+const removeItem: CaseReducer<State, PayloadAction<DeleteItemProps>> = (
   state,
   action,
 ) => {
-  const itemId = action.payload;
-  const itemToRemove = state.items.find(item => item.id === itemId);
-  if (itemToRemove) {
-    state.items = state.items.filter(item => item.id !== itemId);
-    state.quantity--;
-    state.totalPrice -= itemToRemove.price;
+  const { id: itemId, colour, size } = action.payload;
+
+  const itemsToRemove = state.items.filter(
+    item => item.id === itemId && item.colour === colour && item.size === size,
+  );
+
+  if (itemsToRemove.length > 0) {
+    state.items = state.items.filter(
+      item =>
+        !(item.id === itemId && item.colour === colour && item.size === size),
+    );
+
+    state.quantity -= itemsToRemove.length;
+    state.totalPrice -= itemsToRemove.reduce(
+      (sum, item) => sum + item.price,
+      0,
+    );
+
     setItem(state);
   }
 };

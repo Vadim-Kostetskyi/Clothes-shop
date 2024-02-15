@@ -3,7 +3,7 @@ import { SwiperSlide } from 'swiper/react';
 import CoreSwiper from 'modules/core/components/CoreSwiper';
 import ArrowSwiperCard from 'assets/svgs/ArrowSwiperCard';
 import { ImageItemProps } from 'redux/types';
-import { getValidClassNames } from 'helpers/helpers';
+import { getValidClassNames } from 'helpers';
 
 import styles from './index.module.scss';
 export interface ProductImageSwiperProps {
