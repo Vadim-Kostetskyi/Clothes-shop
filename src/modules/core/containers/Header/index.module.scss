@@ -9,7 +9,6 @@
   z-index: 100;
   width: 100%;
   background-color: $pageBackground;
-
   @include media(tablet) {
     // padding: 0 32px 15px;
     // margin-bottom: 16px;
@@ -27,9 +26,16 @@
   width: calc(100% - 160px);
   max-width: $max-content-width;
   margin: 18px 0px;
-
+  @include media(laptop) {
+    width: calc(100% - 120px);
+  }
+  @include media(laptopMedium) {
+    width: calc(100% - 80px);
+  }
   @include media(tablet) {
     min-height: 90px;
+  }
+  @include media(mobile) {
     width: calc(100% - 72px);
   }
 }
@@ -51,6 +57,7 @@
   align-items: flex-end;
   min-height: 50px;
   width: 100%;
+  margin-bottom: 16px;
   @include media(laptopUp) {
     display: none;
   }
@@ -86,6 +93,9 @@
   justify-content: space-between;
   gap: 48px;
   height: 40px;
+  @include media(laptopMedium) {
+    gap: 28px;
+  }
 }
 
 .wrapperInput {

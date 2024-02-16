@@ -4,7 +4,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  // margin: 0px 80px;
   max-width: $max-content-width;
   width: calc(100% - 160px);
+  @include media(laptop) {
+    width: calc(100% - 120px);
+  }
+  @include media(laptopMedium) {
+    width: calc(100% - 80px);
+  }
+  @include media(mobile) {
+    width: calc(100% - 72px);
+  }
 }
