@@ -21,6 +21,20 @@ export interface ProductProps {
   files: string[];
   quantity: number;
 }
+// const { id, price, title, size, quantity } = product;
+
+// export interface OptionalProductProps
+//   extends Omit<
+//     ProductProps,
+//     | 'category'
+//     | 'subcategory'
+//     | 'colour'
+//     | 'description'
+//     | 'composition'
+//     | 'brand'
+//     | 'collection'
+//     | 'manufacturer'
+//   > {}
 
 export interface ImageItemProps {
   id: string;
@@ -62,4 +76,8 @@ export type BodySearchProducts = {
 export interface TopCategoriesProductsProps {
   name: string;
   url: string;
+}
+
+export interface GetProductsBiId {
+  id: string[];
 }
