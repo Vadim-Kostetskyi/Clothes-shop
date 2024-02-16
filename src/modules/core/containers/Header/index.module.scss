@@ -4,16 +4,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0px 80px;
-  position: fixed;
+  position: sticky;
   top: 0px;
   z-index: 100;
   width: 100%;
   background-color: $pageBackground;
 
   @include media(tablet) {
-    padding: 0 32px 15px;
-    margin-bottom: 16px;
+    // padding: 0 32px 15px;
+    // margin-bottom: 16px;
+    flex-direction: column;
   }
 }
 
@@ -24,17 +24,19 @@
   justify-content: space-between;
   align-items: center;
   min-height: 84px;
-  width: 100%;
+  width: calc(100% - 160px);
   max-width: $max-content-width;
   margin: 18px 0px;
 
   @include media(tablet) {
     min-height: 90px;
+    width: calc(100% - 72px);
   }
 }
 
 .headerWrapper {
-  margin: 4px 0px;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 .wrapperMenu {
@@ -45,8 +47,10 @@
 
 .wrapperMenuMobile {
   display: flex;
+  justify-content: center;
   align-items: flex-end;
   min-height: 50px;
+  width: 100%;
   @include media(laptopUp) {
     display: none;
   }
@@ -85,7 +89,7 @@
 }
 
 .wrapperInput {
-  width: 100%;
+  width: calc(100% - 72px);
 
   @include media(laptopUp) {
     display: none;

@@ -2,12 +2,13 @@
 @import 'styles/constants';
 
 .footer {
-  margin: 0px 80px 32px;
-  width: 100%;
+  margin: 0px 0px 32px;
+  width: calc(100% - 160px);
   max-width: $max-content-width;
 
   @include media(laptop) {
-    margin: 32px 32px 0;
+    width: calc(100% - 72px);
+    margin: 0 32px 32px;
   }
 }
 
