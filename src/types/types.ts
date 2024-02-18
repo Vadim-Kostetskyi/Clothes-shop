@@ -44,6 +44,8 @@ export enum FilterItems {
   NewNow = 'New now',
   PriceLowToHigh = 'Price low to high',
   PriceHighToLow = 'Price high to low',
+  PriceLowToHighRequest = 'asc',
+  PriceHighToLowRequest = 'desc',
 }
 
 export type MenuItem = {

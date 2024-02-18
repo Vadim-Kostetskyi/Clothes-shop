@@ -13,7 +13,7 @@ const ProductFilter: FC<ProductFilterProps> = ({
   handleClick,
   setNewProducts,
 }) => {
-  const [isFilterVisible, setIsFilterVisible] = useState<boolean>(false);
+  const [isFilterVisible, setIsFilterVisible] = useState(false);
 
   const toggleFilterVisibility = useCallback(() => {
     setIsFilterVisible(!isFilterVisible);
@@ -23,16 +23,14 @@ const ProductFilter: FC<ProductFilterProps> = ({
     <div className={styles.wrapper}>
       <button
         onClick={toggleFilterVisibility}
-        className={
-          !isFilterVisible ? styles.burgerMenuButton : styles.invisible
-        }
+        className={isFilterVisible ? styles.invisible : styles.burgerMenuButton}
       >
         <img className={styles.burgerMenuIcon} src={burgerMenu} alt="" />
       </button>
       <div className={styles.filterWrapper}>
         <div className={isFilterVisible ? styles.filterBox : styles.hide}>
           <ProductFilterPanel
-            close={toggleFilterVisibility}
+            handleClose={toggleFilterVisibility}
             handleClick={handleClick}
             handleSetNewProducts={setNewProducts}
           />

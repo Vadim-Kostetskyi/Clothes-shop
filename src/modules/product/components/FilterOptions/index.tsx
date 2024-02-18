@@ -5,6 +5,7 @@ import React, {
   SetStateAction,
   useEffect,
   useCallback,
+  useMemo,
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import Accordion from 'modules/core/components/Accordion';
@@ -21,30 +22,30 @@ interface FilterOptionsProps {
   setSize: Dispatch<SetStateAction<Size[]>>;
   setColor: Dispatch<SetStateAction<Color[]>>;
   setTab: Dispatch<SetStateAction<string>>;
-  setPrice: Dispatch<SetStateAction<number[]>>;
+  setPriceRange: Dispatch<SetStateAction<number[]>>;
   sortProducts: (body: BodyFilterProducts, sortBy: string) => void;
   handleSetNewProducts: () => void;
-  resetting: boolean;
+  isResetting: boolean;
 }
 
 const FilterOptions: FC<FilterOptionsProps> = ({
   setSize,
   setColor,
   setTab,
-  setPrice,
+  setPriceRange,
   sortProducts,
   handleSetNewProducts,
-  resetting,
+  isResetting,
 }) => {
   const [selectedSize, setSelectedSize] = useState<Size[]>([]);
   const [selectedColor, setSelectedColor] = useState<Color[]>([]);
 
   useEffect(() => {
-    if (resetting) {
+    if (isResetting) {
       setSelectedColor([]);
       setSelectedSize([]);
     }
-  }, [resetting]);
+  }, [isResetting]);
 
   const { t } = useTranslation();
 
@@ -63,12 +64,12 @@ const FilterOptions: FC<FilterOptionsProps> = ({
         handleSetNewProducts();
         break;
       case FilterItems.PriceLowToHigh:
-        sortProducts(body, 'asc');
-        setTab('asc');
+        sortProducts(body, FilterItems.PriceLowToHighRequest);
+        setTab(FilterItems.PriceLowToHighRequest);
         break;
       case FilterItems.PriceHighToLow:
-        sortProducts(body, 'desc');
-        setTab('desc');
+        sortProducts(body, FilterItems.PriceHighToLowRequest);
+        setTab(FilterItems.PriceHighToLowRequest);
         break;
       default:
         break;
@@ -97,54 +98,61 @@ const FilterOptions: FC<FilterOptionsProps> = ({
   }, []);
 
   const handleChangePrice = useCallback((min: number, max: number) => {
-    if (resetting) {
-      setPrice(() => [0, 1000]);
+    if (isResetting) {
+      setPriceRange(() => [0, 1000]);
     }
-    setPrice(() => [min, max]);
+    setPriceRange(() => [min, max]);
   }, []);
 
-  const sortBy = {
-    title: t('sortBy'),
-    list: (
-      <FilterTabButtons
-        handleClickFiler={handleClickTabButtons}
-        filter={true}
-      />
-    ),
-  };
-  const items = [
-    {
-      title: t('color'),
+  const sortBy = useMemo(
+    () => ({
+      title: t('sortBy'),
       list: (
-        <ColorSelection
-          changeColor={handleClick}
-          chosenColor={selectedColor}
-          multiChoice={true}
+        <FilterTabButtons
+          handleClickFiler={handleClickTabButtons}
+          filter={true}
         />
       ),
-    },
-    {
-      title: t('size'),
-      list: (
-        <SizeSelector
-          handleClick={handleClick}
-          active={selectedSize}
-          isFilter={true}
-        />
-      ),
-    },
-    {
-      title: t('price'),
-      list: (
-        <PriceSelector
-          onChange={handleChangePrice}
-          min={0}
-          max={1000}
-          resetting={resetting}
-        />
-      ),
-    },
-  ];
+    }),
+    [],
+  );
+
+  const items = useMemo(
+    () => [
+      {
+        title: t('color'),
+        list: (
+          <ColorSelection
+            changeColor={handleClick}
+            chosenColor={selectedColor}
+            multiChoice={true}
+          />
+        ),
+      },
+      {
+        title: t('size'),
+        list: (
+          <SizeSelector
+            handleClick={handleClick}
+            active={selectedSize}
+            isFilter={true}
+          />
+        ),
+      },
+      {
+        title: t('price'),
+        list: (
+          <PriceSelector
+            onChange={handleChangePrice}
+            min={0}
+            max={1000}
+            shouldReset={isResetting}
+          />
+        ),
+      },
+    ],
+    [selectedColor, selectedSize],
+  );
 
   return (
     <div className={styles.wrapper}>

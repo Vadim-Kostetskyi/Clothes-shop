@@ -1,26 +1,26 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import FilterOptions from '../FilterOptions';
 import Cross from 'assets/svgs/Cross';
-import { Color, Size } from 'types/types';
+import { Color, FilterItems, Size } from 'types/types';
 import { BodyFilterProducts } from 'redux/types';
 import styles from './index.module.scss';
 
 interface ProductFilterPanelProps {
-  close: () => void;
+  handleClose: () => void;
   handleClick: (body: BodyFilterProducts, sortBy: string) => void;
   handleSetNewProducts: () => void;
 }
 
 const ProductFilterPanel: FC<ProductFilterPanelProps> = ({
-  close,
+  handleClose,
   handleClick,
   handleSetNewProducts,
 }) => {
   const [size, setSize] = useState<Size[]>([]);
   const [color, setColor] = useState<Color[]>([]);
-  const [tab, setTab] = useState<string>('asc');
-  const [price, setPrice] = useState<number[]>([]);
+  const [tab, setTab] = useState<string>(FilterItems.PriceLowToHighRequest);
+  const [priceRange, setPriceRange] = useState<number[]>([]);
   const [isClearActive, setIsClearActive] = useState(true);
 
   const { t } = useTranslation();
@@ -29,46 +29,49 @@ const ProductFilterPanel: FC<ProductFilterPanelProps> = ({
     if (
       size.length > 0 ||
       color.length > 0 ||
-      price[0] > 0 ||
-      price[1] < 1000
+      priceRange[0] > 0 ||
+      priceRange[1] < 1000
     ) {
       setIsClearActive(false);
     }
-  }, [size, color, price]);
+  }, [size, color, priceRange]);
 
   useEffect(() => {
     if (isClearActive) {
       setColor([]);
       setSize([]);
       setTab('');
-      setPrice([0, 1000]);
+      setPriceRange([0, 1000]);
     }
   }, [isClearActive]);
 
-  const requestColor = color.map(col => col.toUpperCase());
+  const requestColor = useMemo(
+    () => color.map(col => col.toUpperCase()),
+    [color],
+  );
 
-  const handleFilter = () => {
+  const handleFilter = useCallback(() => {
     handleClick(
       {
         colours: requestColor,
         sizes: size,
         priceRange: {
-          min: price[0],
-          max: price[1],
+          min: priceRange[0],
+          max: priceRange[1],
         },
       },
       tab,
     );
-  };
+  }, [priceRange, requestColor, size]);
 
   const props = {
     setSize,
     setColor,
     setTab,
-    setPrice,
+    setPriceRange,
     sortProducts: handleClick,
     handleSetNewProducts,
-    resetting: isClearActive,
+    isResetting: isClearActive,
   };
 
   const handleClearFilter = () => {
@@ -79,7 +82,7 @@ const ProductFilterPanel: FC<ProductFilterPanelProps> = ({
     <div className={styles.wrapper}>
       <div className={styles.titleWrapper}>
         <p className={styles.title}>{t('productFilter.filter')}</p>
-        <button className={styles.crossBtn} onClick={close}>
+        <button className={styles.crossBtn} onClick={handleClose}>
           <Cross className={styles.cross} />
         </button>
       </div>

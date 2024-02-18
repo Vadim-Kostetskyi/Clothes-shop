@@ -11,7 +11,7 @@ import styles from './index.module.scss';
 interface PriceSelectorProps {
   min: number;
   max: number;
-  resetting: boolean;
+  shouldReset: boolean;
   onChange: (min: number, max: number) => void;
 }
 
@@ -19,7 +19,7 @@ const PriceSelector: FC<PriceSelectorProps> = ({
   min,
   max,
   onChange,
-  resetting,
+  shouldReset,
 }) => {
   const [minVal, setMinVal] = useState(min);
   const [maxVal, setMaxVal] = useState(max);
@@ -32,11 +32,11 @@ const PriceSelector: FC<PriceSelectorProps> = ({
   }, [minVal, maxVal]);
 
   useEffect(() => {
-    if (resetting) {
+    if (shouldReset) {
       setMinVal(min);
       setMaxVal(max);
     }
-  }, [resetting]);
+  }, [shouldReset]);
 
   const getPercent = useCallback(
     (value: number) => Math.round(((value - min) / (max - min)) * 100),
@@ -66,25 +66,29 @@ const PriceSelector: FC<PriceSelectorProps> = ({
     }
   }, [maxVal, getPercent]);
 
-  const handleChange = (parameter: string) => {
-    switch (parameter) {
-      case 'min':
-        return (event: ChangeEvent<HTMLInputElement>) => {
-          const value = Math.min(+event.target.value, maxVal - 1);
-          setMinVal(value);
-          event.target.value = value.toString();
-        };
-      case 'max':
-        return (event: ChangeEvent<HTMLInputElement>) => {
-          const value = Math.max(+event.target.value, minVal + 1);
-          setMaxVal(value);
-          event.target.value = value.toString();
-        };
+  const changeValue = useCallback(
+    (newValue: number, parameter: string) => {
+      if (parameter === 'min') {
+        const value = Math.min(newValue, maxVal - 1);
+        setMinVal(value);
+      } else if (parameter === 'max') {
+        const value = Math.max(newValue, minVal + 1);
+        setMaxVal(value);
+      }
+    },
+    [minVal, maxVal],
+  );
 
-      default:
-        break;
-    }
-  };
+  const handleChange = useCallback(
+    (parameter: string) => {
+      return (event: ChangeEvent<HTMLInputElement>) => {
+        const value = +event.target.value;
+        changeValue(value, parameter);
+        event.target.value = value.toString();
+      };
+    },
+    [changeValue],
+  );
 
   return (
     <div className={styles.container}>

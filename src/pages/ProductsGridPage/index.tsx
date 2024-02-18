@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import ProductsGrid from 'modules/product/components/ProductsGrid';
 import Loader from 'modules/core/components/Loader';
 import { FIRST_PAGE, PRODUCT_GRID_SIZE } from 'utils/constants';
@@ -32,23 +32,26 @@ const ProductsGridPage = (): JSX.Element => {
     });
   };
 
-  const handleClickFilter = (body: BodyFilterProducts, sortBy: string) => {
-    searchProducts({
-      isFilter: true,
-      page: 1,
-      size: PRODUCT_GRID_SIZE,
-      body,
-      sortBy,
-    });
-  };
+  const handleClickFilter = useCallback(
+    (body: BodyFilterProducts, sortBy: string) => {
+      searchProducts({
+        isFilter: true,
+        page: 1,
+        size: PRODUCT_GRID_SIZE,
+        body,
+        sortBy,
+      });
+    },
+    [],
+  );
 
-  const handleSetNewNowProducts = () => {
+  const handleSetNewNowProducts = useCallback(() => {
     searchProducts({
       page: 1,
       size: PRODUCT_GRID_SIZE,
       isNewNow: true,
     });
-  };
+  }, []);
 
   return (
     <MainLayout>
