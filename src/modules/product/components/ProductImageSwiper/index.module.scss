@@ -1,11 +1,8 @@
 @import 'styles/constants';
 
 .img {
-  height: 650px;
-  margin-bottom: 15px;
-  @include media(tablet) {
-    height: auto;
-  }
+  width: 100%;
+  margin-bottom: 16px;
 }
 
 .wrapperArrows {

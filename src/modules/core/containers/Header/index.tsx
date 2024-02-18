@@ -24,56 +24,58 @@ const Header = (): JSX.Element => {
 
   return (
     <div className={styles.header}>
-      <div
-        className={
-          isHomePage ? styles.headerWrapperHomePage : styles.headerWrapper
-        }
-      >
-        {/* TODO: refactor this logic */}
-        {isHomePage ? null : (
-          <nav className={styles.navigation}>
-            <button
-              className={styles.openMenuButton}
-              onClick={toggleOpenMenu()}
-            >
-              {isMenuOpen ? (
-                <Cross className={styles.crossIcon} />
-              ) : (
-                <Menu className={styles.menuIconMobile} />
-              )}
-            </button>
-            <div className={styles.wrapperMenu}>
-              <CatalogMenu />
-            </div>
-          </nav>
-        )}
-        {isHomePage ? (
-          <img src={logo} className={styles.logo} alt="Logo" />
-        ) : (
-          <Link to="/men">
+      <div className={styles.headerContainer}>
+        <div
+          className={
+            isHomePage ? styles.headerWrapperHomePage : styles.headerWrapper
+          }
+        >
+          {/* TODO: refactor this logic */}
+          {isHomePage ? null : (
+            <nav className={styles.navigation}>
+              <button
+                className={styles.openMenuButton}
+                onClick={toggleOpenMenu()}
+              >
+                {isMenuOpen ? (
+                  <Cross className={styles.crossIcon} />
+                ) : (
+                  <Menu className={styles.menuIconMobile} />
+                )}
+              </button>
+              <div className={styles.wrapperMenu}>
+                <CatalogMenu />
+              </div>
+            </nav>
+          )}
+          {isHomePage ? (
             <img src={logo} className={styles.logo} alt="Logo" />
-          </Link>
-        )}
-        {isHomePage ? null : (
-          <div className={styles.userBox}>
-            <TopBar />
-          </div>
-        )}
-      </div>
-      {isHomePage ? null : (
-        <div className={styles.wrapperMenuMobile}>
-          {isMenuOpen ? <HamburgerMenu /> : null}
-          {isMenuOpen ? null : (
-            <div className={styles.wrapperInput}>
-              <Input
-                Icon={<Search className={styles.inputIcon} />}
-                className={styles.inputMobile}
-                placeholder={t('searchPlaceholder')}
-              />
+          ) : (
+            <Link to="/men">
+              <img src={logo} className={styles.logo} alt="Logo" />
+            </Link>
+          )}
+          {isHomePage ? null : (
+            <div className={styles.userBox}>
+              <TopBar />
             </div>
           )}
         </div>
-      )}
+        {isHomePage ? null : (
+          <div className={styles.wrapperMenuMobile}>
+            {isMenuOpen ? <HamburgerMenu /> : null}
+            {isMenuOpen ? null : (
+              <div className={styles.wrapperInput}>
+                <Input
+                  Icon={<Search className={styles.inputIcon} />}
+                  className={styles.inputMobile}
+                  placeholder={t('searchPlaceholder')}
+                />
+              </div>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
