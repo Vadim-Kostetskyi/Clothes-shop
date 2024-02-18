@@ -84,11 +84,6 @@ const PriceSelector: FC<PriceSelectorProps> = ({
       default:
         break;
     }
-    (event: ChangeEvent<HTMLInputElement>) => {
-      const value = Math.min(+event.target.value, maxVal - 1);
-      setMinVal(value);
-      event.target.value = value.toString();
-    };
   };
 
   return (
