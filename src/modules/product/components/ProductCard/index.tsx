@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 export interface ProductCardProps {
   productId: string;
-  productName?: string;
+  productName: string;
   price: string;
   sizes: Size[];
   images?: ImageItemProps[];
