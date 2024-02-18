@@ -7,14 +7,14 @@ import { ImageItemProps } from 'redux/types';
 import { Link } from 'react-router-dom';
 
 export interface ProductCardProps {
-  productId?: string;
+  productId: string;
   productName?: string;
-  price?: string;
-  sizes?: Size[];
+  price: string;
+  sizes: Size[];
   images?: ImageItemProps[];
   isMobile?: boolean;
   image?: string;
-  quantity?: number;
+  quantity: number;
 }
 
 const ProductCard: FC<ProductCardProps> = ({

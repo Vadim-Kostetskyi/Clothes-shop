@@ -16,12 +16,12 @@ const ProductCardRequest: FC<ProductCardRequestProps> = ({ id }) => {
 
   const props = useMemo(
     () => ({
-      productId: data?.id,
-      productName: data?.title,
-      price: data?.price,
-      sizes: data?.size,
-      images: images?.data,
-      quantity: data?.quantity,
+      productId: data?.id || '',
+      productName: data?.title || '',
+      price: data?.price || '',
+      sizes: data?.size || [],
+      images: images?.data || [],
+      quantity: data?.quantity || 0,
     }),
     [data, images],
   );
