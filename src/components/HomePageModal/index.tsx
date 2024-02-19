@@ -7,7 +7,7 @@ import Copyright from 'components/copyright';
 import { Language } from 'types';
 import styles from './index.module.scss';
 import { useTranslation } from 'react-i18next';
-import { useAppSelector } from 'libs/hooks/hooks';
+import { useAppSelector, useGetViewportWidth } from 'libs/hooks/hooks';
 import { selectViewportWidth } from 'redux/slices/viewport-width/viewport-width';
 import { ViewportWidth } from 'utils/constants';
 
@@ -75,6 +75,8 @@ const HomePageModal: FC<HomePageModalProps> = ({ showModal, hideModal }) => {
     }
   };
 
+  useGetViewportWidth();
+
   const viewportWidth = useAppSelector(selectViewportWidth);
 
   const isMobile = viewportWidth <= ViewportWidth.MOBILE;
@@ -102,10 +104,12 @@ const HomePageModal: FC<HomePageModalProps> = ({ showModal, hideModal }) => {
                 {' '}
                 {t('homePageModal.selectLanguage')}
               </p>
-              <LanguageSelect
-                getButtonClassName={languageButtonClassName}
-                handleLanguageChange={handleLanguageChange}
-              />
+              <div>
+                <LanguageSelect
+                  getButtonClassName={languageButtonClassName}
+                  handleLanguageChange={handleLanguageChange}
+                />
+              </div>
             </div>
             <form className={styles.agreement} onSubmit={saveCountryLanguage}>
               <label className={styles.agreementLabel}>
