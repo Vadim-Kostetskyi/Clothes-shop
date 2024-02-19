@@ -17,3 +17,5 @@ export type GetQuantityUniqueProducts = {
   colour: Color;
   size: Size;
 };
+
+export { Color, Size } from 'types/types';

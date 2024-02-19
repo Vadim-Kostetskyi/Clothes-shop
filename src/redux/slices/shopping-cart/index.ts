@@ -1,9 +1,10 @@
 export { reducer, name, actions } from './shopping-cart.slice';
 export {
-  selectQuantity,
+  selectTotalQuantity,
   selectQuantityByProductId,
-  selectCartItems,
   selectTotalQuantityForProductVariant,
   selectOrderTotalPrice,
+  selectStockQuantity,
+  memoizedSelectUniqueItems,
 } from './selectors';
 export { type AddItemPayload } from './types/types';

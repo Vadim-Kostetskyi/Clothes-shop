@@ -1,11 +1,7 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useAppDispatch, useAppSelector } from 'hooks';
-import { TimeConstants } from 'utils/constants';
-import {
-  selectQuantity,
-  actions as shoppingCartActions,
-} from 'redux/slices/shopping-cart';
+import { useAppSelector, useClearCartEffect } from 'hooks';
+import { selectTotalQuantity } from 'redux/slices/shopping-cart';
 import ShoppingBag from 'assets/svgs/ShoppingBag';
 import User from 'assets/svgs/User';
 import Search from 'assets/svgs/Search';
@@ -15,8 +11,7 @@ import styles from './index.module.scss';
 const TopBar = (): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { t } = useTranslation();
-  const dispatch = useAppDispatch();
-  const quantity = useAppSelector(selectQuantity);
+  const quantity = useAppSelector(selectTotalQuantity);
 
   const openModal = useCallback(() => {
     setIsModalOpen(true);
@@ -26,21 +21,7 @@ const TopBar = (): JSX.Element => {
     setIsModalOpen(false);
   }, []);
 
-  useEffect(() => {
-    let timeoutId: NodeJS.Timeout | undefined;
-
-    if (quantity > 0) {
-      clearTimeout(timeoutId);
-
-      timeoutId = setTimeout(() => {
-        dispatch(shoppingCartActions.clearCart());
-      }, TimeConstants.TWO_DAYS);
-    }
-
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, [quantity, dispatch]);
+  useClearCartEffect(quantity);
 
   return (
     <>

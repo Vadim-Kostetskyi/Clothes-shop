@@ -1,6 +1,6 @@
 import React, { FC, useCallback } from 'react';
-import { clsx } from 'clsx';
 import { Size } from 'types/types';
+import { getValidClassNames } from 'helpers';
 import styles from './index.module.scss';
 
 export interface SizeSelectorProps {
@@ -24,17 +24,17 @@ const SizeSelector: FC<SizeSelectorProps> = ({
 
   const combinedClassName = useCallback(
     (parameter: string) =>
-      clsx(
+      getValidClassNames(
         isProductDetails
           ? styles.productDetailsParameterBtn
           : styles.parameterBtn,
-        active === parameter ? isActiveStyles : '',
+        { [isActiveStyles]: active === parameter },
       ),
     [active],
   );
 
   return (
-    <>
+    <div className={styles.btnBlock}>
       {parameters.map((parameter, index) => (
         <button
           key={index}
@@ -45,7 +45,7 @@ const SizeSelector: FC<SizeSelectorProps> = ({
           <p className={styles.text}>{parameter}</p>
         </button>
       ))}
-    </>
+    </div>
   );
 };
 

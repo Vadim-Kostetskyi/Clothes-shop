@@ -1,12 +1,14 @@
 import React, { useState, FC } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useAppDispatch, useAppSelector } from 'hooks';
+import { Size, Color } from 'types/types';
+import {
+  selectQuantityByProductId,
+  actions as shoppingCartActions,
+} from 'redux/slices/shopping-cart';
 import ShoppingBag from 'assets/svgs/ShoppingBag';
 import ProductInfoParameters from 'modules/product/components/ProductInfoParameters';
-import { Size, Color } from 'types/types';
 import styles from './index.module.scss';
-import { actions as shoppingCartActions } from 'redux/slices/shopping-cart';
-import { useAppDispatch, useAppSelector } from 'hooks';
-import { useTranslation } from 'react-i18next';
-import { selectQuantityByProductId } from 'redux/slices/shopping-cart/selectors';
 
 interface ProductInfo {
   productId: string;
@@ -29,7 +31,7 @@ const ProductInfo: FC<ProductInfo> = ({
   const [selectedSize, setSelectedSize] = useState<Size | null>(null);
   const [error, setError] = useState<string | undefined>();
   const dispatch = useAppDispatch();
-  const productQuantity =
+  const existingProductQuantity =
     useAppSelector(state => selectQuantityByProductId(state, productId)) ?? 0;
   const { t } = useTranslation();
 
@@ -53,7 +55,7 @@ const ProductInfo: FC<ProductInfo> = ({
       setError(t('selectSize'));
       return;
     }
-    if (productQuantity > quantity) {
+    if (quantity - existingProductQuantity <= 0) {
       setError(t('productDetails.itemNotAvailable'));
       return;
     }
@@ -68,6 +70,7 @@ const ProductInfo: FC<ProductInfo> = ({
         vendorCode,
         colour: selectedColor,
         size: selectedSize,
+        count: quantity,
       }),
     );
 

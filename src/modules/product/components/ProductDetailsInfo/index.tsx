@@ -3,11 +3,9 @@ import SizeSelector from 'modules/product/components/SizeSelector';
 import ColorSelection from 'modules/product/components/ColorSelection';
 import AddToCartButton from 'modules/checkout/components/AddToCartButton';
 import Accordion from 'modules/core/components/Accordion';
-import { Size, Color } from 'types/types';
-import BlackColor from 'assets/images/chooseColor/black.png';
-import WhiteColor from 'assets/images/chooseColor/white.png';
-import styles from './index.module.scss';
+import { Size, Color, clothesColors } from 'types/types';
 import { useTranslation } from 'react-i18next';
+import styles from './index.module.scss';
 
 export interface ProductDetailsInfoProps {
   title: string;
@@ -19,17 +17,6 @@ export interface ProductDetailsInfoProps {
   addToFavorite: () => void;
   addToShoppingCart: () => void;
 }
-
-const clothesColors = [
-  {
-    label: Color.Black,
-    content: BlackColor,
-  },
-  {
-    label: Color.White,
-    content: WhiteColor,
-  },
-];
 
 const defaultSizes: Size[] = Object.values(Size);
 

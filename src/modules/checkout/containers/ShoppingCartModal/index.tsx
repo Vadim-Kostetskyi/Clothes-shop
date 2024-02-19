@@ -1,10 +1,10 @@
 import React from 'react';
-import {
-  selectCartItems,
-  selectOrderTotalPrice,
-} from 'redux/slices/shopping-cart';
 import { useTranslation } from 'react-i18next';
 import { useAppSelector } from 'hooks';
+import {
+  memoizedSelectUniqueItems,
+  selectOrderTotalPrice,
+} from 'redux/slices/shopping-cart';
 import ShoppingCart from 'modules/checkout/components/ShoppingCart';
 import OrderSummary from 'modules/checkout/components/OrderSummary';
 
@@ -14,7 +14,7 @@ type Properties = {
 
 const ShoppingCartModal: React.FC<Properties> = ({ onClose }) => {
   const { t } = useTranslation();
-  const products = useAppSelector(selectCartItems);
+  const products = useAppSelector(memoizedSelectUniqueItems);
   const totalPrice = useAppSelector(selectOrderTotalPrice);
 
   return (
