@@ -9,7 +9,7 @@ import { clsx } from 'clsx';
 import styles from './index.module.scss';
 
 const TopCategories = () => {
-  const { data } = useGetTopCategoriesByNameQuery('');
+  const { data } = useGetTopCategoriesByNameQuery();
   const { t } = useTranslation();
 
   return (
