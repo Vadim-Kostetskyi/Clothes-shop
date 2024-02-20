@@ -14,7 +14,7 @@ export interface SlidesProps {
   text: string;
 }
 
-const CollectionImageSwiper = () => (
+const CollectionImageSwiper = (): JSX.Element => (
   <div className={getValidClassNames(styles.swiper, 'collection-swiper')}>
     <CoreSwiper
       modules={[Pagination, Autoplay]}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Color, Size } from 'types/types';
 import { getValidClassNames } from 'helpers';
 import ProductPrice from '../ProductPrice';
@@ -12,13 +12,13 @@ type ProductDetailsItemProps = {
   price: number;
 };
 
-const ProductDetailsItem: React.FC<ProductDetailsItemProps> = ({
+const ProductDetailsItem: FC<ProductDetailsItemProps> = ({
   vendorCode,
   colour,
   size,
   productQuantity,
   price,
-}) => {
+}): JSX.Element => {
   const colorIndicatorClassName = getValidClassNames(
     styles.colorIndicator,
     colour === Color.Black ? styles.colorBlack : styles.colorWhite,

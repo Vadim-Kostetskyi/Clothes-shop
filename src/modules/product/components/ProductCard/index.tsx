@@ -28,7 +28,7 @@ const ProductCard: FC<ProductCardProps> = ({
   image,
   quantity,
   vendorCode,
-}) => (
+}): JSX.Element => (
   <div className={styles.productCard}>
     {isMobile ? (
       <img src={image} alt={productName} className={styles.image} />

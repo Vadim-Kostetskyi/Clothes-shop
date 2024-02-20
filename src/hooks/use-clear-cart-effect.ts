@@ -3,7 +3,7 @@ import { TimeConstants } from 'utils/constants';
 import { useAppDispatch } from 'hooks';
 import { actions as shoppingCartActions } from 'redux/slices/shopping-cart';
 
-const useClearCartEffect = (quantity: number) => {
+const useClearCartEffect = (quantity: number): void => {
   const dispatch = useAppDispatch();
   const timeoutIdRef = useRef<NodeJS.Timeout>();
 
@@ -12,7 +12,7 @@ const useClearCartEffect = (quantity: number) => {
   }, [dispatch]);
 
   useEffect(() => {
-    const clearCartWithDelay = () => {
+    const clearCartWithDelay = (): void => {
       timeoutIdRef.current = setTimeout(
         handleClearCart,
         TimeConstants.TWO_DAYS,

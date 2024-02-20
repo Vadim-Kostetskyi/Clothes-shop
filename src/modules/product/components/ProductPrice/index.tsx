@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getTotalPrice } from 'helpers';
 import styles from './index.module.scss';
@@ -8,7 +8,10 @@ interface ProductPriceProps {
   price: number;
 }
 
-const ProductPrice: React.FC<ProductPriceProps> = ({ count = 1, price }) => {
+const ProductPrice: FC<ProductPriceProps> = ({
+  count = 1,
+  price,
+}): JSX.Element => {
   const { t } = useTranslation();
   const totalPrice = getTotalPrice(count, price);
 

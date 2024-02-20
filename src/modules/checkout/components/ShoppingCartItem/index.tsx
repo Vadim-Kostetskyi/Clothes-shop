@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { FC, useCallback, useMemo, useState } from 'react';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import { useGetProductImagesQuery } from 'redux/productsApi';
 import { Color, Size } from 'types/types';
@@ -8,10 +8,11 @@ import {
   actions as shoppingCartActions,
 } from 'redux/slices/shopping-cart';
 import Delete from 'assets/svgs/Delete';
-import CrossButton from 'modules/core/components/CrossButton';
 import ProductDetailsItem from 'modules/product/components/ProductDetailsItem';
 import ProductEditShoppingCart from 'modules/product/components/ProductEditShoppingCart';
 import styles from './index.module.scss';
+import Cross from 'assets/svgs/Cross';
+import IconButton from 'modules/core/components/IconButton';
 
 type ShoppingCartItemProps = {
   id: string;
@@ -22,7 +23,7 @@ type ShoppingCartItemProps = {
   price: number;
 };
 
-const ShoppingCartItem: React.FC<ShoppingCartItemProps> = ({
+const ShoppingCartItem: FC<ShoppingCartItemProps> = ({
   id,
   title,
   vendorCode,
@@ -93,18 +94,23 @@ const ShoppingCartItem: React.FC<ShoppingCartItemProps> = ({
         <div className={styles.header}>
           <h3 className={styles.title}>{title}</h3>
           {edit ? (
-            <CrossButton
+            <IconButton
               className={styles.crossButton}
               onClick={handleCloseItem}
-            />
+            >
+              <Cross className={styles.crossIcon} />
+            </IconButton>
           ) : (
             <>
-              <div className={styles.editIcon} onClick={handleEditItem}>
+              <IconButton className={styles.editIcon} onClick={handleEditItem}>
                 <Edit />
-              </div>
-              <div className={styles.deleteIcon} onClick={handleRemoveItem}>
+              </IconButton>
+              <IconButton
+                className={styles.deleteIcon}
+                onClick={handleRemoveItem}
+              >
                 <Delete />
-              </div>
+              </IconButton>
             </>
           )}
         </div>

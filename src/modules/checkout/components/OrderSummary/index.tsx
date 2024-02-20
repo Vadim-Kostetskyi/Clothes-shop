@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getTotalPrice, getValidClassNames } from 'helpers';
 import Info from 'assets/svgs/Info';
@@ -8,7 +8,7 @@ type OrderSummaryProps = {
   totalPrice: number;
 };
 
-const OrderSummary: React.FC<OrderSummaryProps> = ({ totalPrice }) => {
+const OrderSummary: FC<OrderSummaryProps> = ({ totalPrice }): JSX.Element => {
   const { t } = useTranslation();
 
   return (

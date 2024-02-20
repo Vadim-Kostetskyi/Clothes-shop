@@ -17,7 +17,7 @@ const SizeSelector: FC<SizeSelectorProps> = ({
   active,
   handleClick,
   isProductDetails,
-}) => {
+}): JSX.Element => {
   const isActiveStyles = isProductDetails
     ? styles.activeProductDetails
     : styles.active;
@@ -30,7 +30,7 @@ const SizeSelector: FC<SizeSelectorProps> = ({
           : styles.parameterBtn,
         { [isActiveStyles]: active === parameter },
       ),
-    [active],
+    [active, isActiveStyles, isProductDetails],
   );
 
   return (

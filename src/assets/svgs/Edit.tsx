@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { FC, SVGProps } from 'react';
 
-const Edit: React.FC<React.SVGProps<SVGSVGElement>> = ({
+const Edit: FC<SVGProps<SVGSVGElement>> = ({
   className,
 }: {
   className?: string;

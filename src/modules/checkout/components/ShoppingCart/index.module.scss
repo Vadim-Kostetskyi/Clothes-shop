@@ -9,7 +9,7 @@ $orderSummaryHeight: 264px;
   top: 0;
   right: $containerRight;
   width: $containerWidth;
-  height: 100vh;
+  min-height: 100vh;
   overflow: scroll;
   background: $brilliance;
   box-shadow: 0px 2px 4px $semiTransparentBlack;

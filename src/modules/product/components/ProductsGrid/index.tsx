@@ -9,7 +9,7 @@ interface ProductsGridProps {
 
 const ProductsGrid: FC<ProductsGridProps> = ({
   searchProducts = {} as GetProductsWithImagesProps,
-}) => (
+}): JSX.Element => (
   <div className={styles.cardsWrapper}>
     {searchProducts?.products?.map(
       ({ id, title, price, size, quantity, vendorCode }) => {

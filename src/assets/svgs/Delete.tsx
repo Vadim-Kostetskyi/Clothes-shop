@@ -1,9 +1,15 @@
-const Delete = ({ className }: { className?: string }): JSX.Element => (
+import React, { FC, SVGProps } from 'react';
+
+const Delete: FC<SVGProps<SVGSVGElement>> = ({
+  className,
+}: {
+  className?: string;
+}): JSX.Element => (
   <svg
     className={className}
     viewBox="0 -0.5 21 21"
     version="1.1"
-    width="20"
+    width="18"
     xmlns="http://www.w3.org/2000/svg"
   >
     <title>delete [#1487]</title>

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { FC, useCallback, useEffect, useState } from 'react';
 import { Color, Size } from 'types/types';
 import SizeSelector from '../SizeSelector';
 import ColorSelector from '../ColorSelector';
@@ -12,6 +12,7 @@ import {
 import Minus from 'assets/svgs/Minus';
 import Plus from 'assets/svgs/Plus';
 import styles from './index.module.scss';
+import IconButton from 'modules/core/components/IconButton';
 
 const MIN_SELECTED_COUNT = 1;
 
@@ -25,7 +26,7 @@ type ProductEditShoppingCartProps = {
   onChangeColor: (parameter: string, value: Color) => void;
 };
 
-const ProductEditShoppingCart: React.FC<ProductEditShoppingCartProps> = ({
+const ProductEditShoppingCart: FC<ProductEditShoppingCartProps> = ({
   productId,
   size,
   colour,
@@ -45,7 +46,7 @@ const ProductEditShoppingCart: React.FC<ProductEditShoppingCartProps> = ({
     if (stockQuantity - sameQuantityInCart > 0) {
       setSelectedCount(prevCount => prevCount + 1);
     }
-  }, [selectedCount, sameQuantityInCart, stockQuantity]);
+  }, [sameQuantityInCart, stockQuantity]);
 
   const decreaseCount = useCallback(() => {
     if (selectedCount > MIN_SELECTED_COUNT) {
@@ -53,7 +54,7 @@ const ProductEditShoppingCart: React.FC<ProductEditShoppingCartProps> = ({
     }
   }, [selectedCount]);
 
-  const changeItemAction = useCallback(() => {
+  const changeItemAction = useCallback((): void => {
     dispatch(
       shoppingCartActions.changeItem({
         id: productId,
@@ -87,13 +88,13 @@ const ProductEditShoppingCart: React.FC<ProductEditShoppingCartProps> = ({
       />
       <div className={styles.countContainer}>
         <div className={styles.countBox}>
-          <div className={styles.countBtn} onClick={decreaseCount}>
+          <IconButton className={styles.countBtn} onClick={decreaseCount}>
             <Minus className={styles.minusIcon} />
-          </div>
+          </IconButton>
           {selectedCount}
-          <div className={styles.countBtn} onClick={increaseCount}>
+          <IconButton className={styles.countBtn} onClick={increaseCount}>
             <Plus className={styles.plusIcon} />
-          </div>
+          </IconButton>
         </div>
         <ProductPrice price={totalPrice} count={selectedCount} />
       </div>

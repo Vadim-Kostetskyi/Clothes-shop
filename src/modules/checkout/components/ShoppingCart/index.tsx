@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { type AddItemPayload } from 'redux/slices/shopping-cart';
 import ShoppingCartHeader from 'modules/checkout/components/ShoppingCartHeader';
@@ -12,12 +12,12 @@ type ShoppingCartProps = {
   onClose: () => void;
 };
 
-const ShoppingCart: React.FC<ShoppingCartProps> = ({
+const ShoppingCart: FC<ShoppingCartProps> = ({
   onClose,
   products,
   title,
   children,
-}) => {
+}): JSX.Element => {
   const { t } = useTranslation();
 
   return (

@@ -29,7 +29,7 @@ const ProductDetailsInfo: FC<ProductDetailsInfoProps> = ({
   vendorCode,
   addToFavorite,
   addToShoppingCart,
-}) => {
+}): JSX.Element => {
   const [selectedSize, setSelectedSize] = useState<Size | undefined>();
   const [selectedColor, setSelectedColor] = useState<Color>(Color.Black);
   const [isError, setIsError] = useState(true);

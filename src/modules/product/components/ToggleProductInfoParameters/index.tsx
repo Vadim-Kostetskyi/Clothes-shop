@@ -28,7 +28,7 @@ const ToggleProductInfoParameters: FC<ToggleProductInfoParameters> = ({
   index,
   sizes,
   productInfo,
-}) => {
+}): JSX.Element => {
   const parametersClassName = getValidClassNames(styles.parametersBtn, {
     [styles.hide]: open[index],
   });

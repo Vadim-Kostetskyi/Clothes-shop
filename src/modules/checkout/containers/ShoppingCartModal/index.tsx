@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppSelector } from 'hooks';
 import {
@@ -12,7 +12,7 @@ type Properties = {
   onClose: () => void;
 };
 
-const ShoppingCartModal: React.FC<Properties> = ({ onClose }) => {
+const ShoppingCartModal: FC<Properties> = ({ onClose }): JSX.Element => {
   const { t } = useTranslation();
   const products = useAppSelector(memoizedSelectUniqueItems);
   const totalPrice = useAppSelector(selectOrderTotalPrice);

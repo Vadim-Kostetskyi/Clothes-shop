@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import ShoppingCartItem from '../ShoppingCartItem';
 import { AddItemPayload } from 'redux/slices/shopping-cart';
 
@@ -7,10 +7,10 @@ type ShoppingCartListProps = {
   className: string;
 };
 
-const ShoppingCartList: React.FC<ShoppingCartListProps> = ({
+const ShoppingCartList: FC<ShoppingCartListProps> = ({
   products,
   className,
-}) => (
+}): JSX.Element => (
   <div className={className}>
     {products?.map(product => (
       <ShoppingCartItem

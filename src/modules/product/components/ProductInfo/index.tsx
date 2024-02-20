@@ -26,7 +26,7 @@ const ProductInfo: FC<ProductInfo> = ({
   sizes,
   quantity,
   vendorCode = 0,
-}) => {
+}): JSX.Element => {
   const [selectedColor, setSelectedColor] = useState<Color>(Color.Black);
   const [selectedSize, setSelectedSize] = useState<Size | null>(null);
   const [error, setError] = useState<string | undefined>();
@@ -50,7 +50,7 @@ const ProductInfo: FC<ProductInfo> = ({
     }
   };
 
-  const addToShoppingCart = () => {
+  const addToShoppingCart = (): void => {
     if (!selectedSize) {
       setError(t('selectSize'));
       return;

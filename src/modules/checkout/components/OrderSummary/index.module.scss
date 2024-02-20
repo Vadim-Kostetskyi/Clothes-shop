@@ -11,7 +11,7 @@ $containerHeight: 143px;
 
 .container {
   bottom: 0;
-  height: $containerHeight;
+  min-height: $containerHeight;
   border-radius: 8px 8px 0 0;
   background-color: $greenMint;
 }
@@ -26,7 +26,7 @@ $containerHeight: 143px;
 .orderSummaryContainer {
   display: flex;
   flex-direction: column;
-  height: 111px;
+  min-height: 111px;
   bottom: 0;
   border-radius: 8px 8px 0 0;
   background-color: $pageBackground;
@@ -44,7 +44,7 @@ $containerHeight: 143px;
   align-items: center;
   margin: 0 16px;
   width: 389px;
-  height: 50px;
+  min-height: 50px;
   border-radius: 4px;
   background-color: $greenMint;
 

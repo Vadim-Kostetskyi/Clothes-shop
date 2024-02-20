@@ -12,7 +12,7 @@ const ColorSelection: FC<ColorSelectionProps> = ({
   colors,
   chosenColor,
   changeColor,
-}) => (
+}): JSX.Element => (
   <>
     {Object.entries(colors).map(([label, content]) => (
       <button

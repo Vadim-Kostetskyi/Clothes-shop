@@ -9,7 +9,7 @@ export interface NewNowMobile {
   cards: JSX.Element;
 }
 
-const NewNowMobile: FC<NewNowMobile> = ({ cards }) => {
+const NewNowMobile: FC<NewNowMobile> = ({ cards }): JSX.Element => {
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);

@@ -10,7 +10,9 @@ export interface ProductImageSwiperProps {
   images: ImageItemProps[];
 }
 
-const ProductImageSwiper: FC<ProductImageSwiperProps> = ({ images }) => {
+const ProductImageSwiper: FC<ProductImageSwiperProps> = ({
+  images,
+}): JSX.Element => {
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
   const [isHidden, setIsHidden] = useState(true);
