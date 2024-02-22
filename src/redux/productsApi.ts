@@ -10,6 +10,7 @@ import {
   GetProductsWithImages,
   GetProductsWithImagesProps,
   SearchProductsProps,
+  TopCategoriesProductsProps,
 } from './types';
 import { BASE_URL } from './routes';
 
@@ -19,12 +20,13 @@ export const productsApi = createApi({
     baseUrl: BASE_URL,
   }),
   endpoints: builder => ({
-    getProductsByName: builder.query({
+    getProductsByName: builder.query<GetProductsResponse, GetProductsPayload>({
       query: ({ page, size }) => `products/?page=${page}&size=${size}`,
     }),
-    getTopCategoriesByName: builder.query({
+    getTopCategoriesByName: builder.query<TopCategoriesProductsProps[], void>({
       query: () => 'products/top',
     }),
+    // TODO: https://allalitvinenko.atlassian.net/browse/OS-187
     getProductById: builder.query({
       query: ({ id }) => `products/${id}`,
     }),

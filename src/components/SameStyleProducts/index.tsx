@@ -3,11 +3,12 @@ import { useTranslation } from 'react-i18next';
 import { useSearchProductsByParameterQuery } from 'redux/productsApi';
 import { BodySearchProducts } from 'redux/types';
 import ProductCardRequest from 'components/ProductCardRequest';
-import { Subcategory } from 'types';
+import { Subcategory } from 'types/types';
 import { FIRST_PAGE, SIMILAR_PRODUCTS_SIZE } from 'utils/constants';
 
 import styles from '../VisitedProducts/index.module.scss';
 
+// TODO: refactor https://allalitvinenko.atlassian.net/browse/OS-185
 const SameStyleProducts: FC<BodySearchProducts> = ({
   subcategory = Subcategory.JACKETS,
 }) => {

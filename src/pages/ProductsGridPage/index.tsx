@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react';
-import ProductsCards from 'components/ProductsCards';
-import FilteredButton from 'components/FilterTabButtons';
-import Header from 'components/Header';
-import Loader from 'components/Loader';
-import Footer from 'components/Footer';
+import ProductsGrid from 'modules/product/components/ProductsGrid';
+import Loader from 'modules/core/components/Loader';
 import { FIRST_PAGE, PRODUCT_GRID_SIZE } from 'utils/constants';
 import { BodySearchProducts } from 'redux/types';
-import { Category } from 'types';
+import { Category } from 'types/types';
 import { useFetchProductsWithImagesMutation } from 'redux/productsApi';
+import MainLayout from 'modules/core/components/MainLayout';
+import FilterTabButtons from 'modules/product/components/FilterTabButtons';
 
 const ProductsGridPage = (): JSX.Element => {
   const [searchProducts, { isLoading, data }] =
@@ -30,13 +29,12 @@ const ProductsGridPage = (): JSX.Element => {
       body,
     });
   };
+
   return (
-    <>
-      <Header />
-      <FilteredButton handleClick={handleClick} />
-      {isLoading ? <Loader /> : <ProductsCards searchProducts={data} />}
-      <Footer />
-    </>
+    <MainLayout>
+      <FilterTabButtons handleClick={handleClick} />
+      {isLoading ? <Loader /> : <ProductsGrid searchProducts={data} />}
+    </MainLayout>
   );
 };
 

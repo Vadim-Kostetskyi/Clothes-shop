@@ -1,0 +1,45 @@
+@import 'styles/constants';
+
+.info {
+  padding-right: 5px;
+}
+
+.nameBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.productName {
+  font-size: 16px;
+  letter-spacing: 0rem;
+  @include media(tablet) {
+    margin-bottom: 5px;
+  }
+}
+
+.shoppingCart {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.shoppingCartImg {
+  width: 20px;
+  stroke: $blackColor;
+}
+
+.price {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0rem;
+  margin-bottom: 10px;
+}
+
+.shoppingCartWrapper,
+.productInfoParametersWrapper {
+  @include media(tablet) {
+    display: none;
+  }
+}

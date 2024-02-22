@@ -1,4 +1,4 @@
-import { Category, Size, Subcategory } from 'types';
+import { Category, Size, Subcategory } from 'types/types';
 
 export interface GetProductsPayload {
   page: number;
