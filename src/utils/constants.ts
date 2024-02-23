@@ -6,6 +6,8 @@ export const MenuItem = {
   KIDS: 'Kids',
 } as const;
 
+export const FIRST_PAGE = 1;
+export const SIMILAR_PRODUCTS_SIZE = 3;
 export const PRODUCT_GRID_SIZE = 9;
 
 export enum TimeConstants {
