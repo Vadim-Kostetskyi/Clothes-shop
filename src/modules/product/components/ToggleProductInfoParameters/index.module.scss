@@ -17,6 +17,7 @@
   font-size: 14px;
   margin-right: 40px;
   color: $grayDark;
+  cursor: pointer;
 }
 
 .parameterBox {
@@ -25,6 +26,7 @@
 
 .parameterColorBtn {
   padding: 2px;
+  cursor: pointer;
 
   &:not(:last-child) {
     margin-right: 15px;
@@ -56,6 +58,7 @@
 
 .crossBtn {
   width: 16px;
+  cursor: pointer;
 }
 .crossImg {
   width: 8px;

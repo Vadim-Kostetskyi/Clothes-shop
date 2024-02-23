@@ -9,6 +9,7 @@
   padding-top: 1px;
   font-family: $font-family-main;
   font-size: 14px;
+  cursor: pointer;
 
   &:not(:last-child) {
     margin-right: 15px;
@@ -21,6 +22,7 @@
   font-size: 20px;
   border: 1px solid $grayDark;
   border-radius: 4px;
+  cursor: pointer;
 
   &:not(:last-child) {
     margin-right: 15px;
