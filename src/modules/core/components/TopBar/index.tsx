@@ -44,15 +44,17 @@ const TopBar = (): JSX.Element => {
           <Search className={styles.searchIcon} />
         </button>
       </div>
-      <button className={styles.userButton}>
-        <User className={styles.userIcon} />
-      </button>
-      <button className={styles.shoppingCartButton}>
-        <ShoppingBag className={styles.shoppingCartIcon} />
-        {quantity > 0 ? (
-          <div className={styles.quantity}>{quantity}</div>
-        ) : null}
-      </button>
+      <div className={styles.userButtons}>
+        <button className={styles.userButton}>
+          <User className={styles.userIcon} />
+        </button>
+        <button className={styles.shoppingCartButton}>
+          <ShoppingBag className={styles.shoppingCartIcon} />
+          {quantity > 0 ? (
+            <div className={styles.quantity}>{quantity}</div>
+          ) : null}
+        </button>
+      </div>
     </>
   );
 };

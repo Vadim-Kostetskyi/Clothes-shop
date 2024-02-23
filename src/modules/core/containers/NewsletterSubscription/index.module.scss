@@ -1,17 +1,37 @@
 @import 'styles/constants';
 
 .formWrapper {
-  margin: 150px 0px 100px;
-  padding: 0px 80px;
-  width: 100%;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
+  position: relative;
+  height: 145px;
   @include media(tablet) {
     flex-direction: column;
   }
+}
+
+.wrapperDiscount {
+  display: flex;
+  justify-content: space-between;
+  gap: 7px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 145px;
+}
+
+.discount {
+  color: $textPrimary;
+  font-size: 202px;
+  font-weight: 300;
+}
+
+.percent {
+  color: $textPrimary;
+  font-size: 92px;
+  font-weight: 600;
 }
 
 .inputText {
@@ -48,10 +68,8 @@
 .inputsWrapper {
   display: flex;
   flex-direction: column;
-}
-
-.iconEmail {
-  font-size: 35px;
+  justify-content: space-between;
+  gap: 12px;
 }
 
 .checkbox {
@@ -82,10 +100,4 @@
   &:checked::before {
     transform: scale(1);
   }
-}
-
-.wrapper {
-  display: flex;
-  align-items: center;
-  margin-top: 16px;
 }
