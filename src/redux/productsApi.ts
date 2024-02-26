@@ -121,6 +121,8 @@ export const productsApi = createApi({
         const products =
           (rawProducts.data as GetProductsResponse)?.products ?? [];
 
+        const pages = (rawProducts?.data as GetProductsResponse)?.pages ?? 0;
+
         const productsId: string[] = products.reduce((acc: string[], cur) => {
           acc.push(cur.id);
           return acc;
@@ -134,13 +136,15 @@ export const productsApi = createApi({
         );
 
         if (images.every(({ id }) => id)) {
-          return { data: { products, images } } as unknown as QueryReturnValue<
+          return {
+            data: { products, images, pages },
+          } as unknown as QueryReturnValue<
             GetProductsWithImagesProps,
             FetchBaseQueryError
           >;
         }
 
-        return { data: { products: [], images: [] } };
+        return { data: { products: [], images: [], pages } };
       },
     }),
   }),

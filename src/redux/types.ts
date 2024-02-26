@@ -41,8 +41,10 @@ export interface GetProductsResponse {
 export interface GetProductsWithImagesProps {
   products: ProductProps[];
   images: ImageProps[];
+  pages?: number;
   error?: boolean;
 }
+
 export interface GetProductsWithImages {
   product: ProductProps;
   images: ImageItemProps[];

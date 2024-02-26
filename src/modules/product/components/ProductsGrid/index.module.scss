@@ -4,9 +4,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 68px;
   width: 100%;
-  @include media(mobile) {
-    margin-bottom: 32px;
-  }
+  margin-bottom: 64px;
 }

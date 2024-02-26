@@ -4,7 +4,7 @@ import { useSearchProductsByParameterQuery } from 'redux/productsApi';
 import { BodySearchProducts } from 'redux/types';
 import ProductCardRequest from 'components/ProductCardRequest';
 import { Subcategory } from 'types/types';
-import { FIRST_PAGE, SIMILAR_PRODUCTS_SIZE } from 'utils/constants';
+import { PageNumbers, SIMILAR_PRODUCTS_SIZE } from 'utils/constants';
 
 import styles from '../VisitedProducts/index.module.scss';
 
@@ -15,7 +15,7 @@ const SameStyleProducts: FC<BodySearchProducts> = ({
   const { t } = useTranslation();
   const { data } = useSearchProductsByParameterQuery({
     body: { subcategory },
-    page: FIRST_PAGE,
+    page: Number(PageNumbers.FIRST_PAGE),
     size: SIMILAR_PRODUCTS_SIZE,
   });
 
