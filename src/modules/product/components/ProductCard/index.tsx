@@ -38,7 +38,7 @@ const ProductCard: FC<ProductCardProps> = ({
     <ProductInfo
       productId={productId}
       productName={productName}
-      price={price && !isNaN(parseFloat(price)) ? parseFloat(price) : undefined}
+      price={parseFloat(price)}
       sizes={sizes}
       quantity={Number(quantity)}
     />

@@ -9,11 +9,11 @@ import { useTranslation } from 'react-i18next';
 import { selectQuantityByProductId } from 'redux/slices/shopping-cart/selectors';
 
 interface ProductInfo {
-  productId?: string;
-  productName?: string;
-  price?: number;
-  sizes?: Size[];
-  quantity?: number;
+  productId: string;
+  productName: string;
+  price: number;
+  sizes: Size[];
+  quantity: number;
 }
 
 const ProductInfo: FC<ProductInfo> = ({
@@ -28,9 +28,7 @@ const ProductInfo: FC<ProductInfo> = ({
   const [error, setError] = useState<string | undefined>();
   const dispatch = useAppDispatch();
   const productQuantity =
-    useAppSelector(state =>
-      selectQuantityByProductId(state, productId ? productId : ''),
-    ) ?? 0;
+    useAppSelector(state => selectQuantityByProductId(state, productId)) ?? 0;
   const { t } = useTranslation();
 
   const changeParameters = (parameter: string, value: string): void => {
@@ -53,7 +51,7 @@ const ProductInfo: FC<ProductInfo> = ({
       setError(t('selectSize'));
       return;
     }
-    if (productQuantity > (quantity ?? 0)) {
+    if (productQuantity > quantity) {
       setError(t('productDetails.itemNotAvailable'));
       return;
     }
@@ -62,9 +60,9 @@ const ProductInfo: FC<ProductInfo> = ({
 
     dispatch(
       shoppingCartActions.addItem({
-        id: productId ?? '',
-        price: price ?? 0,
-        name: productName ?? '',
+        id: productId,
+        price: price,
+        name: productName,
       }),
     );
 
@@ -91,7 +89,7 @@ const ProductInfo: FC<ProductInfo> = ({
         <ProductInfoParameters
           changeParameters={changeParameters}
           error={error}
-          sizes={sizes ?? []}
+          sizes={sizes}
         />
       </div>
     </div>

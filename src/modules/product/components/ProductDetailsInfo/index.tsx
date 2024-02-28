@@ -84,10 +84,12 @@ const ProductDetailsInfo: FC<ProductDetailsInfoProps> = ({
       <p className={styles.ref}>
         {t('productDetails.ref')}. {vendorCode}
       </p>
-      <p className={styles.price}>
-        {price && parseFloat(price)}{' '}
-        <span className={styles.currency}>{t('currency')}</span>
-      </p>
+      {price ? (
+        <p className={styles.price}>
+          {price && parseFloat(price)}{' '}
+          <span className={styles.currency}>{t('currency')}</span>
+        </p>
+      ) : null}
       <div className={styles.colorBox}>
         <p className={styles.submenu}>{t('productDetails.selectColour')}</p>
         <ColorSelection
