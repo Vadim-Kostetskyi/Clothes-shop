@@ -7,20 +7,20 @@ import styles from './index.module.scss';
 
 interface SubCategoryMenuProps {
   items: MenuItem[];
-  toggleCategory?: (shouldShow: boolean) => () => void;
+  // toggleCategory?: (shouldShow: boolean) => () => void;
 }
 
-const NestedMenu: FC<SubCategoryMenuProps> = ({ items, toggleCategory }) => {
+const NestedMenu: FC<SubCategoryMenuProps> = ({ items }) => {
   const { t } = useTranslation();
 
   return (
     // TODO: https://allalitvinenko.atlassian.net/browse/OS-186
     <div
       className={styles.wrapper}
-      onMouseEnter={toggleCategory ? toggleCategory(true) : undefined}
-      onMouseLeave={toggleCategory ? toggleCategory(false) : undefined}
-      onFocus={toggleCategory ? toggleCategory(true) : undefined}
-      onBlur={toggleCategory ? toggleCategory(false) : undefined}
+      // onMouseEnter={toggleCategory ? toggleCategory(true) : undefined}
+      // onMouseLeave={toggleCategory ? toggleCategory(false) : undefined}
+      // onFocus={toggleCategory ? toggleCategory(true) : undefined}
+      // onBlur={toggleCategory ? toggleCategory(false) : undefined}
     >
       {items.map(({ id, href, label }) => (
         <Link

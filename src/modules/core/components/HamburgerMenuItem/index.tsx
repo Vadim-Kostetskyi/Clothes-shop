@@ -6,13 +6,13 @@ import Accordion from 'modules/core/components/Accordion';
 import styles from './index.module.scss';
 import { Link } from 'react-router-dom';
 
-interface CatalogMenuItemProps {
+interface HamburgerMenuItemProps {
   menuItems: Record<string, MenuItem[]>;
   itemLabel: string;
   menuOptions: Record<string, MenuItem[]>;
 }
 
-const HamburgerMenuItem: FC<CatalogMenuItemProps> = ({
+const HamburgerMenuItem: FC<HamburgerMenuItemProps> = ({
   menuItems,
   itemLabel,
   menuOptions,
