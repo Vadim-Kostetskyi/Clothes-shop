@@ -6,6 +6,7 @@
   align-items: center;
   max-width: $max-content-width;
   width: calc(100% - 160px);
+  height: 100%;
   @include media(laptop) {
     width: calc(100% - 120px);
   }
