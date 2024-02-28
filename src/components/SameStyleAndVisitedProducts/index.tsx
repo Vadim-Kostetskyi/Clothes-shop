@@ -11,9 +11,7 @@ import styles from './index.module.scss';
 import { useParams } from 'react-router-dom';
 import { useLocalStorage } from 'hooks';
 
-const SameStyleAndVisitedProducts: FC<BodySearchProducts> = ({
-  subcategory,
-}) => {
+const CustomizedProductsDisplay: FC<BodySearchProducts> = ({ subcategory }) => {
   const [visitedProducts, setVisitedProducts] = useState<string[]>([]);
   const [searchProducts, { data }] = useFetchProductsWithImagesMutation();
 
@@ -27,9 +25,10 @@ const SameStyleAndVisitedProducts: FC<BodySearchProducts> = ({
     const { getItem } = useLocalStorage<string[]>('visited', []);
     const visitedProduct = getItem();
 
-    const visitedProductArray = visitedProduct
-      ? visitedProduct.filter((item: string) => item !== productId).slice(0, 3)
-      : [];
+    const visitedProductArray =
+      visitedProduct
+        ?.filter((item: string) => item !== productId)
+        ?.slice(0, 3) ?? [];
 
     setVisitedProducts(visitedProductArray);
   }, [productId]);
@@ -56,4 +55,4 @@ const SameStyleAndVisitedProducts: FC<BodySearchProducts> = ({
     </div>
   );
 };
-export default SameStyleAndVisitedProducts;
+export default CustomizedProductsDisplay;

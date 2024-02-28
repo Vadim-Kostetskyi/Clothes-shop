@@ -57,6 +57,7 @@ $max-content-width: 1280px;
       @content;
     }
   }
+
   @if $breakpoint ==desktopUp {
     @media only screen and (min-width: $desktopUp) {
       @content;

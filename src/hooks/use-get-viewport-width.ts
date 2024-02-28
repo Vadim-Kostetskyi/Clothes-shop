@@ -1,11 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 export const useGetViewportWidth = () => {
-  const [width, setWidth] = useState(window.innerWidth);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const handleResize = () => {
-    setWidth(window.innerWidth);
-  };
+  const handleResize = useCallback(() => {
+    const isMobileWidth = window.innerWidth <= 960;
+    setIsMobile(isMobileWidth);
+  }, [window.innerWidth]);
 
   useEffect(() => {
     window.addEventListener('resize', handleResize);
@@ -14,5 +15,5 @@ export const useGetViewportWidth = () => {
     };
   }, []);
 
-  return width;
+  return isMobile;
 };

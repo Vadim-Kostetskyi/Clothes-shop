@@ -156,13 +156,12 @@ export const productsApi = createApi({
       async queryFn(_arg, _queryApi, _extraOptions, fetchWithBQ) {
         const products = await Promise.all(
           _arg.id.map(async id => {
-            const rewProduct = await fetchWithBQ(`products/${id}`);
+            const rawProducts = await fetchWithBQ(`products/${id}`);
 
-            if (rewProduct.error)
-              return { error: rewProduct.error as FetchBaseQueryError };
+            if (rawProducts.error)
+              return { error: rawProducts.error as FetchBaseQueryError };
 
-            const product = rewProduct.data as ProductProps;
-            return product;
+            return rawProducts.data as ProductProps;
           }),
         );
 
@@ -174,7 +173,6 @@ export const productsApi = createApi({
         );
 
         if (
-          images.every(({ id }) => id) &&
           products.every(
             (product: ProductProps | { error: FetchBaseQueryError }) =>
               'id' in product,

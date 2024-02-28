@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import PhotoSwitcher from 'modules/product/containers/ProductDetailsGallery';
 import ProductDetailsInfo from 'modules/product/components/ProductDetailsInfo';
 import { useGetProductByIdQuery } from 'redux/productsApi';
-import SameStyleAndVisitedProducts from 'components/SameStyleAndVisitedProducts';
+import CustomizedProductsDisplay from 'components/SameStyleAndVisitedProducts';
 import { useLocalStorage } from 'hooks';
 import styles from './index.module.scss';
 
@@ -39,7 +39,7 @@ const ProductDetails = () => {
           {...data}
         />
       </div>
-      <SameStyleAndVisitedProducts subcategory={data?.subcategory} />
+      <CustomizedProductsDisplay subcategory={data?.subcategory} />
     </>
   );
 };
