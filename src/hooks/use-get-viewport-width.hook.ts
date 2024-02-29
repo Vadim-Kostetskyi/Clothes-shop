@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useAppDispatch } from 'libs/hooks/hooks';
+import { useAppDispatch } from 'hooks';
 import { actions as viewportWidthActions } from 'redux/slices/viewport-width/viewport-width';
 
 export const useGetViewportWidth = () => {

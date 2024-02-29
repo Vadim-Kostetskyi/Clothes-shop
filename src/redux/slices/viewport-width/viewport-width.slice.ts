@@ -1,6 +1,6 @@
 import { CaseReducer, PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { SliceName } from '../libs/enums/slice-name.enum';
-import { SetViewportWidthPayload } from './libs/types/types';
+import { SliceName } from '../enums/slice-name.enum';
+import { SetViewportWidthPayload } from './types/types';
 
 type ViewportWidthState = {
   viewportWidth: number;

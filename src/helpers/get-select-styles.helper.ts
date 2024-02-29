@@ -1,13 +1,13 @@
 import { CSSProperties } from 'react';
 import { StylesConfig } from 'react-select';
-import { SelectOption } from 'components/Selector';
+import { SelectOptionProps } from 'modules/core/components/CountrySelect';
 
 type IsMulti = false;
 
 const getSelectStyle = (
   customControlStyles: CSSProperties,
   customMenuListStyles: CSSProperties,
-): StylesConfig<SelectOption, IsMulti> => ({
+): StylesConfig<SelectOptionProps, IsMulti> => ({
   control: provided => ({
     ...provided,
     ...customControlStyles,
