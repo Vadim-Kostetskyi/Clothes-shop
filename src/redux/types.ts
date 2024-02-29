@@ -1,4 +1,4 @@
-import { Size } from 'types';
+import { Category, Size, Subcategory } from 'types/types';
 
 export interface GetProductsPayload {
   page: number;
@@ -19,6 +19,7 @@ export interface ProductProps {
   collection: string;
   manufacturer: string;
   files: string[];
+  quantity: number;
 }
 
 export interface ImageItemProps {
@@ -53,26 +54,12 @@ export interface SearchProductsProps {
   body: BodySearchProducts;
 }
 
-export type BodySearchProducts =
-  | {
-      category: string;
-    }
-  | {
-      subcategory: Subcategory;
-    };
+export type BodySearchProducts = {
+  category?: Category;
+  subcategory?: Subcategory;
+};
 
 export interface TopCategoriesProductsProps {
   name: string;
   url: string;
-}
-
-export enum Subcategory {
-  JACKETS = 'JACKETS',
-  COATS = 'COATS',
-  TRENCH = 'TRENCH',
-  GILETS = 'GILETS',
-  OVERSHIRTS = 'OVERSHIRTS',
-  SWEATERS = 'SWEATERS',
-  CARDIGANS = 'CARDIGANS',
-  QUILTED = 'QUILTED',
 }

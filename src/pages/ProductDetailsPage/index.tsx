@@ -1,16 +1,13 @@
 import React from 'react';
-import Header from 'components/Header';
-import Footer from 'components/Footer';
-import ProductDetails from 'components/ProductDetails';
+import ProductDetails from 'modules/product/containers/ProductDetails';
 import VisitedProducts from 'components/VisitedProducts';
+import MainLayout from 'modules/core/components/MainLayout';
 
 const ProductDetailsPage = () => (
-  <>
-    <Header />
+  <MainLayout>
     <ProductDetails />
     <VisitedProducts />
-    <Footer />
-  </>
+  </MainLayout>
 );
 
 export default ProductDetailsPage;

@@ -1,0 +1,14 @@
+.button {
+  position: fixed;
+  z-index: 20;
+  width: 56px;
+  right: 80px;
+  bottom: 20px;
+  opacity: 10%;
+  fill: #212121;
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
