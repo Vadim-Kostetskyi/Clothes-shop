@@ -44,5 +44,13 @@
     "overshirts": "Overshirts",
     "quiltedCoats": "Quilted coats"
   },
-  "currency": "€"
+  "currency": "€",
+  "shoppingCart": {
+    "title": "Shopping bag",
+    "promotionalCode": "Promotional code",
+    "action": "Add",
+    "deliveryInfo": "Free delivery for orders over 100 €",
+    "total": "Total",
+    "processOrderButton": "Process order"
+  }
 }

@@ -20,6 +20,7 @@ export interface ProductProps {
   manufacturer: string;
   files: string[];
   quantity: number;
+  vendorCode: number;
 }
 
 export interface ImageItemProps {

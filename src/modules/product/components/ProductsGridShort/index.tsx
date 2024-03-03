@@ -13,7 +13,7 @@ interface ProductsGridShortProps {
 
 const mobileProducts = (searchProducts: GetProductsWithImagesProps) => {
   return searchProducts?.products?.map(
-    ({ id, title, price, size, quantity }) => {
+    ({ id, title, price, size, quantity, vendorCode }) => {
       const images =
         searchProducts?.images?.find(item => item.id === id)?.images ?? [];
 
@@ -28,6 +28,7 @@ const mobileProducts = (searchProducts: GetProductsWithImagesProps) => {
             image={images[0]?.url} // Added optional chaining here
             quantity={quantity}
             isMobile={true}
+            vendorCode={vendorCode}
           />
         </SwiperSlide>
       );
@@ -53,7 +54,7 @@ const ProductsGridShort: FC<ProductsGridShortProps> = ({
           </ProductsGridShortMobile>
         ) : (
           searchProducts?.products?.map(
-            ({ id, title, price, size, quantity }) => {
+            ({ id, title, price, size, quantity, vendorCode }) => {
               const images =
                 searchProducts?.images?.find(item => item.id === id)?.images ??
                 [];
@@ -67,6 +68,7 @@ const ProductsGridShort: FC<ProductsGridShortProps> = ({
                   sizes={size}
                   images={images}
                   quantity={quantity}
+                  vendorCode={vendorCode}
                 />
               );
             },
