@@ -1,13 +1,8 @@
 @import 'styles/constants';
 
-.wrapper {
-  width: 420px;
-  background-color: $pageBackground;
-}
-
 .titleWrapper {
   position: relative;
-  padding: 25px 30px;
+  padding: 25px 10px;
 }
 
 .title {
@@ -20,11 +15,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 25px;
-  height: 25px;
+  width: 50px;
+  height: 50px;
   position: absolute;
-  right: 30px;
-  bottom: 23px;
+  right: 0;
+  bottom: 9px;
   cursor: pointer;
 }
 

@@ -42,10 +42,10 @@ export enum Subcategory {
 
 export enum FilterItems {
   NewNow = 'New now',
-  PriceLowToHigh = 'Price low to high',
-  PriceHighToLow = 'Price high to low',
-  PriceLowToHighRequest = 'asc',
-  PriceHighToLowRequest = 'desc',
+  PriceAsc = 'Price low to high',
+  PriceDesc = 'Price high to low',
+  PriceAscRequest = 'asc',
+  PriceDescRequest = 'desc',
 }
 
 export type MenuItem = {
@@ -64,3 +64,8 @@ export type MenuList = {
   contentName: string;
   label: string;
 };
+
+export enum Price {
+  min = 0,
+  max = 1000,
+}

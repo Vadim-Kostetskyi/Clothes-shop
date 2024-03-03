@@ -57,7 +57,6 @@ const ProductsGridPage = (): JSX.Element => {
     <MainLayout>
       <FilterTabButtons handleClick={handleClick} />
       <div className={styles.filterWrapper}>
-        {/* TODO fixed overlapping elements */}
         <ProductFilter
           handleClick={handleClickFilter}
           setNewProducts={handleSetNewNowProducts}

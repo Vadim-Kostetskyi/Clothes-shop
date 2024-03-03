@@ -33,7 +33,7 @@ const SizeSelector: FC<SizeSelectorProps> = ({
           ? styles.parameterBtnFilter
           : styles.parameterBtn,
         active === parameter ? isActiveStyles : '',
-        typeof active != 'string' && active?.includes(parameter)
+        Array.isArray(active) && active?.includes(parameter)
           ? styles.activeProductDetails
           : '',
       ),

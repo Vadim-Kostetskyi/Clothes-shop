@@ -37,11 +37,11 @@ export const getFilterButtons = (
     value: FilterItems.NewNow,
   },
   {
-    name: t('productFilter.PriceLowToHigh'),
-    value: FilterItems.PriceLowToHigh,
+    name: t('productFilter.priceLowToHigh'),
+    value: FilterItems.PriceAsc,
   },
   {
     name: t('productFilter.priceHighToLow'),
-    value: FilterItems.PriceHighToLow,
+    value: FilterItems.PriceDesc,
   },
 ];

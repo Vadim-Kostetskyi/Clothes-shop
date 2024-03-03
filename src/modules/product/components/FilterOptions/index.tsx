@@ -12,7 +12,7 @@ import Accordion from 'modules/core/components/Accordion';
 import PriceSelector from '../PriceSelector';
 import FilterTabButtons from '../FilterTabButtons';
 import ColorSelection from '../ColorSelection';
-import { Color, Size } from 'types/types';
+import { Color, Size, Price } from 'types/types';
 import SizeSelector from '../SizeSelector';
 import { BodyFilterProducts } from 'redux/types';
 import { FilterItems } from 'types/types';
@@ -42,8 +42,12 @@ const FilterOptions: FC<FilterOptionsProps> = ({
 
   useEffect(() => {
     if (isResetting) {
+      console.log(4545);
+
       setSelectedColor([]);
       setSelectedSize([]);
+      setTab('');
+      setPriceRange([Price.min, Price.max]);
     }
   }, [isResetting]);
 
@@ -54,8 +58,8 @@ const FilterOptions: FC<FilterOptionsProps> = ({
       colours: [Color.Black.toUpperCase(), Color.Beige.toUpperCase()],
       sizes: [Size.L, Size.M, Size.S, Size.XL, Size.XS],
       priceRange: {
-        min: 0,
-        max: 10000,
+        min: Price.min,
+        max: Price.max,
       },
     };
 
@@ -63,13 +67,13 @@ const FilterOptions: FC<FilterOptionsProps> = ({
       case FilterItems.NewNow:
         handleSetNewProducts();
         break;
-      case FilterItems.PriceLowToHigh:
-        sortProducts(body, FilterItems.PriceLowToHighRequest);
-        setTab(FilterItems.PriceLowToHighRequest);
+      case FilterItems.PriceAsc:
+        sortProducts(body, FilterItems.PriceAscRequest);
+        setTab(FilterItems.PriceAscRequest);
         break;
-      case FilterItems.PriceHighToLow:
-        sortProducts(body, FilterItems.PriceHighToLowRequest);
-        setTab(FilterItems.PriceHighToLowRequest);
+      case FilterItems.PriceDesc:
+        sortProducts(body, FilterItems.PriceDescRequest);
+        setTab(FilterItems.PriceDescRequest);
         break;
       default:
         break;
@@ -77,31 +81,36 @@ const FilterOptions: FC<FilterOptionsProps> = ({
   }, []);
 
   const handleClick = useCallback((value: Color | Size) => {
-    const setParameter = <T extends Size | Color>(
-      set: (colors: T[] | ((prev: T[]) => T[])) => void,
-      value: T,
-    ) => {
-      set((val: T[]) =>
-        val?.includes(value)
-          ? val.filter(item => item !== value)
-          : [...val, value],
-      );
-    };
-
     if (value in Color) {
-      setParameter(setSelectedColor, value as Color);
-      setParameter(setColor, value as Color);
+      setSelectedColor((val: Color[]) =>
+        val.includes(value as Color)
+          ? val.filter(item => item !== (value as Color))
+          : [...val, value as Color],
+      );
+      setColor((val: Color[]) =>
+        val.includes(value as Color)
+          ? val.filter(item => item !== (value as Color))
+          : [...val, value as Color],
+      );
     } else if (value in Size) {
-      setParameter(setSelectedSize, value as Size);
-      setParameter(setSize, value as Size);
+      setSelectedSize((val: Size[]) =>
+        val.includes(value as Size)
+          ? val.filter(item => item !== value)
+          : [...val, value as Size],
+      );
+      setSize((val: Size[]) =>
+        val.includes(value as Size)
+          ? val.filter(item => item !== value)
+          : [...val, value as Size],
+      );
     }
   }, []);
 
   const handleChangePrice = useCallback((min: number, max: number) => {
     if (isResetting) {
-      setPriceRange(() => [0, 1000]);
+      setPriceRange([Price.min, Price.max]);
     }
-    setPriceRange(() => [min, max]);
+    setPriceRange([min, max]);
   }, []);
 
   const sortBy = useMemo(
@@ -109,8 +118,8 @@ const FilterOptions: FC<FilterOptionsProps> = ({
       title: t('sortBy'),
       list: (
         <FilterTabButtons
-          handleClickFiler={handleClickTabButtons}
-          filter={true}
+          handleClickFilter={handleClickTabButtons}
+          isFilter={true}
         />
       ),
     }),

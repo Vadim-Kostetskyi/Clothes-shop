@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from 'react';
+import React, { FC, useCallback } from 'react';
 import { Color } from 'types/types';
 import Check from 'assets/svgs/Check';
 import Black from 'assets/images/chooseColor/black.png';
@@ -27,8 +27,8 @@ const ColorSelection: FC<ColorSelectionProps> = ({
   changeColor,
   multiChoice,
 }) => {
-  const setButtonClassName = useMemo(
-    () => (label: Color) => {
+  const setButtonClassName = useCallback(
+    (label: Color) => {
       if (multiChoice) {
         return styles.multiColor;
       }

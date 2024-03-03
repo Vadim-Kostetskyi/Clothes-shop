@@ -1,12 +1,6 @@
-import React, {
-  ChangeEvent,
-  FC,
-  useCallback,
-  useEffect,
-  useState,
-  useRef,
-} from 'react';
+import React, { FC, useCallback, useEffect, useState, useRef } from 'react';
 import styles from './index.module.scss';
+import { Price } from 'types/types';
 
 interface PriceSelectorProps {
   min: number;
@@ -32,9 +26,12 @@ const PriceSelector: FC<PriceSelectorProps> = ({
   }, [minVal, maxVal]);
 
   useEffect(() => {
+    console.log(shouldReset);
+
     if (shouldReset) {
       setMinVal(min);
       setMaxVal(max);
+      onChange(min, max);
     }
   }, [shouldReset]);
 
@@ -71,7 +68,7 @@ const PriceSelector: FC<PriceSelectorProps> = ({
       if (parameter === 'min') {
         const value = Math.min(newValue, maxVal - 1);
         setMinVal(value);
-      } else if (parameter === 'max') {
+      } else {
         const value = Math.max(newValue, minVal + 1);
         setMaxVal(value);
       }
@@ -80,12 +77,14 @@ const PriceSelector: FC<PriceSelectorProps> = ({
   );
 
   const handleChange = useCallback(
-    (parameter: string) => {
-      return (event: ChangeEvent<HTMLInputElement>) => {
-        const value = +event.target.value;
+    (parameter: string) => () => {
+      if (parameter === 'min') {
+        const value = minValRef.current ? +minValRef.current?.value : Price.min;
         changeValue(value, parameter);
-        event.target.value = value.toString();
-      };
+      } else {
+        const value = maxValRef.current ? +maxValRef.current?.value : Price.max;
+        changeValue(value, parameter);
+      }
     },
     [changeValue],
   );

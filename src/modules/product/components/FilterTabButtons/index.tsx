@@ -7,24 +7,24 @@ import styles from './index.module.scss';
 
 interface FilterTabButtons {
   handleClick?: (body: BodySearchProducts) => void;
-  filter?: boolean;
-  handleClickFiler?: (name: string) => void;
+  isFilter?: boolean;
+  handleClickFilter?: (name: string) => void;
 }
 
 const FilterTabButtons: FC<FilterTabButtons> = ({
   handleClick,
-  filter,
-  handleClickFiler,
+  isFilter,
+  handleClickFilter,
 }) => {
   const { t } = useTranslation();
 
-  const buttons = filter ? getFilterButtons(t) : getButtons(t);
+  const buttons = isFilter ? getFilterButtons(t) : getButtons(t);
   const [active, setActive] = useState<string>(buttons[0].value);
 
   const onClick = useCallback(
     (name: string, body: BodySearchProducts) => () => {
       handleClick && handleClick(body);
-      handleClickFiler && handleClickFiler(name);
+      handleClickFilter && handleClickFilter(name);
       setActive(name);
     },
     [],
@@ -32,7 +32,7 @@ const FilterTabButtons: FC<FilterTabButtons> = ({
 
   return (
     <div
-      className={filter ? styles.buttonsFilterWrapper : styles.buttonsWrapper}
+      className={isFilter ? styles.buttonsFilterWrapper : styles.buttonsWrapper}
     >
       {buttons?.map(({ name, value }) => {
         const body =

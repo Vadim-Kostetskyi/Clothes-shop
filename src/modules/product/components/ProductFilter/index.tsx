@@ -27,14 +27,12 @@ const ProductFilter: FC<ProductFilterProps> = ({
       >
         <img className={styles.burgerMenuIcon} src={burgerMenu} alt="" />
       </button>
-      <div className={styles.filterWrapper}>
-        <div className={isFilterVisible ? styles.filterBox : styles.hide}>
-          <ProductFilterPanel
-            handleClose={toggleFilterVisibility}
-            handleClick={handleClick}
-            handleSetNewProducts={setNewProducts}
-          />
-        </div>
+      <div className={isFilterVisible ? styles.filterBox : styles.hide}>
+        <ProductFilterPanel
+          handleClose={toggleFilterVisibility}
+          handleClick={handleClick}
+          handleSetNewProducts={setNewProducts}
+        />
       </div>
     </div>
   );
