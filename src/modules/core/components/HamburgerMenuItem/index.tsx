@@ -1,6 +1,6 @@
 import React, { FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import NestedMenu from 'components/NestedMenu';
+// import NestedMenu from 'components/NestedMenu';
 import { HeaderMenu, MenuItem } from 'types/types';
 import Accordion from 'modules/core/components/Accordion';
 import styles from './index.module.scss';
@@ -42,7 +42,18 @@ const HamburgerMenuItem: FC<HamburgerMenuItemProps> = ({
                 listStyle={styles.listStyle}
                 list={
                   label === 'Clothing' && (
-                    <NestedMenu items={menuItems[itemLabel]} />
+                    // <NestedMenu items={menuItems[itemLabel]} />
+                    <div className={styles.wrapper}>
+                      {menuItems[itemLabel].map(({ id, href, label }) => (
+                        <Link
+                          to={href}
+                          key={id}
+                          className={id ? styles.link : styles.linkSeeAll}
+                        >
+                          {t('listItem', { label })}{' '}
+                        </Link>
+                      ))}
+                    </div>
                   )
                 }
               />
