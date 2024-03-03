@@ -63,3 +63,7 @@ export interface TopCategoriesProductsProps {
   name: string;
   url: string;
 }
+
+export interface GetProductsBiId {
+  id: string[];
+}

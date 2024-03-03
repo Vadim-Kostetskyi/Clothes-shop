@@ -16,9 +16,9 @@ const FilterTabButtons: FC<FilterTabButtons> = ({ handleClick }) => {
   const [active, setActive] = useState<string>(buttons[0].value);
 
   const onClick = useCallback(
-    (name: string, body: BodySearchProducts) => () => {
+    (value: string, body: BodySearchProducts) => () => {
       handleClick(body);
-      setActive(name);
+      setActive(value);
     },
     [],
   );
@@ -39,7 +39,7 @@ const FilterTabButtons: FC<FilterTabButtons> = ({ handleClick }) => {
             key={value}
             value={value}
             className={value === active ? styles.active : styles.button}
-            onClick={onClick(name, body)}
+            onClick={onClick(value, body)}
           >
             {name}
           </button>
