@@ -1,15 +1,18 @@
 @import 'styles/constants';
 
 .header {
-  padding: 18px 80px;
-  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0px;
   z-index: 100;
   width: 100%;
   background-color: $pageBackground;
-
   @include media(tablet) {
-    padding: 0 32px 15px;
-    margin-bottom: 16px;
+    // padding: 0 32px 15px;
+    // margin-bottom: 16px;
+    flex-direction: column;
   }
 }
 
@@ -20,10 +23,26 @@
   justify-content: space-between;
   align-items: center;
   min-height: 84px;
-
+  width: calc(100% - 160px);
+  max-width: $max-content-width;
+  margin: 18px 0px;
+  @include media(laptop) {
+    width: calc(100% - 120px);
+  }
+  @include media(laptopMedium) {
+    width: calc(100% - 80px);
+  }
   @include media(tablet) {
     min-height: 90px;
   }
+  @include media(mobile) {
+    width: calc(100% - 72px);
+  }
+}
+
+.headerWrapper {
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 .wrapperMenu {
@@ -34,8 +53,11 @@
 
 .wrapperMenuMobile {
   display: flex;
+  justify-content: center;
   align-items: flex-end;
   min-height: 50px;
+  width: 100%;
+  margin-bottom: 16px;
   @include media(laptopUp) {
     display: none;
   }
@@ -50,7 +72,8 @@
 }
 
 .navigation {
-  margin-right: 8.35rem;
+  display: flex;
+  align-items: center;
 }
 
 .logo {
@@ -67,11 +90,16 @@
 
 .userBox {
   display: flex;
+  justify-content: space-between;
+  gap: 48px;
   height: 40px;
+  @include media(laptopMedium) {
+    gap: 28px;
+  }
 }
 
 .wrapperInput {
-  width: 100%;
+  width: calc(100% - 72px);
 
   @include media(laptopUp) {
     display: none;
@@ -95,10 +123,6 @@
     letter-spacing: 0.01em;
     text-align: left;
   }
-}
-
-.openMenuButton {
-  width: 30px;
 }
 
 .menuIconMobile {

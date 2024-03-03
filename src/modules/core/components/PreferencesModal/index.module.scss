@@ -18,11 +18,20 @@
   background-color: $pageBackground;
 }
 
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+}
+
 .modalBox {
   display: flex;
   padding-bottom: 75px;
-  margin-bottom: 30px;
   border-bottom: 1px solid $grayLight;
+  width: 100%;
+  max-width: $max-content-width;
 }
 
 .locationWrapper {

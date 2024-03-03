@@ -6,14 +6,19 @@ import ScrollToTop from 'modules/core/components/ScrollToTop';
 import Collection from 'modules/product/components/Collection';
 import TopCategories from 'modules/product/containers/TopCategories';
 import MainLayout from 'modules/core/components/MainLayout';
+import styles from './index.module.scss';
 
 const CategoryPage = () => (
   <MainLayout>
-    <CollectionImageSwiper />
-    <NewNow />
-    <Collection />
-    <TopCategories />
-    <NewsletterSubscription />
+    <div className={styles.wrapperSections}>
+      <CollectionImageSwiper />
+      <NewNow />
+      <Collection />
+      <TopCategories />
+    </div>
+    <div className={styles.wrapperNewsletterSubscription}>
+      <NewsletterSubscription />
+    </div>
     <ScrollToTop />
   </MainLayout>
 );
