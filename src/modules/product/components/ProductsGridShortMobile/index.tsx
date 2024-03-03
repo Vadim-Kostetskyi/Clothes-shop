@@ -1,15 +1,17 @@
-import React, { FC, useCallback, useMemo, useState } from 'react';
+import React, { FC, ReactNode, useCallback, useMemo, useState } from 'react';
 import { Navigation, Virtual } from 'swiper/modules';
 import { Swiper } from 'swiper/react';
 import ArrowSwiperCard from 'assets/svgs/ArrowSwiperCard';
 import { getValidClassNames } from 'helpers';
 import styles from './index.module.scss';
 
-export interface NewNowMobile {
-  cards: JSX.Element;
+export interface ProductsGridShortMobileProps {
+  children: ReactNode;
 }
 
-const NewNowMobile: FC<NewNowMobile> = ({ cards }): JSX.Element => {
+const ProductsGridShortMobile: FC<ProductsGridShortMobileProps> = ({
+  children,
+}) => {
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -42,7 +44,7 @@ const NewNowMobile: FC<NewNowMobile> = ({ cards }): JSX.Element => {
       virtual
       onRealIndexChange={setSwiperIndex}
     >
-      {cards}
+      {children}
       <div className={styles.wrapperArrows}>
         <button ref={node => setPrevEl(node)} className={arrowClassName(true)}>
           <ArrowSwiperCard className={combinedClassName} />
@@ -55,4 +57,4 @@ const NewNowMobile: FC<NewNowMobile> = ({ cards }): JSX.Element => {
   );
 };
 
-export default NewNowMobile;
+export default ProductsGridShortMobile;

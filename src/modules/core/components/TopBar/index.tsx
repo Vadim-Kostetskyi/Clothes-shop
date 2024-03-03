@@ -35,16 +35,18 @@ const TopBar = (): JSX.Element => {
           <Search className={styles.searchIcon} />
         </button>
       </div>
-      <button className={styles.userButton}>
-        <User className={styles.userIcon} />
-      </button>
-      <button className={styles.shoppingCartButton} onClick={openModal}>
-        <ShoppingBag className={styles.shoppingBagIcon} />
-        {quantity > 0 ? (
-          <div className={styles.quantity}>{quantity}</div>
-        ) : null}
-      </button>
-      {isModalOpen && <ShoppingCartModal onClose={closeModal} />}
+      <div className={styles.userButtons}>
+        <button className={styles.userButton}>
+          <User className={styles.userIcon} />
+        </button>
+        <button className={styles.shoppingCartButton} onClick={openModal}>
+          <ShoppingBag className={styles.shoppingBagIcon} />
+          {quantity > 0 ? (
+            <div className={styles.quantity}>{quantity}</div>
+          ) : null}
+        </button>
+        {isModalOpen && <ShoppingCartModal onClose={closeModal} />}
+      </div>
     </>
   );
 };

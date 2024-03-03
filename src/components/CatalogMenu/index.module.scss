@@ -2,6 +2,8 @@
 
 .menuBox {
   display: flex;
+  justify-content: space-between;
+  gap: 40px;
 
   @include media(tablet) {
     display: none;
@@ -10,10 +12,6 @@
 
 .menuItem {
   font-weight: 500;
-
-  &:not(:last-child) {
-    margin-right: 40px;
-  }
 }
 
 .menuItemLink {

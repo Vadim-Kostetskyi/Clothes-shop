@@ -1,14 +1,12 @@
 @import 'styles/constants';
 
 .swiper {
-  padding-top: 120px;
-
   & > div {
     margin: 0px auto;
     max-width: 1280px;
   }
+
   @include media(tablet) {
-    padding-top: 155px;
     margin: 0px 32px;
   }
 }

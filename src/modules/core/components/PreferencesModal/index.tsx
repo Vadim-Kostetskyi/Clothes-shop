@@ -84,51 +84,54 @@ const PreferencesModal: FC<PreferencesModalProps> = ({
   return (
     <div className={styles.backdrop}>
       <div className={styles.modal}>
-        <div className={styles.modalBox}>
-          <div className={styles.locationWrapper}>
-            <p className={styles.locationText}>
-              {t('homePageModal.selectLocation')}
-            </p>
-            <div className={selectorWrapperClassName}>
-              <CountrySelect
-                options={countries}
-                value={selectedCountry}
-                onChange={handleCountryChange}
-              />
+        <div className={styles.modalContent}>
+          <div className={styles.modalBox}>
+            <div className={styles.locationWrapper}>
+              <p className={styles.locationText}>
+                {t('homePageModal.selectLocation')}
+              </p>
+              <div className={selectorWrapperClassName}>
+                <CountrySelect
+                  options={countries}
+                  value={selectedCountry}
+                  onChange={handleCountryChange}
+                />
+              </div>
             </div>
-          </div>
-          <div className={styles.languageWrapper}>
-            <p className={styles.languageText}>
-              {' '}
-              {t('homePageModal.selectLanguage')}
-            </p>
             <div className={styles.languageWrapper}>
-              <LanguageSelect
-                getButtonClassName={languageButtonClassName}
-                handleLanguageChange={handleLanguageChange}
-              />
-            </div>
-            {/* TODO: move to a separate component */}
-            <div className={styles.assentWrapper}>
-              <form className={styles.agreement} onSubmit={saveCountryLanguage}>
-                <label>
-                  <input
-                    type="checkbox"
-                    name="check"
-                    className={styles.checkbox}
-                  />
-                  <span className={styles.agreementText}>
-                    {t('homePageModal.rememberSelection')}
-                  </span>
-                </label>
-                <button className={styles.assentButton} type="submit">
-                  {t('homePageModal.go')}!
-                </button>
-              </form>
+              <p className={styles.languageText}>
+                {' '}
+                {t('homePageModal.selectLanguage')}
+              </p>
+              <div className={styles.languageWrapper}>
+                <LanguageSelect
+                  getButtonClassName={languageButtonClassName}
+                  handleLanguageChange={handleLanguageChange}
+                />
+              </div>
+              {/* TODO: move to a separate component */}
+              <div className={styles.assentWrapper}>
+                <form
+                  className={styles.agreement}
+                  onSubmit={saveCountryLanguage}
+                >
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="check"
+                      className={styles.checkbox}
+                    />
+                    <span className={styles.agreementText}>
+                      {t('homePageModal.rememberSelection')}
+                    </span>
+                  </label>
+                  <button className={styles.assentButton} type="submit">
+                    {t('homePageModal.go')}!
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
-        </div>
-        <div>
           <Copyright />
         </div>
       </div>
