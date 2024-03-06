@@ -10,8 +10,6 @@
   width: 100%;
   background-color: $pageBackground;
   @include media(tablet) {
-    // padding: 0 32px 15px;
-    // margin-bottom: 16px;
     flex-direction: column;
   }
 }
