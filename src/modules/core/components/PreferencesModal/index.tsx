@@ -8,9 +8,7 @@ import LanguageSelect from 'modules/core/components/LanguageSelect';
 import Copyright from 'modules/core/components/Copyright';
 import { Language } from 'types/types';
 import { useTranslation } from 'react-i18next';
-import { useAppSelector, useGetViewportWidth } from 'hooks';
-import { selectViewportWidth } from 'redux/slices/viewport-width/viewport-width';
-import { ViewportWidth } from 'utils/constants';
+import { useGetViewportWidth } from 'hooks';
 import styles from './index.module.scss';
 
 export interface PreferencesModalProps {
@@ -84,9 +82,7 @@ const PreferencesModal: FC<PreferencesModalProps> = ({
     [],
   );
 
-  useGetViewportWidth();
-  const viewportWidth = useAppSelector(selectViewportWidth);
-  const isMobile = viewportWidth <= ViewportWidth.MOBILE;
+  const isMobile = useGetViewportWidth();
 
   return (
     <div className={styles.backdrop}>
