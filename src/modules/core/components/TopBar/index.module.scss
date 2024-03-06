@@ -2,7 +2,6 @@
 
 .searchBox {
   position: relative;
-  margin-right: 50px;
 
   @include media(tablet) {
     display: none;
@@ -37,6 +36,12 @@
   height: 24px;
 }
 
+.userButtons {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
 .userButton,
 .shoppingCartButton {
   position: relative;
@@ -44,8 +49,6 @@
   height: 40px;
 
   &:not(:last-child) {
-    margin-right: 15px;
-
     @include media(tablet) {
       margin-right: 8px;
     }
@@ -53,9 +56,10 @@
 }
 
 .userIcon,
-.shoppingCartIcon {
+.shoppingBagIcon {
   width: 24px;
   stroke: $blackColor;
+  cursor: pointer;
 }
 
 .quantity {

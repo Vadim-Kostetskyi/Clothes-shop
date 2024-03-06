@@ -1,12 +1,14 @@
 import React, { useState, FC } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useAppDispatch, useAppSelector } from 'hooks';
+import { Size, Color } from 'types/types';
+import {
+  selectQuantityByProductId,
+  actions as shoppingCartActions,
+} from 'redux/slices/shopping-cart';
 import ShoppingBag from 'assets/svgs/ShoppingBag';
 import ProductInfoParameters from 'modules/product/components/ProductInfoParameters';
-import { Size, Color } from 'types/types';
 import styles from './index.module.scss';
-import { actions as shoppingCartActions } from 'redux/slices/shopping-cart/shopping-cart';
-import { useAppDispatch, useAppSelector } from 'hooks';
-import { useTranslation } from 'react-i18next';
-import { selectQuantityByProductId } from 'redux/slices/shopping-cart/selectors';
 
 interface ProductInfo {
   productId: string;
@@ -14,6 +16,7 @@ interface ProductInfo {
   price: number;
   sizes: Size[];
   quantity: number;
+  vendorCode?: number;
 }
 
 const ProductInfo: FC<ProductInfo> = ({
@@ -22,12 +25,13 @@ const ProductInfo: FC<ProductInfo> = ({
   productName,
   sizes,
   quantity,
-}) => {
+  vendorCode = 0,
+}): JSX.Element => {
   const [selectedColor, setSelectedColor] = useState<Color>(Color.Black);
   const [selectedSize, setSelectedSize] = useState<Size | null>(null);
   const [error, setError] = useState<string | undefined>();
   const dispatch = useAppDispatch();
-  const productQuantity =
+  const existingProductQuantity =
     useAppSelector(state => selectQuantityByProductId(state, productId)) ?? 0;
   const { t } = useTranslation();
 
@@ -46,12 +50,12 @@ const ProductInfo: FC<ProductInfo> = ({
     }
   };
 
-  const addToShoppingCart = () => {
+  const addToShoppingCart = (): void => {
     if (!selectedSize) {
       setError(t('selectSize'));
       return;
     }
-    if (productQuantity > quantity) {
+    if (quantity - existingProductQuantity <= 0) {
       setError(t('productDetails.itemNotAvailable'));
       return;
     }
@@ -62,7 +66,11 @@ const ProductInfo: FC<ProductInfo> = ({
       shoppingCartActions.addItem({
         id: productId,
         price,
-        name: productName,
+        title: productName,
+        vendorCode,
+        colour: selectedColor,
+        size: selectedSize,
+        count: quantity,
       }),
     );
 
