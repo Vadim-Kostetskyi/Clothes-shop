@@ -27,7 +27,7 @@ const Collection = () => {
   const { t } = useTranslation();
   return (
     <div className={styles.collectionWrapper}>
-      <h1 className={styles.title}>{t('collections')}</h1>
+      <h2 className={styles.title}>{t('collections')}</h2>
       <div className={styles.cardWrapper}>
         {collections.map(({ id, image, text }) => (
           // TODO: extract into separate component CollectionItem

@@ -42,9 +42,9 @@ const ProductsGridShort: FC<ProductsGridShortProps> = ({
 }) => {
   const isMobile = useGetViewportWidth();
 
-  return (
+  return searchProducts?.products?.length > 0 ? (
     <div className={styles.wrapper}>
-      <h1 className={styles.title}>{title}</h1>
+      <h2 className={styles.title}>{title}</h2>
       <div
         className={isMobile ? styles.cardsWrapperMobile : styles.cardsWrapper}
       >
@@ -76,7 +76,7 @@ const ProductsGridShort: FC<ProductsGridShortProps> = ({
         )}
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default ProductsGridShort;

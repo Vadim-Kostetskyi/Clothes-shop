@@ -23,7 +23,7 @@ const VisitedProducts: FC = () => {
 
   return (
     <div className={styles.wrapper}>
-      <p className={styles.title}>{t('viewedProducts')}</p>
+      <h2 className={styles.title}>{t('viewedProducts')}</h2>
       <div className={styles.cardWrapper}>
         {visitedProducts.map((id: string) => (
           <div className={styles.card} key={id}>
