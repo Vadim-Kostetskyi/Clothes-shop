@@ -20,6 +20,7 @@ export interface ProductProps {
   manufacturer: string;
   files: string[];
   quantity: number;
+  vendorCode: number;
 }
 
 export interface ImageItemProps {
@@ -64,4 +65,8 @@ export type BodySearchProducts = {
 export interface TopCategoriesProductsProps {
   name: string;
   url: string;
+}
+
+export interface GetProductsBiId {
+  id: string[];
 }

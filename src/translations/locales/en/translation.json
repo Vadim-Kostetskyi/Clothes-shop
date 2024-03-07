@@ -45,5 +45,13 @@
     "quiltedCoats": "Quilted coats"
   },
   "currency": "€",
-  "page": "Page"
+  "page": "Page",
+  "shoppingCart": {
+    "title": "Shopping bag",
+    "promotionalCode": "Promotional code",
+    "action": "Add",
+    "deliveryInfo": "Free delivery for orders over 100 €",
+    "total": "Total",
+    "processOrderButton": "Process order"
+  }
 }

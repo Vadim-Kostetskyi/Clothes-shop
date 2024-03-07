@@ -9,6 +9,7 @@ import Copyright from 'modules/core/components/Copyright';
 import { Language } from 'types/types';
 import styles from './index.module.scss';
 import { useTranslation } from 'react-i18next';
+import { useGetViewportWidth } from 'hooks';
 
 export interface PreferencesModalProps {
   showModal: boolean;
@@ -81,29 +82,32 @@ const PreferencesModal: FC<PreferencesModalProps> = ({
     [],
   );
 
+  const isMobile = useGetViewportWidth();
+
   return (
     <div className={styles.backdrop}>
       <div className={styles.modal}>
-        <div className={styles.modalContent}>
-          <div className={styles.modalBox}>
-            <div className={styles.locationWrapper}>
-              <p className={styles.locationText}>
-                {t('homePageModal.selectLocation')}
-              </p>
-              <div className={selectorWrapperClassName}>
-                <CountrySelect
-                  options={countries}
-                  value={selectedCountry}
-                  onChange={handleCountryChange}
-                />
-              </div>
+        <div className={styles.modalBox}>
+          <div className={styles.locationWrapper}>
+            <p className={styles.locationText}>
+              {t('homePageModal.selectLocation')}
+            </p>
+            <div className={selectorWrapperClassName}>
+              <CountrySelect
+                options={countries}
+                value={selectedCountry}
+                onChange={handleCountryChange}
+                isMobile={isMobile}
+              />
             </div>
+          </div>
+          <div className={styles.rightSectionWrapper}>
             <div className={styles.languageWrapper}>
               <p className={styles.languageText}>
                 {' '}
                 {t('homePageModal.selectLanguage')}
               </p>
-              <div className={styles.languageWrapper}>
+              <div>
                 <LanguageSelect
                   getButtonClassName={languageButtonClassName}
                   handleLanguageChange={handleLanguageChange}
@@ -115,7 +119,7 @@ const PreferencesModal: FC<PreferencesModalProps> = ({
                   className={styles.agreement}
                   onSubmit={saveCountryLanguage}
                 >
-                  <label>
+                  <label className={styles.agreementLabel}>
                     <input
                       type="checkbox"
                       name="check"
@@ -132,8 +136,8 @@ const PreferencesModal: FC<PreferencesModalProps> = ({
               </div>
             </div>
           </div>
-          <Copyright />
         </div>
+        {!isMobile && <Copyright />}
       </div>
     </div>
   );

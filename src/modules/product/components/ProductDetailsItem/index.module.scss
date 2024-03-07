@@ -1,0 +1,55 @@
+@import 'styles/constants';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 122px;
+
+  .price {
+    margin-right: 16px;
+    padding-top: 3px;
+  }
+}
+
+.referenceCode {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: 0.01em;
+  color: $grayDark;
+}
+
+.productDetails {
+  display: flex;
+  justify-content: space-between;
+  width: 251px;
+  padding-bottom: 18px;
+
+  .detailContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 78px;
+    min-height: 32px;
+    border-radius: 4px;
+    border: solid 0.5px $grayDark;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+  }
+}
+
+.colorIndicator {
+  width: 62px;
+  min-height: 16px;
+  border-radius: 2px;
+
+  &.colorWhite {
+    background-color: $cream;
+  }
+
+  &.colorBlack {
+    background-color: $blackColor;
+  }
+}
