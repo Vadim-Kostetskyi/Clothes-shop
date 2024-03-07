@@ -1,14 +1,14 @@
 @import 'styles/constants';
 
 .paginationButton:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .paginationDisabled {
-    pointer-events: none;
+  pointer-events: none;
 }
 
 .pagination__icon {
-    width: 32px;
-    height: 32px;
+  width: 32px;
+  height: 32px;
 }
