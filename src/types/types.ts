@@ -1,3 +1,6 @@
+import BlackColor from 'assets/images/chooseColor/black.png';
+import WhiteColor from 'assets/images/chooseColor/white.png';
+
 export enum Size {
   XS = 'XS',
   S = 'S',
@@ -39,6 +42,11 @@ export enum Subcategory {
   CARDIGANS = 'CARDIGANS',
   QUILTED = 'QUILTED',
 }
+
+export const clothesColors: Record<Color, string> = {
+  [Color.Black]: BlackColor,
+  [Color.White]: WhiteColor,
+};
 
 export type MenuItem = {
   id: number;

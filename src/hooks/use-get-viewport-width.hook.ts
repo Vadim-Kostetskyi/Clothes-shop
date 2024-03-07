@@ -1,21 +1,20 @@
-import { useEffect } from 'react';
-import { useAppDispatch } from './use-app-dispatch.hook';
-import { actions as viewportWidthActions } from 'redux/slices/viewport-width/viewport-width';
+import { useState, useEffect, useCallback } from 'react';
+import { ViewportWidth } from 'utils/constants';
 
 export const useGetViewportWidth = () => {
-  const dispatch = useAppDispatch();
+  const [isMobile, setIsMobile] = useState(false);
+
+  const handleResize = useCallback(() => {
+    const isMobileWidth = window.innerWidth <= ViewportWidth.MOBILE;
+    setIsMobile(isMobileWidth);
+  }, [window.innerWidth]);
 
   useEffect(() => {
-    const handleResize = () => {
-      dispatch(
-        viewportWidthActions.setViewportWidth({
-          viewportWidth: window.innerWidth,
-        }),
-      );
-    };
-
     window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
-    return () => window.removeEventListener('resize', handleResize);
-  }, [dispatch]);
+  return isMobile;
 };

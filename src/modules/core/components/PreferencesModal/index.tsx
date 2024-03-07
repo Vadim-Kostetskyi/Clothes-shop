@@ -9,9 +9,7 @@ import Copyright from 'modules/core/components/Copyright';
 import { Language } from 'types/types';
 import styles from './index.module.scss';
 import { useTranslation } from 'react-i18next';
-import { useAppSelector, useGetViewportWidth } from 'hooks';
-import { selectViewportWidth } from 'redux/slices/viewport-width/viewport-width';
-import { ViewportWidth } from 'utils/constants';
+import { useGetViewportWidth } from 'hooks';
 
 export interface PreferencesModalProps {
   showModal: boolean;
@@ -84,11 +82,7 @@ const PreferencesModal: FC<PreferencesModalProps> = ({
     [],
   );
 
-  useGetViewportWidth();
-
-  const viewportWidth = useAppSelector(selectViewportWidth);
-
-  const isMobile = viewportWidth <= ViewportWidth.MOBILE;
+  const isMobile = useGetViewportWidth();
 
   return (
     <div className={styles.backdrop}>

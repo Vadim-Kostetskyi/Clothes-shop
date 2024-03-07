@@ -1,7 +1,7 @@
 import React, { FC, CSSProperties } from 'react';
 import Select, { SingleValue, ActionMeta } from 'react-select';
 import { CssProperties } from 'utils/constants';
-import { getSelectStyle } from 'helpers/helpers';
+import { getSelectStyle } from 'helpers';
 
 export interface SelectOption {
   label: string;
