@@ -1,0 +1,23 @@
+@import 'styles/constants';
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 67px;
+  border-bottom: 1px solid $grayLight;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.closeButton {
+  position: absolute;
+  top: 25px;
+  right: 8px;
+  padding: 0 2px;
+  margin: 0 12px;
+  cursor: pointer;
+}

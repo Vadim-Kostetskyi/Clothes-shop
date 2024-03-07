@@ -14,7 +14,7 @@ const TopCategories = () => {
 
   return (
     <div className={clsx(styles.swiper, 'topCategories-swiper')}>
-      <h1 className={styles.title}>{t('topCategories')}</h1>
+      <h2 className={styles.title}>{t('topCategories')}</h2>
       <Swiper
         modules={[Navigation]}
         spaceBetween={8}

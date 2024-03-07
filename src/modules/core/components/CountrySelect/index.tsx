@@ -10,6 +10,7 @@ export interface SelectOptionProps {
 export interface CountrySelectProps {
   options: SelectOptionProps[];
   value?: SelectOptionProps;
+  isMobile?: boolean;
   onChange: (
     newValue: SingleValue<SelectOptionProps>,
     actionMeta: ActionMeta<SelectOptionProps>,
@@ -19,7 +20,7 @@ export interface CountrySelectProps {
 const CountrySelect: FC<CountrySelectProps> = props => (
   // TODO: fix this global problem
   <div className={styles.wrapper}>
-    <Select {...props} />
+    <Select isMobile="false" {...props} />
   </div>
 );
 

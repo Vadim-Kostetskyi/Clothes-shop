@@ -2,7 +2,7 @@ import React from 'react';
 import { SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import CoreSwiper from 'modules/core/components/CoreSwiper';
-import { getValidClassNames } from 'helpers/helpers';
+import { getValidClassNames } from 'helpers';
 import 'swiper/scss/pagination';
 import styles from './index.module.scss';
 import { slides } from './slides';
@@ -14,7 +14,7 @@ export interface SlidesProps {
   text: string;
 }
 
-const CollectionImageSwiper = () => (
+const CollectionImageSwiper = (): JSX.Element => (
   <div className={getValidClassNames(styles.swiper, 'collection-swiper')}>
     <CoreSwiper
       modules={[Pagination, Autoplay]}

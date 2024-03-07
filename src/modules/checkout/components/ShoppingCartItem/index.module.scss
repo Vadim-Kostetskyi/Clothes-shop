@@ -1,0 +1,62 @@
+@import 'styles/constants';
+
+$productItemMinHeight: 170px;
+
+.container {
+  display: flex;
+  align-items: center;
+  width: 397px;
+  min-height: 201px;
+  padding-bottom: 16px;
+  margin-top: 14px;
+  border-bottom: solid 1px $lightGray;
+
+  .productImage {
+    display: block;
+    width: 112px;
+    min-height: $productItemMinHeight;
+  }
+
+  .productInfo {
+    display: flex;
+    flex-direction: column;
+    min-height: $productItemMinHeight;
+    margin-left: 16px;
+
+    .header {
+      display: flex;
+      min-height: 48px;
+
+      .title {
+        width: 165px;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 19px;
+      }
+
+      .editIcon,
+      .deleteIcon,
+      .crossButton {
+        display: flex;
+        justify-content: flex-end;
+        align-items: baseline;
+        min-height: 20px;
+        cursor: pointer;
+      }
+
+      .editIcon,
+      .deleteIcon {
+        margin: 0 16px;
+        padding: 0 2px;
+      }
+      .crossIcon {
+        width: 14px;
+      }
+
+      .crossButton {
+        margin-left: 76px;
+        padding: 2px;
+      }
+    }
+  }
+}
