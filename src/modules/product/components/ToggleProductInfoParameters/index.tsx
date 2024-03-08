@@ -1,9 +1,10 @@
 import React, { FC, useCallback, useMemo } from 'react';
+import { getValidClassNames } from 'helpers';
+import { Color, Size } from 'types/types';
 import Cross from 'assets/svgs/Cross';
-import { Size } from 'types/types';
 import SizeSelector from 'modules/product/components/SizeSelector';
+import ColourSelector from '../ColorSelector';
 import styles from './index.module.scss';
-import { clsx } from 'clsx';
 
 interface ToggleProductInfoParameters {
   text: string;
@@ -27,19 +28,14 @@ const ToggleProductInfoParameters: FC<ToggleProductInfoParameters> = ({
   index,
   sizes,
   productInfo,
-}) => {
-  const parametersClassName = clsx(styles.parametersBtn, {
+}): JSX.Element => {
+  const parametersClassName = getValidClassNames(styles.parametersBtn, {
     [styles.hide]: open[index],
   });
 
-  const getCombinedClass = useCallback(
-    (parameter: string) =>
-      clsx(styles.parameterColorBtn, { [styles.active]: active === parameter }),
-    [active],
-  );
-
   const parameterBoxClassName = useMemo(
-    () => clsx(styles.parameterBox, { [styles.hide]: !open[index] }),
+    () =>
+      getValidClassNames(styles.parameterBox, { [styles.hide]: !open[index] }),
     [open[index]],
   );
 
@@ -56,21 +52,11 @@ const ToggleProductInfoParameters: FC<ToggleProductInfoParameters> = ({
       <div className={parameterBoxClassName}>
         <div className={styles.parametersBtn}>
           {productInfo === 'color' ? (
-            parameters.map((parameter, index) => (
-              <button
-                key={index}
-                className={getCombinedClass(parameter)}
-                onClick={() => handleClick(productInfo, parameter)}
-              >
-                <span
-                  className={
-                    parameter === 'black'
-                      ? styles.blackColor
-                      : styles.whiteColor
-                  }
-                ></span>
-              </button>
-            ))
+            <ColourSelector
+              parameters={Object.values(Color)}
+              active={active as Color}
+              handleClick={handleClick}
+            />
           ) : (
             <SizeSelector
               parameters={parameters}

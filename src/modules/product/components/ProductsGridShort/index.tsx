@@ -13,7 +13,7 @@ interface ProductsGridShortProps {
 
 const mobileProducts = (searchProducts: GetProductsWithImagesProps) => {
   return searchProducts?.products?.map(
-    ({ id, title, price, size, quantity }) => {
+    ({ id, title, price, size, quantity, vendorCode }) => {
       const images =
         searchProducts?.images?.find(item => item.id === id)?.images ?? [];
 
@@ -28,6 +28,7 @@ const mobileProducts = (searchProducts: GetProductsWithImagesProps) => {
             image={images[0]?.url} // Added optional chaining here
             quantity={quantity}
             isMobile={true}
+            vendorCode={vendorCode}
           />
         </SwiperSlide>
       );
@@ -41,9 +42,9 @@ const ProductsGridShort: FC<ProductsGridShortProps> = ({
 }) => {
   const isMobile = useGetViewportWidth();
 
-  return (
+  return searchProducts?.products?.length > 0 ? (
     <div className={styles.wrapper}>
-      <h1 className={styles.title}>{title}</h1>
+      <h2 className={styles.title}>{title}</h2>
       <div
         className={isMobile ? styles.cardsWrapperMobile : styles.cardsWrapper}
       >
@@ -53,7 +54,7 @@ const ProductsGridShort: FC<ProductsGridShortProps> = ({
           </ProductsGridShortMobile>
         ) : (
           searchProducts?.products?.map(
-            ({ id, title, price, size, quantity }) => {
+            ({ id, title, price, size, quantity, vendorCode }) => {
               const images =
                 searchProducts?.images?.find(item => item.id === id)?.images ??
                 [];
@@ -67,6 +68,7 @@ const ProductsGridShort: FC<ProductsGridShortProps> = ({
                   sizes={size}
                   images={images}
                   quantity={quantity}
+                  vendorCode={vendorCode}
                 />
               );
             },
@@ -74,7 +76,7 @@ const ProductsGridShort: FC<ProductsGridShortProps> = ({
         )}
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default ProductsGridShort;
