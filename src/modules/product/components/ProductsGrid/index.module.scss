@@ -6,8 +6,9 @@
   gap: 8px;
   width: 100%;
   row-gap: 32px;
+  margin-bottom: 64px;
   @include media(mobile) {
-    margin-bottom: 32px;
     row-gap: 16px;
+    margin-bottom: 32px;
   }
 }

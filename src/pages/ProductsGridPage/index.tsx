@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import ProductsGrid from 'modules/product/components/ProductsGrid';
 import Loader from 'modules/core/components/Loader';
-import { PageNumbers, PRODUCT_GRID_SIZE } from 'utils/constants';
+import {
+  PageNumbers,
+  PRODUCT_GRID_SIZE,
+  PRODUCT_GRID_SIZE_MOBILE,
+} from 'utils/constants';
 import { BodySearchProducts } from 'redux/types';
 import { Category, Subcategory } from 'types/types';
 import { useFetchProductsWithImagesMutation } from 'redux/productsApi';
@@ -10,6 +14,7 @@ import FilterTabButtons from 'modules/product/components/FilterTabButtons';
 import ProductsPagination from 'modules/product/components/ProductsPagination';
 import { useTranslation } from 'react-i18next';
 import { getButtons } from 'modules/product/components/FilterTabButtons/data';
+import { useGetViewportWidth } from 'hooks';
 
 const ProductsGridPage = (): JSX.Element => {
   const [searchProducts, { isLoading, data }] =
@@ -25,20 +30,25 @@ const ProductsGridPage = (): JSX.Element => {
     PageNumbers.FIRST_PAGE,
   );
 
+  const isMobile = useGetViewportWidth();
+  const gridPageSize = isMobile ? PRODUCT_GRID_SIZE_MOBILE : PRODUCT_GRID_SIZE;
+
   useEffect(() => {
     searchProducts({
       page: Number(PageNumbers.FIRST_PAGE),
-      size: PRODUCT_GRID_SIZE,
+      size: gridPageSize,
       body: {
         category: Category.CLOTHING,
       },
     });
-  }, []);
+    setActivePage(PageNumbers.FIRST_PAGE);
+    setActiveButton(getButtons(t)[0].value);
+  }, [isMobile]);
 
   const handleClick = (body: BodySearchProducts) => {
     searchProducts({
       page: Number(PageNumbers.FIRST_PAGE),
-      size: PRODUCT_GRID_SIZE,
+      size: gridPageSize,
       body,
     });
   };
@@ -46,11 +56,11 @@ const ProductsGridPage = (): JSX.Element => {
   const handlePagination = (pageNumber: PageNumbers) => {
     searchProducts({
       page: Number(pageNumber),
-      size: PRODUCT_GRID_SIZE,
+      size: gridPageSize,
       body:
-        activeButton === Category.CLOTHING
+        activeButton === Category.CLOTHING || isMobile
           ? {
-              category: activeButton,
+              category: activeButton as Category,
             }
           : {
               subcategory: activeButton as Subcategory,
@@ -61,7 +71,7 @@ const ProductsGridPage = (): JSX.Element => {
   const pagesAmount = data?.pages ?? 0;
 
   return (
-    <MainLayout>
+    <MainLayout isLoading={isLoading}>
       <FilterTabButtons
         activeButton={activeButton}
         setActiveButton={setActiveButton}
@@ -73,14 +83,14 @@ const ProductsGridPage = (): JSX.Element => {
       ) : (
         <>
           <ProductsGrid searchProducts={data} />
-          {pagesAmount > 1 ? (
+          {pagesAmount > 1 && (
             <ProductsPagination
               pagesAmount={pagesAmount}
               activePage={activePage}
               setActivePage={setActivePage}
               getPageProducts={handlePagination}
             />
-          ) : null}
+          )}
         </>
       )}
     </MainLayout>

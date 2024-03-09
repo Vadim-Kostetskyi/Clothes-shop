@@ -4,6 +4,5 @@
   width: calc((100% - 16px) / 3);
   @include media(mobile) {
     width: calc((100% - 8px) / 2);
-    margin-bottom: 8px;
   }
 }
