@@ -9,7 +9,8 @@ import styles from './index.module.scss';
 
 const ProductDetails = () => {
   const { productId } = useParams();
-  const { data } = useGetProductByIdQuery({ id: productId });
+  const { data } = useGetProductByIdQuery({ id: productId ?? '' });
+
   const { getItem, setItem } = useLocalStorage<string[]>('visited', []);
 
   useEffect(() => {

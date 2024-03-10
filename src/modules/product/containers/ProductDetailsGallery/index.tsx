@@ -6,15 +6,15 @@ import styles from './index.module.scss';
 import { ImageItemProps } from 'redux/types';
 
 export interface ProductDetailsGalleryProps {
-  id: string;
-  title: string;
+  id?: string;
+  title?: string;
 }
 
 const ProductDetailsGallery: FC<ProductDetailsGalleryProps> = ({
   id,
   title,
 }) => {
-  const { data } = useGetProductImagesQuery({ id });
+  const { data } = useGetProductImagesQuery({ id: id ?? '' });
 
   const [images, setImages] = useState<ImageItemProps[] | undefined>();
 
@@ -71,7 +71,7 @@ const ProductDetailsGallery: FC<ProductDetailsGalleryProps> = ({
       <PicturePanel
         images={images?.slice(1)}
         choosePicture={moveImageToStart}
-        cardName={title}
+        cardName={title || ''}
       />
       <div className={styles.largeImageWrapper}>
         <img

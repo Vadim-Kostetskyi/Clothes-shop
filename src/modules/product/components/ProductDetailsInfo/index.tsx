@@ -8,12 +8,12 @@ import { useTranslation } from 'react-i18next';
 import styles from './index.module.scss';
 
 export interface ProductDetailsInfoProps {
-  title: string;
-  price: number;
-  sizes: Size[];
-  description: string;
-  composition: string;
-  vendorCode: number;
+  title?: string;
+  price?: string;
+  sizes?: Size[];
+  description?: string;
+  composition?: string;
+  vendorCode?: number;
   addToFavorite: () => void;
   addToShoppingCart: () => void;
 }
@@ -71,9 +71,12 @@ const ProductDetailsInfo: FC<ProductDetailsInfoProps> = ({
       <p className={styles.ref}>
         {t('productDetails.ref')}. {vendorCode}
       </p>
-      <p className={styles.price}>
-        {price} <span className={styles.currency}>{t('currency')}</span>
-      </p>
+      {price ? (
+        <p className={styles.price}>
+          {price && parseFloat(price)}{' '}
+          <span className={styles.currency}>{t('currency')}</span>
+        </p>
+      ) : null}
       <div className={styles.colorBox}>
         <p className={styles.submenu}>{t('productDetails.selectColour')}</p>
         <ColorSelection
