@@ -22,6 +22,7 @@ const ProductCardRequest: FC<ProductCardRequestProps> = ({ id }) => {
       sizes: data?.size || [],
       images: images?.data || [],
       quantity: data?.quantity || 0,
+      vendorCode: data?.vendorCode,
     }),
     [data, images],
   );
