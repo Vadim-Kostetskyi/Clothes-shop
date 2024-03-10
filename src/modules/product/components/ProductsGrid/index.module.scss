@@ -1,8 +1,14 @@
+@import 'styles/constants';
+
 .cardsWrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 8px;
-  margin-bottom: 65px;
+  margin-bottom: 68px;
+  width: 100%;
   row-gap: 32px;
+  @include media(mobile) {
+    margin-bottom: 32px;
+    row-gap: 16px;
+  }
 }

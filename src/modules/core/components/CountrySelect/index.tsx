@@ -32,7 +32,6 @@ const CountrySelect: FC<CountrySelectProps> = props => {
 
   const selectStyle = getSelectStyle(customControlStyles, customMenuListStyles);
 
-  // TODO: fix this global problem
   return (
     <div className={styles.wrapper}>
       <Select {...props} styles={selectStyle} />

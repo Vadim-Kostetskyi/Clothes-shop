@@ -81,7 +81,7 @@ const ProductInfo: FC<ProductInfo> = ({
   return (
     <div className={styles.info}>
       <div className={styles.nameBox}>
-        <p className={styles.productName}>{productName}</p>
+        <span className={styles.productName}>{productName}</span>
         <div className={styles.shoppingCartWrapper}>
           {/* TODO: move to a separate component (similar on details page and navigation ) */}
           <button className={styles.shoppingCart} onClick={addToShoppingCart}>

@@ -9,6 +9,7 @@ export const MenuItem = {
 export const FIRST_PAGE = 1;
 export const SIMILAR_PRODUCTS_SIZE = 3;
 export const PRODUCT_GRID_SIZE = 9;
+export const PRODUCT_GRID_SIZE_MOBILE = 12;
 
 export enum TimeConstants {
   SECOND = 1000,

@@ -117,7 +117,7 @@ const PreferencesModal: FC<PreferencesModalProps> = ({
             {/* TODO: move to a separate component */}
             <div className={styles.assentWrapper}>
               <form className={styles.agreement} onSubmit={saveCountryLanguage}>
-                <label>
+                <label className={styles.agreementLabel}>
                   <input
                     type="checkbox"
                     name="check"
