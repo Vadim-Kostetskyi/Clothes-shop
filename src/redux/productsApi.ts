@@ -8,7 +8,6 @@ import {
   GetProductsBiId,
   GetProductsPayload,
   GetProductsResponse,
-  // GetProductsWithImages,
   GetProductsWithImagesProps,
   ProductProps,
   SearchProductsProps,
@@ -30,7 +29,6 @@ export const productsApi = createApi({
     getTopCategoriesByName: builder.query<TopCategoriesProductsProps[], void>({
       query: () => 'products/top',
     }),
-    // TODO: https://allalitvinenko.atlassian.net/browse/OS-187
     getProductById: builder.query<ProductProps, SearchByIdProps>({
       query: ({ id }) => `products/${id}`,
     }),
