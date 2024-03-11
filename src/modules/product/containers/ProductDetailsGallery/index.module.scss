@@ -34,8 +34,10 @@
   fill: $blackColor;
   width: 16px;
   opacity: 50%;
+  cursor: pointer;
 }
 
 .arrowPrev {
+  cursor: pointer;
   transform: rotate(0.5turn);
 }
