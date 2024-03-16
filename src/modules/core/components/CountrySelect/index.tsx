@@ -1,5 +1,7 @@
-import React, { FC } from 'react';
+import React, { FC, CSSProperties } from 'react';
 import Select, { SingleValue, ActionMeta } from 'react-select';
+import { CssProperties } from 'utils/constants';
+import { getSelectStyle } from 'helpers/helpers';
 import styles from './index.module.scss';
 
 export interface SelectOptionProps {
@@ -17,11 +19,24 @@ export interface CountrySelectProps {
   ) => void;
 }
 
-const CountrySelect: FC<CountrySelectProps> = props => (
-  // TODO: fix this global problem
-  <div className={styles.wrapper}>
-    <Select isMobile="false" {...props} />
-  </div>
-);
+const CountrySelect: FC<CountrySelectProps> = props => {
+  const customControlStyles: CSSProperties = {
+    cursor: CssProperties.CURSOR_POINTER,
+    borderColor: CssProperties.BORDER_COLOR,
+    height: CssProperties.HEIGHT,
+  };
+
+  const customMenuListStyles: CSSProperties = {
+    maxHeight: props.isMobile ? '220px' : '194px',
+  };
+
+  const selectStyle = getSelectStyle(customControlStyles, customMenuListStyles);
+
+  return (
+    <div className={styles.wrapper}>
+      <Select {...props} styles={selectStyle} />
+    </div>
+  );
+};
 
 export default CountrySelect;
