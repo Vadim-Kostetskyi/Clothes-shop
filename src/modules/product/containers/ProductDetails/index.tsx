@@ -14,7 +14,6 @@ const ProductDetails = () => {
   const { data } = useGetProductByIdQuery({ id: productId || '' });
   const { getItem, setItem } = useLocalStorage<string[]>('visited', []);
   const dispatch = useAppDispatch();
-  console.log(data);
 
   useEffect(() => {
     const visitedProduct = getItem();
@@ -26,18 +25,20 @@ const ProductDetails = () => {
   }, [productId]);
 
   const addToShoppingCart = useCallback(() => {
-    if (!data) {
+    if (!data || !productId) {
       return;
     }
+    const { price, title, vendorCode, colour, size, quantity } = data;
+
     dispatch(
       shoppingCartActions.addItem({
-        id: productId || '',
-        price: +data.price,
-        title: data.title,
-        vendorCode: data.vendorCode,
-        colour: data.colour as Color,
-        size: data.size[1],
-        count: data.quantity,
+        id: productId,
+        price: +price,
+        title: title,
+        vendorCode: vendorCode,
+        colour: colour as Color,
+        size: size[1],
+        count: quantity,
       }),
     );
   }, []);
