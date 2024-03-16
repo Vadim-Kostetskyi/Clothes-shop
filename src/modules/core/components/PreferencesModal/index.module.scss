@@ -16,22 +16,61 @@
   bottom: 0;
   padding: 72px 80px 32px;
   background-color: $pageBackground;
+
+  @include media(mobile) {
+    height: 50vh;
+    padding: 32px 32px 66px;
+  }
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
 }
 
 .modalBox {
   display: flex;
-  padding-bottom: 75px;
-  margin-bottom: 30px;
+  justify-content: flex-start;
+  gap: 20%;
+  padding-bottom: 77px;
+  margin-bottom: 32px;
   border-bottom: 1px solid $grayLight;
+
+  @media only screen and (max-width: 650px) {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  @include media(mobile) {
+    height: 100%;
+    border-bottom-width: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+  }
 }
 
 .locationWrapper {
-  margin-right: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 40%;
+  min-width: max-content;
+
+  @media only screen and (max-width: 650px) {
+    width: 80%;
+  }
+
+  @include media(mobile) {
+    margin-right: 0px;
+    width: 100%;
+  }
 }
 
 .locationText,
 .languageText {
-  padding-bottom: 24px;
   font-size: 20px;
   font-weight: 500;
 }
@@ -42,26 +81,53 @@
   border-style: solid;
   border-color: $pageBackground;
   border-radius: 5px;
+  width: 100%;
 }
 
 .selectorWrapperAlert {
   border-color: $alertRed;
 }
 
+.rightSectionWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 20%;
+  min-width: max-content;
+  height: 100%;
+
+  @include media(mobile) {
+    width: 100%;
+  }
+}
+
 .languageWrapper {
-  margin-bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: max-content;
+  margin-bottom: 40%;
+
+  @include media(mobile) {
+    margin-bottom: 0px;
+  }
 }
 
 .languageButton,
 .focus {
-  padding: 12px 10px 11px;
+  width: 48px;
+  height: 48px;
   font-size: 20px;
   border: 0.5px solid $blackColor;
   border-radius: 4px;
 
   &:not(:last-child) {
-    margin-right: 15px;
+    margin-right: 16px;
   }
+}
+
+.languageButton:hover {
+  cursor: pointer;
 }
 
 .focus {
@@ -75,12 +141,23 @@
   opacity: 0;
 }
 
+.agreement {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.agreementLabel {
+  display: flex;
+  align-items: center;
+}
+
 .agreementText {
   display: flex;
   align-items: center;
   user-select: none;
   font-size: 12px;
-  margin-bottom: 16px;
 
   &::before {
     content: '';
@@ -88,7 +165,7 @@
     height: 16px;
     border: 1.5px solid $blackColor;
     border-radius: 2px;
-    margin-right: 10px;
+    margin-right: 8px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: 50% 50%;
@@ -107,9 +184,15 @@
 }
 
 .assentButton {
-  padding: 13px 80px 12px;
+  padding: 18px 80px;
   font-size: 20px;
   color: $brilliance;
   background-color: $blackColor;
   border-radius: 4px;
+  transition: opacity 2s;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
 }

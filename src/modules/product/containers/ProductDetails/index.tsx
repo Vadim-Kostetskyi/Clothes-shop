@@ -3,13 +3,14 @@ import { useParams } from 'react-router-dom';
 import PhotoSwitcher from 'modules/product/containers/ProductDetailsGallery';
 import ProductDetailsInfo from 'modules/product/components/ProductDetailsInfo';
 import { useGetProductByIdQuery } from 'redux/productsApi';
-import SameStyleProducts from 'components/SameStyleProducts';
+import CustomizedProductsDisplay from 'components/SameStyleAndVisitedProducts';
 import { useLocalStorage } from 'hooks';
 import styles from './index.module.scss';
 
 const ProductDetails = () => {
   const { productId } = useParams();
-  const { data } = useGetProductByIdQuery({ id: productId });
+  const { data } = useGetProductByIdQuery({ id: productId ?? '' });
+
   const { getItem, setItem } = useLocalStorage<string[]>('visited', []);
 
   useEffect(() => {
@@ -39,7 +40,7 @@ const ProductDetails = () => {
           {...data}
         />
       </div>
-      <SameStyleProducts subcategory={data?.subcategory} />
+      <CustomizedProductsDisplay subcategory={data?.subcategory} />
     </>
   );
 };

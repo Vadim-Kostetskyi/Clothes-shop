@@ -5,7 +5,7 @@ import { productsApi } from './productsApi';
 import {
   reducer as shoppingCartReducer,
   name as shoppingCartName,
-} from './slices/shopping-cart/shopping-cart';
+} from './slices/shopping-cart';
 
 const rootReducer = combineReducers({
   [productsApi.reducerPath]: productsApi.reducer,

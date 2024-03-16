@@ -1,6 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 import Header from 'modules/core/containers/Header';
 import Footer from 'modules/core/containers/Footer';
+import styles from './index.module.scss';
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -10,7 +11,7 @@ interface MainLayoutProps {
 const MainLayout: FC<MainLayoutProps> = ({ children, showFooter = true }) => (
   <>
     <Header />
-    {children}
+    <div className={styles.main}>{children}</div>
     {showFooter ? <Footer /> : null}
   </>
 );

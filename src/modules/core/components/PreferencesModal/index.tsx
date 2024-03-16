@@ -7,8 +7,10 @@ import { countries, DEFAULT_COUNTRY } from './listOfCountries';
 import LanguageSelect from 'modules/core/components/LanguageSelect';
 import Copyright from 'modules/core/components/Copyright';
 import { Language } from 'types/types';
-import styles from './index.module.scss';
 import { useTranslation } from 'react-i18next';
+import { useGetViewportWidth } from 'hooks';
+import { ViewportWidth } from 'utils/constants';
+import styles from './index.module.scss';
 
 export interface PreferencesModalProps {
   showModal: boolean;
@@ -81,6 +83,8 @@ const PreferencesModal: FC<PreferencesModalProps> = ({
     [],
   );
 
+  const isMobile = useGetViewportWidth(ViewportWidth.TABLET);
+
   return (
     <div className={styles.backdrop}>
       <div className={styles.modal}>
@@ -94,24 +98,27 @@ const PreferencesModal: FC<PreferencesModalProps> = ({
                 options={countries}
                 value={selectedCountry}
                 onChange={handleCountryChange}
+                isMobile={isMobile}
               />
             </div>
           </div>
-          <div className={styles.languageWrapper}>
-            <p className={styles.languageText}>
-              {' '}
-              {t('homePageModal.selectLanguage')}
-            </p>
+          <div className={styles.rightSectionWrapper}>
             <div className={styles.languageWrapper}>
-              <LanguageSelect
-                getButtonClassName={languageButtonClassName}
-                handleLanguageChange={handleLanguageChange}
-              />
+              <p className={styles.languageText}>
+                {' '}
+                {t('homePageModal.selectLanguage')}
+              </p>
+              <div>
+                <LanguageSelect
+                  getButtonClassName={languageButtonClassName}
+                  handleLanguageChange={handleLanguageChange}
+                />
+              </div>
             </div>
             {/* TODO: move to a separate component */}
             <div className={styles.assentWrapper}>
               <form className={styles.agreement} onSubmit={saveCountryLanguage}>
-                <label>
+                <label className={styles.agreementLabel}>
                   <input
                     type="checkbox"
                     name="check"
@@ -128,9 +135,7 @@ const PreferencesModal: FC<PreferencesModalProps> = ({
             </div>
           </div>
         </div>
-        <div>
-          <Copyright />
-        </div>
+        {!isMobile && <Copyright />}
       </div>
     </div>
   );

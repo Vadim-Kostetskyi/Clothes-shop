@@ -5,12 +5,15 @@ import {
 } from '@reduxjs/toolkit/query/react';
 import { QueryReturnValue } from '@reduxjs/toolkit/dist/query/baseQueryTypes';
 import {
+  GetProductsBiId,
   GetProductsPayload,
   GetProductsResponse,
-  GetProductsWithImages,
   GetProductsWithImagesProps,
+  ProductProps,
   SearchProductsProps,
   TopCategoriesProductsProps,
+  ImageItemProps,
+  SearchByIdProps,
 } from './types';
 import { BASE_URL } from './routes';
 
@@ -26,11 +29,10 @@ export const productsApi = createApi({
     getTopCategoriesByName: builder.query<TopCategoriesProductsProps[], void>({
       query: () => 'products/top',
     }),
-    // TODO: https://allalitvinenko.atlassian.net/browse/OS-187
-    getProductById: builder.query({
+    getProductById: builder.query<ProductProps, SearchByIdProps>({
       query: ({ id }) => `products/${id}`,
     }),
-    getProductImages: builder.query({
+    getProductImages: builder.query<ImageItemProps[], SearchByIdProps>({
       query: ({ id }) => `products/images/${id}`,
     }),
     searchProductsByParameter: builder.query<
@@ -80,7 +82,7 @@ export const productsApi = createApi({
         return { data: { products: [], images: [] } };
       },
     }),
-    getNewNowProducts: builder.query<GetProductsWithImages[], void>({
+    getNewNowProducts: builder.query<GetProductsWithImagesProps, void>({
       async queryFn(_arg, _queryApi, _extraOptions, fetchWithBQ) {
         const rawProducts = await fetchWithBQ('products/new');
 
@@ -88,20 +90,23 @@ export const productsApi = createApi({
           return { error: rawProducts.error as FetchBaseQueryError };
 
         const products =
-          (rawProducts?.data as GetProductsResponse['products']) ?? [];
-        const productsWithImages: GetProductsWithImages[] = [];
+          (rawProducts?.data as GetProductsWithImagesProps['products']) ?? [];
 
-        for (const product of products) {
-          const rawImages = await fetchWithBQ(`products/images/${product.id}`);
-          if (rawImages.error)
-            return { error: rawImages.error as FetchBaseQueryError };
+        const images = await Promise.all(
+          products.map(async ({ id }) => {
+            const images = await fetchWithBQ(`products/images/${id}`);
+            return { id, images: images?.data };
+          }),
+        );
 
-          const images = rawImages.data as GetProductsWithImages['images'];
-
-          productsWithImages.push({ product, images });
+        if (images.every(({ id }) => id)) {
+          return { data: { products, images } } as unknown as QueryReturnValue<
+            GetProductsWithImagesProps,
+            FetchBaseQueryError
+          >;
         }
 
-        return { data: productsWithImages };
+        return { data: { products: [], images: [] } };
       },
     }),
     fetchProductsWithImages: builder.mutation<
@@ -121,6 +126,8 @@ export const productsApi = createApi({
         const products =
           (rawProducts.data as GetProductsResponse)?.products ?? [];
 
+        const pages = (rawProducts?.data as GetProductsResponse)?.pages ?? 0;
+
         const productsId: string[] = products.reduce((acc: string[], cur) => {
           acc.push(cur.id);
           return acc;
@@ -134,13 +141,63 @@ export const productsApi = createApi({
         );
 
         if (images.every(({ id }) => id)) {
-          return { data: { products, images } } as unknown as QueryReturnValue<
+          return {
+            data: { products, images, pages },
+          } as unknown as QueryReturnValue<
             GetProductsWithImagesProps,
             FetchBaseQueryError
           >;
         }
 
-        return { data: { products: [], images: [] } };
+        return { data: { products: [], images: [], pages } };
+      },
+    }),
+    getProductsByIdWithImages: builder.query<
+      GetProductsWithImagesProps,
+      GetProductsBiId
+    >({
+      async queryFn(_arg, _queryApi, _extraOptions, fetchWithBQ) {
+        const products = await Promise.all(
+          _arg.id.map(async id => {
+            const rawProducts = await fetchWithBQ(`products/${id}`);
+
+            if (rawProducts.error)
+              return { error: rawProducts.error as FetchBaseQueryError };
+
+            return rawProducts.data as ProductProps;
+          }),
+        );
+
+        const images = await Promise.all(
+          _arg.id.map(async id => {
+            const images = await fetchWithBQ(`products/images/${id}`);
+            return { id, images: images?.data };
+          }),
+        );
+
+        if (
+          products.every(
+            (product: ProductProps | { error: FetchBaseQueryError }) =>
+              'id' in product,
+          )
+        ) {
+          return {
+            data: { products, images },
+          } as unknown as QueryReturnValue<
+            GetProductsWithImagesProps,
+            FetchBaseQueryError
+          >;
+        }
+
+        return {
+          data: {
+            product: null,
+            images: null,
+          },
+        } as unknown as QueryReturnValue<
+          GetProductsWithImagesProps,
+          FetchBaseQueryError
+        >;
       },
     }),
   }),
@@ -155,4 +212,5 @@ export const {
   useSearchProductsByParameterQuery,
   useGetProductByIdQuery,
   useGetTopCategoriesByNameQuery,
+  useGetProductsByIdWithImagesQuery,
 } = productsApi;

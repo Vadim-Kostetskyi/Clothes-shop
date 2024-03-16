@@ -1,15 +1,13 @@
 @import 'styles/constants';
 
-.menu ul {
+.menu > ul {
   display: flex;
+  gap: 40px;
+  justify-content: space-between;
 }
 
 .menu ul li {
   font-weight: 500;
-
-  &:not(:last-child) {
-    margin-right: 40px;
-  }
 }
 
 .menu > ul > li > a {
@@ -24,8 +22,8 @@
       border-bottom-color: $textPrimary;
     }
 
-    &:focus + ul,
-    &:hover + ul {
+    &:focus + .categoryWrapper,
+    &:hover + .categoryWrapper {
       display: flex;
     }
   }
@@ -64,6 +62,7 @@
     &:hover,
     &:focus {
       display: flex;
+      justify-content: flex-start;
     }
   }
 }
