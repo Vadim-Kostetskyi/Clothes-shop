@@ -1,6 +1,5 @@
 import React, { FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-// import NestedMenu from 'components/NestedMenu';
 import { HeaderMenu, MenuItem } from 'types/types';
 import Accordion from 'modules/core/components/Accordion';
 import styles from './index.module.scss';
@@ -35,14 +34,13 @@ const HamburgerMenuItem: FC<HamburgerMenuItemProps> = ({
       <div className={styles.category}>
         {menuOptions[itemLabel].map(({ id, href, label }) =>
           getIsAccordionMenu(label) ? (
-            <div key={id}>
+            <div key={id} className={styles.accordionWrapper}>
               <Accordion
                 title={t('listItem', { label })}
                 titleStyles={styles.title}
                 listStyle={styles.listStyle}
                 list={
                   label === 'Clothing' && (
-                    // <NestedMenu items={menuItems[itemLabel]} />
                     <div className={styles.wrapper}>
                       {menuItems[itemLabel].map(({ id, href, label }) => (
                         <Link
@@ -50,7 +48,7 @@ const HamburgerMenuItem: FC<HamburgerMenuItemProps> = ({
                           key={id}
                           className={id ? styles.link : styles.linkSeeAll}
                         >
-                          {t('listItem', { label })}{' '}
+                          {t('listItem', { label })}
                         </Link>
                       ))}
                     </div>

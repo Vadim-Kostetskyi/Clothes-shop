@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import {
@@ -8,27 +8,29 @@ import {
 } from 'modules/core/containers/Header/menu-data';
 import { HeaderMenu } from 'types/types';
 import styles from './index.module.scss';
+import HamburgerMenuItem from 'modules/core/components/HamburgerMenuItem';
 
 const CatalogMenu = (): JSX.Element => {
   const [selectedCategory, setSelectedCategory] = useState<string>();
   const [showSubCategory, setShowSubCategory] = useState(false);
+  console.log(selectedCategory);
 
   const { t } = useTranslation();
   const { pathname } = useLocation();
-  const currentCategory = pathname.split('/')[1]; // "men"
+  const currentCategory = pathname.split('/')[1];
 
   useEffect(() => {
     setSelectedCategory(currentCategory);
   }, []);
 
-  // const handleCategoryClick = useCallback(
-  //   (label: string) => () => {
-  //     setShowSubCategory(label === HeaderMenu.Clothing);
-  //   },
-  //   [],
-  // );
+  const handleCategoryClick = useCallback(
+    (label: string) => () => {
+      setShowSubCategory(label === HeaderMenu.Clothing);
+    },
+    [],
+  );
 
-  const toggleCategory = useCallback(
+  const toggleSubCategory = useCallback(
     (shouldShow: boolean) => () => {
       setShowSubCategory(shouldShow);
     },
@@ -46,79 +48,117 @@ const CatalogMenu = (): JSX.Element => {
     }
   }, []);
 
-  const handleFocus = useCallback(
+  const handleSelectCategory = useCallback(
     (category: string) => () => {
-      setSelectedCategory(category.toLowerCase());
+      // setSelectedCategory(category.toLowerCase());
+      setSelectedCategory(category);
     },
     [],
   );
 
-  const handleBlur = useCallback(
-    (category: string) => () => {
-      setSelectedCategory(category.toLowerCase());
-    },
-    [],
-  );
-
-  const handleSetCurrentCategory = useCallback(() => {
+  const setCurrentCategory = useCallback(() => {
     setSelectedCategory(currentCategory);
   }, []);
 
+  const menuClassName = useMemo(
+    () => (label: string) => {
+      return selectedCategory?.toLocaleLowerCase() === label.toLowerCase()
+        ? styles.item
+        : '';
+    },
+    [selectedCategory],
+  );
+
+  const toggleCategory = useCallback(
+    (category: string) => () => {
+      setSelectedCategory(category);
+      setShowSubCategory(!showSubCategory);
+    },
+    [],
+  );
+
+  const isMobile = true;
+
   return (
     <nav className={styles.menu}>
-      <ul>
-        {menuName.map(({ id, href, label }) => (
-          <li key={id}>
-            <Link
-              className={
-                selectedCategory === label.toLowerCase() ? styles.item : ''
-              }
-              to={href}
-              onBlur={handleBlur(label)}
-              onMouseEnter={handleFocus(label)}
-              onMouseLeave={handleSetCurrentCategory}
-            >
-              {t('listItem', { label })}
-            </Link>
-            <ul
-              onMouseEnter={handleFocus(label)}
-              onMouseLeave={handleSetCurrentCategory}
-            >
-              <li>
-                {category[label].map(({ id, href, label }) => (
-                  <Link
-                    to={href}
-                    key={id}
-                    className={getClassName(label)}
-                    // onClick={handleCategoryClick(label)}
-                  >
-                    {t('listItem', { label })}
-                  </Link>
-                ))}
-              </li>
-              <li
-                className={
-                  showSubCategory ? styles.clothingListWrapper : styles.hide
-                }
-                onBlur={toggleCategory(false)}
+      <ul onMouseLeave={toggleSubCategory(false)}>
+        {menuName.map(({ id, href, label }) => {
+          return (
+            <li key={id}>
+              {isMobile ? (
+                <button
+                  className={menuClassName(label)}
+                  onClick={toggleCategory(label)}
+                >
+                  {t('listItem', { label })}
+                </button>
+              ) : (
+                <Link
+                  className={menuClassName(label)}
+                  to={href}
+                  // onBlur={handleSelectCategory(label)}
+                  onMouseEnter={handleSelectCategory(label)}
+                  onMouseLeave={setCurrentCategory}
+                  onClick={handleSelectCategory(label)}
+                >
+                  {t('listItem', { label })}
+                </Link>
+              )}
+              <ul
+                onMouseEnter={handleSelectCategory(label)}
+                onMouseLeave={setCurrentCategory}
               >
-                <ul className={styles.subcategoryWrapper}>
-                  {subcategory[label].map(({ id, href, label }) => (
-                    <Link
-                      to={href}
-                      key={id}
+                <li>
+                  {isMobile ? (
+                    <div
                       className={
-                        id ? styles.subcategoryLink : styles.linkSeeAll
+                        selectedCategory === label
+                          ? styles.menuListContainer
+                          : styles.menuListContainerHide
                       }
                     >
-                      {t('listItem', { label })}
-                    </Link>
-                  ))}
-                </ul>
-              </li>
-            </ul>
-          </li>
-        ))}
+                      <HamburgerMenuItem
+                        menuItems={subcategory}
+                        itemLabel={label}
+                        menuOptions={category}
+                      />
+                    </div>
+                  ) : (
+                    category[label].map(({ id, href, label }) => (
+                      <Link
+                        to={href}
+                        key={id}
+                        className={getClassName(label)}
+                        onClick={handleCategoryClick(label)}
+                      >
+                        {t('listItem', { label })}
+                      </Link>
+                    ))
+                  )}
+                </li>
+                <li
+                  className={
+                    showSubCategory ? styles.clothingListWrapper : styles.hide
+                  }
+                >
+                  <ul className={styles.subcategoryWrapper}>
+                    {subcategory[label].map(({ id, href, label }) => (
+                      <Link
+                        to={href}
+                        key={id}
+                        className={
+                          id ? styles.subcategoryLink : styles.linkSeeAll
+                        }
+                      >
+                        {t('listItem', { label })}
+                      </Link>
+                    ))}
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );
