@@ -15,6 +15,10 @@
     opacity: 20%;
   }
 
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+
   &:active {
     background-color: $darkGreen;
   }
@@ -49,6 +53,7 @@
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   background-color: $brilliance;
+  cursor: pointer;
 }
 
 .heart {
