@@ -1,4 +1,5 @@
 import React, { FC, ReactNode } from 'react';
+import { getValidClassNames } from 'helpers';
 import Header from 'modules/core/containers/Header';
 import Footer from 'modules/core/containers/Footer';
 import styles from './index.module.scss';
@@ -16,10 +17,14 @@ const MainLayout: FC<MainLayoutProps> = ({
 }) => (
   <>
     <Header />
-    <div className={`${styles.main} ${isLoading ? styles.mainMaxHeight : ''}`}>
+    <div
+      className={getValidClassNames(styles.main, {
+        [styles.mainMaxHeight]: isLoading,
+      })}
+    >
       {children}
     </div>
-    {showFooter ? <Footer /> : null}
+    {showFooter && <Footer />}
   </>
 );
 

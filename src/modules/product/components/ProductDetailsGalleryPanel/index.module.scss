@@ -1,13 +1,22 @@
+// .container {
+//   width: calc((100% - 16px) / 100 * 13);
+//   height: 100%;
+// }
+
 .imageWrapper {
   display: flex;
   flex-direction: column;
-  margin-right: 15px;
+  justify-content: space-between;
+  gap: 16px;
+  // grid-column:  1 / 2;
+  // grid-row: 1 / 7;
 }
 
 .image {
-  width: 110px;
+  width: 100%;
 }
 
-.imageButton:not(:last-child) {
-  margin-bottom: 15px;
+.imageButton {
+  // grid-column:  1 / 2;
+  // grid-row: 1fr;
 }

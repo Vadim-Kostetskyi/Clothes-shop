@@ -24,17 +24,3 @@
 .pageText {
   cursor: default;
 }
-
-.pageButton {
-  color: $grayLight;
-  &:hover {
-    cursor: pointer;
-  }
-}
-
-.pageButtonActive {
-  color: $blackColor;
-  &:hover {
-    cursor: default;
-  }
-}
