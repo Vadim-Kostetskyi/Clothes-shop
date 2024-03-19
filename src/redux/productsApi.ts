@@ -8,11 +8,12 @@ import {
   GetProductsBiId,
   GetProductsPayload,
   GetProductsResponse,
-  // GetProductsWithImages,
   GetProductsWithImagesProps,
   ProductProps,
   SearchProductsProps,
   TopCategoriesProductsProps,
+  ImageItemProps,
+  SearchByIdProps,
 } from './types';
 import { BASE_URL } from './routes';
 
@@ -28,11 +29,10 @@ export const productsApi = createApi({
     getTopCategoriesByName: builder.query<TopCategoriesProductsProps[], void>({
       query: () => 'products/top',
     }),
-    // TODO: https://allalitvinenko.atlassian.net/browse/OS-187
-    getProductById: builder.query({
+    getProductById: builder.query<ProductProps, SearchByIdProps>({
       query: ({ id }) => `products/${id}`,
     }),
-    getProductImages: builder.query({
+    getProductImages: builder.query<ImageItemProps[], SearchByIdProps>({
       query: ({ id }) => `products/images/${id}`,
     }),
     searchProductsByParameter: builder.query<
@@ -126,6 +126,8 @@ export const productsApi = createApi({
         const products =
           (rawProducts.data as GetProductsResponse)?.products ?? [];
 
+        const pages = (rawProducts?.data as GetProductsResponse)?.pages ?? 0;
+
         const productsId: string[] = products.reduce((acc: string[], cur) => {
           acc.push(cur.id);
           return acc;
@@ -139,13 +141,15 @@ export const productsApi = createApi({
         );
 
         if (images.every(({ id }) => id)) {
-          return { data: { products, images } } as unknown as QueryReturnValue<
+          return {
+            data: { products, images, pages },
+          } as unknown as QueryReturnValue<
             GetProductsWithImagesProps,
             FetchBaseQueryError
           >;
         }
 
-        return { data: { products: [], images: [] } };
+        return { data: { products: [], images: [], pages } };
       },
     }),
     getProductsByIdWithImages: builder.query<

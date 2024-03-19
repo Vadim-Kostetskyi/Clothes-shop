@@ -11,7 +11,7 @@ export interface ProductProps {
   price: string;
   size: Size[];
   category: string;
-  subcategory: string;
+  subcategory: Subcategory;
   colour: string;
   description: string;
   composition: string;
@@ -42,8 +42,10 @@ export interface GetProductsResponse {
 export interface GetProductsWithImagesProps {
   products: ProductProps[];
   images: ImageProps[];
+  pages?: number;
   error?: boolean;
 }
+
 export interface GetProductsWithImages {
   product: ProductProps;
   images: ImageItemProps[];
@@ -63,6 +65,10 @@ export type BodySearchProducts = {
 export interface TopCategoriesProductsProps {
   name: string;
   url: string;
+}
+
+export interface SearchByIdProps {
+  id: string;
 }
 
 export interface GetProductsBiId {
