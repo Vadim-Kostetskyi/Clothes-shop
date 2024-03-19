@@ -16,6 +16,8 @@ function App() {
       <Route path="/product/:productId" element={<ProductDetailsPage />} />
       <Route path="/checkout" element={<OrderCheckoutPage />}>
         <Route path="details" element={<OrderCheckoutAuthorization />} />
+        <Route path="delivery" />
+        <Route path="payment" />
       </Route>
     </Routes>
   );

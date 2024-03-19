@@ -1,17 +1,21 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import MainLayout from 'modules/core/components/MainLayout';
-import TotalPurchase from 'modules/product/components/TotalPurchase';
+import ShoppingCartModal from 'modules/checkout/containers/ShoppingCartModal';
+import OrderStage from 'modules/product/components/OrderStage';
 import styles from './index.module.scss';
 
 const OrderCheckoutPage = () => {
   return (
-    <MainLayout showFooter={false}>
-      <div className={styles.wrapper}>
-        <Outlet />
-        <TotalPurchase />
+    <div className={styles.wrapper}>
+      <div className={styles.contentWrapper}>
+        <MainLayout showFooter={false}>
+          <OrderStage />
+          <Outlet />
+        </MainLayout>
       </div>
-    </MainLayout>
+      <ShoppingCartModal isOrder={true} />
+    </div>
   );
 };
 
