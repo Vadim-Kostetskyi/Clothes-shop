@@ -1,11 +1,14 @@
 @import 'styles/constants';
 
 .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    margin-bottom: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 64px;
+    @include media(mobile) {
+      margin-bottom: 0px;
+    }
 }
 
 .pager {
@@ -23,15 +26,15 @@
 }
 
 .pageButton {
-    color: $grayLight;
-    &:hover {
+  color: $grayLight;
+  &:hover {
     cursor: pointer;
-    }
+  }
 }
 
 .pageButtonActive {
-    color: $blackColor;
-    &:hover {
-        cursor: default;
-    }
+  color: $blackColor;
+  &:hover {
+    cursor: default;
+  }
 }
