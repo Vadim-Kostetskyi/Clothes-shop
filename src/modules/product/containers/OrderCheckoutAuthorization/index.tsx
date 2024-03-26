@@ -1,23 +1,49 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useGoogleLogin } from '@react-oauth/google';
+import { IResolveParams, LoginSocialFacebook } from 'reactjs-social-login';
+import LoginFacebookButton from 'modules/product/components/LoginFacebookButton';
 import Input from 'modules/core/components/Input';
 import styles from './index.module.scss';
-import { useTranslation } from 'react-i18next';
 
 const OrderCheckoutAuthorization = () => {
   const [stayLogged, setStayLogged] = useState(false);
 
   const { t } = useTranslation();
 
+  const googleLogin = useGoogleLogin({
+    onSuccess: codeResponse => console.log(codeResponse),
+    flow: 'auth-code',
+  });
+
+  const appleLogin = () => {
+    //TODO add function to login with Apple
+  };
+
+  const facebookLogin = (response: IResolveParams) => {
+    //TODO add function to login with Apple
+    console.log(response);
+  };
+
   const buttons = [
-    { label: t('order.withoutRegistration'), className: '' },
-    { label: t('order.continueWithApple'), className: 'appleText' },
-    { label: t('order.continueWithGoogle'), className: 'googleText' },
-    { label: t('order.continueWithFacebook'), className: 'facebookText' },
+    { label: t('order.withoutRegistration'), className: '', onClick: () => {} },
+    {
+      label: t('order.continueWithApple'),
+      className: 'appleText',
+      onClick: () => appleLogin(),
+    },
+    {
+      label: t('order.continueWithGoogle'),
+      className: 'googleText',
+      onClick: () => googleLogin(),
+    },
   ];
 
   const handleChange = () => {
     setStayLogged(!stayLogged);
   };
+
+  const FacebookButton = LoginFacebookButton(t('order.continueWithFacebook'));
 
   return (
     <div className={styles.wrapper}>
@@ -53,14 +79,25 @@ const OrderCheckoutAuthorization = () => {
         <button className={styles.signBtn}>{t('order.signIn')}</button>
       </form>
       <span className={styles.text}>{t('order.orIfYouPrefer')}</span>
-      {buttons.map(({ label, className }, index) => (
+      {buttons.map(({ label, className, onClick }, index) => (
         <button
           key={label}
           className={index ? styles.socialSignBtn : styles.withoutRegisterBtn}
+          onClick={onClick}
         >
           <span className={styles[className]}>{label}</span>
         </button>
       ))}
+      <LoginSocialFacebook
+        isOnlyGetToken
+        appId={'440376498454130'}
+        onResolve={response => facebookLogin(response)}
+        onReject={error => {
+          console.log(error);
+        }}
+      >
+        <FacebookButton />
+      </LoginSocialFacebook>
     </div>
   );
 };
