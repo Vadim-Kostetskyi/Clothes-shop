@@ -1,0 +1,91 @@
+@import 'styles/constants';
+
+.deliveryInfo,
+.deliveryInfoHome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-family: $font-family-main;
+  padding: 24px 16px 24px 24px;
+  border: 1px solid $grayLight;
+  border-radius: 8px;
+
+  &:not(:last-child) {
+    margin-bottom: 15px;
+  }
+}
+
+.deliveryInfoHome {
+  position: relative;
+  justify-content: center;
+  padding-top: 125px;
+  padding-bottom: 45px;
+}
+
+.deliveryInfo > div {
+  display: flex;
+}
+
+.deliveryInfo img {
+  margin-right: 25px;
+}
+
+.deliveryInfoHome img {
+  margin-bottom: 25px;
+}
+
+.deliveryInfo > div > div > div,
+.deliveryInfoHome > div > div > div {
+  display: flex;
+  align-items: end;
+  margin-bottom: 10px;
+}
+
+.deliveryInfoHome > div > div > div {
+  justify-content: center;
+}
+
+.deliveryInfo h1,
+.deliveryInfoHome h1 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-right: 25px;
+}
+
+.deliveryInfoHome h1 {
+  margin-right: 0;
+}
+
+.deliveryInfo p,
+.deliveryInfoHome p {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: $grayLight;
+  text-align: start;
+}
+
+.deliveryInfoHome p {
+  margin-bottom: 10px;
+}
+
+.deliveryInfo svg,
+.deliveryInfoHome svg {
+  width: 24px;
+}
+
+.deliveryInfoHome svg {
+  position: absolute;
+  right: 16px;
+}
+
+.price,
+.free {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.free {
+  color: $greenMint;
+}

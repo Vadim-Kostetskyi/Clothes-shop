@@ -16,10 +16,16 @@ const Input: FC<InputProps> = ({
   Icon,
   text,
   wrapperClass,
+  onChange,
 }) => (
   <div className={`${styles.inputWrapper} ${wrapperClass}`}>
     {Icon ? <span className={styles.icon}>{Icon}</span> : null}
-    <input type={type} placeholder={placeholder} className={className} />
+    <input
+      type={type}
+      placeholder={placeholder}
+      className={className}
+      onChange={onChange}
+    />
     {text ? <label className={styles.text}>{text}</label> : null}
   </div>
 );
