@@ -16,7 +16,7 @@ const Header = (): JSX.Element => {
   const { t } = useTranslation();
   const location = useLocation();
   const isHomePage = location.pathname === '/';
-  const isCheckout = location.pathname.startsWith('/checkout');
+  const isCheckoutPage = location.pathname.startsWith('/checkout');
 
   const toggleOpenMenu = useCallback(
     () => () => setIsMenuOpen(prev => !prev),
@@ -24,9 +24,9 @@ const Header = (): JSX.Element => {
   );
 
   return (
-    <div className={isCheckout ? styles.checkoutHeader : styles.header}>
-      {isHomePage || isCheckout ? (
-        <div className={isCheckout ? styles.logoBox : styles.logoContainer}>
+    <div className={isCheckoutPage ? styles.checkoutHeader : styles.header}>
+      {isHomePage || isCheckoutPage ? (
+        <div className={isCheckoutPage ? styles.logoBox : styles.logoContainer}>
           <img src={logo} className={styles.logo} alt="Logo" />
         </div>
       ) : (

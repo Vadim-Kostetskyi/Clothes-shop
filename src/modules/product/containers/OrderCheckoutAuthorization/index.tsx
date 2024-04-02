@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGoogleLogin } from '@react-oauth/google';
 import { IResolveParams, LoginSocialFacebook } from 'reactjs-social-login';
-import LoginFacebookButton from 'modules/product/components/LoginFacebookButton';
+import HandleLoginFacebookButton from 'modules/product/components/LoginFacebookButton';
 import Input from 'modules/core/components/Input';
 import styles from './index.module.scss';
 
@@ -43,7 +43,9 @@ const OrderCheckoutAuthorization = () => {
     setStayLogged(!stayLogged);
   };
 
-  const FacebookButton = LoginFacebookButton(t('order.continueWithFacebook'));
+  const FacebookButton = HandleLoginFacebookButton(
+    t('order.continueWithFacebook'),
+  );
 
   return (
     <div className={styles.wrapper}>
@@ -90,8 +92,8 @@ const OrderCheckoutAuthorization = () => {
       ))}
       <LoginSocialFacebook
         isOnlyGetToken
-        appId={'440376498454130'}
-        onResolve={response => facebookLogin(response)}
+        appId={process.env.REACT_APP_FACEBOOK_APP_ID || ''}
+        onResolve={facebookLogin}
         onReject={error => {
           console.log(error);
         }}

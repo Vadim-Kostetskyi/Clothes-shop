@@ -13,6 +13,8 @@
   "telephone": "Telephone",
   "email": "Email",
   "password": "Password",
+  "item": "item",
+  "items": "items",
   "copyright": "© {{year}} by NOVA. All Rights Reserved.",
   "subscriptionForm": {
     "placeholder": "Enter your email address",

@@ -16,6 +16,6 @@ const config = (text: string) => ({
   className: styles.button,
 });
 
-const LoginFacebookButton = (text: string) => createButton(config(text));
+const HandleLoginFacebookButton = (text: string) => createButton(config(text));
 
-export default LoginFacebookButton;
+export default HandleLoginFacebookButton;

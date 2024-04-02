@@ -31,7 +31,7 @@ const ShoppingCartModal: FC<Properties> = ({
       <OrderSummary
         totalPrice={totalPrice}
         isOrder={isOrder}
-        amountProducts={products.length}
+        amountProducts={products?.length}
       />
     </ShoppingCart>
   );

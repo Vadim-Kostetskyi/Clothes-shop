@@ -1,14 +1,13 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './index.module.scss';
+import useExtractFromPath from 'hooks/use-extract-from-path';
 
 const OrderStage = () => {
-  const location = useLocation();
   const { t } = useTranslation();
 
-  const path = location.pathname.split('/checkout/');
-  const stage = path[1].toUpperCase();
+  const path = useExtractFromPath('checkout');
+  const stage = path.toUpperCase();
 
   const stages = [t('order.details'), t('order.delivery'), t('order.payment')];
 
