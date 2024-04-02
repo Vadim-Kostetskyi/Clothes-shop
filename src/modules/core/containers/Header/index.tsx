@@ -2,7 +2,6 @@ import React, { useCallback, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import CatalogMenu from 'components/CatalogMenu';
-// import HamburgerMenu from 'modules/core/components/HamburgerMenu';
 import TopBar from 'modules/core/components/TopBar';
 import Input from 'modules/core/components/Input';
 import logo from 'assets/images/logo.png';

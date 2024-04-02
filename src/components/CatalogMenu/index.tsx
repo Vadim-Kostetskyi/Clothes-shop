@@ -12,9 +12,9 @@ import { useGetViewportWidth } from 'hooks';
 import { ViewportWidth } from 'utils/constants';
 import styles from './index.module.scss';
 
-const CatalogMenu = (): JSX.Element => {
+const CatalogMenu = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>();
-  const [showSubCategory, setShowSubCategory] = useState(false);
+  const [showSubcategory, setShowSubcategory] = useState(false);
 
   const isMobile = useGetViewportWidth(ViewportWidth.TABLET);
   const { t } = useTranslation();
@@ -27,14 +27,14 @@ const CatalogMenu = (): JSX.Element => {
 
   const handleCategoryClick = useCallback(
     (label: string) => () => {
-      setShowSubCategory(label === HeaderMenu.Clothing);
+      setShowSubcategory(label === HeaderMenu.Clothing);
     },
     [],
   );
 
-  const toggleSubCategory = useCallback(
+  const toggleSubcategory = useCallback(
     (shouldShow: boolean) => () => {
-      setShowSubCategory(shouldShow);
+      setShowSubcategory(shouldShow);
     },
     [],
   );
@@ -73,14 +73,14 @@ const CatalogMenu = (): JSX.Element => {
   const toggleCategory = useCallback(
     (category: string) => () => {
       setSelectedCategory(category);
-      setShowSubCategory(!showSubCategory);
+      setShowSubcategory(!showSubcategory);
     },
     [],
   );
 
   return (
     <nav className={styles.menu}>
-      <ul onMouseLeave={toggleSubCategory(false)}>
+      <ul onMouseLeave={toggleSubcategory(false)}>
         {menuName.map(({ id, href, label }) => (
           <li key={id}>
             {isMobile ? (
@@ -136,7 +136,7 @@ const CatalogMenu = (): JSX.Element => {
               </li>
               <li
                 className={
-                  showSubCategory ? styles.clothingListWrapper : styles.hide
+                  showSubcategory ? styles.clothingListWrapper : styles.hide
                 }
               >
                 <ul className={styles.subcategoryWrapper}>
