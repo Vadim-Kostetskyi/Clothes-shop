@@ -4,6 +4,11 @@
   margin-bottom: 50px;
 }
 
+.personalData h1 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
 .wrapperDetails {
   margin-bottom: 40px;
 }
@@ -44,8 +49,17 @@
 }
 
 .wrapperData form {
+  position: relative;
   height: 50px;
-  overflow: hidden;
+  overflow: visible;
+}
+
+.wrapperData form span {
+  position: absolute;
+  left: 12px;
+  top: 11px;
+  color: $grayLight;
+  background-color: $pageBackground;
 }
 
 .wrapperData textarea {
@@ -53,9 +67,40 @@
   height: 50px;
   resize: none;
 
+  &:not(:placeholder-shown):not(:focus):valid {
+    color: $greenMint;
+    border-color: $greenMint;
+    padding-left: 40px;
+    border-color: $greenMint;
+    background-image: url('../../../../assets/svgs/CheckGreen.svg');
+    background-size: 12px;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: 12px;
+  }
+
+  &:invalid {
+    border-color: $alertRed;
+  }
+
+  &:invalid ~ span {
+    color: $alertRed;
+  }
+
+  &:not(:placeholder-shown):valid:not(:focus) ~ span {
+    color: $greenMint;
+  }
+
   &::placeholder {
     position: absolute;
     bottom: 10px;
+    background-color: $pageBackground;
+  }
+
+  &:focus ~ span,
+  &:not(:placeholder-shown) ~ span {
+    top: -12px;
+    transition: all 500ms;
   }
 }
 
@@ -98,14 +143,15 @@
   background-color: $blackColor;
 }
 
-.personalData > p {
+.personalData > p,
+.personalData > a {
   font-size: 12px;
   font-weight: 400;
   color: $grayDark;
   margin-bottom: 40px;
 }
 
-.personalData > p:last-child {
-  text-align: end;
+.personalData > a {
+  float: right;
   margin-bottom: 0;
 }

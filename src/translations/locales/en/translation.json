@@ -11,6 +11,7 @@
   "workDays": "From Mondays to Fridays from 09:00 to 19:00",
   "online": "Online",
   "copyright": "© {{year}} by NOVA. All Rights Reserved.",
+  "consent": "By continuing, I confirm that I was able to read and understand the information on the use of my personal data, as explained in the Privacy Policy.",
   "subscriptionForm": {
     "placeholder": "Enter your email address",
     "policy": "I accept the privacy policy",

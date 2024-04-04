@@ -7,9 +7,11 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   text?: string;
   wrapperClass?: string;
   labelCheckbox?: string;
+  isAnimated?: boolean;
 }
 
 const Input: FC<InputProps> = ({
+  id,
   type,
   className,
   placeholder,
@@ -17,15 +19,22 @@ const Input: FC<InputProps> = ({
   text,
   wrapperClass,
   onChange,
+  isAnimated,
 }) => (
   <div className={`${styles.inputWrapper} ${wrapperClass}`}>
     {Icon ? <span className={styles.icon}>{Icon}</span> : null}
     <input
+      id={id}
       type={type}
-      placeholder={placeholder}
+      placeholder={isAnimated ? '' : placeholder}
       className={className}
       onChange={onChange}
     />
+    {isAnimated ? (
+      <label className={styles.placeholder} htmlFor={id}>
+        {placeholder}
+      </label>
+    ) : null}
     {text ? <label className={styles.text}>{text}</label> : null}
   </div>
 );

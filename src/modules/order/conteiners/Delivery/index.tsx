@@ -14,7 +14,7 @@ const Delivery = () => {
   const [deliveryType, setDeliveryType] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  // const [phoneNumber, setPhoneNumber] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState<string[]>([]);
   const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
   const [moreInformation, setMoreInformation] = useState('');
@@ -23,32 +23,38 @@ const Delivery = () => {
   const [state, setState] = useState('');
 
   const handleSetInfo = (event: ChangeEvent<HTMLInputElement>) => {
-    const placeholder = event.target.placeholder.toLowerCase();
+    const infoType = event.target.id.toLowerCase();
     const value = event.target.value;
 
     switch (true) {
-      case placeholder.includes('first'):
+      case infoType.includes('first'):
         setFirstName(value);
         break;
-      case placeholder.includes('last'):
+      case infoType.includes('last'):
         setLastName(value);
         break;
-      case placeholder.includes('email'):
+      case infoType.includes('prefix'):
+        setPhoneNumber([value, phoneNumber[1]]);
+        break;
+      case infoType.includes('number'):
+        setPhoneNumber([phoneNumber[0], value]);
+        break;
+      case infoType.includes('email'):
         setEmail(value);
         break;
-      case placeholder.includes('address'):
+      case infoType.includes('address'):
         setAddress(value);
         break;
-      case placeholder.includes('more'):
+      case infoType.includes('more'):
         setMoreInformation(value);
         break;
-      case placeholder.includes('zip'):
+      case infoType.includes('zip'):
         setZipCode(value);
         break;
-      case placeholder.includes('city'):
+      case infoType.includes('city'):
         setCity(value);
         break;
-      case placeholder.includes('state'):
+      case infoType.includes('state'):
         setState(value);
         break;
 
@@ -90,9 +96,12 @@ const Delivery = () => {
   ];
 
   const sendCustomerInformation = () => {
+    //TODO send information to the backend and move to the next step
     console.log(
+      deliveryType,
       firstName,
       lastName,
+      phoneNumber,
       email,
       address,
       moreInformation,
