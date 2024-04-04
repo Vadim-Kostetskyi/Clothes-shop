@@ -15,6 +15,7 @@ const Header = (): JSX.Element => {
   const { t } = useTranslation();
   const location = useLocation();
   const isHomePage = location.pathname === '/';
+  const isCheckoutPage = location.pathname.startsWith('/checkout');
 
   const toggleOpenMenu = useCallback(
     () => () => setIsMenuOpen(prev => !prev),
@@ -22,15 +23,18 @@ const Header = (): JSX.Element => {
   );
 
   return (
-    <div className={styles.header}>
-      <div className={styles.headerContainer}>
-        <div
-          className={
-            isHomePage ? styles.headerWrapperHomePage : styles.headerWrapper
-          }
-        >
-          {/* TODO: refactor this logic */}
-          {isHomePage ? null : (
+    <div className={isCheckoutPage ? styles.checkoutHeader : styles.header}>
+      {isHomePage || isCheckoutPage ? (
+        <div className={isCheckoutPage ? styles.logoBox : styles.logoContainer}>
+          <img src={logo} className={styles.logo} alt="Logo" />
+        </div>
+      ) : (
+        <div className={styles.headerContainer}>
+          <div
+            className={
+              isHomePage ? styles.headerWrapperHomePage : styles.headerWrapper
+            }
+          >
             <nav className={styles.navigation}>
               <button
                 className={styles.openMenuButton}
@@ -46,21 +50,13 @@ const Header = (): JSX.Element => {
                 <CatalogMenu />
               </div>
             </nav>
-          )}
-          {isHomePage ? (
-            <img src={logo} className={styles.logo} alt="Logo" />
-          ) : (
             <Link to="/men">
               <img src={logo} className={styles.logo} alt="Logo" />
             </Link>
-          )}
-          {isHomePage ? null : (
             <div className={styles.userBox}>
               <TopBar />
             </div>
-          )}
-        </div>
-        {isHomePage ? null : (
+          </div>
           <div className={styles.wrapperMenuMobile}>
             {isMenuOpen ? <CatalogMenu /> : null}
             {isMenuOpen ? null : (
@@ -73,8 +69,8 @@ const Header = (): JSX.Element => {
               </div>
             )}
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

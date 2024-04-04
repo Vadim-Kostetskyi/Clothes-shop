@@ -4,14 +4,16 @@ import PhotoSwitcher from 'modules/product/containers/ProductDetailsGallery';
 import ProductDetailsInfo from 'modules/product/components/ProductDetailsInfo';
 import { useGetProductByIdQuery } from 'redux/productsApi';
 import CustomizedProductsDisplay from 'components/SameStyleAndVisitedProducts';
-import { useLocalStorage } from 'hooks';
+import { useAppDispatch, useLocalStorage } from 'hooks';
+import { actions as shoppingCartActions } from 'redux/slices/shopping-cart';
+import { Color } from 'types/types';
 import styles from './index.module.scss';
 
 const ProductDetails = () => {
   const { productId } = useParams();
-  const { data } = useGetProductByIdQuery({ id: productId ?? '' });
-
+  const { data } = useGetProductByIdQuery({ id: productId || '' });
   const { getItem, setItem } = useLocalStorage<string[]>('visited', []);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const visitedProduct = getItem();
@@ -23,7 +25,22 @@ const ProductDetails = () => {
   }, [productId]);
 
   const addToShoppingCart = useCallback(() => {
-    // TODO: add the function of adding an item to the shopping bag
+    if (!data || !productId) {
+      return;
+    }
+    const { price, title, vendorCode, colour, size, quantity } = data;
+
+    dispatch(
+      shoppingCartActions.addItem({
+        id: productId,
+        price: +price,
+        title: title,
+        vendorCode: vendorCode,
+        colour: colour as Color,
+        size: size[1],
+        count: quantity,
+      }),
+    );
   }, []);
 
   const addToFavorite = useCallback(() => {

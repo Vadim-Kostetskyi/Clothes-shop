@@ -7,6 +7,7 @@ import App from './pages/App';
 import reportWebVitals from './reportWebVitals';
 import { store } from 'redux/store';
 import './translations/i18n';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -15,7 +16,11 @@ root.render(
   <BrowserRouter>
     <React.StrictMode>
       <Provider store={store}>
-        <App />
+        <GoogleOAuthProvider
+          clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID || ''}
+        >
+          <App />
+        </GoogleOAuthProvider>
       </Provider>
     </React.StrictMode>
   </BrowserRouter>,
