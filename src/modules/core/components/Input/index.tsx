@@ -7,20 +7,39 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   text?: string;
   wrapperClass?: string;
   labelCheckbox?: string;
+  isAnimated?: boolean;
 }
 
 const Input: FC<InputProps> = ({
+  id,
   type,
   className,
   placeholder,
   Icon,
   text,
   wrapperClass,
+  onChange,
+  isAnimated,
 }) => (
   <div className={`${styles.inputWrapper} ${wrapperClass}`}>
     {Icon ? <span className={styles.icon}>{Icon}</span> : null}
-    <input type={type} placeholder={placeholder} className={className} />
-    {text ? <label className={styles.text}>{text}</label> : null}
+    <input
+      id={id}
+      type={type}
+      placeholder={isAnimated ? '' : placeholder}
+      className={className}
+      onChange={onChange}
+    />
+    {isAnimated ? (
+      <label className={styles.placeholder} htmlFor={id}>
+        {placeholder}
+      </label>
+    ) : null}
+    {text ? (
+      <label className={isAnimated ? styles.warning : styles.text}>
+        {text}
+      </label>
+    ) : null}
   </div>
 );
 

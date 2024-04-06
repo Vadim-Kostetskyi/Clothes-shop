@@ -7,7 +7,7 @@
 }
 
 .text {
-  color: #212121;
+  color: red;
   font-family: $font-family-main;
   font-size: 12px;
   margin-left: 8px;
@@ -18,4 +18,53 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+
+  &:focus-within .placeholder {
+    top: -7.5px;
+    transition: all 500ms;
+  }
+
+  & input:not(:placeholder-shown) ~ .placeholder {
+    top: -7.5px;
+  }
+
+  & input:not(:placeholder-shown):not(:focus):valid {
+    color: $greenMint;
+    padding-left: 40px;
+    border-color: $greenMint;
+    background-image: url('../../../../assets/svgs/CheckGreen.svg');
+    background-size: 12px;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: 12px;
+  }
+
+  & input:not(:placeholder-shown):not(:focus):invalid {
+    color: $alertRed;
+    border-color: $alertRed;
+  }
+
+  & input:not(:placeholder-shown):not(:focus):invalid ~ label {
+    display: block;
+    color: $alertRed;
+  }
+
+  & input:not(:placeholder-shown):not(:focus):valid ~ label {
+    color: $greenMint;
+  }
+}
+
+.placeholder {
+  position: absolute;
+  left: 12px;
+  top: 18px;
+  color: $grayLight;
+  background-color: $pageBackground;
+}
+
+.warning {
+  display: none;
+  position: absolute;
+  bottom: -15px;
+  font-size: 12px;
 }
