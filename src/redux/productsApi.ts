@@ -110,27 +110,25 @@ export const productsApi = createApi({
       SearchProductsProps
     >({
       async queryFn(_arg, _queryApi, _extraOptions, fetchWithBQ) {
-        let rawProducts;
+        let params = {
+          url: `products/search?page=${_arg.page}&size=${_arg.size}`,
+          method: 'POST',
+          body: _arg.body,
+        };
 
         switch (true) {
           case _arg.isFilter:
-            rawProducts = await fetchWithBQ({
+            params = {
               url: `products/filter?page=${_arg.page}&size=${_arg.size}&sorting=price-${_arg.sortBy}`,
               method: 'POST',
               body: _arg.body,
-            });
+            };
             break;
           case _arg.isNewNow:
-            rawProducts = await fetchWithBQ('products/new');
-            break;
-          default:
-            rawProducts = await fetchWithBQ({
-              url: `products/search?page=${_arg.page}&size=${_arg.size}`,
-              method: 'POST',
-              body: _arg.body,
-            });
+            params = { url: 'products/new', method: 'GET', body: _arg.body };
             break;
         }
+        const rawProducts = await fetchWithBQ(params);
 
         if (rawProducts.error)
           return { error: rawProducts.error as FetchBaseQueryError };

@@ -26,8 +26,6 @@ const PriceSelector: FC<PriceSelectorProps> = ({
   }, [minVal, maxVal]);
 
   useEffect(() => {
-    console.log(shouldReset);
-
     if (shouldReset) {
       setMinVal(min);
       setMaxVal(max);

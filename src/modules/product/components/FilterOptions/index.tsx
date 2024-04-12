@@ -12,10 +12,9 @@ import Accordion from 'modules/core/components/Accordion';
 import PriceSelector from '../PriceSelector';
 import FilterTabButtons from '../FilterTabButtons';
 import ColorSelection from '../ColorSelection';
-import { Color, Size, Price } from 'types/types';
+import { Color, Size, Price, FilterItems } from 'types/types';
 import SizeSelector from '../SizeSelector';
 import { BodyFilterProducts } from 'redux/types';
-import { FilterItems } from 'types/types';
 import styles from './index.module.scss';
 
 interface FilterOptionsProps {
@@ -42,8 +41,8 @@ const FilterOptions: FC<FilterOptionsProps> = ({
 
   useEffect(() => {
     if (isResetting) {
-      console.log(4545);
-
+      setSize([]);
+      setColor([]);
       setSelectedColor([]);
       setSelectedSize([]);
       setTab('');
@@ -53,7 +52,7 @@ const FilterOptions: FC<FilterOptionsProps> = ({
 
   const { t } = useTranslation();
 
-  const handleClickTabButtons = useCallback((name: string) => {
+  const configureFilterParameters = useCallback((sortingType: FilterItems) => {
     const body = {
       colours: [Color.Black.toUpperCase(), Color.Beige.toUpperCase()],
       sizes: [Size.L, Size.M, Size.S, Size.XL, Size.XS],
@@ -62,17 +61,20 @@ const FilterOptions: FC<FilterOptionsProps> = ({
         max: Price.max,
       },
     };
+    sortProducts(body, sortingType);
+  }, []);
 
+  const handleClickTabButtons = useCallback((name: string) => {
     switch (name) {
       case FilterItems.NewNow:
         handleSetNewProducts();
         break;
       case FilterItems.PriceAsc:
-        sortProducts(body, FilterItems.PriceAscRequest);
+        configureFilterParameters(FilterItems.PriceAscRequest);
         setTab(FilterItems.PriceAscRequest);
         break;
       case FilterItems.PriceDesc:
-        sortProducts(body, FilterItems.PriceDescRequest);
+        configureFilterParameters(FilterItems.PriceDescRequest);
         setTab(FilterItems.PriceDescRequest);
         break;
       default:
@@ -107,13 +109,13 @@ const FilterOptions: FC<FilterOptionsProps> = ({
   }, []);
 
   const handleChangePrice = useCallback((min: number, max: number) => {
-    if (isResetting) {
-      setPriceRange([Price.min, Price.max]);
+    if (!isResetting) {
+      return setPriceRange([Price.min, Price.max]);
     }
     setPriceRange([min, max]);
   }, []);
 
-  const sortBy = useMemo(
+  const sortByButton = useMemo(
     () => ({
       title: t('sortBy'),
       list: (
@@ -126,7 +128,7 @@ const FilterOptions: FC<FilterOptionsProps> = ({
     [],
   );
 
-  const items = useMemo(
+  const accordionButtons = useMemo(
     () => [
       {
         title: t('color'),
@@ -160,20 +162,20 @@ const FilterOptions: FC<FilterOptionsProps> = ({
         ),
       },
     ],
-    [selectedColor, selectedSize],
+    [selectedColor, selectedSize, isResetting],
   );
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.wrapperSort}>
         <Accordion
-          title={sortBy.title}
-          list={sortBy.list}
+          title={sortByButton.title}
+          list={sortByButton.list}
           titleStyles={styles.title}
           listStyle={styles.sortList}
         />
       </div>
-      {items.map(({ title, list }) => (
+      {accordionButtons.map(({ title, list }) => (
         <div className={styles.wrapperList} key={title}>
           <Accordion
             title={title}
