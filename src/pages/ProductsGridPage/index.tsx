@@ -5,6 +5,7 @@ import {
   FIRST_PAGE,
   PRODUCT_GRID_SIZE,
   PRODUCT_GRID_SIZE_MOBILE,
+  ViewportWidth,
 } from 'utils/constants';
 import { BodySearchProducts } from 'redux/types';
 import { Category, Subcategory } from 'types/types';
@@ -28,7 +29,7 @@ const ProductsGridPage = (): JSX.Element => {
 
   const [activePage, setActivePage] = useState<number>(FIRST_PAGE);
 
-  const isMobile = useGetViewportWidth();
+  const isMobile = useGetViewportWidth(ViewportWidth.MOBILE);
   const gridPageSize = isMobile ? PRODUCT_GRID_SIZE_MOBILE : PRODUCT_GRID_SIZE;
 
   useEffect(() => {
