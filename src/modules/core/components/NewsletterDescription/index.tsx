@@ -10,7 +10,7 @@ const NewsletterDescription = () => {
       <div className={styles.wrapper}>
         <span className={styles.mainText}>
           {t('subscriptionForm.discountHeader')}
-        </span>
+        </span>{' '}
         <span className={styles.spanText}>
           {t('subscriptionForm.discountPercentage', {
             percentage: PERCENTAGE_DISCOUNT,

@@ -19,7 +19,7 @@
   "subscriptionForm": {
     "placeholder": "Enter your email address",
     "policy": "I accept the privacy policy",
-    "discountHeader": "Subscribe to our newsletter ",
+    "discountHeader": "Subscribe to our newsletter",
     "discountPercentage": "and get a -{{percentage}}% discount"
   },
   "productDetails": {
