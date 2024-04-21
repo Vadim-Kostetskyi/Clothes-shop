@@ -1,42 +1,62 @@
-import React, { ChangeEvent, FC, FocusEvent, useState } from 'react';
-import Input from 'modules/core/components/Input';
+import React, { FC } from 'react';
+import { SubmitHandler, Validate, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import Input from 'modules/core/components/Input';
 import { personalDataItems } from './data';
 import styles from './index.module.scss';
 
-/* eslint-disable react/prop-types */
-
 export interface PersonalDataProps {
-  handleSetInfo: (event: ChangeEvent<HTMLInputElement>) => void;
-  sendInfo: () => void;
   back: () => void;
+  deliveryType: string;
 }
 
-const PersonalData: FC<PersonalDataProps> = ({
-  handleSetInfo,
-  sendInfo,
-  back,
-}) => {
-  const [inputValue, setInputValue] = useState<string>('');
+export interface PersonalDataForm {
+  firstName: string;
+  lastName: string;
+  prefix: number;
+  number: number;
+  email: string;
+  address: string;
+  information: string;
+  zipCode: number;
+  city: string;
+  state: string;
+}
 
+const PersonalData: FC<PersonalDataProps> = ({ back, deliveryType }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<PersonalDataForm>();
   const { t } = useTranslation();
 
-  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    const newValue = e.target.value;
-
-    if (newValue === '' || /^\+?[0-9]{0,3}$/.test(newValue)) {
-      console.log(newValue);
-      setInputValue(newValue);
-    }
+  const sendCustomerInformation: SubmitHandler<PersonalDataForm> = data => {
+    //TODO send information to the backend and move to the next step
+    console.log('deliveryType:', deliveryType, data);
   };
 
-  const handleSetPrefix = (e: FocusEvent<HTMLTextAreaElement>) => {
-    handleSetInfo(e as unknown as ChangeEvent<HTMLInputElement>);
+  const validPhoneCod: Validate<string | number, PersonalDataForm> = data => {
+    const validCountryCode = /^\+\d{3}$/;
+
+    return validCountryCode.test(String(data));
+  };
+
+  const validPhoneNumber: Validate<
+    string | number,
+    PersonalDataForm
+  > = data => {
+    const validNumber = /^\d{7}$/;
+
+    return validNumber.test(String(data));
   };
 
   return (
-    <div className={styles.personalData}>
+    <form
+      className={styles.personalData}
+      onSubmit={handleSubmit(sendCustomerInformation)}
+    >
       {personalDataItems.map(({ title, inputs }, index) => (
         <div
           key={title}
@@ -51,10 +71,15 @@ const PersonalData: FC<PersonalDataProps> = ({
                     <textarea
                       id={id}
                       rows={1}
-                      value={inputValue}
-                      onChange={handleChange}
+                      className={
+                        errors.prefix ? styles.prefixError : styles.prefix
+                      }
                       placeholder=""
-                      onBlur={handleSetPrefix}
+                      {...register(id, {
+                        required: true,
+                        value: '+380',
+                        validate: validPhoneCod,
+                      })}
                     ></textarea>
                     <span>
                       Prefix * <br />
@@ -67,9 +92,12 @@ const PersonalData: FC<PersonalDataProps> = ({
                     className={styles.input}
                     type={type}
                     placeholder={placeholder}
-                    onChange={handleSetInfo}
                     isAnimated={true}
                     text={t('order.warning')}
+                    register={register}
+                    required={id === 'information' ? false : true}
+                    validate={id === 'number' ? validPhoneNumber : undefined}
+                    errors={errors}
                   />
                 )}
               </>
@@ -83,14 +111,14 @@ const PersonalData: FC<PersonalDataProps> = ({
         <button onClick={back}>
           <p>{t('return')}</p>
         </button>
-        <button onClick={sendInfo}>
+        <button type="submit">
           <p>{t('continue')}</p>
         </button>
       </div>
       <Link to={'#'}>
         <u>{t('privacyPolicy')}</u>
       </Link>
-    </div>
+    </form>
   );
 };
 

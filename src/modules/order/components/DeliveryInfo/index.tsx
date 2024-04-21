@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useMemo } from 'react';
 import DashedEdit from 'assets/svgs/DashedEdit';
 import styles from './index.module.scss';
 
@@ -20,32 +20,30 @@ const DeliveryInfo: FC<DeliveryInfoProps> = ({
   price,
   isHome,
   deliverySelection,
-}) => (
-  <button
-    className={isHome ? styles.deliveryInfoHome : styles.deliveryInfo}
-    onClick={deliverySelection(title)}
-  >
-    <div>
-      <img src={icon} alt={iconAlt} />
+}) => {
+  const priceClassName = useMemo(() => {
+    return price === 'Free' ? styles.free : styles.price;
+  }, [price]);
+
+  return (
+    <button
+      className={isHome ? styles.deliveryInfoHome : styles.deliveryInfo}
+      onClick={deliverySelection(title)}
+    >
       <div>
+        <img src={icon} alt={iconAlt} />
         <div>
-          <h1>{title}</h1>
-          {isHome ? null : (
-            <span className={price === 'Free' ? styles.free : styles.price}>
-              {price}
-            </span>
-          )}
+          <div>
+            <h1>{title}</h1>
+            {isHome ? null : <span className={priceClassName}>{price}</span>}
+          </div>
+          <p>{workDays}</p>
+          {isHome ? <span className={priceClassName}>{price}</span> : null}
         </div>
-        <p>{workDays}</p>
-        {isHome ? (
-          <span className={price === 'Free' ? styles.free : styles.price}>
-            {price}
-          </span>
-        ) : null}
       </div>
-    </div>
-    <DashedEdit />
-  </button>
-);
+      <DashedEdit />
+    </button>
+  );
+};
 
 export default DeliveryInfo;
