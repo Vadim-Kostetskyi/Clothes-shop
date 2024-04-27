@@ -84,7 +84,7 @@
     "warning": "Sorry! We need these details.",
     "homeDelivery": "HOME DELIVERY",
     "postServices": "POST SERVICES",
-    "SendOrderAsGift": "SEND AN ORDER AS A GIFT",
+    "sendOrderAsGift": "SEND AN ORDER AS A GIFT",
     "workDays": "Monday 30 October - Friday 3 November"
   }
 }

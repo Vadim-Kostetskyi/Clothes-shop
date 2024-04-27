@@ -23,19 +23,19 @@
 
 .animatedInputWrapper {
   &:focus-within .placeholder {
-    top: -7.5px;
+    top: -7px;
     transition: all 500ms;
   }
 
   & input:not(:placeholder-shown) ~ .placeholder {
-    top: -7.5px;
+    top: -7px;
   }
 
   & input:not(:placeholder-shown):not(:focus):valid {
     color: $greenMint;
     padding-left: 40px;
     border-color: $greenMint;
-    background-image: url('../../../../assets/svgs/CheckGreen.svg') !important;
+    background-image: url('../../../../assets/svgs/CheckGreen.svg');
     background-size: 12px;
     background-repeat: no-repeat;
     background-position-y: center;
@@ -57,11 +57,13 @@
 }
 
 .inputError {
-  color: $alertRed;
-  border-color: $alertRed;
+  color: $alertRed !important;
+  border-color: $alertRed !important;
+  background-image: none !important;
+  padding-left: 15px !important;
 
   & ~ label {
-    color: $alertRed;
+    color: $alertRed !important;
   }
 }
 

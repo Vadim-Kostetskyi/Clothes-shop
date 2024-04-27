@@ -33,7 +33,9 @@ const DeliveryInfo: FC<DeliveryInfoProps> = ({
       <div>
         <img src={icon} alt={iconAlt} />
         <div>
-          <div>
+          <div
+            className={isHome ? styles.deliveryDataHome : styles.deliveryData}
+          >
             <h1>{title}</h1>
             {isHome ? null : <span className={priceClassName}>{price}</span>}
           </div>

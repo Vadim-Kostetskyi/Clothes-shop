@@ -49,7 +49,7 @@ const Delivery = () => {
     {
       icon: Gift,
       iconAlt: t('gift'),
-      title: t('order.SendOrderAsGift'),
+      title: t('order.sendOrderAsGift'),
       workDays: t('order.workDays'),
       price: t('free'),
       deliverySelection,

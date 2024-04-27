@@ -32,7 +32,10 @@ const Input: FC<InputProps> = ({
   validate,
   errors,
 }) => {
-  const errorKey = id && errors ? Object.keys(errors).includes(id) : null;
+  const errorKey = useMemo(
+    () => (id && errors ? Object.keys(errors).includes(id) : null),
+    [errors && Object.keys(errors)],
+  );
 
   const errorTextClassName = useMemo(
     () => (errorKey ? styles.wrong : styles.warning),

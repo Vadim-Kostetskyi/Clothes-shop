@@ -25,6 +25,10 @@
     color: #00ca8d !important;
     background-color: transparent !important;
   }
+
+  & div:nth-of-type(3) {
+    flex-basis: calc(35% - 20px);
+  }
 }
 
 .personalData {
@@ -69,7 +73,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: calc(50% - 7.5px);
+    width: calc(50% - 8px);
     padding: 17px 0 13px;
     border: 1px solid $blackColor;
     border-radius: 4px;
@@ -88,6 +92,10 @@
 
 .wrapperDetails {
   margin-bottom: 40px;
+
+  & div:nth-of-type(n + 3) {
+    flex-basis: calc(25% - 11.25px);
+  }
 }
 
 .wrapperData h1,
@@ -95,8 +103,8 @@
   margin-bottom: 25px;
 }
 
-.wrapperDetails div,
-.wrapperData div {
+.wrapperData div,
+.wrapperDetails div {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
@@ -106,14 +114,6 @@
 .wrapperData div:nth-of-type(-n + 2),
 .wrapperData div:nth-of-type(4) {
   flex-basis: calc(50% - 7.5px);
-}
-
-.wrapperDetails div:nth-of-type(n + 3) {
-  flex-basis: calc(25% - 11.25px);
-}
-
-.wrapperData div:nth-of-type(3) {
-  flex-basis: calc(35% - 20px);
 }
 
 .input {
@@ -184,9 +184,6 @@
 
 .state {
   padding-left: 40px;
-  background-image: url('../../../../assets/svgs/CheckGreen.svg');
-  background-size: 12px;
-  background-repeat: no-repeat;
-  background-position-y: center;
-  background-position-x: 12px;
+  background: url('../../../../assets/svgs/CheckGreen.svg') 12px center/12px
+    no-repeat;
 }

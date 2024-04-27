@@ -1,9 +1,11 @@
-import React, { FC } from 'react';
-import { SubmitHandler, Validate, useForm } from 'react-hook-form';
+import React, { FC, useCallback } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import Input from 'modules/core/components/Input';
 import { personalDataItems } from './data';
+import { validPhoneCode, validPhoneNumber } from 'utils/validate';
+import { CountyPhoneCode } from 'utils/constants';
 import styles from './index.module.scss';
 
 export interface PersonalDataProps {
@@ -32,25 +34,13 @@ const PersonalData: FC<PersonalDataProps> = ({ back, deliveryType }) => {
   } = useForm<PersonalDataForm>();
   const { t } = useTranslation();
 
-  const sendCustomerInformation: SubmitHandler<PersonalDataForm> = data => {
-    //TODO send information to the backend and move to the next step
-    console.log('deliveryType:', deliveryType, data);
-  };
-
-  const validPhoneCod: Validate<string | number, PersonalDataForm> = data => {
-    const validCountryCode = /^\+\d{3}$/;
-
-    return validCountryCode.test(String(data));
-  };
-
-  const validPhoneNumber: Validate<
-    string | number,
-    PersonalDataForm
-  > = data => {
-    const validNumber = /^\d{7}$/;
-
-    return validNumber.test(String(data));
-  };
+  const sendCustomerInformation: SubmitHandler<PersonalDataForm> = useCallback(
+    data => {
+      //TODO send information to the backend and move to the next step
+      console.log('deliveryType:', deliveryType, data);
+    },
+    [],
+  );
 
   return (
     <form
@@ -66,7 +56,7 @@ const PersonalData: FC<PersonalDataProps> = ({ back, deliveryType }) => {
           <div>
             {inputs.map(({ id, placeholder, type }) => (
               <>
-                {placeholder === 'Prefix *\n+380' ? (
+                {placeholder === CountyPhoneCode.UKRAINE ? (
                   <form>
                     <textarea
                       id={id}
@@ -78,7 +68,7 @@ const PersonalData: FC<PersonalDataProps> = ({ back, deliveryType }) => {
                       {...register(id, {
                         required: true,
                         value: '+380',
-                        validate: validPhoneCod,
+                        validate: validPhoneCode,
                       })}
                     ></textarea>
                     <span>
