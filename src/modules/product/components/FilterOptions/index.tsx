@@ -110,7 +110,8 @@ const FilterOptions: FC<FilterOptionsProps> = ({
 
   const handleChangePrice = useCallback((min: number, max: number) => {
     if (!isResetting) {
-      return setPriceRange([Price.min, Price.max]);
+      setPriceRange([Price.min, Price.max]);
+      return;
     }
     setPriceRange([min, max]);
   }, []);
