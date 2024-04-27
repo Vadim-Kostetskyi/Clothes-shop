@@ -5,7 +5,7 @@ import CategoryPage from 'pages/CategoryPage';
 import ProductsGridPage from 'pages/ProductsGridPage';
 import ProductDetailsPage from 'pages/ProductDetailsPage';
 import OrderCheckoutPage from './OrderCheckoutPage';
-import OrderCheckoutAuthorization from 'modules/product/containers/OrderCheckoutAuthorization';
+import OrderCheckoutAuthorization from 'modules/checkout/components/OrderCheckoutAuthorization';
 
 function App() {
   return (
