@@ -7,4 +7,11 @@
 .contentWrapper {
   display: flex;
   flex-direction: column;
+  align-content: center;
+  flex-wrap: wrap;
+  margin-right: 55px;
+
+  @include media(tablet) {
+    margin-right: 0;
+  }
 }
