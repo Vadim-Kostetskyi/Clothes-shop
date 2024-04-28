@@ -16,8 +16,8 @@
   "item": "item",
   "items": "items",
   "copyright": "© {{year}} by NOVA. All Rights Reserved.",
-  "Month": "Month",
-  "Year": "Year",
+  "month": "Month",
+  "year": "Year",
   "subscriptionForm": {
     "placeholder": "Enter your email address",
     "policy": "I accept the privacy policy",

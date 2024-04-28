@@ -1,7 +1,7 @@
 {
   "welcome": "Ласкаво просимо до React and react-i18next",
-  "Month": "Місяць",
-  "Year": "Рік",
+  "month": "Місяць",
+  "year": "Рік",
   "payment": {
     "cardNumber": "Номер Карти",
     "cardHolder": "Власник Карти"
