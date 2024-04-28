@@ -72,6 +72,10 @@
     "continueWithGoogle": "Continue with Google",
     "continueWithFacebook": "Continue with Facebook",
     "forgotPassword": "I forgot my password",
-    "stayLoggedIn": "Stay logged in"
+    "stayLoggedIn": "Stay logged in",
+    "creditCard": "CREDIT CARD",
+    "googlePay": "GOOGLE PAY",
+    "applePay": "APPLE PAY",
+    "paypal": "PAYPAL"
   }
 }
