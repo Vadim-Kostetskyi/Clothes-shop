@@ -100,7 +100,7 @@ const OrderCheckoutAuthorization = () => {
       >
         <FacebookButton />
       </LoginSocialFacebook>
-      <u className={styles.policy}>{t('order.policy')}</u>
+      <p className={styles.policy}>{t('order.policy')}</p>
     </div>
   );
 };
