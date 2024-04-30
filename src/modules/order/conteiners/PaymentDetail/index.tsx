@@ -23,7 +23,7 @@ const PaymentDetail = () => {
     formState: { errors },
   } = useForm<paymentForm>({ mode: 'onBlur' });
 
-  const submit: SubmitHandler<paymentForm> = () => {
+  const onSubmit: SubmitHandler<paymentForm> = () => {
     // axios request to backend payment endpoint
   };
 
@@ -136,7 +136,7 @@ const PaymentDetail = () => {
         <button onClick={() => {}}>
           <p>{defaultT('return')}</p>
         </button>
-        <button onClick={handleSubmit(submit)}>
+        <button onClick={handleSubmit(onSubmit)}>
           <p>{defaultT('continue')}</p>
         </button>
       </div>
