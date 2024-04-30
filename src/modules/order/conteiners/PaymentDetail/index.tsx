@@ -51,14 +51,14 @@ const PaymentDetail = () => {
             name="cardNumber"
             className={clsx(
               styles.input,
-              errors.cardNumber && styles.inputError,
+              errors?.cardNumber && styles.inputError,
             )}
             placeholder={defaultT('payment.cardNumber')}
             mask={'9999 9999 9999 9999'}
           />
-          {errors.cardNumber && (
+          {errors?.cardNumber && (
             <label className={styles.textError}>
-              {errors.cardNumber.message}
+              {errors.cardNumber?.message}
             </label>
           )}
         </div>
@@ -71,15 +71,15 @@ const PaymentDetail = () => {
             name="cardHolder"
             className={clsx(
               styles.input,
-              errors.cardHolder && styles.inputError,
+              errors?.cardHolder && styles.inputError,
             )}
             type="text"
             placeholder={defaultT('payment.cardHolder')}
             required={true}
           />
-          {errors.cardHolder && (
+          {errors?.cardHolder && (
             <label className={styles.textError}>
-              {errors.cardHolder.message}
+              {errors.cardHolder?.message}
             </label>
           )}
         </div>
@@ -90,12 +90,12 @@ const PaymentDetail = () => {
             })}
             id="month"
             name="month"
-            className={clsx(styles.input, errors.month && styles.inputError)}
+            className={clsx(styles.input, errors?.month && styles.inputError)}
             type="number"
             placeholder={defaultT('Month')}
           />
-          {errors.month && (
-            <label className={styles.textError}>{errors.month.message}</label>
+          {errors?.month && (
+            <label className={styles.textError}>{errors.month?.message}</label>
           )}
         </div>
         <div>
@@ -105,21 +105,18 @@ const PaymentDetail = () => {
             })}
             id="year"
             name="year"
-            className={clsx(styles.input, errors.year && styles.inputError)}
+            className={clsx(styles.input, errors?.year && styles.inputError)}
             type="number"
             placeholder={defaultT('Year')}
           />
-          {errors.year && (
-            <label className={styles.textError}>{errors.year.message}</label>
+          {errors?.year && (
+            <label className={styles.textError}>{errors.year?.message}</label>
           )}
         </div>
         <div>
           <InputMask
             {...register('cvv', {
-              required: {
-                value: true,
-                message: validationT('required'),
-              },
+              ...requiredInput,
               pattern: {
                 value: /\d{3}/,
                 message: validationT('invalidCVV'),
@@ -127,13 +124,13 @@ const PaymentDetail = () => {
             })}
             type="password"
             name="cvv"
-            className={clsx(styles.input, errors.cvv && styles.inputError)}
+            className={clsx(styles.input, errors?.cvv && styles.inputError)}
             placeholder="CVV"
             mask={'999'}
             maskPlaceholder={''}
           />
-          {errors.cvv && (
-            <label className={styles.textError}>{errors.cvv.message}</label>
+          {errors?.cvv && (
+            <label className={styles.textError}>{errors.cvv?.message}</label>
           )}
         </div>
       </form>
