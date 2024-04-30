@@ -27,16 +27,20 @@ const PaymentDetail = () => {
     // axios request to backend payment endpoint
   };
 
+  const requiredInput = {
+    required: {
+      value: true,
+      message: validationT('required'),
+    },
+  };
+
   return (
     <div className={styles.wrapper}>
       <form className={styles.wrapperData}>
         <div>
           <InputMask
             {...register('cardNumber', {
-              required: {
-                value: true,
-                message: validationT('required'),
-              },
+              ...requiredInput,
               pattern: {
                 value: /(?:\d[ ]*?){16}/,
                 message: validationT('invalidCardNumber'),
@@ -60,7 +64,7 @@ const PaymentDetail = () => {
         <div>
           <input
             {...register('cardHolder', {
-              required: { value: true, message: validationT('required') },
+              ...requiredInput,
             })}
             id="cardHolder"
             name="cardHolder"
@@ -81,7 +85,7 @@ const PaymentDetail = () => {
         <div>
           <input
             {...register('month', {
-              required: { value: true, message: validationT('required') },
+              ...requiredInput,
             })}
             id="month"
             name="month"
@@ -96,7 +100,7 @@ const PaymentDetail = () => {
         <div>
           <input
             {...register('year', {
-              required: { value: true, message: validationT('required') },
+              ...requiredInput,
             })}
             id="year"
             name="year"
