@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import InputMask from 'react-input-mask';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import clsx from 'clsx';
+import Input from 'modules/core/components/Input';
 
 interface paymentForm {
   cardNumber: string;
@@ -62,7 +63,7 @@ const PaymentDetail = () => {
           )}
         </div>
         <div>
-          <input
+          <Input
             {...register('cardHolder', {
               ...requiredInput,
             })}
@@ -83,7 +84,7 @@ const PaymentDetail = () => {
           )}
         </div>
         <div>
-          <input
+          <Input
             {...register('month', {
               ...requiredInput,
             })}
@@ -98,7 +99,7 @@ const PaymentDetail = () => {
           )}
         </div>
         <div>
-          <input
+          <Input
             {...register('year', {
               ...requiredInput,
             })}
