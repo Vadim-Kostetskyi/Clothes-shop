@@ -18,43 +18,46 @@ const Payment = () => {
 
   return (
     <div className={styles.paymentWrapper}>
-      <button
-        className={styles.paymentMethod}
-        name="Visa"
-        onClick={paymentChoice}
-      >
-        {t('order.creditCard')}
-        <div className={styles.cardImageWrapper}>
-          <img src={Visa} alt="Visa image" />
-          <img src={Mastercard} alt="Mastercard image" />
-          <img src={AmericanExpress} alt="AmericanExpress image" />
-          <img src={Discover} alt="Discover image" />
-        </div>
-      </button>
-      <button
-        className={styles.paymentMethod}
-        name="GooglePay"
-        onClick={paymentChoice}
-      >
-        {t('order.googlePay')}
-        <img src={GooglePay} alt="GooglePay image" />
-      </button>
-      <button
-        className={styles.paymentMethod}
-        name="Paypal"
-        onClick={paymentChoice}
-      >
-        {t('order.paypal')}
-        <img src={Paypal} alt="Paypal image" />
-      </button>
-      <button
-        className={styles.paymentMethod}
-        name="ApplePay"
-        onClick={paymentChoice}
-      >
-        {t('order.applePay')}
-        <img src={ApplePay} alt="ApplePay image" />
-      </button>
+      <div className={styles.paymentButtons}>
+        <button
+          className={styles.paymentMethod}
+          name="Visa"
+          onClick={paymentChoice}
+        >
+          {t('order.creditCard')}
+          <div className={styles.cardImageWrapper}>
+            <img src={Visa} alt="Visa image" />
+            <img src={Mastercard} alt="Mastercard image" />
+            <img src={AmericanExpress} alt="AmericanExpress image" />
+            <img src={Discover} alt="Discover image" />
+          </div>
+        </button>
+        <button
+          className={styles.paymentMethod}
+          name="GooglePay"
+          onClick={paymentChoice}
+        >
+          {t('order.googlePay')}
+          <img src={GooglePay} alt="GooglePay image" />
+        </button>
+        <button
+          className={styles.paymentMethod}
+          name="Paypal"
+          onClick={paymentChoice}
+        >
+          {t('order.paypal')}
+          <img src={Paypal} alt="Paypal image" />
+        </button>
+        <button
+          className={styles.paymentMethod}
+          name="ApplePay"
+          onClick={paymentChoice}
+        >
+          {t('order.applePay')}
+          <img src={ApplePay} alt="ApplePay image" />
+        </button>
+      </div>
+      <p className={styles.policy}>{t('order.policy')}</p>
     </div>
   );
 };
