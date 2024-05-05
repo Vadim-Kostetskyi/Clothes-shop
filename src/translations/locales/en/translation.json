@@ -74,5 +74,13 @@
     "forgotPassword": "I forgot my password",
     "stayLoggedIn": "Stay logged in",
     "policy": "The terms and conditions. Privacy policy."
+  },
+  "productFilter": {
+    "filter": "Filter",
+    "clear": "CLEAR",
+    "seeResults": "SEE RESULTS",
+    "all": "All",
+    "priceHighToLow": "Price high to low",
+    "priceLowToHigh": "Price low to high"
   }
 }

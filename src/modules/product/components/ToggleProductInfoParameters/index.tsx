@@ -9,13 +9,13 @@ import styles from './index.module.scss';
 interface ToggleProductInfoParameters {
   text: string;
   open: boolean[];
-  parameters: string[];
+  parameters: Color[] | Size[];
   index: number;
   sizes?: Size[];
-  active?: string;
+  active?: Size | Color;
   productInfo: string;
   toggle: (element: number) => void;
-  handleClick: (param: string, value: string) => void;
+  handleClick: (size: Size | Color) => void;
 }
 
 const ToggleProductInfoParameters: FC<ToggleProductInfoParameters> = ({
@@ -53,16 +53,16 @@ const ToggleProductInfoParameters: FC<ToggleProductInfoParameters> = ({
         <div className={styles.parametersBtn}>
           {productInfo === 'color' ? (
             <ColourSelector
-              parameters={Object.values(Color)}
+              parameters={parameters as Color[]}
               active={active as Color}
               handleClick={handleClick}
             />
           ) : (
             <SizeSelector
-              parameters={parameters}
+              parameters={parameters as Size[]}
               sizes={sizes}
-              active={active}
-              handleClick={handleClick}
+              active={active as Size}
+              handleClick={handleClick as (size: Size) => void}
             />
           )}
         </div>

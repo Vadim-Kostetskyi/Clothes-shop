@@ -10,7 +10,7 @@ import styles from './index.module.scss';
 export interface ProductDetailsInfoProps {
   title?: string;
   price?: string;
-  sizes?: Size[];
+  sizes: Size[];
   description?: string;
   composition?: string;
   vendorCode?: number;
@@ -36,17 +36,14 @@ const ProductDetailsInfo: FC<ProductDetailsInfoProps> = ({
 
   const { t } = useTranslation();
 
-  const handleChangeSize = useCallback((_: string, size: Size) => {
+  const handleChangeSize = useCallback((size: Size) => {
     setSelectedSize(size);
     setIsError(false);
   }, []);
 
-  const handleChangeColor = useCallback(
-    (color: Color) => () => {
-      setSelectedColor(color);
-    },
-    [],
-  );
+  const handleChangeColor = useCallback((color: Color) => {
+    setSelectedColor(color);
+  }, []);
 
   const productDescription = useMemo(
     () => [
