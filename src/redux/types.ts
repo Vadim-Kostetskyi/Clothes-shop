@@ -11,7 +11,7 @@ export interface ProductProps {
   price: string;
   size: Size[];
   category: string;
-  subcategory: string;
+  subcategory: Subcategory;
   colour: string;
   description: string;
   composition: string;
@@ -20,6 +20,7 @@ export interface ProductProps {
   manufacturer: string;
   files: string[];
   quantity: number;
+  vendorCode: number;
 }
 
 export interface ImageItemProps {
@@ -41,12 +42,23 @@ export interface GetProductsResponse {
 export interface GetProductsWithImagesProps {
   products: ProductProps[];
   images: ImageProps[];
+  pages?: number;
   error?: boolean;
 }
+
 export interface GetProductsWithImages {
   product: ProductProps;
   images: ImageItemProps[];
 }
+
+export type BodyFilterProducts = {
+  colours: string[] | [];
+  sizes: Size[] | [];
+  priceRange: {
+    min: number;
+    max: number;
+  };
+};
 
 export interface SearchProductsProps {
   page: number;
@@ -67,11 +79,10 @@ export interface TopCategoriesProductsProps {
   url: string;
 }
 
-export type BodyFilterProducts = {
-  colours: string[] | [];
-  sizes: Size[] | [];
-  priceRange: {
-    min: number;
-    max: number;
-  };
-};
+export interface SearchByIdProps {
+  id: string;
+}
+
+export interface GetProductsBiId {
+  id: string[];
+}

@@ -3,14 +3,16 @@ import { SwiperSlide } from 'swiper/react';
 import CoreSwiper from 'modules/core/components/CoreSwiper';
 import ArrowSwiperCard from 'assets/svgs/ArrowSwiperCard';
 import { ImageItemProps } from 'redux/types';
-import { getValidClassNames } from 'helpers/helpers';
+import { getValidClassNames } from 'helpers';
 
 import styles from './index.module.scss';
 export interface ProductImageSwiperProps {
   images: ImageItemProps[];
 }
 
-const ProductImageSwiper: FC<ProductImageSwiperProps> = ({ images }) => {
+const ProductImageSwiper: FC<ProductImageSwiperProps> = ({
+  images,
+}): JSX.Element => {
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
   const [isHidden, setIsHidden] = useState(true);

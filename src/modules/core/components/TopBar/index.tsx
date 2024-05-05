@@ -1,36 +1,27 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useAppSelector, useClearCartEffect } from 'hooks';
+import { selectTotalQuantity } from 'redux/slices/shopping-cart';
 import ShoppingBag from 'assets/svgs/ShoppingBag';
 import User from 'assets/svgs/User';
 import Search from 'assets/svgs/Search';
+import ShoppingCartModal from 'modules/checkout/containers/ShoppingCartModal';
 import styles from './index.module.scss';
-import {
-  selectQuantity,
-  actions as shoppingCartActions,
-} from 'redux/slices/shopping-cart/shopping-cart';
-import { useAppDispatch, useAppSelector } from 'hooks';
-import { TimeConstants } from 'utils/constants';
 
 const TopBar = (): JSX.Element => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { t } = useTranslation();
-  const dispatch = useAppDispatch();
-  const quantity = useAppSelector(selectQuantity);
+  const quantity = useAppSelector(selectTotalQuantity);
 
-  useEffect(() => {
-    let timeoutId: NodeJS.Timeout | undefined;
+  const openModal = useCallback(() => {
+    setIsModalOpen(true);
+  }, []);
 
-    if (quantity > 0) {
-      clearTimeout(timeoutId);
+  const closeModal = useCallback(() => {
+    setIsModalOpen(false);
+  }, []);
 
-      timeoutId = setTimeout(() => {
-        dispatch(shoppingCartActions.clearCart());
-      }, TimeConstants.TWO_DAYS);
-    }
-
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, [quantity, dispatch]);
+  useClearCartEffect(quantity);
 
   return (
     <>
@@ -44,15 +35,18 @@ const TopBar = (): JSX.Element => {
           <Search className={styles.searchIcon} />
         </button>
       </div>
-      <button className={styles.userButton}>
-        <User className={styles.userIcon} />
-      </button>
-      <button className={styles.shoppingCartButton}>
-        <ShoppingBag className={styles.shoppingCartIcon} />
-        {quantity > 0 ? (
-          <div className={styles.quantity}>{quantity}</div>
-        ) : null}
-      </button>
+      <div className={styles.userButtons}>
+        <button className={styles.userButton}>
+          <User className={styles.userIcon} />
+        </button>
+        <button className={styles.shoppingCartButton} onClick={openModal}>
+          <ShoppingBag className={styles.shoppingBagIcon} />
+          {quantity > 0 ? (
+            <div className={styles.quantity}>{quantity}</div>
+          ) : null}
+        </button>
+        {isModalOpen && <ShoppingCartModal onClose={closeModal} />}
+      </div>
     </>
   );
 };

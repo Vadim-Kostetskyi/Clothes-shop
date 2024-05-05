@@ -11,10 +11,12 @@
   &:not(:last-child) {
     margin-right: 15px;
   }
+  cursor: pointer;
 }
 
 .color {
   border: 1px solid $pageBackground;
+  cursor: pointer;
 }
 
 .chosenColor {

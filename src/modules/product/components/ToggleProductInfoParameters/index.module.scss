@@ -17,6 +17,7 @@
   font-size: 14px;
   margin-right: 40px;
   color: $grayDark;
+  cursor: pointer;
 }
 
 .parameterBox {
@@ -38,25 +39,9 @@
   border: 0.5px solid $blackColor;
 }
 
-.blackColor,
-.whiteColor {
-  display: block;
-  padding: 2px;
-  width: 16px;
-  height: 16px;
-  border-radius: 2px;
-}
-
-.blackColor {
-  background-color: $blackColor;
-}
-
-.whiteColor {
-  background-color: $cream;
-}
-
 .crossBtn {
   width: 16px;
+  cursor: pointer;
 }
 .crossImg {
   width: 8px;

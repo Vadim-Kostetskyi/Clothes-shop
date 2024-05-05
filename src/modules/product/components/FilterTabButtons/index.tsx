@@ -1,31 +1,41 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, { FC, useCallback, useMemo } from 'react';
 import { BodySearchProducts } from 'redux/types';
 import { getButtons, getFilterButtons } from './data';
 import { useTranslation } from 'react-i18next';
 import { Category, Subcategory } from 'types/types';
 import styles from './index.module.scss';
+import { FIRST_PAGE } from 'utils/constants';
 
 interface FilterTabButtons {
+  activeButton?: string;
   handleClick?: (body: BodySearchProducts) => void;
+  setActiveButton?: (value: string) => void;
+  setActivePage?: (page: number) => void;
   isFilter?: boolean;
   handleClickFilter?: (name: string) => void;
 }
 
 const FilterTabButtons: FC<FilterTabButtons> = ({
+  activeButton,
   handleClick,
   isFilter,
+  setActivePage,
+  setActiveButton,
   handleClickFilter,
 }) => {
   const { t } = useTranslation();
 
-  const buttons = isFilter ? getFilterButtons(t) : getButtons(t);
-  const [active, setActive] = useState<string>(buttons[0].value);
+  const buttons = useMemo(
+    () => (isFilter ? getFilterButtons(t) : getButtons(t)),
+    [],
+  );
 
   const onClick = useCallback(
-    (name: string, body: BodySearchProducts) => () => {
+    (value: string, body: BodySearchProducts) => () => {
       handleClick && handleClick(body);
-      handleClickFilter && handleClickFilter(name);
-      setActive(name);
+      handleClickFilter && handleClickFilter(value);
+      setActivePage && setActivePage(FIRST_PAGE);
+      setActiveButton && setActiveButton(value);
     },
     [],
   );
@@ -47,8 +57,8 @@ const FilterTabButtons: FC<FilterTabButtons> = ({
           <button
             key={value}
             value={value}
-            className={value === active ? styles.active : styles.button}
-            onClick={onClick(name, body)}
+            className={value === activeButton ? styles.active : styles.button}
+            onClick={onClick(value, body)}
           >
             {name}
           </button>

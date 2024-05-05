@@ -1,0 +1,9 @@
+@import 'styles/constants';
+
+.paginationButton:hover {
+  cursor: pointer;
+}
+
+.paginationDisabled {
+  pointer-events: none;
+}

@@ -12,7 +12,7 @@ import Accordion from 'modules/core/components/Accordion';
 import PriceSelector from '../PriceSelector';
 import FilterTabButtons from '../FilterTabButtons';
 import ColorSelection from '../ColorSelection';
-import { Color, Size, Price, FilterItems } from 'types/types';
+import { Color, Size, Price, FilterItems, clothesColors } from 'types/types';
 import SizeSelector from '../SizeSelector';
 import { BodyFilterProducts } from 'redux/types';
 import styles from './index.module.scss';
@@ -38,6 +38,7 @@ const FilterOptions: FC<FilterOptionsProps> = ({
 }) => {
   const [selectedSize, setSelectedSize] = useState<Size[]>([]);
   const [selectedColor, setSelectedColor] = useState<Color[]>([]);
+  const [activeButton, setActiveButton] = useState<string>();
 
   useEffect(() => {
     if (isResetting) {
@@ -121,12 +122,14 @@ const FilterOptions: FC<FilterOptionsProps> = ({
       title: t('sortBy'),
       list: (
         <FilterTabButtons
+          activeButton={activeButton}
+          setActiveButton={setActiveButton}
           handleClickFilter={handleClickTabButtons}
           isFilter={true}
         />
       ),
     }),
-    [],
+    [activeButton],
   );
 
   const accordionButtons = useMemo(
@@ -135,6 +138,7 @@ const FilterOptions: FC<FilterOptionsProps> = ({
         title: t('color'),
         list: (
           <ColorSelection
+            colors={clothesColors}
             changeColor={handleClick}
             chosenColor={selectedColor}
             multiChoice={true}
@@ -145,6 +149,7 @@ const FilterOptions: FC<FilterOptionsProps> = ({
         title: t('size'),
         list: (
           <SizeSelector
+            parameters={Object.values(Size)}
             handleClick={handleClick}
             active={selectedSize}
             isFilter={true}

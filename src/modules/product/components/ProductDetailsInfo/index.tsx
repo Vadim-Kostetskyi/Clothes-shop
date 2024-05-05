@@ -1,22 +1,24 @@
 import React, { FC, useCallback, useMemo, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import SizeSelector from 'modules/product/components/SizeSelector';
 import ColorSelection from 'modules/product/components/ColorSelection';
 import AddToCartButton from 'modules/checkout/components/AddToCartButton';
 import Accordion from 'modules/core/components/Accordion';
-import { Size, Color } from 'types/types';
+import { Size, Color, clothesColors } from 'types/types';
+import { useTranslation } from 'react-i18next';
 import styles from './index.module.scss';
 
 export interface ProductDetailsInfoProps {
-  title: string;
-  price: number;
+  title?: string;
+  price?: string;
   sizes: Size[];
-  description: string;
-  composition: string;
-  vendorCode: number;
+  description?: string;
+  composition?: string;
+  vendorCode?: number;
   addToFavorite: () => void;
   addToShoppingCart: () => void;
 }
+
+const defaultSizes: Size[] = Object.values(Size);
 
 const ProductDetailsInfo: FC<ProductDetailsInfoProps> = ({
   title,
@@ -27,27 +29,21 @@ const ProductDetailsInfo: FC<ProductDetailsInfoProps> = ({
   vendorCode,
   addToFavorite,
   addToShoppingCart,
-}) => {
+}): JSX.Element => {
   const [selectedSize, setSelectedSize] = useState<Size | undefined>();
   const [selectedColor, setSelectedColor] = useState<Color>(Color.Black);
   const [isError, setIsError] = useState(true);
 
   const { t } = useTranslation();
 
-  const handleChangeSize = useCallback(
-    (size: Size) => () => {
-      setSelectedSize(size);
-      setIsError(false);
-    },
-    [],
-  );
+  const handleChangeSize = useCallback((size: Size) => {
+    setSelectedSize(size);
+    setIsError(false);
+  }, []);
 
-  const handleChangeColor = useCallback(
-    (color: Color) => () => {
-      setSelectedColor(color);
-    },
-    [],
-  );
+  const handleChangeColor = useCallback((color: Color) => {
+    setSelectedColor(color);
+  }, []);
 
   const productDescription = useMemo(
     () => [
@@ -72,12 +68,16 @@ const ProductDetailsInfo: FC<ProductDetailsInfoProps> = ({
       <p className={styles.ref}>
         {t('productDetails.ref')}. {vendorCode}
       </p>
-      <p className={styles.price}>
-        {price} <span className={styles.currency}>{t('currency')}</span>
-      </p>
+      {price ? (
+        <p className={styles.price}>
+          {price && parseFloat(price)}{' '}
+          <span className={styles.currency}>{t('currency')}</span>
+        </p>
+      ) : null}
       <div className={styles.colorBox}>
         <p className={styles.submenu}>{t('productDetails.selectColour')}</p>
         <ColorSelection
+          colors={clothesColors}
           chosenColor={selectedColor}
           changeColor={handleChangeColor}
         />
@@ -85,6 +85,7 @@ const ProductDetailsInfo: FC<ProductDetailsInfoProps> = ({
       <p className={styles.submenu}>{t('productDetails.selectSize')}</p>
       <div className={styles.sizeBox}>
         <SizeSelector
+          parameters={defaultSizes}
           sizes={sizes}
           active={selectedSize}
           handleClick={handleChangeSize}

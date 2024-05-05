@@ -1,3 +1,6 @@
+import BlackColor from 'assets/images/chooseColor/black.png';
+import WhiteColor from 'assets/images/chooseColor/white.png';
+
 export enum Size {
   XS = 'XS',
   S = 'S',
@@ -40,13 +43,10 @@ export enum Subcategory {
   QUILTED = 'QUILTED',
 }
 
-export enum FilterItems {
-  NewNow = 'New now',
-  PriceAsc = 'Price low to high',
-  PriceDesc = 'Price high to low',
-  PriceAscRequest = 'asc',
-  PriceDescRequest = 'desc',
-}
+export const clothesColors: Record<Color, string> = {
+  [Color.Black]: BlackColor,
+  [Color.Beige]: WhiteColor,
+};
 
 export type MenuItem = {
   id: number;
@@ -68,4 +68,12 @@ export type MenuList = {
 export enum Price {
   min = 0,
   max = 1000,
+}
+
+export enum FilterItems {
+  NewNow = 'New now',
+  PriceAsc = 'Price low to high',
+  PriceDesc = 'Price high to low',
+  PriceAscRequest = 'asc',
+  PriceDescRequest = 'desc',
 }

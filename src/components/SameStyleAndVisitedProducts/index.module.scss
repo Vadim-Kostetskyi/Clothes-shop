@@ -1,0 +1,22 @@
+@import 'styles/constants';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  max-width: $laptop;
+  min-height: 300px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.cardWrapper {
+  display: flex;
+}
+
+.card:not(:last-child) {
+  margin-right: 10px;
+}

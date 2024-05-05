@@ -9,12 +9,12 @@ import { clsx } from 'clsx';
 import styles from './index.module.scss';
 
 const TopCategories = () => {
-  const { data } = useGetTopCategoriesByNameQuery('');
+  const { data } = useGetTopCategoriesByNameQuery();
   const { t } = useTranslation();
 
   return (
     <div className={clsx(styles.swiper, 'topCategories-swiper')}>
-      <h1 className={styles.title}>{t('topCategories')}</h1>
+      <h2 className={styles.title}>{t('topCategories')}</h2>
       <Swiper
         modules={[Navigation]}
         spaceBetween={8}

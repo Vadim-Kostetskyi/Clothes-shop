@@ -1,0 +1,91 @@
+@import 'styles/constants';
+
+$containerWidth: 421px;
+$containerHeight: 143px;
+
+.container,
+.orderSummaryContainer {
+  position: absolute;
+  width: $containerWidth;
+}
+
+.container {
+  bottom: 0;
+  min-height: $containerHeight;
+  border-radius: 8px 8px 0 0;
+  background-color: $greenMint;
+}
+
+.deliveryInfo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 8px 16px;
+}
+
+.orderSummaryContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 111px;
+  bottom: 0;
+  border-radius: 8px 8px 0 0;
+  background-color: $pageBackground;
+}
+
+.itemsBox {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  padding-bottom: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: $lightSilver;
+}
+
+.totalPrice {
+  display: flex;
+  padding: 16px;
+  justify-content: space-between;
+}
+
+.processOrderButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 16px;
+  width: 389px;
+  min-height: 50px;
+  border-radius: 4px;
+  background-color: $greenMint;
+
+  .title {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0.01em;
+    text-align: left;
+  }
+}
+
+.text {
+  &.black {
+    color: $blackColor;
+  }
+
+  &.white {
+    color: $pageBackground;
+  }
+
+  &.bold {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-align: right;
+  }
+}
+
+.infoIcon {
+  width: 16px;
+  margin-right: 8px;
+  fill: $pageBackground;
+}
