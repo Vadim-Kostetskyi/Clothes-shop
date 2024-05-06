@@ -8,7 +8,7 @@ import GooglePay from 'assets/images/payment/google-pay.png';
 import Paypal from 'assets/images/payment/paypal.png';
 import ApplePay from 'assets/images/payment/apple-pay.png';
 import styles from './index.module.scss';
-import PaymentMethodButton from '../PaymentMethodButton';
+import PaymentMethodButton from 'modules/checkout/components/PaymentMethodButton';
 
 const Payment = () => {
   const { t } = useTranslation();
