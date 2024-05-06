@@ -1,14 +1,5 @@
 @import 'styles/constants';
 
-.paymentWrapper {
-  width: auto;
-}
-
-.paymentButtons {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-}
-
 .paymentMethod {
   position: relative;
   display: flex;
@@ -95,13 +86,4 @@
   justify-content: end;
   width: 136px;
   gap: 8px;
-}
-
-.policy {
-  display: block;
-  font-size: 14px;
-  text-align: right;
-  margin-top: 40px;
-  text-decoration: underline;
-  color: $grayDark;
 }
