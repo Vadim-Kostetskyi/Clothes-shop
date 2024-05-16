@@ -4,9 +4,9 @@ import { useTranslation } from 'react-i18next';
 import InputMask from 'react-input-mask';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import clsx from 'clsx';
-import Input from 'modules/core/components/Input';
+import PaymentInput from 'modules/order/components/PaymentInput';
 
-interface paymentForm {
+export interface paymentForm {
   cardNumber: string;
   cardHolder: string;
   month: number;
@@ -63,10 +63,9 @@ const PaymentDetail = () => {
           )}
         </div>
         <div>
-          <Input
-            {...register('cardHolder', {
-              ...requiredInput,
-            })}
+          <PaymentInput
+            register={register}
+            rules={requiredInput}
             id="cardHolder"
             name="cardHolder"
             className={clsx(
@@ -75,43 +74,32 @@ const PaymentDetail = () => {
             )}
             type="text"
             placeholder={defaultT('payment.cardHolder')}
-            required={true}
+            errors={errors}
           />
-          {errors?.cardHolder && (
-            <label className={styles.textError}>
-              {errors.cardHolder?.message}
-            </label>
-          )}
         </div>
         <div>
-          <Input
-            {...register('month', {
-              ...requiredInput,
-            })}
+          <PaymentInput
+            register={register}
+            rules={requiredInput}
             id="month"
             name="month"
             className={clsx(styles.input, errors?.month && styles.inputError)}
             type="number"
             placeholder={defaultT('Month')}
+            errors={errors}
           />
-          {errors?.month && (
-            <label className={styles.textError}>{errors.month?.message}</label>
-          )}
         </div>
         <div>
-          <Input
-            {...register('year', {
-              ...requiredInput,
-            })}
+          <PaymentInput
+            register={register}
+            rules={requiredInput}
             id="year"
             name="year"
             className={clsx(styles.input, errors?.year && styles.inputError)}
             type="number"
             placeholder={defaultT('Year')}
+            errors={errors}
           />
-          {errors?.year && (
-            <label className={styles.textError}>{errors.year?.message}</label>
-          )}
         </div>
         <div>
           <InputMask
