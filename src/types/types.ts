@@ -64,3 +64,8 @@ export type MenuList = {
   contentName: string;
   label: string;
 };
+
+export type Image = {
+  link: string;
+  alt: string;
+};
