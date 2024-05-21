@@ -9,8 +9,8 @@ import styles from './index.module.scss';
 export interface ProductCardProps {
   productId: string;
   productName: string;
-  price: string;
-  sizes: Size[];
+  price?: string;
+  sizes?: Size[];
   images?: ImageItemProps[];
   isMobile?: boolean;
   image?: string;
@@ -28,24 +28,29 @@ const ProductCard: FC<ProductCardProps> = ({
   image,
   quantity,
   vendorCode,
-}): JSX.Element => (
-  <div className={styles.productCard}>
-    {isMobile ? (
-      <img src={image} alt={productName} className={styles.image} />
-    ) : (
-      <Link to={`/product/${productId}`}>
-        <ProductImageSwiper images={images} />
-      </Link>
-    )}
-    <ProductInfo
-      productId={productId}
-      productName={productName}
-      price={Number.parseFloat(price)}
-      sizes={sizes}
-      quantity={Number(quantity)}
-      vendorCode={vendorCode}
-    />
-  </div>
-);
+}): JSX.Element => {
+  const productPrice = price ? Number.parseFloat(price) : undefined;
+  return (
+    <div className={styles.productCard}>
+      {isMobile ? (
+        <Link to={`/product/${productId}`}>
+          <img src={image} alt={productName} className={styles.image} />
+        </Link>
+      ) : (
+        <Link to={`/product/${productId}`}>
+          <ProductImageSwiper images={images} />
+        </Link>
+      )}
+      <ProductInfo
+        productId={productId}
+        productName={productName}
+        price={productPrice}
+        sizes={sizes}
+        quantity={Number(quantity)}
+        vendorCode={vendorCode}
+      />
+    </div>
+  );
+};
 
 export default ProductCard;
