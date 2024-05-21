@@ -67,13 +67,13 @@ const PersonalData: FC<PersonalDataProps> = ({ back, deliveryType }) => {
                       placeholder=""
                       {...register(id, {
                         required: true,
-                        value: '+380',
+                        value: t('countryPhoneCode'),
                         validate: validPhoneCode,
                       })}
                     ></textarea>
                     <span>
                       Prefix * <br />
-                      +380
+                      {t('countryPhoneCode')}
                     </span>
                   </form>
                 ) : (
@@ -85,7 +85,7 @@ const PersonalData: FC<PersonalDataProps> = ({ back, deliveryType }) => {
                     isAnimated={true}
                     text={t('order.warning')}
                     register={register}
-                    required={id === 'information' ? false : true}
+                    required={id === 'information'}
                     validate={id === 'number' ? validPhoneNumber : undefined}
                     errors={errors}
                   />

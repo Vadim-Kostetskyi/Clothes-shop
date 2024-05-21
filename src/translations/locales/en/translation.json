@@ -21,6 +21,7 @@
   "box": "box",
   "truck": "truck",
   "gift": "gift",
+  "countryPhoneCode": "+380",
   "privacyPolicy": "The terms and conditions. Privacy policy.",
   "copyright": "© {{year}} by NOVA. All Rights Reserved.",
   "consent": "By continuing, I confirm that I was able to read and understand the information on the use of my personal data, as explained in the Privacy Policy.",
