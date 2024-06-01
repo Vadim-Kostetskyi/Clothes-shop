@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './index.module.scss';
 import { useTranslation } from 'react-i18next';
-import InputMask from 'react-input-mask';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import clsx from 'clsx';
 import PaymentInput from 'modules/order/components/PaymentInput';
@@ -13,6 +12,20 @@ export interface paymentForm {
   year: number;
   cvv: number;
 }
+
+const normalizeCardNumber = (value: string) => {
+  return (
+    value
+      ?.replace(/\D/g, '')
+      .match(/.{1,4}/g)
+      ?.join(' ')
+      .slice(0, 19) || ''
+  );
+};
+
+const normalizeCVV = (value: string) => {
+  return value?.replace(/\D/g, '').slice(0, 3) || '';
+};
 
 const PaymentDetail = () => {
   const { t: validationT } = useTranslation('validation');
@@ -35,32 +48,45 @@ const PaymentDetail = () => {
     },
   };
 
+  const cardNumberRules = {
+    ...requiredInput,
+    pattern: {
+      value: /(?:\d[ ]*?){16}/,
+      message: validationT('invalidCardNumber'),
+    },
+  };
+
+  const cvvRules = {
+    ...requiredInput,
+    pattern: {
+      value: /\d{3}/,
+      message: validationT('invalidCardNumber'),
+    },
+  };
+
   return (
     <div className={styles.wrapper}>
       <form className={styles.wrapperData}>
         <div>
-          <InputMask
-            {...register('cardNumber', {
-              ...requiredInput,
-              pattern: {
-                value: /(?:\d[ ]*?){16}/,
-                message: validationT('invalidCardNumber'),
-              },
-            })}
-            type="text"
+          <PaymentInput
+            register={register}
+            rules={cardNumberRules}
+            id="cardNumber"
             name="cardNumber"
             className={clsx(
               styles.input,
               errors?.cardNumber && styles.inputError,
             )}
-            placeholder={defaultT('payment.cardNumber')}
-            mask={'9999 9999 9999 9999'}
+            type="tel"
+            placeholder={'0000 0000 0000 0000'}
+            autoComplete="cc-number"
+            inputMode="numeric"
+            errors={errors}
+            onChange={event => {
+              const { value } = event.target;
+              event.target.value = normalizeCardNumber(value);
+            }}
           />
-          {errors?.cardNumber && (
-            <label className={styles.textError}>
-              {errors.cardNumber?.message}
-            </label>
-          )}
         </div>
         <div>
           <PaymentInput
@@ -102,24 +128,20 @@ const PaymentDetail = () => {
           />
         </div>
         <div>
-          <InputMask
-            {...register('cvv', {
-              ...requiredInput,
-              pattern: {
-                value: /\d{3}/,
-                message: validationT('invalidCVV'),
-              },
-            })}
+          <PaymentInput
+            register={register}
+            rules={cvvRules}
+            id="cvv"
             type="password"
             name="cvv"
             className={clsx(styles.input, errors?.cvv && styles.inputError)}
             placeholder="CVV"
-            mask={'999'}
-            maskPlaceholder={''}
+            errors={errors}
+            onChange={event => {
+              const { value } = event.target;
+              event.target.value = normalizeCVV(value);
+            }}
           />
-          {errors?.cvv && (
-            <label className={styles.textError}>{errors.cvv?.message}</label>
-          )}
         </div>
       </form>
       <div className={styles.wrapperButton}>

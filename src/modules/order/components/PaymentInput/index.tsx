@@ -21,6 +21,7 @@ interface PaymentInputProps extends InputHTMLAttributes<HTMLInputElement> {
     name: keyof paymentForm,
     options?: RegisterOptions,
   ) => UseFormRegisterReturn;
+  onChage?: () => void;
 }
 
 const PaymentInput: FC<PaymentInputProps> = ({
@@ -32,16 +33,19 @@ const PaymentInput: FC<PaymentInputProps> = ({
   register,
   rules,
   errors,
+  onChange,
+  ...rest
 }) => {
   return (
     <>
       <input
-        {...register(name, rules)}
+        {...register(name, { ...rules, onChange: onChange })}
         id={id}
         type={type}
         placeholder={placeholder}
         className={className}
         name={name}
+        {...rest}
       />
       {errors?.[name] && (
         <label className={styles.textError}>{errors[name]?.message}</label>
