@@ -6,7 +6,7 @@ import styles from './index.module.scss';
 interface ColorSelectorProps {
   parameters: Color[];
   active: Color;
-  handleClick: (parameter: string, value: Color) => void;
+  handleClick: (value: Color) => void;
   className?: string;
 }
 
@@ -29,7 +29,7 @@ const ColorSelector: FC<ColorSelectorProps> = ({
       <button
         key={parameter + index}
         className={getCombinedClass(parameter)}
-        onClick={() => handleClick('color', parameter)}
+        onClick={() => handleClick(parameter)}
       >
         <span
           className={

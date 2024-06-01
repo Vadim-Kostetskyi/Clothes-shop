@@ -22,8 +22,8 @@ type ProductEditShoppingCartProps = {
   colour: Color;
   count: number;
   totalPrice: number;
-  onChangeSize: (parameter: string, value: Size) => void;
-  onChangeColor: (parameter: string, value: Color) => void;
+  onChangeSize: (value: Size) => void;
+  onChangeColor: (value: Color) => void;
 };
 
 const ProductEditShoppingCart: FC<ProductEditShoppingCartProps> = ({

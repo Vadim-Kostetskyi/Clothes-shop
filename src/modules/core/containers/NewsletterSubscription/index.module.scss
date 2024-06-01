@@ -2,36 +2,51 @@
 
 .formWrapper {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  position: relative;
+  justify-content: space-between;
   height: 145px;
+
   @include media(tablet) {
     flex-direction: column;
   }
 }
 
+.formBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 4.7%;
+
+  @include media(tablet) {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+}
+
 .wrapperDiscount {
   display: flex;
-  justify-content: space-between;
-  gap: 7px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 145px;
+  align-items: start;
 }
 
 .discount {
   color: $textPrimary;
   font-size: 202px;
   font-weight: 300;
+
+  @include media(tablet) {
+    font-size: 122px;
+  }
 }
 
 .percent {
   color: $textPrimary;
   font-size: 92px;
   font-weight: 600;
+
+  @include media(tablet) {
+    font-size: 48px;
+  }
 }
 
 .inputText {
@@ -63,6 +78,20 @@
 .wrapperItem {
   display: flex;
   justify-content: flex-end;
+  width: 100%;
+
+  & > div > input {
+    @include media(laptop) {
+      width: 300px;
+    }
+  }
+
+  & > div,
+  & > div > input {
+    @include media(tablet) {
+      width: 100%;
+    }
+  }
 }
 
 .inputsWrapper {
@@ -70,6 +99,9 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 12px;
+  @include media(tablet) {
+    width: 100%;
+  }
 }
 
 .checkbox {

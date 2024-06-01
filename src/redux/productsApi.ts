@@ -114,17 +114,32 @@ export const productsApi = createApi({
       SearchProductsProps
     >({
       async queryFn(_arg, _queryApi, _extraOptions, fetchWithBQ) {
-        const rawProducts = await fetchWithBQ({
+        let params = {
           url: `products/search?page=${_arg.page}&size=${_arg.size}`,
           method: 'POST',
           body: _arg.body,
-        });
+        };
+
+        switch (true) {
+          case _arg.isFilter:
+            params = {
+              url: `products/filter?page=${_arg.page}&size=${_arg.size}&sorting=price-${_arg.sortBy}`,
+              method: 'POST',
+              body: _arg.body,
+            };
+            break;
+          case _arg.isNewNow:
+            params = { url: 'products/new', method: 'GET', body: _arg.body };
+            break;
+        }
+        const rawProducts = await fetchWithBQ(params);
 
         if (rawProducts.error)
           return { error: rawProducts.error as FetchBaseQueryError };
 
-        const products =
-          (rawProducts.data as GetProductsResponse)?.products ?? [];
+        const products = _arg.isNewNow
+          ? (rawProducts.data as GetProductsResponse['products']) ?? []
+          : (rawProducts.data as GetProductsResponse)?.products ?? [];
 
         const pages = (rawProducts?.data as GetProductsResponse)?.pages ?? 0;
 
@@ -136,6 +151,7 @@ export const productsApi = createApi({
         const images = await Promise.all(
           productsId.map(async id => {
             const images = await fetchWithBQ(`products/images/${id}`);
+
             return { id, images: images?.data };
           }),
         );

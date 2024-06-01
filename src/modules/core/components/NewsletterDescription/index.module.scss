@@ -1,10 +1,9 @@
 @import 'styles/constants';
 
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 16px;
+  @include media(laptopUp) {
+    margin-right: calc(8.6%);
+  }
 }
 
 .spanText {
@@ -12,6 +11,11 @@
   font-family: $font-family-main;
   font-size: 24px;
   font-weight: 300;
+  line-height: 40px;
+
+  @include media(laptopUp) {
+    white-space: nowrap;
+  }
 }
 
 .mainText {
@@ -19,4 +23,9 @@
   font-family: $font-family-main;
   font-size: 32px;
   font-weight: 400;
+  line-height: 40px;
+
+  @include tabletOnly {
+    display: block;
+  }
 }
