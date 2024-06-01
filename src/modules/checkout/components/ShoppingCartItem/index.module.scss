@@ -59,4 +59,9 @@ $productItemMinHeight: 170px;
       }
     }
   }
+
+  @include media(tablet) {
+    width: 100%;
+    justify-content: center;
+  }
 }
