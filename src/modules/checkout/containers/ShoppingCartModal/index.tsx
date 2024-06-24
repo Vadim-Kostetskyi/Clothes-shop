@@ -22,20 +22,18 @@ const ShoppingCartModal: FC<Properties> = ({
   const totalPrice = useAppSelector(selectOrderTotalPrice);
 
   return (
-    <>
-      <ShoppingCart
-        title={isOrder ? t('order.summaryTitle') : t('shoppingCart.title')}
-        onClose={onClose}
-        products={products}
+    <ShoppingCart
+      title={isOrder ? t('order.summaryTitle') : t('shoppingCart.title')}
+      onClose={onClose}
+      products={products}
+      isOrder={isOrder}
+    >
+      <OrderSummary
+        totalPrice={totalPrice}
         isOrder={isOrder}
-      >
-        <OrderSummary
-          totalPrice={totalPrice}
-          isOrder={isOrder}
-          amountProducts={products?.length}
-        />
-      </ShoppingCart>
-    </>
+        amountProducts={products?.length}
+      />
+    </ShoppingCart>
   );
 };
 
