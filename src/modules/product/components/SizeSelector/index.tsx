@@ -10,7 +10,6 @@ export interface SizeSelectorProps {
   handleClick: (size: Size) => void;
   isProductDetails?: boolean;
   isFilter?: boolean;
-  isMobile?: boolean;
 }
 
 const SizeSelector: FC<SizeSelectorProps> = ({
@@ -20,7 +19,6 @@ const SizeSelector: FC<SizeSelectorProps> = ({
   handleClick,
   isProductDetails,
   isFilter,
-  isMobile,
 }): JSX.Element => {
   const displaySizes = parameters || sizes;
 
@@ -50,29 +48,17 @@ const SizeSelector: FC<SizeSelectorProps> = ({
         isProductDetails ? styles.btnBlockProductDetails : styles.btnBlock
       }
     >
-      {isMobile
-        ? displaySizes &&
-          displaySizes.map((size, index) => (
-            <button
-              key={index}
-              className={combinedClassName(size)}
-              onClick={() => handleClick(size)}
-              disabled={sizes && !sizes.includes(size)}
-            >
-              <p className={styles.text}>{size}</p>
-            </button>
-          ))
-        : displaySizes &&
-          displaySizes.map((size, index) => (
-            <button
-              key={index}
-              className={combinedClassName(size)}
-              onClick={() => handleClick(size)}
-              disabled={sizes && !sizes.includes(size)}
-            >
-              <p className={styles.text}>{size}</p>
-            </button>
-          ))}
+      {displaySizes &&
+        displaySizes.map((size, index) => (
+          <button
+            key={index}
+            className={combinedClassName(size)}
+            onClick={() => handleClick(size)}
+            disabled={sizes && !sizes.includes(size)}
+          >
+            <p className={styles.text}>{size}</p>
+          </button>
+        ))}
     </div>
   );
 };

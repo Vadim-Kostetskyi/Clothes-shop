@@ -18,9 +18,9 @@ const PickerAccordion: FC<PickerAccordionProps> = ({ title, list }) => {
     <div className={styles.wrapper}>
       <button className={styles.button} onClick={handleShowList}>
         <span>{title}</span>
-        <div className={isShowList ? styles.arrowTop : styles.arrowBottom}>
+        <span className={isShowList ? styles.arrowTop : styles.arrowBottom}>
           <ArrowRight />
-        </div>
+        </span>
       </button>
       <div className={isShowList ? styles.list : styles.listHide}>{list}</div>
     </div>

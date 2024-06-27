@@ -1,15 +1,13 @@
 import React, { FC, useCallback, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import SizeSelector from 'modules/product/components/SizeSelector';
-import ColorSelection from 'modules/product/components/ColorSelection';
 import AddToCartButton from 'modules/checkout/components/AddToCartButton';
 import Accordion from 'modules/core/components/Accordion';
-import PickerAccordion from '../PickerAccordion';
-import ProductPrice from '../ProductPrice';
-import { Size, Color, clothesColors } from 'types/types';
+import { Size, Color } from 'types/types';
 import { useGetViewportWidth } from 'hooks';
 import { ViewportWidth } from 'utils/constants';
+import ProductInformationMobile from '../ProductInformationMobile';
 import styles from './index.module.scss';
+import ProductInformation from '../ProductInformation';
 
 export interface ProductDetailsInfoProps {
   title?: string;
@@ -21,8 +19,6 @@ export interface ProductDetailsInfoProps {
   addToFavorite: () => void;
   addToShoppingCart: () => void;
 }
-
-const defaultSizes: Size[] = Object.values(Size);
 
 const ProductDetailsInfo: FC<ProductDetailsInfoProps> = ({
   title,
@@ -67,43 +63,6 @@ const ProductDetailsInfo: FC<ProductDetailsInfoProps> = ({
     [],
   );
 
-  const colorSelection = (
-    <ColorSelection
-      colors={clothesColors}
-      chosenColor={selectedColor}
-      changeColor={handleChangeColor}
-    />
-  );
-
-  const sizeSelector = (
-    <SizeSelector
-      parameters={defaultSizes}
-      sizes={sizes}
-      active={selectedSize}
-      handleClick={handleChangeSize}
-      isProductDetails={true}
-    />
-  );
-
-  const parameters = useMemo(
-    () => [
-      {
-        title: t('productDetails.color'),
-        list: <div className={styles.colorSelectionBox}>{colorSelection}</div>,
-      },
-      {
-        title: t('productDetails.size'),
-        list: (
-          <>
-            <p className={styles.textSize}>Select size</p>
-            {sizeSelector}
-          </>
-        ),
-      },
-    ],
-    [selectedColor, selectedSize],
-  );
-
   const addToCartButton = (
     <AddToCartButton
       addToBag={addToShoppingCart}
@@ -112,44 +71,24 @@ const ProductDetailsInfo: FC<ProductDetailsInfoProps> = ({
     />
   );
 
+  const productInformationProps = {
+    title,
+    price,
+    addToCartButton,
+    vendorCode,
+    selectedColor,
+    sizes,
+    selectedSize,
+    handleChangeSize,
+    handleChangeColor,
+  };
+
   return (
     <div className={styles.wrapper}>
       {isMobile ? (
-        <>
-          <p className={styles.title}>
-            {title}
-            <span className={styles.currency}>
-              {price}
-              {t('currency')}
-            </span>
-          </p>
-          <div className={styles.functionalBox}>
-            {parameters.map((props, index) => (
-              <PickerAccordion {...props} key={index} />
-            ))}
-            {addToCartButton}
-          </div>
-          <p className={styles.ref}>
-            {t('productDetails.ref')}. {vendorCode}
-          </p>
-        </>
+        <ProductInformationMobile {...productInformationProps} />
       ) : (
-        <>
-          <p className={styles.title}>{title}</p>
-          <p className={styles.ref}>
-            {t('productDetails.ref')}. {vendorCode}
-          </p>
-          {price ? (
-            <ProductPrice price={parseFloat(price)} className={styles.price} />
-          ) : null}
-          <div className={styles.colorBox}>
-            <p className={styles.submenu}>{t('productDetails.selectColour')}</p>
-            {colorSelection}
-          </div>
-          <p className={styles.submenu}>{t('productDetails.selectSize')}</p>
-          <div className={styles.sizeBox}>{sizeSelector}</div>
-          {addToCartButton}
-        </>
+        <ProductInformation {...productInformationProps} />
       )}
       {productDescription.map(props => (
         <div className={styles.accordionBox} key={props.title}>

@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
+import { Link } from 'react-router-dom';
 import ProductImageSwiper from 'modules/product/components/ProductImageSwiper';
 import ProductInfo from 'modules/product/components/ProductInfo';
 import { Size } from 'types/types';
 import { ImageItemProps } from 'redux/types';
-import { Link } from 'react-router-dom';
 import styles from './index.module.scss';
 
 export interface ProductCardProps {
@@ -32,15 +32,14 @@ const ProductCard: FC<ProductCardProps> = ({
   const productPrice = price ? Number.parseFloat(price) : undefined;
   return (
     <div className={styles.productCard}>
-      {isMobile ? (
-        <Link to={`/product/${productId}`}>
+      <Link to={`/product/${productId}`}>
+        <img src={image} alt={productName} className={styles.image} />
+        {isMobile ? (
           <img src={image} alt={productName} className={styles.image} />
-        </Link>
-      ) : (
-        <Link to={`/product/${productId}`}>
+        ) : (
           <ProductImageSwiper images={images} />
-        </Link>
-      )}
+        )}
+      </Link>
       <ProductInfo
         productId={productId}
         productName={productName}
