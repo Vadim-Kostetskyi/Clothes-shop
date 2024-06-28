@@ -85,7 +85,7 @@ const PersonalData: FC<PersonalDataProps> = ({ back, deliveryType }) => {
                     isAnimated={true}
                     text={t('order.warning')}
                     register={register}
-                    required={id === 'information'}
+                    required={id !== 'information'}
                     validate={id === 'number' ? validPhoneNumber : undefined}
                     errors={errors}
                   />
