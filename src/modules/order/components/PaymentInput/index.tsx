@@ -10,9 +10,9 @@ interface FormErrors {
 }
 
 interface PaymentInputProps extends InputHTMLAttributes<HTMLInputElement> {
-  type?: string;
-  className?: string;
-  placeholder?: string;
+  type: string;
+  className: string;
+  placeholder: string;
   rules?: RegisterOptions;
   id: string;
   name: keyof PaymentForm;
@@ -22,6 +22,7 @@ interface PaymentInputProps extends InputHTMLAttributes<HTMLInputElement> {
     options?: RegisterOptions,
   ) => UseFormRegisterReturn;
   onChage?: () => void;
+  normalize?: (value: string) => string;
 }
 
 const PaymentInput: FC<PaymentInputProps> = ({
@@ -34,12 +35,22 @@ const PaymentInput: FC<PaymentInputProps> = ({
   rules,
   errors,
   onChange,
+  normalize,
   ...rest
 }) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (normalize) {
+      event.target.value = normalize(event.target.value);
+    }
+    if (onChange) {
+      onChange(event);
+    }
+  };
+
   return (
-    <>
+    <div>
       <input
-        {...register(name, { ...rules, onChange: onChange })}
+        {...register(name, { ...rules, onChange: handleChange })}
         id={id}
         type={type}
         placeholder={placeholder}
@@ -50,7 +61,7 @@ const PaymentInput: FC<PaymentInputProps> = ({
       {errors?.[name] && (
         <label className={styles.textError}>{errors[name]?.message}</label>
       )}
-    </>
+    </div>
   );
 };
 
