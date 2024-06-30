@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import clsx from 'clsx';
 import PaymentInput from 'modules/order/components/PaymentInput';
 
-export interface paymentForm {
+export interface PaymentForm {
   cardNumber: string;
   cardHolder: string;
   month: number;
@@ -35,9 +35,9 @@ const PaymentDetail = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<paymentForm>({ mode: 'onBlur' });
+  } = useForm<PaymentForm>({ mode: 'onBlur' });
 
-  const onSubmit: SubmitHandler<paymentForm> = () => {
+  const onSubmit: SubmitHandler<PaymentForm> = () => {
     // axios request to backend payment endpoint
   };
 

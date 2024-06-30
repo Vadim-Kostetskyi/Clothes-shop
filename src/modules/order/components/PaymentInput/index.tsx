@@ -1,6 +1,6 @@
 import React, { FC, InputHTMLAttributes } from 'react';
 import { RegisterOptions, UseFormRegisterReturn } from 'react-hook-form';
-import { paymentForm } from '../../conteiners/PaymentDetail';
+import { PaymentForm } from '../../containers/PaymentDetail';
 import styles from './index.module.scss';
 
 interface FormErrors {
@@ -15,10 +15,10 @@ interface PaymentInputProps extends InputHTMLAttributes<HTMLInputElement> {
   placeholder?: string;
   rules?: RegisterOptions;
   id: string;
-  name: keyof paymentForm;
+  name: keyof PaymentForm;
   errors: FormErrors;
   register: (
-    name: keyof paymentForm,
+    name: keyof PaymentForm,
     options?: RegisterOptions,
   ) => UseFormRegisterReturn;
   onChage?: () => void;
