@@ -17,11 +17,11 @@ const PaymentMethodButton: FC<PaymentMethodButtonProps> = ({
 }) => (
   <button className={styles.paymentMethod} name={name} onClick={paymentChoice}>
     {title}
-    <div className={styles.cardImageWrapper}>
+    <span className={styles.cardImageWrapper}>
       {images.map(({ link, alt }) => (
         <img key={link} src={link} alt={alt} />
       ))}
-    </div>
+    </span>
   </button>
 );
 
