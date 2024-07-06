@@ -7,7 +7,7 @@ import {
   PRODUCT_GRID_SIZE_MOBILE,
   ViewportWidth,
 } from 'utils/constants';
-import { BodySearchProducts } from 'redux/types';
+import { BodyFilterProducts, BodySearchProducts } from 'redux/types';
 import { Category, Subcategory } from 'types/types';
 import { useFetchProductsWithImagesMutation } from 'redux/productsApi';
 import MainLayout from 'modules/core/components/MainLayout';
@@ -16,6 +16,8 @@ import ProductsPagination from 'modules/product/components/ProductsPagination';
 import { useTranslation } from 'react-i18next';
 import { getButtons } from 'modules/product/components/FilterTabButtons/data';
 import { useGetViewportWidth } from 'hooks';
+import ProductFilter from 'modules/product/components/ProductFilter';
+import styles from './index.module.scss';
 
 const ProductsGridPage = (): JSX.Element => {
   const [searchProducts, { isLoading, data }] =
@@ -70,6 +72,27 @@ const ProductsGridPage = (): JSX.Element => {
     [isMobile],
   );
 
+  const handleClickFilter = useCallback(
+    (body: BodyFilterProducts, sortBy: string) => {
+      searchProducts({
+        isFilter: true,
+        page: 1,
+        size: PRODUCT_GRID_SIZE,
+        body,
+        sortBy,
+      });
+    },
+    [],
+  );
+
+  const handleSetNewNowProducts = useCallback(() => {
+    searchProducts({
+      page: 1,
+      size: PRODUCT_GRID_SIZE,
+      isNewNow: true,
+    });
+  }, []);
+
   const pagesAmount = data?.pages ?? 0;
 
   return (
@@ -80,6 +103,12 @@ const ProductsGridPage = (): JSX.Element => {
         setActivePage={setActivePage}
         handleClick={handleClick}
       />
+      <div className={styles.filterWrapper}>
+        <ProductFilter
+          handleClick={handleClickFilter}
+          setNewProducts={handleSetNewNowProducts}
+        />
+      </div>
       {isLoading ? (
         <Loader />
       ) : (

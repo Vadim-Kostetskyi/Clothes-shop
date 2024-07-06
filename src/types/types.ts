@@ -10,8 +10,8 @@ export enum Size {
 }
 
 export enum Color {
-  Black = 'black',
-  White = 'white',
+  Black = 'Black',
+  Beige = 'Beige',
 }
 
 export enum HeaderMenu {
@@ -45,7 +45,7 @@ export enum Subcategory {
 
 export const clothesColors: Record<Color, string> = {
   [Color.Black]: BlackColor,
-  [Color.White]: WhiteColor,
+  [Color.Beige]: WhiteColor,
 };
 
 export type MenuItem = {
@@ -64,6 +64,19 @@ export type MenuList = {
   contentName: string;
   label: string;
 };
+
+export enum Price {
+  min = 0,
+  max = 1000,
+}
+
+export enum FilterItems {
+  NewNow = 'New now',
+  PriceAsc = 'Price low to high',
+  PriceDesc = 'Price high to low',
+  PriceAscRequest = 'asc',
+  PriceDescRequest = 'desc',
+}
 
 export type Image = {
   link: string;

@@ -4,11 +4,12 @@ import { getValidClassNames } from 'helpers';
 import styles from './index.module.scss';
 
 export interface SizeSelectorProps {
-  parameters: string[];
+  parameters?: Size[];
   sizes?: Size[];
-  active?: string;
-  handleClick: (param: string, size: Size) => void;
+  active?: Size | Size[];
+  handleClick: (size: Size) => void;
   isProductDetails?: boolean;
+  isFilter?: boolean;
 }
 
 const SizeSelector: FC<SizeSelectorProps> = ({
@@ -17,34 +18,43 @@ const SizeSelector: FC<SizeSelectorProps> = ({
   active,
   handleClick,
   isProductDetails,
+  isFilter,
 }): JSX.Element => {
+  const displaySizes = parameters || sizes;
+
   const isActiveStyles = isProductDetails
     ? styles.activeProductDetails
     : styles.active;
 
   const combinedClassName = useCallback(
-    (parameter: string) =>
+    (parameter: Size) =>
       getValidClassNames(
         isProductDetails
           ? styles.productDetailsParameterBtn
+          : isFilter
+          ? styles.parameterBtnFilter
           : styles.parameterBtn,
         { [isActiveStyles]: active === parameter },
+        Array.isArray(active) && active?.includes(parameter)
+          ? styles.activeProductDetails
+          : '',
       ),
     [active, isActiveStyles, isProductDetails],
   );
 
   return (
     <div className={styles.btnBlock}>
-      {parameters.map((parameter, index) => (
-        <button
-          key={index}
-          className={combinedClassName(parameter)}
-          onClick={() => handleClick('size', parameter as Size)}
-          disabled={sizes && !sizes.includes(parameter as Size)}
-        >
-          <p className={styles.text}>{parameter}</p>
-        </button>
-      ))}
+      {displaySizes &&
+        displaySizes.map((size, index) => (
+          <button
+            key={index}
+            className={combinedClassName(size)}
+            onClick={() => handleClick(size)}
+            disabled={sizes && !sizes.includes(size)}
+          >
+            <p className={styles.text}>{size}</p>
+          </button>
+        ))}
     </div>
   );
 };

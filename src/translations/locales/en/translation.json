@@ -78,5 +78,13 @@
     "googlePay": "GOOGLE PAY",
     "applePay": "APPLE PAY",
     "paypal": "PAYPAL"
+  },
+  "productFilter": {
+    "filter": "Filter",
+    "clear": "CLEAR",
+    "seeResults": "SEE RESULTS",
+    "all": "All",
+    "priceHighToLow": "Price high to low",
+    "priceLowToHigh": "Price low to high"
   }
 }
