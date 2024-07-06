@@ -1,7 +1,8 @@
 import React, { FC, InputHTMLAttributes, ReactElement, useMemo } from 'react';
 import { FieldErrors, UseFormRegister, Validate } from 'react-hook-form';
-import styles from './index.module.scss';
+import clsx from 'clsx';
 import { PersonalDataForm } from 'modules/order/components/PersonalData';
+import styles from './index.module.scss';
 
 type PersonalDataNames = keyof PersonalDataForm;
 
@@ -32,13 +33,14 @@ const Input: FC<InputProps> = ({
   validate,
   errors,
 }) => {
-  const errorKey = useMemo(
-    () => (id && errors ? Object.keys(errors).includes(id) : null),
-    [errors && Object.keys(errors)],
-  );
+  const errorKey = id && errors ? Object.keys(errors).includes(id) : null;
 
   const errorTextClassName = useMemo(
-    () => (errorKey ? styles.wrong : styles.warning),
+    () =>
+      clsx({
+        [styles.wrong]: errorKey,
+        [styles.warning]: !errorKey,
+      }),
     [errorKey],
   );
 

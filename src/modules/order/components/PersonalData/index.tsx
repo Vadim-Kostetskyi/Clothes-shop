@@ -6,6 +6,9 @@ import Input from 'modules/core/components/Input';
 import { personalDataItems } from './data';
 import { validPhoneCode, validPhoneNumber } from 'utils/validate';
 import { CountyPhoneCode } from 'utils/constants';
+import { useLocalStorage } from 'hooks';
+import { useCreateOrderMutation } from 'redux/ordersApi';
+import { SoppingCardQuantity, splitInfo } from './splitInfo';
 import styles from './index.module.scss';
 
 export interface PersonalDataProps {
@@ -27,17 +30,54 @@ export interface PersonalDataForm {
 }
 
 const PersonalData: FC<PersonalDataProps> = ({ back, deliveryType }) => {
+  const [orderInformation, { data }] = useCreateOrderMutation();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<PersonalDataForm>();
   const { t } = useTranslation();
+  const { getItem } = useLocalStorage<SoppingCardQuantity>('shoppingCart', {
+    quantity: [],
+  });
+  const productsForOrdering = getItem();
+
+  const orderItems = splitInfo(productsForOrdering);
 
   const sendCustomerInformation: SubmitHandler<PersonalDataForm> = useCallback(
-    data => {
-      //TODO send information to the backend and move to the next step
-      console.log('deliveryType:', deliveryType, data);
+    userData => {
+      const {
+        firstName,
+        lastName,
+        email,
+        prefix,
+        number,
+        address,
+        zipCode,
+        city,
+        state,
+        information,
+      } = userData;
+      const phone = `${prefix}${number}`;
+
+      const order = {
+        body: {
+          user: { firstName, lastName, phone, email },
+          orderDelivery: {
+            address,
+            moreInfo: `${information} Type of delivery: ${deliveryType}`,
+            zipCode: zipCode.toString(),
+            city,
+            state,
+            country: 'Ukraine',
+          },
+          orderItems,
+        },
+      };
+      orderInformation(order);
+
+      console.log('data', data);
+      //TODO make the transition to the next stage
     },
     [],
   );

@@ -1,14 +1,4 @@
-type PersonalDataItemId =
-  | 'number'
-  | 'firstName'
-  | 'lastName'
-  | 'prefix'
-  | 'email'
-  | 'address'
-  | 'information'
-  | 'zipCode'
-  | 'city'
-  | 'state';
+import { PersonalDataItemId } from 'types/types';
 
 type PersonalDataInput =
   | { id: PersonalDataItemId; placeholder: string; type: string }
@@ -23,25 +13,49 @@ export const personalDataItems: PersonalDataItem[] = [
   {
     title: 'PERSONAL DATA',
     inputs: [
-      { id: 'firstName', placeholder: 'First Name *', type: 'text' },
-      { id: 'lastName', placeholder: 'Last Name *', type: 'text' },
-      { id: 'prefix', placeholder: 'Prefix *\n+380', type: 'text' },
-      { id: 'number', placeholder: 'Cell number *', type: 'number' },
-      { id: 'email', placeholder: 'Email *', type: 'email' },
+      {
+        id: PersonalDataItemId.FirstName,
+        placeholder: 'First Name *',
+        type: 'text',
+      },
+      {
+        id: PersonalDataItemId.LastName,
+        placeholder: 'Last Name *',
+        type: 'text',
+      },
+      {
+        id: PersonalDataItemId.Prefix,
+        placeholder: 'Prefix *\n+380',
+        type: 'text',
+      },
+      {
+        id: PersonalDataItemId.Number,
+        placeholder: 'Cell number *',
+        type: 'number',
+      },
+      { id: PersonalDataItemId.Email, placeholder: 'Email *', type: 'email' },
     ],
   },
   {
     title: 'DELIVERY DETAILS',
     inputs: [
-      { id: 'address', placeholder: 'Address *', type: 'text' },
       {
-        id: 'information',
+        id: PersonalDataItemId.Address,
+        placeholder: 'Address *',
+        type: 'text',
+      },
+      {
+        id: PersonalDataItemId.Information,
         placeholder: 'More information (Optional)',
         type: 'text',
       },
-      { id: 'zipCode', placeholder: 'Zip code *', type: 'number' },
-      { id: 'city', placeholder: 'City *', type: 'text' },
-      { id: 'state', placeholder: 'State *', type: 'text' },
+      {
+        id: PersonalDataItemId.ZipCode,
+        placeholder: 'Zip code *',
+        type: 'number',
+      },
+      { id: PersonalDataItemId.City, placeholder: 'City *', type: 'text' },
+      { id: PersonalDataItemId.State, placeholder: 'State *', type: 'text' },
     ],
   },
 ];

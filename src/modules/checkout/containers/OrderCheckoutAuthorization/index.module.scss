@@ -116,7 +116,9 @@
 .signBtn,
 .withoutRegisterBtn,
 .socialSignBtn {
+  display: block;
   font-family: $font-family-main;
+  color: $textPrimary;
   width: 100%;
   padding: 16px 0;
   font-size: 16px;
@@ -132,6 +134,7 @@
 }
 
 .withoutRegisterBtn {
+  text-align: center;
   margin-bottom: 15px;
   border: 1px solid $blackColor;
 }

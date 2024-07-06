@@ -2,25 +2,20 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGoogleLogin } from '@react-oauth/google';
 import { IResolveParams, LoginSocialFacebook } from 'reactjs-social-login';
+import { Link } from 'react-router-dom';
 import HandleLoginFacebookButton from 'modules/product/components/LoginFacebookButton';
 import Input from 'modules/core/components/Input';
 import styles from './index.module.scss';
-import { useNavigate } from 'react-router-dom';
 
 const OrderCheckoutAuthorization = () => {
   const [stayLogged, setStayLogged] = useState(false);
 
   const { t } = useTranslation();
-  const navigate = useNavigate();
 
   const googleLogin = useGoogleLogin({
     onSuccess: codeResponse => console.log(codeResponse),
     flow: 'auth-code',
   });
-
-  const loginWithoutRegistration = () => {
-    navigate('/checkout/delivery');
-  };
 
   const appleLogin = () => {
     //TODO add function to login with Apple
@@ -35,7 +30,7 @@ const OrderCheckoutAuthorization = () => {
     {
       label: t('order.withoutRegistration'),
       className: '',
-      onClick: loginWithoutRegistration,
+      link: '/checkout/delivery',
     },
     {
       label: t('order.continueWithApple'),
@@ -91,14 +86,15 @@ const OrderCheckoutAuthorization = () => {
         <button className={styles.signBtn}>{t('order.signIn')}</button>
       </form>
       <span className={styles.text}>{t('order.orIfYouPrefer')}</span>
-      {buttons.map(({ label, className, onClick }, index) => (
-        <button
+      {buttons.map(({ label, className, onClick, link }, index) => (
+        <Link
           key={label}
           className={index ? styles.socialSignBtn : styles.withoutRegisterBtn}
           onClick={onClick}
+          to={link ? link : ' '}
         >
           <span className={styles[className]}>{label}</span>
-        </button>
+        </Link>
       ))}
       <LoginSocialFacebook
         isOnlyGetToken

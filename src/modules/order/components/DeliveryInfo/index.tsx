@@ -37,10 +37,10 @@ const DeliveryInfo: FC<DeliveryInfoProps> = ({
             className={isHome ? styles.deliveryDataHome : styles.deliveryData}
           >
             <h1>{title}</h1>
-            {isHome ? null : <span className={priceClassName}>{price}</span>}
+            {!isHome && <span className={priceClassName}>{price}</span>}
           </div>
           <p>{workDays}</p>
-          {isHome ? <span className={priceClassName}>{price}</span> : null}
+          {isHome && <span className={priceClassName}>{price}</span>}
         </div>
       </div>
       <DashedEdit />

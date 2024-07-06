@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import styles from './index.module.scss';
 import useExtractFromPath from 'hooks/use-extract-from-path';
+import styles from './index.module.scss';
 
 const OrderStage = () => {
   const [stage, setStage] = useState('');

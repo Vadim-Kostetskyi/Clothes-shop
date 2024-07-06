@@ -2,12 +2,12 @@ import React, { useCallback, useState } from 'react';
 import DeliveryInfo, {
   DeliveryInfoProps,
 } from 'modules/order/components/DeliveryInfo';
+import { useTranslation } from 'react-i18next';
 import PersonalData from 'modules/order/components/PersonalData';
 import Gift from 'assets/svgs/Gift.svg';
 import Truck from 'assets/svgs/Truck.svg';
 import Box from 'assets/svgs/Box.svg';
 import styles from './index.module.scss';
-import { useTranslation } from 'react-i18next';
 
 interface DeliveryProps {
   icon: string;
