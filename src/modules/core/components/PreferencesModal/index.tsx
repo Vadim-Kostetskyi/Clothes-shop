@@ -1,15 +1,16 @@
 import React, { useCallback, useState, FormEvent, useMemo, FC } from 'react';
 import { SingleValue } from 'react-select';
+import { useTranslation } from 'react-i18next';
 import CountrySelect, {
   SelectOptionProps,
 } from 'modules/core/components/CountrySelect';
 import { countries, DEFAULT_COUNTRY } from './listOfCountries';
 import LanguageSelect from 'modules/core/components/LanguageSelect';
 import Copyright from 'modules/core/components/Copyright';
-import { Language } from 'types/types';
-import { useTranslation } from 'react-i18next';
+import Assent from '../Assent';
 import { useGetViewportWidth } from 'hooks';
 import { ViewportWidth } from 'utils/constants';
+import { Language } from 'types/types';
 import styles from './index.module.scss';
 
 export interface PreferencesModalProps {
@@ -83,6 +84,12 @@ const PreferencesModal: FC<PreferencesModalProps> = ({
     [],
   );
 
+  const assentProps = {
+    buttonText: t('homePageModal.go'),
+    rememberSelectionText: t('homePageModal.rememberSelection'),
+    onSubmit: saveCountryLanguage,
+  };
+
   const isMobile = useGetViewportWidth(ViewportWidth.TABLET);
 
   return (
@@ -115,24 +122,7 @@ const PreferencesModal: FC<PreferencesModalProps> = ({
                 />
               </div>
             </div>
-            {/* TODO: move to a separate component */}
-            <div className={styles.assentWrapper}>
-              <form className={styles.agreement} onSubmit={saveCountryLanguage}>
-                <label className={styles.agreementLabel}>
-                  <input
-                    type="checkbox"
-                    name="check"
-                    className={styles.checkbox}
-                  />
-                  <span className={styles.agreementText}>
-                    {t('homePageModal.rememberSelection')}
-                  </span>
-                </label>
-                <button className={styles.assentButton} type="submit">
-                  {t('homePageModal.go')}!
-                </button>
-              </form>
-            </div>
+            <Assent {...assentProps} />
           </div>
         </div>
         {!isMobile && <Copyright />}
