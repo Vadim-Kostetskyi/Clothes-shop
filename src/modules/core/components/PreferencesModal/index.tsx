@@ -1,8 +1,7 @@
 import React, { useCallback, useState, FormEvent, useMemo, FC } from 'react';
 import { SingleValue } from 'react-select';
-import CountrySelect, {
-  SelectOptionProps,
-} from 'modules/core/components/CountrySelect';
+import { SelectOptionProps } from './listOfCountries';
+import LocationSelector from 'modules/core/components/LocationSelector';
 import { countries, DEFAULT_COUNTRY } from './listOfCountries';
 import LanguageSelect from 'modules/core/components/LanguageSelect';
 import Copyright from 'modules/core/components/Copyright';
@@ -41,6 +40,9 @@ const PreferencesModal: FC<PreferencesModalProps> = ({
       const country = newValue as SelectOptionProps;
       setShowAlert(false);
       setSelectedCountry(country);
+
+      console.log('country', country);
+      console.log('selectedCountry', selectedCountry);
     },
     [setShowAlert, setSelectedCountry],
   );
@@ -80,7 +82,7 @@ const PreferencesModal: FC<PreferencesModalProps> = ({
         setShowAlert(true);
       }
     },
-    [],
+    [selectedCountry],
   );
 
   const isMobile = useGetViewportWidth(ViewportWidth.TABLET);
@@ -94,7 +96,7 @@ const PreferencesModal: FC<PreferencesModalProps> = ({
               {t('homePageModal.selectLocation')}
             </p>
             <div className={selectorWrapperClassName}>
-              <CountrySelect
+              <LocationSelector
                 options={countries}
                 value={selectedCountry}
                 onChange={handleCountryChange}

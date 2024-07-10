@@ -1,3 +1,8 @@
+export interface SelectOptionProps {
+  value: string;
+  label: string;
+}
+
 export const countries = [
   { value: 'ax', label: 'Aaland Islands' },
   { value: 'af', label: 'Afghanistan' },
