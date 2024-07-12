@@ -40,9 +40,6 @@ const PreferencesModal: FC<PreferencesModalProps> = ({
       const country = newValue as SelectOptionProps;
       setShowAlert(false);
       setSelectedCountry(country);
-
-      console.log('country', country);
-      console.log('selectedCountry', selectedCountry);
     },
     [setShowAlert, setSelectedCountry],
   );

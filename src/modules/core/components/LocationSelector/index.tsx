@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { SelectOptionProps } from '../PreferencesModal/listOfCountries';
 import styles from './index.module.scss';
 import LocationBag from 'assets/svgs/LocationBag';
-
 import ArrowTop from 'assets/svgs/ArrowTop';
 import ArrowBottom from 'assets/svgs/ArrowBottom';
 
@@ -32,10 +31,7 @@ const LocationSelector: React.FC<LocationSelectorProps> = ({
   };
 
   return (
-    <div
-      className={styles.selectorContainer}
-      style={{ maxHeight: isMobile ? '220px' : '194px' }}
-    >
+    <div className={styles.selectorContainer}>
       <div className={styles.dropdown} onClick={() => setIsOpen(!isOpen)}>
         <div className={styles.selectedOption}>
           <div className={styles.icon}>
@@ -59,7 +55,10 @@ const LocationSelector: React.FC<LocationSelectorProps> = ({
             />
           </div>
 
-          <ul className={styles.optionsList}>
+          <ul
+            className={styles.optionsList}
+            style={{ maxHeight: isMobile ? '100px' : '120px' }}
+          >
             {filteredOptions.map(option => (
               <li
                 key={option.value}
