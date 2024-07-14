@@ -20,7 +20,7 @@ function App() {
         <Route path="details" element={<OrderCheckoutAuthorization />} />
         <Route path="delivery" />
         <Route path="payment" element={<Payment />} />
-        <Route path="payment_detail" element={<PaymentDetail />} />
+        <Route path="payment/card" element={<PaymentDetail />} />
       </Route>
     </Routes>
   );
