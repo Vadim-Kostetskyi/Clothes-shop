@@ -77,3 +77,8 @@ export enum FilterItems {
   PriceAscRequest = 'asc',
   PriceDescRequest = 'desc',
 }
+
+export type Image = {
+  link: string;
+  alt: string;
+};
