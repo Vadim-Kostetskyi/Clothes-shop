@@ -1,0 +1,74 @@
+@import 'styles/constants';
+
+.searchInputBox {
+  padding-right: 8px;
+  margin-bottom: 8px;
+}
+
+.searchInput {
+  width: 100%;
+  background: rgba(149, 149, 149, 0.2);
+  border-radius: 4px;
+  border: none;
+  padding: 12px;
+}
+
+.dropdownMenu {
+  padding: 8px 0px 8px 8px;
+  background: $brilliance;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
+}
+
+.optionsList {
+  overflow-y: auto;
+  max-height: 130px;
+  height: 100%;
+}
+
+.option {
+  margin-bottom: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.option:hover {
+  background-color: rgba(149, 149, 149, 0.2);
+  font-weight: 700;
+}
+
+.icon {
+  padding: 8px;
+  margin-right: 8px;
+}
+
+.dropdown {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 4px;
+  border: 1px solid $grayLight;
+}
+
+.selectorContainer {
+  color: $textPrimary;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.selectedOption {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  border-right: 1px solid $grayLight;
+}
+
+.arrowBtn {
+  width: 52px;
+  height: 50px;
+  padding: 0px 8px;
+}
