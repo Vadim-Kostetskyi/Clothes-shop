@@ -22,6 +22,9 @@ const OrderStage = () => {
     case 'PAYMENT':
       stageNumber = 3;
       break;
+    case 'PAYMENT/CARD':
+      stageNumber = 3;
+      break;
     default:
       break;
   }
