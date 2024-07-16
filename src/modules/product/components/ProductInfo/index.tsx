@@ -1,13 +1,14 @@
 import React, { useState, FC } from 'react';
 import { useTranslation } from 'react-i18next';
+import ProductPrice from '../ProductPrice';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import { Size, Color } from 'types/types';
 import {
   selectQuantityByProductId,
   actions as shoppingCartActions,
 } from 'redux/slices/shopping-cart';
-import ShoppingBag from 'assets/svgs/ShoppingBag';
 import ProductInfoParameters from 'modules/product/components/ProductInfoParameters';
+import AddToCartButton from 'modules/checkout/components/AddToCartButton';
 import styles from './index.module.scss';
 
 interface ProductInfo {
@@ -83,16 +84,10 @@ const ProductInfo: FC<ProductInfo> = ({
       <div className={styles.nameBox}>
         <span className={styles.productName}>{productName}</span>
         <div className={styles.shoppingCartWrapper}>
-          {/* TODO: move to a separate component (similar on details page and navigation ) */}
-          <button className={styles.shoppingCart} onClick={addToShoppingCart}>
-            <ShoppingBag className={styles.shoppingCartImg} />
-          </button>
+          <AddToCartButton addToBag={addToShoppingCart} isIcon={true} />
         </div>
       </div>
-      {/* TODO: create a new component ProductPrice (same as on details page) */}
-      <p className={styles.price}>
-        {price} {t('currency')}
-      </p>
+      <ProductPrice price={price} className={styles.price} />
       <div className={styles.productInfoParametersWrapper}>
         <ProductInfoParameters
           changeParameters={changeParameters}

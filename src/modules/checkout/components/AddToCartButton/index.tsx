@@ -6,33 +6,43 @@ import styles from './index.module.scss';
 
 interface AddToCartButtonProps {
   addToBag: () => void;
-  addToFavorite: () => void;
-  isError: boolean;
+  addToFavorite?: () => void;
+  isError?: boolean;
+  isIcon?: boolean;
 }
 
 const AddToCartButton: FC<AddToCartButtonProps> = ({
   addToBag,
   addToFavorite,
   isError,
+  isIcon,
 }) => {
   const { t } = useTranslation();
 
   return (
-    <div className={styles.wrapper}>
-      <button
-        className={styles.addButton}
-        onClick={addToBag}
-        disabled={isError}
-      >
-        <ShoppingBag className={styles.shoppingBag} />
-        <span className={styles.text}>
-          {t('productDetails.addToMyShoppingBag')}
-        </span>
-      </button>
-      <button className={styles.heartButton} onClick={addToFavorite}>
-        <Heart className={styles.heart} />
-      </button>
-    </div>
+    <>
+      {isIcon ? (
+        <button className={styles.shoppingCart} onClick={addToBag}>
+          <ShoppingBag className={styles.shoppingCartImg} />
+        </button>
+      ) : (
+        <div className={styles.wrapper}>
+          <button
+            className={styles.addButton}
+            onClick={addToBag}
+            disabled={isError}
+          >
+            <ShoppingBag className={styles.shoppingBag} />
+            <span className={styles.text}>
+              {t('productDetails.addToMyShoppingBag')}
+            </span>
+          </button>
+          <button className={styles.heartButton} onClick={addToFavorite}>
+            <Heart className={styles.heart} />
+          </button>
+        </div>
+      )}
+    </>
   );
 };
 

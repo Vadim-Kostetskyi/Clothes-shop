@@ -1,8 +1,9 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import ManCollection1 from 'assets/images/collection-man-image-1.png';
 import ManCollection2 from 'assets/images/colection-man-image-2.png';
+import CollectionItem from '../CollectionItem';
 import styles from './index.module.scss';
-import { useTranslation } from 'react-i18next';
 
 const collections: CollectionCardProps[] = [
   {
@@ -30,14 +31,12 @@ const Collection = () => {
       <h2 className={styles.title}>{t('collections')}</h2>
       <div className={styles.cardWrapper}>
         {collections.map(({ id, image, text }) => (
-          // TODO: extract into separate component CollectionItem
-          <div key={id} className={styles.itemsWrapper}>
-            <img src={image} alt={text} className={styles.image} />
-            <p className={styles.text}>{text}</p>
-            <div className={styles.wrapperButton}>
-              <button className={styles.button}>{t('viewCollection')}</button>
-            </div>
-          </div>
+          <CollectionItem
+            key={id}
+            image={image}
+            text={text}
+            buttonText={t('viewCollection')}
+          />
         ))}
       </div>
     </div>

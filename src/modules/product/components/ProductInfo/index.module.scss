@@ -32,9 +32,7 @@
 }
 
 .price {
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 0rem;
+  text-align: left;
   margin-bottom: 10px;
   @include media(mobile) {
     margin-bottom: 4px;

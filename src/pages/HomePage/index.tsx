@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import CategoryCards from 'modules/core/components/CategoryCards';
 import PreferencesModal from 'modules/core/components/PreferencesModal';
-import styles from './index.module.scss';
 import MainLayout from 'modules/core/components/MainLayout';
+import { useLocalStorage } from 'hooks';
+import styles from './index.module.scss';
 
 const HomePage = () => {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
+    const { getItem } = useLocalStorage<boolean>('shouldShowModal', true);
     try {
-      const serializedState = localStorage.getItem('shouldShowModal');
-      const shouldShowModal = !serializedState;
+      const shouldShowModal = getItem();
 
       setShowModal(shouldShowModal);
     } catch (error) {
