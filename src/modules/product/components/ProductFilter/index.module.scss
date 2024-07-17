@@ -3,6 +3,9 @@
 .wrapper {
   position: relative;
   height: auto;
+  @include media(tablet) {
+    top: 46px;
+  }
 }
 
 .burgerMenuButton {

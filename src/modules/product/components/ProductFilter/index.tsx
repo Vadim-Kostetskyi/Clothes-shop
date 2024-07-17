@@ -1,7 +1,7 @@
 import React, { FC, useCallback, useState } from 'react';
 import ProductFilterPanel from '../ProductFilterPanel';
-import burgerMenu from 'assets/svgs/MenuFilter.svg';
 import { BodyFilterProducts, GetProductsWithImages } from 'redux/types';
+import burgerMenu from 'assets/svgs/MenuFilter.svg';
 import styles from './index.module.scss';
 
 interface ProductFilterProps {
