@@ -79,11 +79,11 @@ const ShoppingCartItem: FC<ShoppingCartItemProps> = ({
     productQuantity,
   ]);
 
-  const handleChangeSize = useCallback((_: string, size: Size) => {
+  const handleChangeSize = useCallback((size: Size) => {
     setSelectedSize(size);
   }, []);
 
-  const handleChangeColor = useCallback((_: string, color: Color) => {
+  const handleChangeColor = useCallback((color: Color) => {
     setSelectedColor(color);
   }, []);
 

@@ -6,7 +6,7 @@ import { useGetProductByIdQuery } from 'redux/productsApi';
 import CustomizedProductsDisplay from 'components/SameStyleAndVisitedProducts';
 import { useAppDispatch, useLocalStorage } from 'hooks';
 import { actions as shoppingCartActions } from 'redux/slices/shopping-cart';
-import { Color } from 'types/types';
+import { Color, Size } from 'types/types';
 import styles from './index.module.scss';
 
 const ProductDetails = () => {
@@ -54,6 +54,7 @@ const ProductDetails = () => {
         <ProductDetailsInfo
           addToShoppingCart={addToShoppingCart}
           addToFavorite={addToFavorite}
+          sizes={Object.values(Size)}
           {...data}
         />
       </div>

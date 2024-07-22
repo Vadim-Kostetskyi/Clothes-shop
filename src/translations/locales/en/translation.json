@@ -24,6 +24,8 @@
   "countryPhoneCode": "+380",
   "privacyPolicy": "The terms and conditions. Privacy policy.",
   "copyright": "© {{year}} by NOVA. All Rights Reserved.",
+  "month": "Month",
+  "year": "Year",
   "consent": "By continuing, I confirm that I was able to read and understand the information on the use of my personal data, as explained in the Privacy Policy.",
   "subscriptionForm": {
     "placeholder": "Enter your email address",
@@ -82,10 +84,27 @@
     "continueWithFacebook": "Continue with Facebook",
     "forgotPassword": "I forgot my password",
     "stayLoggedIn": "Stay logged in",
+    "policy": "The terms and conditions. Privacy policy.",
+    "creditCard": "CREDIT CARD",
+    "googlePay": "GOOGLE PAY",
+    "applePay": "APPLE PAY",
+    "paypal": "PAYPAL",
     "warning": "Sorry! We need these details.",
     "homeDelivery": "HOME DELIVERY",
     "postServices": "POST SERVICES",
     "sendOrderAsGift": "SEND AN ORDER AS A GIFT",
     "workDays": "Monday 30 October - Friday 3 November"
+  },
+  "productFilter": {
+    "filter": "Filter",
+    "clear": "CLEAR",
+    "seeResults": "SEE RESULTS",
+    "all": "All",
+    "priceHighToLow": "Price high to low",
+    "priceLowToHigh": "Price low to high"
+  },
+  "payment": {
+    "cardNumber": "Card Number",
+    "cardHolder": "Card Holder"
   }
 }

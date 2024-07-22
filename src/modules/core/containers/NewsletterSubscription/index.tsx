@@ -13,10 +13,12 @@ const NewsletterSubscription = () => {
 
   return (
     <div className={styles.formWrapper}>
-      <NewsletterDescription />
-      <div className={styles.wrapperDiscount}>
-        <span className={styles.discount}>-{PERCENTAGE_DISCOUNT}</span>
-        <span className={styles.percent}>%</span>
+      <div className={styles.formBox}>
+        <NewsletterDescription />
+        <div className={styles.wrapperDiscount}>
+          <span className={styles.discount}>-{PERCENTAGE_DISCOUNT}</span>
+          <span className={styles.percent}>%</span>
+        </div>
       </div>
       <div className={styles.inputsWrapper}>
         <div className={styles.wrapperItem}>

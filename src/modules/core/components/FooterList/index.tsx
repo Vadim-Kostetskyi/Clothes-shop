@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Accordion from '../AccordionFooter/Accordion';
 import { menuName, listContent } from 'modules/core/containers/Footer';
-import styles from 'modules/core/containers/Footer/Footer.module.scss';
+import styles from './index.module.scss';
 
 const FooterList = ({ className }: { className: string }): JSX.Element => {
   const [listVisible, setListVisible] = useState([false, false, false]);

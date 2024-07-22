@@ -51,10 +51,22 @@ export interface GetProductsWithImages {
   images: ImageItemProps[];
 }
 
+export type BodyFilterProducts = {
+  colours: string[] | [];
+  sizes: Size[] | [];
+  priceRange: {
+    min: number;
+    max: number;
+  };
+};
+
 export interface SearchProductsProps {
   page: number;
   size: number;
-  body: BodySearchProducts;
+  isFilter?: boolean;
+  isNewNow?: boolean;
+  sortBy?: string;
+  body?: BodySearchProducts | BodyFilterProducts;
 }
 
 export type BodySearchProducts = {

@@ -1,7 +1,7 @@
 import React, { FC, useCallback } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Input from 'modules/core/components/Input';
 import { personalDataItems } from './data';
 import { validPhoneCode, validPhoneNumber } from 'utils/validate';
@@ -42,6 +42,8 @@ const PersonalData: FC<PersonalDataProps> = ({ back, deliveryType }) => {
   });
   const productsForOrdering = getItem();
 
+  const navigate = useNavigate();
+
   const orderItems = splitInfo(productsForOrdering);
 
   const sendCustomerInformation: SubmitHandler<PersonalDataForm> = useCallback(
@@ -75,9 +77,9 @@ const PersonalData: FC<PersonalDataProps> = ({ back, deliveryType }) => {
         },
       };
       orderInformation(order);
-
       console.log('data', data);
-      //TODO make the transition to the next stage
+
+      navigate('/checkout/payment');
     },
     [],
   );

@@ -3,6 +3,8 @@ $brilliance: #fdfdfd;
 $textPrimary: #212121;
 $blackColor: #212121;
 $backdropColor: #21212166;
+$blackTransparentColor: #00000033;
+$brilliance: #fdfdfd;
 $semiTransparentBlack: #00000040;
 $alertRed: #ff0000;
 $grayLight: #959595;
@@ -20,6 +22,7 @@ $darkBlue: #234ebd;
 $font-family-main: League Spartan;
 
 $mobile: 480px;
+$tabletMin: 481px;
 $tablet: 960px;
 $laptopMin: 961px;
 $laptopMedium: 1150px;
@@ -80,6 +83,12 @@ $max-content-width: 1280px;
 
 @mixin laptopOnly {
   @media only screen and (min-width: $laptopMin) and (max-width: $laptop) {
+    @content;
+  }
+}
+
+@mixin tabletOnly {
+  @media only screen and (min-width: $tabletMin) and (max-width: $tablet) {
     @content;
   }
 }

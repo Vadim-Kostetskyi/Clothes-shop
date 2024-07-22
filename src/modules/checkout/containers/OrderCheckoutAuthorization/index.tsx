@@ -17,12 +17,9 @@ const OrderCheckoutAuthorization = () => {
     flow: 'auth-code',
   });
 
-  const appleLogin = () => {
-    //TODO add function to login with Apple
-  };
+  const appleLogin = () => {};
 
   const facebookLogin = (response: IResolveParams) => {
-    //TODO add function to login with Facebook
     console.log(response);
   };
 

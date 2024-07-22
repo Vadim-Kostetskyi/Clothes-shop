@@ -16,6 +16,8 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   required?: boolean;
   validate?: Validate<string | number, PersonalDataForm>;
   errors?: FieldErrors<PersonalDataForm>;
+  id?: string;
+  type?: string;
 }
 
 const Input: FC<InputProps> = ({

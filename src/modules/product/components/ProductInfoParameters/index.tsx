@@ -24,13 +24,14 @@ const ProductInfoParameters: FC<ProductInfoParameters> = ({
   const colors: Color[] = Object.values(Color);
   const defaultSizes: Size[] = Object.values(Size);
 
-  const handleClick = (param: string, value: Color | string) => {
-    if (param === 'color') {
+  const handleClick = (value: Color | string) => {
+    if (value in Color) {
       setActiveColor(value as Color);
-    } else if (param === 'size') {
+      changeParameters('color', value);
+    } else if (value in Size) {
       setActiveSize(value as Size);
+      changeParameters('size', value);
     }
-    changeParameters(param, value);
   };
 
   const toggle = useCallback((element: number) => {
@@ -53,8 +54,7 @@ const ProductInfoParameters: FC<ProductInfoParameters> = ({
       <ToggleProductInfoParameters
         parameters={colors}
         productInfo="color"
-        // TODO: instead of +2 make it dynamic
-        text={`+2 ${t('colors')}`}
+        text={`+${colors.length} ${t('colors')}`}
         index={0}
         active={activeColor}
         {...props}
@@ -62,8 +62,7 @@ const ProductInfoParameters: FC<ProductInfoParameters> = ({
       <ToggleProductInfoParameters
         parameters={defaultSizes}
         productInfo="size"
-        // TODO: instead of +5 make it dynamic
-        text={`+5 ${t('sizes')}`}
+        text={`+${defaultSizes.length} ${t('sizes')}`}
         index={1}
         active={activeSize}
         sizes={sizes}

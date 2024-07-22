@@ -7,6 +7,10 @@ $containerHeight: 143px;
 .orderSummaryContainer {
   position: absolute;
   width: $containerWidth;
+
+  @include media(tablet) {
+    width: 100%;
+  }
 }
 
 .container {
@@ -67,6 +71,10 @@ $containerHeight: 143px;
     line-height: 18px;
     letter-spacing: 0.01em;
     text-align: left;
+  }
+
+  @include media(tablet) {
+    width: auto;
   }
 }
 
