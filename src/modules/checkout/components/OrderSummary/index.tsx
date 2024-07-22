@@ -29,6 +29,7 @@ const OrderSummary: FC<OrderSummaryProps> = ({
         {isOrder ? (
           <div className={styles.itemsBox}>
             <p>
+              {amountProducts} {''}
               {amountProducts && amountProducts > 1 ? t('items') : t('item')}
             </p>
             <p className={styles.black}>

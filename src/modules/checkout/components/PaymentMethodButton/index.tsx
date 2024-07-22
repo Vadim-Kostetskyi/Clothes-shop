@@ -16,7 +16,7 @@ const PaymentMethodButton: FC<PaymentMethodButtonProps> = ({
   name,
 }) => (
   <button className={styles.paymentMethod} name={name} onClick={paymentChoice}>
-    {title}
+    <span className={styles.title}>{title}</span>
     <span className={styles.cardImageWrapper}>
       {images.map(({ link, alt }) => (
         <img key={link} src={link} alt={alt} />

@@ -36,6 +36,11 @@
   box-shadow: 0px 2px 4px 0px $blackTransparentColor;
   transition: transform 300ms;
   z-index: 1000;
+
+  @include media(tablet) {
+    right: 0;
+    width: 100%;
+  }
 }
 
 .hide {

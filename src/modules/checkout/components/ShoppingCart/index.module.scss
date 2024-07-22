@@ -25,6 +25,20 @@ $orderSummaryHeight: 264px;
 .orderContainer {
   padding-bottom: 16px;
   box-shadow: 0px 2px 4px 0px $semiTransparentBlack;
+
+  @include media(tablet) {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+    display: flex;
+  }
+}
+
+.cartBox {
+  @include media(tablet) {
+    display: none;
+  }
 }
 
 @keyframes slideIn {
