@@ -2,6 +2,7 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { filesApi } from './filesApi';
 import { productsApi } from './productsApi';
+import { ordersApi } from './ordersApi';
 import {
   reducer as shoppingCartReducer,
   name as shoppingCartName,
@@ -10,6 +11,7 @@ import {
 const rootReducer = combineReducers({
   [productsApi.reducerPath]: productsApi.reducer,
   [filesApi.reducerPath]: filesApi.reducer,
+  [ordersApi.reducerPath]: ordersApi.reducer,
   [shoppingCartName]: shoppingCartReducer,
 });
 
@@ -19,6 +21,7 @@ export const store = configureStore({
     ...getDefaultMiddleware(),
     productsApi.middleware,
     filesApi.middleware,
+    ordersApi.middleware,
   ],
 });
 setupListeners(store.dispatch);

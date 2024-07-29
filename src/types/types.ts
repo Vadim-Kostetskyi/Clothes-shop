@@ -43,6 +43,19 @@ export enum Subcategory {
   QUILTED = 'QUILTED',
 }
 
+export enum PersonalDataItemId {
+  Number = 'number',
+  FirstName = 'firstName',
+  LastName = 'lastName',
+  Prefix = 'prefix',
+  Email = 'email',
+  Address = 'address',
+  Information = 'information',
+  ZipCode = 'zipCode',
+  City = 'city',
+  State = 'state',
+}
+
 export const clothesColors: Record<Color, string> = {
   [Color.Black]: BlackColor,
   [Color.Beige]: WhiteColor,
@@ -77,3 +90,8 @@ export enum FilterItems {
   PriceAscRequest = 'asc',
   PriceDescRequest = 'desc',
 }
+
+export type Image = {
+  link: string;
+  alt: string;
+};

@@ -8,8 +8,8 @@ import styles from './index.module.scss';
 
 interface AddToCartButtonProps {
   addToBag: () => void;
-  addToFavorite: () => void;
-  isError: boolean;
+  addToFavorite?: () => void;
+  isError?: boolean;
 }
 
 const AddToCartButton: FC<AddToCartButtonProps> = ({

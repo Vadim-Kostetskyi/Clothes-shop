@@ -1,15 +1,16 @@
 import React, { useCallback, useState, FormEvent, useMemo, FC } from 'react';
 import { SingleValue } from 'react-select';
+import { useTranslation } from 'react-i18next';
 import CountrySelect, {
   SelectOptionProps,
 } from 'modules/core/components/CountrySelect';
 import { countries, DEFAULT_COUNTRY } from './listOfCountries';
 import LanguageSelect from 'modules/core/components/LanguageSelect';
 import Copyright from 'modules/core/components/Copyright';
-import { Language } from 'types/types';
-import { useTranslation } from 'react-i18next';
-import { useGetViewportWidth } from 'hooks';
+import Assent from '../Assent';
+import { useGetViewportWidth, useLocalStorage } from 'hooks';
 import { ViewportWidth } from 'utils/constants';
+import { Language } from 'types/types';
 import styles from './index.module.scss';
 
 export interface PreferencesModalProps {
@@ -47,7 +48,7 @@ const PreferencesModal: FC<PreferencesModalProps> = ({
 
   const handleLanguageChange = useCallback(
     (language: Language) => () => setSelectedLanguage(language),
-    [setSelectedLanguage],
+    [selectedLanguage],
   );
 
   const languageButtonClassName = useCallback(
@@ -55,6 +56,10 @@ const PreferencesModal: FC<PreferencesModalProps> = ({
       language === selectedLanguage ? styles.focus : styles.languageButton,
     [selectedLanguage],
   );
+
+  const country = useLocalStorage<string>('country', '');
+  const language = useLocalStorage<string>('language', '');
+  const shouldShowModal = useLocalStorage<boolean>('shouldShowModal', true);
 
   const saveCountryLanguage = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
@@ -65,13 +70,11 @@ const PreferencesModal: FC<PreferencesModalProps> = ({
 
       if (selectedCountry) {
         try {
-          const serializedCountry = JSON.stringify(selectedCountry.label);
-          const serializedLanguage = JSON.stringify(selectedLanguage);
-          localStorage.setItem('country', serializedCountry);
-          localStorage.setItem('language', serializedLanguage);
+          country.setItem(selectedCountry.label);
+          language.setItem(selectedLanguage);
           hideModal();
           if (isCheckboxChecked) {
-            localStorage.setItem('shouldShowModal', 'false');
+            shouldShowModal.setItem(false);
           }
         } catch (error) {
           console.error(error);
@@ -80,8 +83,14 @@ const PreferencesModal: FC<PreferencesModalProps> = ({
         setShowAlert(true);
       }
     },
-    [],
+    [selectedCountry, selectedLanguage],
   );
+
+  const assentProps = {
+    buttonText: t('homePageModal.go'),
+    rememberSelectionText: t('homePageModal.rememberSelection'),
+    onSubmit: saveCountryLanguage,
+  };
 
   const isMobile = useGetViewportWidth(ViewportWidth.TABLET);
 
@@ -115,24 +124,7 @@ const PreferencesModal: FC<PreferencesModalProps> = ({
                 />
               </div>
             </div>
-            {/* TODO: move to a separate component */}
-            <div className={styles.assentWrapper}>
-              <form className={styles.agreement} onSubmit={saveCountryLanguage}>
-                <label className={styles.agreementLabel}>
-                  <input
-                    type="checkbox"
-                    name="check"
-                    className={styles.checkbox}
-                  />
-                  <span className={styles.agreementText}>
-                    {t('homePageModal.rememberSelection')}
-                  </span>
-                </label>
-                <button className={styles.assentButton} type="submit">
-                  {t('homePageModal.go')}!
-                </button>
-              </form>
-            </div>
+            <Assent {...assentProps} />
           </div>
         </div>
         {!isMobile && <Copyright />}

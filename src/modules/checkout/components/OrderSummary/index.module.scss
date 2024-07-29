@@ -7,6 +7,10 @@ $containerHeight: 143px;
 .orderSummaryContainer {
   position: absolute;
   width: $containerWidth;
+
+  @include media(tablet) {
+    width: 100%;
+  }
 }
 
 .container {
@@ -26,8 +30,11 @@ $containerHeight: 143px;
 .orderSummaryContainer {
   display: flex;
   flex-direction: column;
+  justify-content: end;
+  width: 397px;
   min-height: 111px;
   bottom: 0;
+  padding-bottom: 16px;
   border-radius: 8px 8px 0 0;
   background-color: $pageBackground;
 }
@@ -64,6 +71,10 @@ $containerHeight: 143px;
     line-height: 18px;
     letter-spacing: 0.01em;
     text-align: left;
+  }
+
+  @include media(tablet) {
+    width: auto;
   }
 }
 
