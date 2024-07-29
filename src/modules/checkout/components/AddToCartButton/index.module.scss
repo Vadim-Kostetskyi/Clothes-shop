@@ -3,6 +3,11 @@
 .wrapper {
   position: relative;
   margin-bottom: 65px;
+  width: 410px;
+}
+
+.wrapperMobile {
+  width: calc(100% / 3);
 }
 
 .addButton {
@@ -21,6 +26,11 @@
 
   &:active {
     background-color: $darkGreen;
+  }
+
+  @include media(tablet) {
+    border-radius: 0;
+    border-top-right-radius: 4px;
   }
 }
 
@@ -58,4 +68,15 @@
 
 .heart {
   width: 24px;
+}
+
+.shoppingCart {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.shoppingCartImg {
+  width: 20px;
+  stroke: $blackColor;
 }

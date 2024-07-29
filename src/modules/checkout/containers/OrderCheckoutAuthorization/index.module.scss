@@ -2,10 +2,9 @@
 
 .wrapper {
   width: 520px;
-
-  @include media(tablet) {
-    width: 415px;
-  }
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
 }
 
 .signForm {
@@ -106,18 +105,20 @@
   }
 
   &::before {
-    left: 0;
+    left: 0; /* Риска по лівому боці тексту */
   }
 
   &::after {
-    right: 0;
+    right: 0; /* Риска по правому боці тексту */
   }
 }
 
 .signBtn,
 .withoutRegisterBtn,
 .socialSignBtn {
+  display: block;
   font-family: $font-family-main;
+  color: $textPrimary;
   width: 100%;
   padding: 16px 0;
   font-size: 16px;
@@ -133,6 +134,7 @@
 }
 
 .withoutRegisterBtn {
+  text-align: center;
   margin-bottom: 15px;
   border: 1px solid $blackColor;
 }
@@ -171,13 +173,4 @@
 
 .facebookText::before {
   background-image: url('../../../../assets/svgs/Facebook.svg');
-}
-
-.policy {
-  display: block;
-  font-size: 14px;
-  text-align: right;
-  margin-top: 40px;
-  text-decoration: underline;
-  color: $grayDark;
 }

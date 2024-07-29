@@ -86,3 +86,32 @@ export interface SearchByIdProps {
 export interface GetProductsBiId {
   id: string[];
 }
+
+export type Quantities = { [key: string]: number };
+export type OrderItems = { productId: string; quantities: Quantities };
+
+export interface CreateOrder {
+  body: {
+    user: {
+      firstName: string;
+      lastName: string;
+      phone: string;
+      email: string;
+    };
+    orderDelivery: {
+      address: string;
+      moreInfo: string;
+      zipCode: string;
+      city: string;
+      state: string;
+      country: string;
+    };
+    orderItems: OrderItems[];
+  };
+}
+
+export interface SearchOrderProps {
+  id: string;
+  userId: string;
+  totalPrice: number;
+}

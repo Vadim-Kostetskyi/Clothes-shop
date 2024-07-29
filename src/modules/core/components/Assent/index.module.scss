@@ -1,0 +1,63 @@
+@import 'styles/constants';
+
+.checkbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.agreement {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.agreementLabel {
+  display: flex;
+  align-items: center;
+}
+
+.agreementText {
+  display: flex;
+  align-items: center;
+  user-select: none;
+  font-size: 12px;
+
+  &::before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid $blackColor;
+    border-radius: 2px;
+    margin-right: 8px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50% 50%;
+  }
+
+  input:checked + &::before {
+    background-color: $blackColor;
+    background-image: url('../../../../assets/svgs/Check.svg');
+  }
+  input:not(:disabled):active + &::before {
+    background-color: $blackColor;
+  }
+  input:disabled + &::before {
+    background-color: $pageBackground;
+  }
+}
+
+.assentButton {
+  padding: 18px 80px;
+  font-size: 20px;
+  color: $brilliance;
+  background-color: $blackColor;
+  border-radius: 4px;
+  transition: opacity 2s;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+}
