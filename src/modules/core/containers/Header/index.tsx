@@ -16,6 +16,14 @@ const Header = (): JSX.Element => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
   const isCheckoutPage = location.pathname.startsWith('/checkout');
+  const isProductsGridPage = /\/(men|women|children)\/products-grid/.test(
+    location.pathname,
+  );
+  console.log(isProductsGridPage);
+
+  const isProductsGrid = (gridClass: string, defaultClass: string): string => {
+    return isProductsGridPage ? gridClass : defaultClass;
+  };
 
   const toggleOpenMenu = useCallback(
     () => () => setIsMenuOpen(prev => !prev),
@@ -53,14 +61,25 @@ const Header = (): JSX.Element => {
             <Link to="/men">
               <img src={logo} className={styles.logo} alt="Logo" />
             </Link>
-            <div className={styles.userBox}>
+            <div className={isProductsGrid(styles.userBoxGrid, styles.userBox)}>
               <TopBar />
             </div>
           </div>
-          <div className={styles.wrapperMenuMobile}>
-            {isMenuOpen ? <CatalogMenu /> : null}
-            {isMenuOpen ? null : (
-              <div className={styles.wrapperInput}>
+          <div
+            className={isProductsGrid(
+              styles.wrapperMenuMobileGrid,
+              styles.wrapperMenuMobile,
+            )}
+          >
+            {isMenuOpen ? (
+              <CatalogMenu />
+            ) : (
+              <div
+                className={isProductsGrid(
+                  styles.wrapperInputGrid,
+                  styles.wrapperInput,
+                )}
+              >
                 <Input
                   Icon={<Search className={styles.inputIcon} />}
                   className={styles.inputMobile}

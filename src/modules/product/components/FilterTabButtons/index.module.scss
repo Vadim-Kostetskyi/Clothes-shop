@@ -42,7 +42,7 @@
   padding-top: 16px;
   margin-bottom: 32px;
   gap: 16px;
-  @include media(mobile) {
+  @include media(tablet) {
     display: none;
   }
 }
