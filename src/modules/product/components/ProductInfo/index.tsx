@@ -1,14 +1,14 @@
 import React, { useState, FC } from 'react';
 import { useTranslation } from 'react-i18next';
+import ProductInfoParameters from 'modules/product/components/ProductInfoParameters';
+import AddToShoppingCartButton from 'modules/core/components/AddToShoppingCartButton';
+import ProductPrice from 'modules/product/components/ProductPrice';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import { Size, Color } from 'types/types';
 import {
   selectQuantityByProductId,
   actions as shoppingCartActions,
 } from 'redux/slices/shopping-cart';
-import ProductInfoParameters from 'modules/product/components/ProductInfoParameters';
-import AddToShoppingCartButton from 'modules/core/components/AddToShoppingCartButton';
-import ProductPrice from 'modules/product/components/ProductPrice';
 import styles from './index.module.scss';
 
 interface ProductInfo {
