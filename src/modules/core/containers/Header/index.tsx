@@ -16,7 +16,10 @@ const Header = (): JSX.Element => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
   const isCheckoutPage = location.pathname.startsWith('/checkout');
-  const isProductsGridPage = location.pathname.startsWith('/men/products-grid');
+  const isProductsGridPage = /\/(men|women|children)\/products-grid/.test(
+    location.pathname,
+  );
+  console.log(isProductsGridPage);
 
   const isProductsGrid = (gridClass: string, defaultClass: string): string => {
     return isProductsGridPage ? gridClass : defaultClass;
