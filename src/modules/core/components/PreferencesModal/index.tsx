@@ -8,7 +8,7 @@ import { countries, DEFAULT_COUNTRY } from './listOfCountries';
 import LanguageSelect from 'modules/core/components/LanguageSelect';
 import Copyright from 'modules/core/components/Copyright';
 import Assent from '../Assent';
-import { useGetViewportWidth } from 'hooks';
+import { useGetViewportWidth, useLocalStorage } from 'hooks';
 import { ViewportWidth } from 'utils/constants';
 import { Language } from 'types/types';
 import styles from './index.module.scss';
@@ -48,7 +48,7 @@ const PreferencesModal: FC<PreferencesModalProps> = ({
 
   const handleLanguageChange = useCallback(
     (language: Language) => () => setSelectedLanguage(language),
-    [setSelectedLanguage],
+    [selectedLanguage],
   );
 
   const languageButtonClassName = useCallback(
@@ -56,6 +56,10 @@ const PreferencesModal: FC<PreferencesModalProps> = ({
       language === selectedLanguage ? styles.focus : styles.languageButton,
     [selectedLanguage],
   );
+
+  const country = useLocalStorage<string>('country', '');
+  const language = useLocalStorage<string>('language', '');
+  const shouldShowModal = useLocalStorage<boolean>('shouldShowModal', true);
 
   const saveCountryLanguage = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
@@ -66,13 +70,11 @@ const PreferencesModal: FC<PreferencesModalProps> = ({
 
       if (selectedCountry) {
         try {
-          const serializedCountry = JSON.stringify(selectedCountry.label);
-          const serializedLanguage = JSON.stringify(selectedLanguage);
-          localStorage.setItem('country', serializedCountry);
-          localStorage.setItem('language', serializedLanguage);
+          country.setItem(selectedCountry.label);
+          language.setItem(selectedLanguage);
           hideModal();
           if (isCheckboxChecked) {
-            localStorage.setItem('shouldShowModal', 'false');
+            shouldShowModal.setItem(false);
           }
         } catch (error) {
           console.error(error);
@@ -81,7 +83,7 @@ const PreferencesModal: FC<PreferencesModalProps> = ({
         setShowAlert(true);
       }
     },
-    [],
+    [selectedCountry, selectedLanguage],
   );
 
   const assentProps = {

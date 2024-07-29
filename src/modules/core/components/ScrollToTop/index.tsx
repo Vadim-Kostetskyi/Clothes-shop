@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import SwiperUp from 'assets/svgs/SwiperUp';
-import styles from './index.module.scss';
 import useScrollToTop from 'hooks/use-scroll-to-top';
+import styles from './index.module.scss';
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
+
+  const scrollToTop = useScrollToTop();
 
   const handleScroll = () => {
     if (window.scrollY >= 860) {
@@ -24,7 +26,7 @@ const ScrollToTop = () => {
   return (
     <button
       className={isVisible ? styles.button : styles.hide}
-      onClick={useScrollToTop}
+      onClick={scrollToTop}
     >
       <SwiperUp className={styles.img} />
     </button>

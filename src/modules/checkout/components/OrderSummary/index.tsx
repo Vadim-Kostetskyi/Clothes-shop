@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
+import clsx from 'clsx';
 import { getTotalPrice, getValidClassNames } from 'helpers';
 import Info from 'assets/svgs/Info';
 import styles from './index.module.scss';
@@ -25,7 +26,7 @@ const OrderSummary: FC<OrderSummaryProps> = ({
           {t('shoppingCart.deliveryInfo')}
         </p>
       </div>
-      <div className={isOrder ? '' : styles.orderSummaryContainer}>
+      <div className={clsx({ [styles.orderSummaryContainer]: isOrder })}>
         {isOrder ? (
           <div className={styles.itemsBox}>
             <p>

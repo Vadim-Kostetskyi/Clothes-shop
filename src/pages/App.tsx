@@ -5,8 +5,10 @@ import CategoryPage from 'pages/CategoryPage';
 import ProductsGridPage from 'pages/ProductsGridPage';
 import ProductDetailsPage from 'pages/ProductDetailsPage';
 import OrderCheckoutPage from './OrderCheckoutPage';
-import OrderCheckoutAuthorization from 'modules/checkout/components/OrderCheckoutAuthorization';
+import PaymentDetail from 'modules/order/containers/PaymentDetail';
+import OrderCheckoutAuthorization from 'modules/checkout/containers/OrderCheckoutAuthorization';
 import Payment from 'modules/checkout/components/Payment';
+import Delivery from 'modules/order/conteiners/Delivery';
 
 function App() {
   return (
@@ -17,8 +19,9 @@ function App() {
       <Route path="/product/:productId" element={<ProductDetailsPage />} />
       <Route path="/checkout" element={<OrderCheckoutPage />}>
         <Route path="details" element={<OrderCheckoutAuthorization />} />
-        <Route path="delivery" />
+        <Route path="delivery" element={<Delivery />} />
         <Route path="payment" element={<Payment />} />
+        <Route path="payment/card" element={<PaymentDetail />} />
       </Route>
     </Routes>
   );

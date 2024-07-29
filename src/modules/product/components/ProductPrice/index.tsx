@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import clsx from 'clsx';
-import { getTotalPrice } from 'helpers';
+import { getTotalPrice, getValidClassNames } from 'helpers';
 import styles from './index.module.scss';
 
 interface ProductPriceProps {
@@ -19,7 +18,7 @@ const ProductPrice: FC<ProductPriceProps> = ({
   const totalPrice = getTotalPrice(count, price);
 
   return (
-    <div className={clsx(styles.productPrice, className)}>
+    <div className={getValidClassNames(styles.productPrice, className)}>
       <p>
         {totalPrice} <span>{t('currency')}</span>
       </p>

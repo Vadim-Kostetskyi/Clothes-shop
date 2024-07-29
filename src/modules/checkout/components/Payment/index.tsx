@@ -9,18 +9,25 @@ import Paypal from 'assets/images/payment/paypal.png';
 import ApplePay from 'assets/images/payment/apple-pay.png';
 import styles from './index.module.scss';
 import PaymentMethodButton from 'modules/checkout/components/PaymentMethodButton';
-
+import { useNavigate } from 'react-router-dom';
 const Payment = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+
   const paymentChoice = (e: React.MouseEvent<HTMLButtonElement>) => {
-    //TODO add the function of choosing a payment method
-    console.log(e.currentTarget.name);
+    switch (e.currentTarget.name) {
+      case 'Card':
+        navigate('card');
+        break;
+      default:
+        break;
+    }
   };
 
   const paymentMethodButtons = [
     {
       title: t('order.creditCard'),
-      name: 'Visa',
+      name: 'Card',
       images: [
         { link: Visa, alt: 'Visa image' },
         { link: Mastercard, alt: 'Mastercard image' },
