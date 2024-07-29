@@ -23,8 +23,7 @@
 .link {
   font-size: 14px;
   color: $textPrimary;
-}
-
-.link:not(:last-child) {
-  margin-bottom: 24px;
+  &:not(:last-child) {
+    margin-bottom: 24px;
+  }
 }
