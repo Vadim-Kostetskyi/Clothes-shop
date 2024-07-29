@@ -10,15 +10,13 @@ interface AddToShoppingCartButtonProps {
 
 const AddToShoppingCartButton: FC<AddToShoppingCartButtonProps> = ({
   onClick,
-  quantity,
+  quantity = 0,
   isDisabled,
 }) => {
   return (
     <button className={styles.button} onClick={onClick} disabled={isDisabled}>
       <ShoppingBag className={styles.shoppingBagIcon} />
-      {quantity && quantity > 0 ? (
-        <div className={styles.quantity}>{quantity}</div>
-      ) : null}
+      {quantity > 0 ? <div className={styles.quantity}>{quantity}</div> : null}
     </button>
   );
 };
