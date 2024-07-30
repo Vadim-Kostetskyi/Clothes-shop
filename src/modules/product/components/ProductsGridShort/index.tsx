@@ -29,7 +29,6 @@ const mobileProducts = (searchProducts: GetProductsWithImagesProps) =>
             sizes={size}
             image={images[0]?.url}
             quantity={quantity}
-            isMobile={true}
             vendorCode={vendorCode}
           />
         </SwiperSlide>
