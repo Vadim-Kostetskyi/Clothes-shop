@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGoogleLogin } from '@react-oauth/google';
 import { IResolveParams, LoginSocialFacebook } from 'reactjs-social-login';
+import { Link } from 'react-router-dom';
 import HandleLoginFacebookButton from 'modules/product/components/LoginFacebookButton';
 import Input from 'modules/core/components/Input';
 import styles from './index.module.scss';
@@ -23,7 +24,11 @@ const OrderCheckoutAuthorization = () => {
   };
 
   const buttons = [
-    { label: t('order.withoutRegistration'), className: '', onClick: () => {} },
+    {
+      label: t('order.withoutRegistration'),
+      className: '',
+      link: '/checkout/delivery',
+    },
     {
       label: t('order.continueWithApple'),
       className: 'appleText',
@@ -78,14 +83,15 @@ const OrderCheckoutAuthorization = () => {
         <button className={styles.signBtn}>{t('order.signIn')}</button>
       </form>
       <span className={styles.text}>{t('order.orIfYouPrefer')}</span>
-      {buttons.map(({ label, className, onClick }, index) => (
-        <button
+      {buttons.map(({ label, className, onClick, link }, index) => (
+        <Link
           key={label}
           className={index ? styles.socialSignBtn : styles.withoutRegisterBtn}
           onClick={onClick}
+          to={link ? link : ' '}
         >
           <span className={styles[className]}>{label}</span>
-        </button>
+        </Link>
       ))}
       <LoginSocialFacebook
         isOnlyGetToken
@@ -97,7 +103,6 @@ const OrderCheckoutAuthorization = () => {
       >
         <FacebookButton />
       </LoginSocialFacebook>
-      <p className={styles.policy}>{t('order.policy')}</p>
     </div>
   );
 };

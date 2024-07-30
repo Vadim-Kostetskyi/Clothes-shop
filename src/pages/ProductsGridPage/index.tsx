@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import ProductsGrid from 'modules/product/components/ProductsGrid';
 import Loader from 'modules/core/components/Loader';
 import {
@@ -13,7 +14,7 @@ import { useFetchProductsWithImagesMutation } from 'redux/productsApi';
 import MainLayout from 'modules/core/components/MainLayout';
 import FilterTabButtons from 'modules/product/components/FilterTabButtons';
 import ProductsPagination from 'modules/product/components/ProductsPagination';
-import { useTranslation } from 'react-i18next';
+import TopBar from 'modules/core/components/TopBar';
 import { getButtons } from 'modules/product/components/FilterTabButtons/data';
 import { useGetViewportWidth } from 'hooks';
 import ProductFilter from 'modules/product/components/ProductFilter';
@@ -31,7 +32,7 @@ const ProductsGridPage = (): JSX.Element => {
 
   const [activePage, setActivePage] = useState<number>(FIRST_PAGE);
 
-  const isMobile = useGetViewportWidth(ViewportWidth.MOBILE);
+  const isMobile = useGetViewportWidth(ViewportWidth.TABLET);
   const gridPageSize = isMobile ? PRODUCT_GRID_SIZE_MOBILE : PRODUCT_GRID_SIZE;
 
   useEffect(() => {
@@ -104,6 +105,7 @@ const ProductsGridPage = (): JSX.Element => {
         handleClick={handleClick}
       />
       <div className={styles.filterWrapper}>
+        {isMobile && <TopBar />}
         <ProductFilter
           handleClick={handleClickFilter}
           setNewProducts={handleSetNewNowProducts}

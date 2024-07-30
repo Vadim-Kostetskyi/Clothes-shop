@@ -53,7 +53,7 @@
 .headerWrapper {
   margin-top: 4px;
   margin-bottom: 4px;
-  @include media(mobile) {
+  @include media(tablet) {
     margin-top: 48px;
     margin-bottom: 0px;
     align-items: center;
@@ -72,7 +72,8 @@
   }
 }
 
-.wrapperMenuMobile {
+.wrapperMenuMobile,
+.wrapperMenuMobileGrid {
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -81,6 +82,10 @@
   @include media(laptopUp) {
     display: none;
   }
+}
+
+.wrapperMenuMobileGrid {
+  justify-content: left;
 }
 
 .headerWrapperHomePage {
@@ -107,7 +112,8 @@
   }
 }
 
-.userBox {
+.userBox,
+.userBoxGrid {
   display: flex;
   justify-content: space-between;
   gap: 48px;
@@ -120,12 +126,23 @@
   }
 }
 
-.wrapperInput {
+.userBoxGrid {
+  @include media(tablet) {
+    display: none;
+  }
+}
+
+.wrapperInput,
+.wrapperInputGrid {
   width: 100%;
 
   @include media(laptopUp) {
     display: none;
   }
+}
+
+.wrapperInputGrid {
+  width: calc(100% - 45px);
 }
 
 .inputIcon {

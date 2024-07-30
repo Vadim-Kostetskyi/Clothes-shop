@@ -1,21 +1,21 @@
 import React, { useState, FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import ProductPrice from '../ProductPrice';
+import ProductInfoParameters from 'modules/product/components/ProductInfoParameters';
+import AddToShoppingCartButton from 'modules/core/components/AddToShoppingCartButton';
+import ProductPrice from 'modules/product/components/ProductPrice';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import { Size, Color } from 'types/types';
 import {
   selectQuantityByProductId,
   actions as shoppingCartActions,
 } from 'redux/slices/shopping-cart';
-import ProductInfoParameters from 'modules/product/components/ProductInfoParameters';
-import AddToCartButton from 'modules/checkout/components/AddToCartButton';
 import styles from './index.module.scss';
 
 interface ProductInfo {
   productId: string;
   productName: string;
-  price: number;
-  sizes: Size[];
+  price?: number;
+  sizes?: Size[];
   quantity: number;
   vendorCode?: number;
 }
@@ -60,6 +60,9 @@ const ProductInfo: FC<ProductInfo> = ({
       setError(t('productDetails.itemNotAvailable'));
       return;
     }
+    if (!price) {
+      return;
+    }
 
     setError('');
 
@@ -84,10 +87,10 @@ const ProductInfo: FC<ProductInfo> = ({
       <div className={styles.nameBox}>
         <span className={styles.productName}>{productName}</span>
         <div className={styles.shoppingCartWrapper}>
-          <AddToCartButton addToBag={addToShoppingCart} isIcon={true} />
+          <AddToShoppingCartButton onClick={addToShoppingCart} />
         </div>
       </div>
-      <ProductPrice price={price} className={styles.price} />
+      {price ? <ProductPrice price={price} className={styles.price} /> : null}
       <div className={styles.productInfoParametersWrapper}>
         <ProductInfoParameters
           changeParameters={changeParameters}
