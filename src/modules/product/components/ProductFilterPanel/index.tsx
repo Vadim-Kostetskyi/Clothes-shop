@@ -1,9 +1,9 @@
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import FilterOptions from '../FilterOptions';
-import Cross from 'assets/svgs/Cross';
 import { Color, FilterItems, Size, Price } from 'types/types';
 import { BodyFilterProducts } from 'redux/types';
+import Cross from 'assets/svgs/Cross';
 import styles from './index.module.scss';
 
 interface ProductFilterPanelProps {
@@ -53,6 +53,7 @@ const ProductFilterPanel: FC<ProductFilterPanelProps> = ({
       },
       tab,
     );
+    handleClose();
   }, [priceRange[0], priceRange[1], requestColor, size]);
 
   const props = {
