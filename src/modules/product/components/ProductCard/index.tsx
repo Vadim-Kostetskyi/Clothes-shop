@@ -4,6 +4,8 @@ import ProductImageSwiper from 'modules/product/components/ProductImageSwiper';
 import ProductInfo from 'modules/product/components/ProductInfo';
 import { Size } from 'types/types';
 import { ImageItemProps } from 'redux/types';
+import { useGetViewportWidth } from 'hooks';
+import { ViewportWidth } from 'utils/constants';
 import styles from './index.module.scss';
 
 export interface ProductCardProps {
@@ -12,7 +14,6 @@ export interface ProductCardProps {
   price?: string;
   sizes?: Size[];
   images?: ImageItemProps[];
-  isMobile?: boolean;
   image?: string;
   quantity: number;
   vendorCode?: number;
@@ -24,16 +25,17 @@ const ProductCard: FC<ProductCardProps> = ({
   productName,
   sizes,
   images = [],
-  isMobile,
   image,
   quantity,
   vendorCode,
 }): JSX.Element => {
   const productPrice = price ? Number.parseFloat(price) : undefined;
+  const isMobile = useGetViewportWidth(ViewportWidth.TABLET);
+
   return (
     <div className={styles.productCard}>
       <Link to={`/product/${productId}`}>
-        <img src={image} alt={productName} className={styles.image} />
+        {/* <img src={image} alt={productName} className={styles.image} /> */}
         {isMobile ? (
           <img src={image} alt={productName} className={styles.image} />
         ) : (

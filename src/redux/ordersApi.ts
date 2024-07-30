@@ -15,8 +15,6 @@ export const ordersApi = createApi({
           method: 'POST',
           body: _arg.body,
         });
-        console.log(orderInformation);
-
         return { data: orderInformation.data as SearchOrderProps };
       },
     }),

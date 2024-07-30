@@ -24,6 +24,7 @@ const ProductsGrid: FC<ProductsGridProps> = ({
             price={price}
             sizes={size}
             images={images}
+            image={images[0]?.url}
             quantity={quantity}
             vendorCode={vendorCode}
           />
