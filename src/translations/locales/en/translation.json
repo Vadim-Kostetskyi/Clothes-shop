@@ -96,7 +96,8 @@
     "homeDelivery": "HOME DELIVERY",
     "postServices": "POST SERVICES",
     "sendOrderAsGift": "SEND AN ORDER AS A GIFT",
-    "workDays": "Monday 30 October - Friday 3 November"
+    "workDays": "Monday 30 October - Friday 3 November",
+    "seeDetails": "See details"
   },
   "productFilter": {
     "filter": "Filter",
