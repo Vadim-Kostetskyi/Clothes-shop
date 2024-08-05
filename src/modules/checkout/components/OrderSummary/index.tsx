@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import clsx from 'clsx';
 import { getTotalPrice, getValidClassNames } from 'helpers';
 import Info from 'assets/svgs/Info';
 import styles from './index.module.scss';
@@ -8,36 +7,25 @@ import styles from './index.module.scss';
 type OrderSummaryProps = {
   totalPrice: number;
   isOrder?: boolean;
-  amountProducts?: number;
+  isShoppingCartOpen?: boolean;
 };
 
 const OrderSummary: FC<OrderSummaryProps> = ({
   totalPrice,
   isOrder,
-  amountProducts,
+  isShoppingCartOpen,
 }): JSX.Element => {
   const { t } = useTranslation();
 
   return (
-    <div className={isOrder ? styles.orderContainer : styles.container}>
+    <div className={styles.container}>
       <div className={styles.deliveryInfo}>
         <Info className={styles.infoIcon} />
         <p className={getValidClassNames(styles.text, styles.white)}>
           {t('shoppingCart.deliveryInfo')}
         </p>
       </div>
-      <div className={clsx({ [styles.orderSummaryContainer]: isOrder })}>
-        {isOrder ? (
-          <div className={styles.itemsBox}>
-            <p>
-              {amountProducts && amountProducts > 1 ? t('items') : t('item')}
-            </p>
-            <p className={styles.black}>
-              {getTotalPrice(1, totalPrice) + ' '}
-              <span className={styles.currency}>{t('currency')}</span>
-            </p>
-          </div>
-        ) : null}
+      <div className={styles.totalPriceBox}>
         <div
           className={getValidClassNames(
             styles.totalPrice,
@@ -53,20 +41,20 @@ const OrderSummary: FC<OrderSummaryProps> = ({
             <span className={styles.currency}>{t('currency')}</span>
           </p>
         </div>
-        {isOrder ? null : (
-          <div className={styles.processOrderButton}>
-            <button
-              className={getValidClassNames(
-                styles.text,
-                styles.white,
-                styles.title,
-              )}
-            >
-              {t('shoppingCart.processOrderButton').toUpperCase()}
-            </button>
-          </div>
-        )}
       </div>
+      {isOrder && !isShoppingCartOpen ? null : (
+        <div className={styles.processOrderButton}>
+          <button
+            className={getValidClassNames(
+              styles.text,
+              styles.white,
+              styles.title,
+            )}
+          >
+            {t('shoppingCart.processOrderButton').toUpperCase()}
+          </button>
+        </div>
+      )}
     </div>
   );
 };
