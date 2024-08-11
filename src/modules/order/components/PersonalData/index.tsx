@@ -1,7 +1,7 @@
-import React, { FC, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Input from 'modules/core/components/Input';
 import { personalDataItems } from './data';
 import { validPhoneCode, validPhoneNumber } from 'utils/validate';
@@ -10,11 +10,6 @@ import { useLocalStorage } from 'hooks';
 import { useCreateOrderMutation } from 'redux/ordersApi';
 import { SoppingCardQuantity, splitInfo } from './splitInfo';
 import styles from './index.module.scss';
-
-export interface PersonalDataProps {
-  back: () => void;
-  deliveryType: string;
-}
 
 export interface PersonalDataForm {
   firstName: string;
@@ -29,7 +24,7 @@ export interface PersonalDataForm {
   state: string;
 }
 
-const PersonalData: FC<PersonalDataProps> = ({ back, deliveryType }) => {
+const PersonalData = () => {
   const [orderInformation, { data }] = useCreateOrderMutation();
   const {
     register,
@@ -42,7 +37,10 @@ const PersonalData: FC<PersonalDataProps> = ({ back, deliveryType }) => {
   });
   const productsForOrdering = getItem();
 
+  const location = useLocation();
+  const { deliveryType } = location.state;
   const navigate = useNavigate();
+  const onBacktrack = () => navigate(-1);
 
   const orderItems = splitInfo(productsForOrdering);
 
@@ -140,7 +138,7 @@ const PersonalData: FC<PersonalDataProps> = ({ back, deliveryType }) => {
       ))}
       <p>{t('consent')}</p>
       <div>
-        <button onClick={back}>
+        <button onClick={onBacktrack}>
           <p>{t('return')}</p>
         </button>
         <button type="submit">

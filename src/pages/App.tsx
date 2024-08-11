@@ -9,6 +9,7 @@ import PaymentDetail from 'modules/order/containers/PaymentDetail';
 import OrderCheckoutAuthorization from 'modules/checkout/containers/OrderCheckoutAuthorization';
 import Payment from 'modules/checkout/components/Payment';
 import Delivery from 'modules/order/conteiners/Delivery';
+import PersonalData from 'modules/order/components/PersonalData';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path="/checkout" element={<OrderCheckoutPage />}>
         <Route path="details" element={<OrderCheckoutAuthorization />} />
         <Route path="delivery" element={<Delivery />} />
+        <Route path="deliveryDetails" element={<PersonalData />} />
         <Route path="payment" element={<Payment />} />
         <Route path="payment/card" element={<PaymentDetail />} />
       </Route>

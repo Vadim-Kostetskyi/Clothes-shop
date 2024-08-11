@@ -15,6 +15,20 @@
   }
 }
 
+.checkoutHeader {
+  position: relative;
+}
+
+.goBack {
+  position: absolute;
+  left: -130px;
+  padding: 10px 11px;
+
+  @include media(tablet) {
+    left: 0;
+  }
+}
+
 .logoContainer {
   padding: 60px 0;
 }
