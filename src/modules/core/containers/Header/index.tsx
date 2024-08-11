@@ -8,6 +8,7 @@ import logo from 'assets/images/logo.png';
 import Search from 'assets/svgs/Search';
 import Menu from 'assets/svgs/Menu';
 import Cross from 'assets/svgs/Cross';
+import GoBack from 'modules/order/components/GoBack';
 import styles from './index.module.scss';
 
 const Header = (): JSX.Element => {
@@ -32,6 +33,7 @@ const Header = (): JSX.Element => {
 
   return (
     <div className={isCheckoutPage ? styles.checkoutHeader : styles.header}>
+      {isCheckoutPage ? <GoBack className={styles.goBack} /> : null}
       {isHomePage || isCheckoutPage ? (
         <div className={isCheckoutPage ? styles.logoBox : styles.logoContainer}>
           <img src={logo} className={styles.logo} alt="Logo" />
