@@ -1,6 +1,7 @@
 import React, { FC, useMemo } from 'react';
 import DashedEdit from 'assets/svgs/DashedEdit';
 import styles from './index.module.scss';
+import { Link } from 'react-router-dom';
 
 export interface DeliveryInfoProps {
   icon: string;
@@ -9,7 +10,6 @@ export interface DeliveryInfoProps {
   workDays: string;
   price: string;
   isHome?: boolean;
-  deliverySelection: (typeOfDelivery: string) => () => void;
 }
 
 const DeliveryInfo: FC<DeliveryInfoProps> = ({
@@ -19,16 +19,16 @@ const DeliveryInfo: FC<DeliveryInfoProps> = ({
   workDays,
   price,
   isHome,
-  deliverySelection,
 }) => {
   const priceClassName = useMemo(() => {
     return price === 'Free' ? styles.free : styles.price;
   }, [price]);
 
   return (
-    <button
+    <Link
       className={isHome ? styles.deliveryInfoHome : styles.deliveryInfo}
-      onClick={deliverySelection(title)}
+      to={'/checkout/deliveryDetails'}
+      state={{ deliveryType: title }}
     >
       <div>
         <img src={icon} alt={iconAlt} />
@@ -44,7 +44,7 @@ const DeliveryInfo: FC<DeliveryInfoProps> = ({
         </div>
       </div>
       <DashedEdit />
-    </button>
+    </Link>
   );
 };
 

@@ -1,37 +1,7 @@
 @import 'styles/constants';
 
-.wrapperData {
-  margin-bottom: 50px;
-
-  & form {
-    position: relative;
-    height: 50px;
-    overflow: visible;
-
-    & span {
-      position: absolute;
-      left: 12px;
-      top: 11px;
-      background-color: $pageBackground;
-    }
-  }
-
-  & input:autofill {
-    color: #00ca8d !important;
-    background-color: transparent !important;
-  }
-
-  & input:-webkit-autofill {
-    color: #00ca8d !important;
-    background-color: transparent !important;
-  }
-
-  & div:nth-of-type(3) {
-    flex-basis: calc(35% - 20px);
-  }
-}
-
 .personalData {
+  width: 750px;
   & button p {
     display: block;
     font-family: League Spartan;
@@ -87,6 +57,37 @@
   & input[type='number']::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+  }
+}
+
+.wrapperData {
+  margin-bottom: 50px;
+
+  & form {
+    position: relative;
+    height: 50px;
+    overflow: visible;
+
+    & span {
+      position: absolute;
+      left: 12px;
+      top: 11px;
+      background-color: $pageBackground;
+    }
+  }
+
+  & input:autofill {
+    color: #00ca8d !important;
+    background-color: transparent !important;
+  }
+
+  & input:-webkit-autofill {
+    color: #00ca8d !important;
+    background-color: transparent !important;
+  }
+
+  & div:nth-of-type(3) {
+    flex-basis: calc(35% - 20px);
   }
 }
 

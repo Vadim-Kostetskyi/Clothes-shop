@@ -6,7 +6,6 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  font-family: $font-family-main;
   padding: 24px;
   border: 1px solid $grayLight;
   border-radius: 8px;
@@ -20,18 +19,35 @@
   position: relative;
   justify-content: center;
   padding: 45px 0;
+
+  & img {
+    margin-bottom: 25px;
+  }
+
+  & div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  & p {
+    margin-bottom: 10px;
+  }
+
+  & svg {
+    position: absolute;
+    right: 24px;
+  }
 }
 
-.deliveryInfo > div {
-  display: flex;
-}
+.deliveryInfo {
+  & > div {
+    display: flex;
+  }
 
-.deliveryInfo img {
-  margin-right: 25px;
-}
-
-.deliveryInfoHome img {
-  margin-bottom: 25px;
+  & img {
+    margin-right: 25px;
+  }
 }
 
 .deliveryData,
@@ -65,18 +81,9 @@
   text-align: start;
 }
 
-.deliveryInfoHome p {
-  margin-bottom: 10px;
-}
-
 .deliveryInfo svg,
 .deliveryInfoHome svg {
   width: 24px;
-}
-
-.deliveryInfoHome svg {
-  position: absolute;
-  right: 24px;
 }
 
 .price,

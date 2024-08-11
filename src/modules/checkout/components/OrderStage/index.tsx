@@ -22,6 +22,7 @@ const OrderStage = () => {
       stageNumber = 1;
       break;
     case 'DELIVERY':
+    case 'DELIVERYDETAILS':
       stageNumber = 2;
       break;
     case 'PAYMENT':
